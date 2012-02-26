@@ -4,7 +4,7 @@ import com.hp.hpl.jena.query.QueryExecutionFactory;
 import com.hp.hpl.jena.query.ResultSet;
 import com.hp.hpl.jena.query.*;
 import java.util.*;
-//import java.io.*;
+
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
