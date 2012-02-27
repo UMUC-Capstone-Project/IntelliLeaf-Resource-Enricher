@@ -118,4 +118,9 @@ public class BiomaterialEnricher {
          * using Sparql
          */
     }
+    
+public DCResource enrichModel(String subject, String predicate, String object){
+	
+		return Biomaterial;
+	}
 }
