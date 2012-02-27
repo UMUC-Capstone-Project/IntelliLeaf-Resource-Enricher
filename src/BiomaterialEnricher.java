@@ -1,15 +1,8 @@
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 import com.hp.hpl.jena.rdf.model.*;
-
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.xml.parsers.*;
-
 import org.w3c.dom.*;
-
 import org.xml.sax.SAXException;
 
 
@@ -56,10 +49,10 @@ public class BiomaterialEnricher {
     	
     }
     
-    public ArrayList<String> SearchPubMed(String alg, String db, String keyword, String retmax)
+    public ArrayList<String> searchPubMed(String alg, String db, String keyword, String retmax)
     {
     	
-    	ArrayList<String> pIDList = null; //Holds the IDs parsed from XML
+    	ArrayList<String> pIDList = new ArrayList<String>(); //Holds the IDs parsed from XML
 
     	Document dom = null;
     	        
