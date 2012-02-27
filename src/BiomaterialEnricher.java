@@ -2,6 +2,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import com.hp.hpl.jena.rdf.model.*;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -28,7 +29,27 @@ public class BiomaterialEnricher {
     
     public ArrayList<String> extractStringObjects()
     {
-    	ArrayList<String> keywords = null;
+    	ArrayList<String> keywords = new ArrayList<String>();
+    	
+    	Model model = Biomaterial.getRDF();
+    	
+    	// list the statements in the Model
+    	StmtIterator iter = model.listStatements();
+
+    	// Iterate through the predicate, subject and object of each statement
+    	while (iter.hasNext()) {
+    			    Statement stmt      = iter.nextStatement();  // get next statement
+    			    Resource  subject   = stmt.getSubject();     // get the subject
+    			    Property  predicate = stmt.getPredicate();   // get the predicate
+    			    RDFNode   object    = stmt.getObject();      // get the object
+
+    			    if (predicate.toString().equals("http://www.w3.org/2000/01/rdf-schema#label")){
+    			    	
+    			    	
+    			    	keywords.add(object.toString());
+    			    }
+    	}
+    	
     	
     	return keywords;
     	
