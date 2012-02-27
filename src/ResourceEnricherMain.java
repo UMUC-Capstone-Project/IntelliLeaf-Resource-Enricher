@@ -15,7 +15,7 @@ public class ResourceEnricherMain {
 		
 		BiomaterialEnricher EnrichIntel = new BiomaterialEnricher(Biomaterial);
 		
-		ArrayList<String> keywords = EnrichIntel.extractStringObjects();
+		ArrayList<String> keywords = Biomaterial.extractBiomaterialObjects();
 		
 		for (int i = 0; i < keywords.size(); i++){
 			
