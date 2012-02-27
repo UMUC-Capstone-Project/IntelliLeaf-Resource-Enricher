@@ -1,12 +1,6 @@
-This is a test from eclipse
+ReadMe text to go here.
 
-test
-test
+To test current jar file, type:
 
-test from UMUC org
-Tim Wilson testing this line 7
-now a line 8
+java -jar path/to/test.jar biomaterial/522
 
-Testing--Nate
-
-Testing---Ryan....please work :-D
