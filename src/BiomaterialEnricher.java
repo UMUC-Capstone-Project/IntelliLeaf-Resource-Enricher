@@ -6,11 +6,11 @@ public class BiomaterialEnricher {
     ArrayList<String> keywords; //Holds the keywords parsed from RDF
     ArrayList<String> pIDList; //Holds the IDs parsed from XML
     String eUtilLink = ""; //Holds the EUtilLink
-    String inputURI = ""; //Holds the biomaterial URI
+    DCResource Biomaterial;
     
-    public BiomaterialEnricher()
+    public BiomaterialEnricher(DCResource Biomaterial)
     {
-        
+        this.Biomaterial = Biomaterial;
     }
     
     public void FindRelatedResources()
