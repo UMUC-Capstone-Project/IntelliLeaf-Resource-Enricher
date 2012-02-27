@@ -24,7 +24,7 @@ public class ResourceEnricherMain {
 			pID = EnrichIntel.searchPubMed("esearch","pubmed",keywords.get(i),"10");
 			
 			for (int x = 0; x < pID.size(); x++){
-			System.out.println(pID.get(x));
+			System.out.println("http://www.ncbi.nlm.nih.gov/pubmed/"+pID.get(x));
 			}
 			
 			
