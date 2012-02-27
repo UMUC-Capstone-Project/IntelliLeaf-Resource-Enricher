@@ -1,11 +1,19 @@
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.xml.parsers.*;
+
+import org.w3c.dom.*;
+
+import org.xml.sax.SAXException;
 
 
 public class BiomaterialEnricher {
     
-    ArrayList<String> keywords; //Holds the keywords parsed from RDF
-    ArrayList<String> pIDList; //Holds the IDs parsed from XML
-    String eUtilLink = ""; //Holds the EUtilLink
     DCResource Biomaterial;
     
     public BiomaterialEnricher(DCResource Biomaterial)
@@ -15,43 +23,74 @@ public class BiomaterialEnricher {
     
     public void FindRelatedResources()
     {
-        ParseRDFFile();
-            	
-        for(int x = 0; x < keywords.size(); x++)
-        {
-            SearchPubMed(keywords.get(x));  //this will use E-utils
-            ParseXML();  //this will use Xerces
-        }     
+    	
     }
     
-    public void ParseRDFFile()
+    public ArrayList<String> extractStringObjects()
     {
-        /*Kent's section:
-         * Section of code to parse the RDF file from DC-Thera to obtain keywords
-         *I think we need to save all the keywords to an instance (global)
-         *ArrayList.  Should return an RDF file..more on how it is parsed later
-         */
+    	ArrayList<String> keywords = null;
+    	
+    	return keywords;
+    	
+    	
     }
     
-    public void SearchPubMed(String keyword)
+    public ArrayList<String> SearchPubMed(String alg, String db, String keyword, String retmax)
     {
-        /* Section of the code constructing the E-Utils URI using the keywords
-         * in the arrayList constructed in ParseRDFFile().  Takes in the parameter
-         * 'keyword' from the ArrayList. Saved to an instance String variable.
-         */
+    	
+    	ArrayList<String> pIDList = null; //Holds the IDs parsed from XML
+
+    	Document dom = null;
+    	        
+    	DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+    	
+    	String eURL = "http://eutils.ncbi.nlm.nih.gov/entrez/eutils/"+alg+".fcgi?db="+db+"&term="+keyword+"&RetMax="+retmax;
+    	       
+    	        try 
+    	        {
+    	            DocumentBuilder docb = dbf.newDocumentBuilder();
+    	            
+    	            //parses xml file found at this URL
+    	            dom = docb.parse(eURL);
+    	        } 
+    	        catch (ParserConfigurationException pce) 
+    	        {
+    	            pce.printStackTrace();
+    	        }
+    	        catch (IOException ioe)
+    	        {
+    	            ioe.printStackTrace();
+    	        }
+    	        catch (SAXException se)
+    	        {
+    	            se.printStackTrace();
+    	        }
+    	        
+    	        //Creates element of xml file, then creates a node lists of all "IdLists" in file
+    	        Element Ele = dom.getDocumentElement();
+    	        NodeList nl = Ele.getElementsByTagName("IdList");
+    	        
+    	        //Within the IdLists, creates a nodeList of all the Id tags
+    	        Element elIdList = (Element)nl.item(0);
+    	        NodeList nl2 = elIdList.getElementsByTagName("Id");
+    	        
+    	        //Loops through the "Id" node list and adds the PubIds to an ArrayList
+    	        for(int x = 0; x < nl2.getLength(); x++)
+    	        {
+    	            Element elId = (Element)nl2.item(x);
+
+    	            pIDList.add(elId.getFirstChild().getNodeValue()); 
+    	        }
+    	        
+    	        
+    	        return pIDList;
+    	
     }
     
-    public void ParseXML()
-    {
-        /* Nate's section:
-         * Section of the code that parses the XML File using Xerces. Saves to 
-         * instance ArrayList
-         */
-    }
     
     public void SearchLLD()
     {
-        /*Jason, Ryan, Tim:
+        /* Jason, Ryan, Tim:
          * 
          * reads in the PubMed IDs from the ArrayList to and queries LLD with
          * SPARQL
