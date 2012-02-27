@@ -27,6 +27,10 @@ public class DCResource {
 	public String getURI(){
 		return URI;
 	}
+	
+	public void enrichModel(String subject, String predicate, String object){
+		
+	}
 
 }
 

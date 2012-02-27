@@ -25,10 +25,10 @@ public class ResourceEnricherMain {
 			
 			for (int x = 0; x < pID.size(); x++){
 			System.out.println("http://www.ncbi.nlm.nih.gov/pubmed/"+pID.get(x));
-			}
-			
-			
+			}	
 		}
+		
+		
 		
 	}
 
