@@ -40,7 +40,7 @@ public class ResourceEnricherMain {
 		
 		for (int i = 0; i < keywords.size(); i++){
 			
-			System.out.println("Query: "+keywords.get(i));
+			System.out.println("Query Biomaterial: "+keywords.get(i));
 			
 			pID = EnrichIntel.searchPubMed("esearch","pubmed",keywords.get(i),"");
 			
@@ -53,7 +53,7 @@ public class ResourceEnricherMain {
 			
 		for (int i = 0; i < people.size(); i++){
 				
-			System.out.println("Query: "+people.get(i));
+			System.out.println("Query author: "+people.get(i));
 				
 			authID = EnrichIntel.searchPubMed("esearch","pubmed",people.get(i),"auth");
 				

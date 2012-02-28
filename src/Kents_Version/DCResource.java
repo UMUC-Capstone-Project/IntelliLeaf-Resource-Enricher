@@ -84,12 +84,11 @@ public class DCResource {
 
     			    if (predicate.toString().equals("http://www.w3.org/2000/01/rdf-schema#label")){
     			    	
-    			       	String reg1 = "person";
+    			       	String reg1 = "(person)";
     			    	Pattern pt1 = Pattern.compile(reg1);
     			    	Matcher mt1 = pt1.matcher(subject.toString());
     			    	if(mt1.find()){people.add(object.toString());}
     			    	
-    			    	people.add(object.toString());
     			    }
     	}
     	
@@ -118,8 +117,7 @@ public class DCResource {
     			    	Pattern pt1 = Pattern.compile(reg1);
     			    	Matcher mt1 = pt1.matcher(subject.toString());
     			    	if(mt1.find()){dataset.add(object.toString());}
-    			    	
-    			    	dataset.add(object.toString());
+    			    
     			    }
     	}
     	
@@ -148,8 +146,7 @@ public class DCResource {
     			    	Pattern pt1 = Pattern.compile(reg1);
     			    	Matcher mt1 = pt1.matcher(subject.toString());
     			    	if(mt1.find()){dir.add(object.toString());}
-    			    	
-    			    	dir.add(object.toString());
+ 
     			    }
     	}
     	
