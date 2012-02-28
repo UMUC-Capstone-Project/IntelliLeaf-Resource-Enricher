@@ -8,7 +8,8 @@ import org.xml.sax.SAXException;
 
 public class BiomaterialEnricher {
     
-    DCResource Biomaterial;
+    public DCResource Biomaterial;
+    private static final String ReturnMax = "10";
     
     public BiomaterialEnricher(DCResource Biomaterial)
     {
@@ -20,36 +21,8 @@ public class BiomaterialEnricher {
     	
     }
     
-    public ArrayList<String> extractStringObjects()
-    {
-    	ArrayList<String> keywords = new ArrayList<String>();
-    	
-    	Model model = Biomaterial.getRDF();
-    	
-    	// list the statements in the Model
-    	StmtIterator iter = model.listStatements();
-
-    	// Iterate through the predicate, subject and object of each statement
-    	while (iter.hasNext()) {
-    			    Statement stmt      = iter.nextStatement();  // get next statement
-    			    Resource  subject   = stmt.getSubject();     // get the subject
-    			    Property  predicate = stmt.getPredicate();   // get the predicate
-    			    RDFNode   object    = stmt.getObject();      // get the object
-
-    			    if (predicate.toString().equals("http://www.w3.org/2000/01/rdf-schema#label")){
-    			    	
-    			    	
-    			    	keywords.add(object.toString());
-    			    }
-    	}
-    	
-    	
-    	return keywords;
-    	
-    	
-    }
     
-    public ArrayList<String> searchPubMed(String alg, String db, String keyword, String retmax)
+    public ArrayList<String> searchPubMed(String alg, String db, String keyword)
     {
     	
     	ArrayList<String> pIDList = new ArrayList<String>(); //Holds the IDs parsed from XML
@@ -58,7 +31,7 @@ public class BiomaterialEnricher {
     	        
     	DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
     	
-    	String eURL = "http://eutils.ncbi.nlm.nih.gov/entrez/eutils/"+alg+".fcgi?db="+db+"&term="+keyword+"&RetMax="+retmax;
+    	String eURL = "http://eutils.ncbi.nlm.nih.gov/entrez/eutils/"+alg+".fcgi?db="+db+"&term="+keyword+"&RetMax="+ReturnMax;
     	       
     	        try 
     	        {
