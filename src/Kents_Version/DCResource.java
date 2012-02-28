@@ -7,8 +7,8 @@ import java.util.regex.Pattern;
 
 public class DCResource {
 	
-	public String URI;
-	public Model dcModel;
+	private String URI;
+	private Model dcModel;
 	
 	
 	public DCResource(String URI){

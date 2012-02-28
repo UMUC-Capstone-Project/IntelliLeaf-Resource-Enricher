@@ -10,7 +10,7 @@ import org.xml.sax.SAXException;
 
 public class BiomaterialEnricher {
     
-    public DCResource Biomaterial;
+    private DCResource Biomaterial;
     private static final String ReturnMax = "10";
     
     public BiomaterialEnricher(DCResource Biomaterial)
@@ -24,7 +24,7 @@ public class BiomaterialEnricher {
     }
     
     
-    public ArrayList<String> searchPubMed(String alg, String db, String keyword)
+    public ArrayList<String> searchPubMed(String alg, String db, String keyword, String field)
     {
     	
     	ArrayList<String> pIDList = new ArrayList<String>(); //Holds the IDs parsed from XML
@@ -33,7 +33,8 @@ public class BiomaterialEnricher {
     	        
     	DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
     	
-    	String eURL = "http://eutils.ncbi.nlm.nih.gov/entrez/eutils/"+alg+".fcgi?db="+db+"&term="+keyword+"&RetMax="+ReturnMax;
+    	String eURL = "http://eutils.ncbi.nlm.nih.gov/entrez/eutils/"+alg+".fcgi?db="+db+"&term="+
+    				   keyword+"&RetMax="+ReturnMax+"&field="+field;
     	       
     	        try 
     	        {
