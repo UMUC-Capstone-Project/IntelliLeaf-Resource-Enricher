@@ -6,7 +6,7 @@
 import java.util.ArrayList;
 import com.hp.hpl.jena.rdf.model.*;
 
-public class ResourceData {
+public abstract class ResourceData {
     
     private ArrayList<String> keywords; //Holds the keywords parsed from RDF
     private ArrayList<String> pIDList; //Holds the IDs parsed from XML
