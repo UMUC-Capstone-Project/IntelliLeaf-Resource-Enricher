@@ -9,12 +9,11 @@ import com.hp.hpl.jena.rdf.model.Model;
  * Uses PUBMED to search those publications that are related to a set of terms.
  *
  * <dl><dt>date</dt><dd>Feb 28, 2012</dd></dl>
- * @author brandizi
  *
  */
-public class PubMedTermSearch implements KnowledgeBaseProcessor
+public class PubMedTermSearch extends ResourceEnricher
 {
-	private String termLabels;
+	private List<String> termLabels;
 	private List<Integer> pmids;
 	private Model resultModel;
 	
@@ -22,7 +21,7 @@ public class PubMedTermSearch implements KnowledgeBaseProcessor
 	/**
 	 * The terms to be searched.
 	 */
-	public String getTermLabels ()
+	public List<String> getTermLabels ()
 	{
 		return termLabels;
 	}
@@ -31,7 +30,7 @@ public class PubMedTermSearch implements KnowledgeBaseProcessor
 	/**
 	 * The terms to be searched.
 	 */
-	public void setTermLabels ( String termLabels )
+	public void setTermLabels ( List<String> termLabels )
 	{
 		this.termLabels = termLabels;
 	}
@@ -46,7 +45,8 @@ public class PubMedTermSearch implements KnowledgeBaseProcessor
 	
 	/**
 	 * a set of statements that characterise the returned publications (eg, the tile, authors, etc). Uses the
-	 * DCTHERA ontology for defining such statements. This is populated by {@link #run()}. 
+	 * DCTHERA ontology for defining such statements. Moreover, it links the found publications to the URI passed
+	 * via {@link #setUri(String)}. This is populated by {@link #run()}. 
 	 *  
 	 */
 	public Model getResultModel ()
@@ -59,6 +59,17 @@ public class PubMedTermSearch implements KnowledgeBaseProcessor
 	{
 		// TODO Auto-generated method stub
 
+	}
+
+	
+	/**
+	 * @return an empty array, cause this enricher is supposed to be called directly and not to be used by a generic invoker
+	 * that evaluates enrichers on the basis of its input. 
+	 */
+	@Override
+	public String[] getSupportedUriTypes ()
+	{
+		return new String[] { "" };
 	}
 
 }

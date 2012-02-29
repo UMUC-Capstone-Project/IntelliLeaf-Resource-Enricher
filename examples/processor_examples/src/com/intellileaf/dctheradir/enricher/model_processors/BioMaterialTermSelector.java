@@ -1,5 +1,7 @@
 package com.intellileaf.dctheradir.enricher.model_processors;
 
+import java.util.List;
+
 import com.intellileaf.dctheradir.enricher.Resources;
 
 /**
@@ -12,7 +14,7 @@ import com.intellileaf.dctheradir.enricher.Resources;
  */
 public class BioMaterialTermSelector implements KnowledgeBaseProcessor
 {
-	private String termLabels;
+	private List<String> termLabels;
 	private String uri;
 	
 	/**
@@ -34,7 +36,7 @@ public class BioMaterialTermSelector implements KnowledgeBaseProcessor
 	/**
 	 * @return the output found by {@link #run()}
 	 */
-	public String getTermLabels ()
+	public List<String> getTermLabels ()
 	{
 		return termLabels;
 	}

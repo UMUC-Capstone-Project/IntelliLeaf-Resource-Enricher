@@ -20,12 +20,14 @@ public class BioMaterialEnricher extends ResourceEnricher
     bmTermSel.run();
     
     PubMedTermSearch pubMedSearch = new PubMedTermSearch ();
+    pubMedSearch.setUri ( this.getUri () );
     pubMedSearch.setTermLabels ( bmTermSel.getTermLabels () );
     pubMedSearch.run ();
-
-    LLDPubMedTermEnricher lldEnricher = new LLDPubMedTermEnricher ();
+    // This contains a DCTHERA represenation of the publications found 
+    Utils.mergeGraphs ( pubMedSearch.getResultModel () );
+    
+    LLDPubMedEnricher lldEnricher = new LLDPubMedEnricher ();
     lldEnricher.setPMIDs ( pubMedSearch.getPMIDs () );
-    // or this version, see notes above: lldEnricher.setPubMedModel ( pubMedSearch.getPubMedModel() );
     lldEnricher.run(); 
 
     Utils.mergeGraphs( lldEnricher.getResultModel () );
