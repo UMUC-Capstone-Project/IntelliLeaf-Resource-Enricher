@@ -3,7 +3,6 @@ package com.intellileaf.dctheradir.enricher.model_processors;
 import com.hp.hpl.jena.ontology.Individual;
 import com.hp.hpl.jena.ontology.OntClass;
 import com.hp.hpl.jena.ontology.OntModel;
-import com.hp.hpl.jena.rdf.model.Resource;
 import com.intellileaf.dctheradir.enricher.Resources;
 
 /**
