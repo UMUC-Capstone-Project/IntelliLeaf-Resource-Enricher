@@ -58,7 +58,12 @@ public class PubMedTermSearch extends ResourceEnricher
 	public void run ()
 	{
 		// TODO Auto-generated method stub
-
+		searchPubMed();
+	}
+	
+	public void searchPubMed()
+	{
+		//saves PMIDs from the search to the list variable pmids
 	}
 
 	
