@@ -46,18 +46,11 @@ public class BioMaterialTermSelector implements KnowledgeBaseProcessor
 	public void run ()
 	{
 		// TODO Auto-generated method stub
-		
-		parseDirectoryRdf();
+
 
 	}
 	
-	public void parseDirectoryRdf()
-	{
-		// Method used to parse the RDF files of biomaterial resources from the specified URI
-		
-		// saves term labels to variable termLabels 
-		
-	}
+
 
 	
 }
