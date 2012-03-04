@@ -26,7 +26,7 @@ public class BioMaterialEnricher extends ResourceEnricher
     // This contains a DCTHERA represenation of the publications found 
     Utils.mergeGraphs ( pubMedSearch.getResultModel () );
     
-    LLDPubMedEnricher lldEnricher = new LLDPubMedEnricher ();
+    LLDPubMedTermEnricher lldEnricher = new LLDPubMedTermEnricher ();
     lldEnricher.setPMIDs ( pubMedSearch.getPMIDs () );
     lldEnricher.run(); 
 
