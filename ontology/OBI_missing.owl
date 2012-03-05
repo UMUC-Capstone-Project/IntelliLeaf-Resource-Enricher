@@ -1,0 +1,143 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:oboInOwl="http://www.geneontology.org/formats/oboInOwl#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:p2="http://purl.org/obo/owl/CL#"
+    xmlns:p1="http://purl.obolibrary.org/obo/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns="http://dc-research.eu/OBI_missing#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xml:base="http://dc-research.eu/OBI_missing">
+  <owl:Ontology rdf:about=""/>
+  <owl:Class rdf:about="http://purl.obolibrary.org/obo/OBI_0000053">
+    <rdfs:label xml:lang="en">obsolete_antibody role</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >inserted by MG - was in the OBI pre-release version but missing in the first official OBI release</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.geneontology.org/formats/oboInOwl#ObsoleteClass"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.obolibrary.org/obo/OBI_0600065">
+    <rdfs:subClassOf rdf:resource="http://www.geneontology.org/formats/oboInOwl#ObsoleteClass"/>
+    <rdfs:label xml:lang="en">obsolete_defined protocol application</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >inserted by MG - was in the OBI pre-release version but missing in the first official OBI release</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.obolibrary.org/obo/OBI_0000263">
+    <rdfs:label xml:lang="en">obsolete_homo sapiens</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.geneontology.org/formats/oboInOwl#ObsoleteClass"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >inserted by MG - was in the OBI pre-release version but missing in the first official OBI release</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.obolibrary.org/obo/OBI_0400167">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >inserted by MG - was in the OBI pre-release version but missing in the first official OBI release</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.geneontology.org/formats/oboInOwl#ObsoleteClass"/>
+    <rdfs:label xml:lang="en">obsolete_device function</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.obolibrary.org/obo/OBI_0000085">
+    <rdfs:label xml:lang="en">obsolete_concretized protocol</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.geneontology.org/formats/oboInOwl#ObsoleteClass"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >inserted by MG - was in the OBI pre-release version but missing in the first official OBI release</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.obolibrary.org/obo/OBI_0000088">
+    <rdfs:label xml:lang="en">obsolete_administrative unit role</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >inserted by MG - was in the OBI pre-release version but missing in the first official OBI release</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.geneontology.org/formats/oboInOwl#ObsoleteClass"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.obolibrary.org/obo/OBI_0000008">
+    <rdfs:subClassOf rdf:resource="http://www.geneontology.org/formats/oboInOwl#ObsoleteClass"/>
+    <rdfs:label xml:lang="en">obsolete_Experimental factor</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >inserted by MG - was in the OBI pre-release version but missing in the first official OBI release</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.obolibrary.org/obo/OBI_0000037">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >inserted by MG - was in the OBI pre-release version but missing in the first official OBI release</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.geneontology.org/formats/oboInOwl#ObsoleteClass"/>
+    <rdfs:label xml:lang="en">obsolete_vitamin role</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.obolibrary.org/obo/OBI_0000042">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >inserted by MG - was in the OBI pre-release version but missing in the first official OBI release</rdfs:comment>
+    <rdfs:label xml:lang="en">obsolete_data set</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.geneontology.org/formats/oboInOwl#ObsoleteClass"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.obolibrary.org/obo/OBI_0000069">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >inserted by MG - was in the OBI pre-release version but missing in the first official OBI release</rdfs:comment>
+    <rdfs:label xml:lang="en">obsolete_protocol application</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.geneontology.org/formats/oboInOwl#ObsoleteClass"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.obolibrary.org/obo/OBI_0000111">
+    <rdfs:subClassOf rdf:resource="http://www.geneontology.org/formats/oboInOwl#ObsoleteClass"/>
+    <rdfs:label xml:lang="en">obsolete_study participant role</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >inserted by MG - was in the OBI pre-release version but missing in the first official OBI release</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.obolibrary.org/obo/OBI_0000303">
+    <rdfs:subClassOf rdf:resource="http://www.geneontology.org/formats/oboInOwl#ObsoleteClass"/>
+    <rdfs:label xml:lang="en">obsolete_instrument_function</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >inserted by MG - was in the OBI pre-release version but missing in the first official OBI release</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.obolibrary.org/obo/OBI_0600062">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >inserted by MG - was in the OBI pre-release version but missing in the first official OBI release</rdfs:comment>
+    <rdfs:label xml:lang="en">obsolete_planned process</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.geneontology.org/formats/oboInOwl#ObsoleteClass"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.obolibrary.org/obo/IAO_0000105">
+    <rdfs:label xml:lang="en">obsolete_document</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.geneontology.org/formats/oboInOwl#ObsoleteClass"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >inserted by MG - was in the OBI pre-release version but missing in the first official OBI release</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/CL#CL_0000229">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >inserted by MG - was in the OBI pre-release version but missing in the first official OBI release</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.geneontology.org/formats/oboInOwl#ObsoleteClass"/>
+    <rdfs:label xml:lang="en">obsolete_lymphoblast</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.obolibrary.org/obo/OBI_0100036">
+    <rdfs:subClassOf rdf:resource="http://www.geneontology.org/formats/oboInOwl#ObsoleteClass"/>
+    <rdfs:label xml:lang="en">obsolete_supernatant</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >inserted by MG - was in the OBI pre-release version but missing in the first official OBI release</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.obolibrary.org/obo/OBI_0000155">
+    <rdfs:subClassOf rdf:resource="http://www.geneontology.org/formats/oboInOwl#ObsoleteClass"/>
+    <rdfs:label xml:lang="en">obsolete_disease</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >inserted by MG - was in the OBI pre-release version but missing in the first official OBI release</rdfs:comment>
+  </owl:Class>
+  <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/OBI_0000313">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >inserted by MG - was in the OBI pre-release version but missing in the first official OBI release</rdfs:comment>
+    <rdfs:label xml:lang="en">obsolete_utilizes_device</rdfs:label>
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="http://www.geneontology.org/formats/oboInOwl#ObsoleteProperty"/>
+    </rdfs:subPropertyOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/OBI_0000311">
+    <rdfs:subPropertyOf rdf:resource="http://www.geneontology.org/formats/oboInOwl#ObsoleteProperty"/>
+    <rdfs:label xml:lang="en">obsolete_is_device_for</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >inserted by MG - was in the OBI pre-release version but missing in the first official OBI release</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/OBI_1110112">
+    <rdfs:subPropertyOf rdf:resource="http://www.geneontology.org/formats/oboInOwl#ObsoleteProperty"/>
+    <rdfs:label xml:lang="en">obsolete_property2</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/IAO_0000222">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >inserted by MG - was in the OBI pre-release version but missing in the first official OBI release</rdfs:comment>
+    <rdfs:subPropertyOf rdf:resource="http://www.geneontology.org/formats/oboInOwl#ObsoleteProperty"/>
+    <rdfs:label xml:lang="en">obsolete_property1</rdfs:label>
+  </owl:ObjectProperty>
+</rdf:RDF>
+
+<!-- Created with Protege (with OWL Plugin 3.4, Build 128)  http://protege.stanford.edu -->

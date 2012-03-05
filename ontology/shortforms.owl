@@ -1,0 +1,1104 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns="http://dc-research.eu/shortforms#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+	xmlns:dctheradir="http://dc-research.eu#"
+  xml:base="http://dc-research.eu/shortforms">
+  <owl:AnnotationProperty rdf:about="http://dc-research.eu#hasShortForm"/>
+  <owl:Ontology rdf:about=""/>
+  <owl:Class rdf:about="http://purl.org/obo/owl/IMR#IMR_0000279">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >PP1</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/NCBITaxon#NCBITaxon_11276">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >VSV</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/DC_CL#DC_CL_0000109">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >TLR7</dctheradir:hasShortForm>
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >TLR-7</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://dc-research.eu#dctheradir_248">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >MPL</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/IMR#IMR_0700572">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >TPR2</dctheradir:hasShortForm>
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >TPR-2</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/CHEBI#CHEBI_16412">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >LPS</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/IMR#IMR_0701867">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >GATA1</dctheradir:hasShortForm>
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >GATA-1</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/IMR#IMR_0000010">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >IL6</dctheradir:hasShortForm>
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >IL-6</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/psi-mi#MI_0610">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >siRNA</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/IMR#IMR_0000650">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >LFA1</dctheradir:hasShortForm>
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >LFA-1</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/IMR#IMR_0000278">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >CN</dctheradir:hasShortForm>
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >PP2B</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/IMR#IMR_0000064">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >VEGF</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/CHEBI#CHEBI_36704">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >C14H16N4</dctheradir:hasShortForm>
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >R 837</dctheradir:hasShortForm>
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >R837</dctheradir:hasShortForm>
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >R-837</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://dc-research.eu#dctheradir_342">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >GIST</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/NCBITaxon#NCBITaxon_205488">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >EBO</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://dc-research.eu#dctheradir_324">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >MAGE</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://dc-research.eu#dctheradir_237">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >OVA</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/NCBITaxon#NCBITaxon_12721">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >HIV</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://dc-research.eu#dctheradir_332">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >MVA</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/CHEBI#CHEBI_28262">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >DMSO</dctheradir:hasShortForm>
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >C2H6OS</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://dc-research.eu#dctheradir_217">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >CXCL9</dctheradir:hasShortForm>
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >CXCL-9</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/IMR#IMR_0000011">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >IL1</dctheradir:hasShortForm>
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >IL-1</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://dc-research.eu#dctheradir_246">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >CCR5</dctheradir:hasShortForm>
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >CCR-5</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://dc-research.eu#dctheradir_325">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >NOX2</dctheradir:hasShortForm>
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >NOX-2</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/CHEBI#CHEBI_33838">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >C5H9O4R</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/CHEBI#CHEBI_47812">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >C27H42O4</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/GO#GO_0070743">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >IL-23</dctheradir:hasShortForm>
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >IL23</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/IMR#IMR_0000111">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >IL7</dctheradir:hasShortForm>
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >IL-7</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/PRO#PRO_000001202">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >CCR6</dctheradir:hasShortForm>
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >CCR-6</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://dc-research.eu#dctheradir_279">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >shRNA</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/CHEBI#CHEBI_28940">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >C27H44O</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/IMR#IMR_0000042">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >TGF beta 1</dctheradir:hasShortForm>
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >TGF-beta 1</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/psi-mi#MI_0324">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >mRNA</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/IMR#IMR_0703942">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >IKBA</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/IMR#IMR_0000377">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >STAT3</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/IMR#IMR_0000012">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >IL3</dctheradir:hasShortForm>
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >IL-3</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/CHEBI#CHEBI_15551">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >PGE2</dctheradir:hasShortForm>
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >PGE-2</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/IMR#IMR_0702013">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >PDED</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/IMR#IMR_0700564">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >SYK</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/NCBITaxon#NCBITaxon_10376">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >EBV</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/IMR#IMR_0000225">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >JNK/SAPK</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/IMR#IMR_0200723">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >PGDS2</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/IMR#IMR_0700345">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >PSEL</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://dc-research.eu#dctheradir_344">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >PBL</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/CL#CL_0000794">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >CTL</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/IMR#IMR_0001444">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >MD2</dctheradir:hasShortForm>
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >MD-2</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://dc-research.eu#dctheradir_239">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Lf</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://dc-research.eu#dctheradir_264">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Pam3Cys</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/CHEBI#CHEBI_17076">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >C21H39N7O12</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.obolibrary.org/obo/OBI_0000709">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >YAC</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/IMR#IMR_0000224">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >MAPK</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/IMR#IMR_0000023">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >CD40L</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/IMR#IMR_0700621">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >NS1</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/CHEBI#CHEBI_17823">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >C27H44O3</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.cellcycleontology.org/ontology/owl/CCO#CCO_B0049622">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >NKp30</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/IMR#IMR_0000261">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >MEK</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/CL#CL_0000545">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >TH1 cell</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/CHEBI#CHEBI_32234">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >TiO2</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/IMR#IMR_0700888">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >IRF8</dctheradir:hasShortForm>
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >IRF-8</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://dc-research.eu#dctheradir_313">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >PLG</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.cellcycleontology.org/ontology/owl/CCO#CCO_G0001466">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >PHB</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/NCBITaxon#NCBITaxon_11757">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >MMTV</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/GO#GO_0043020">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >NADPH</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/IMR#IMR_0700879">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >IRF3</dctheradir:hasShortForm>
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >IRF-3</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/CHEBI#CHEBI_33575">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >CHO2R</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/IMR#IMR_0000590">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >IL-12</dctheradir:hasShortForm>
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >IL12</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://dc-research.eu#dctheradir_172">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Nef</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://dc-research.eu#dctheradir_478">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >MPLC</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/IMR#IMR_0000021">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >TNF</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/IMR#IMR_0000124">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >TLR</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/BTO#BTO_0000664">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >K562 cell line</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/CHEBI#CHEBI_17137">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >HO3S</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/IMR#IMR_0200674">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >TYR</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/CL#CL_0000815">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Treg</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/PRO#PRO_000001992">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >CCL20</dctheradir:hasShortForm>
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >CCL-20</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://dc-research.eu#dctheradir_550">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >GMM</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://dc-research.eu#dctheradir_394">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >RIG1</dctheradir:hasShortForm>
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >RIG-1</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.cellcycleontology.org/ontology/owl/CCO#CCO_G0014166">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >PRIP</dctheradir:hasShortForm>
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >PRP</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/CHEBI#CHEBI_26710">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >ClNa</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://dc-research.eu#dctheradir_173">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Tat</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://dc-research.eu#dctheradir_316">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >ETX</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://dc-research.eu#dctheradir_255">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >MoDC</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/CHEBI#CHEBI_15422">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >ATP</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/IMR#IMR_0002093">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >IgE</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://dc-research.eu#dctheradir_216">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >HEV</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://dc-research.eu#dctheradir_241">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >MARCHI</dctheradir:hasShortForm>
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >MARCH I</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://dc-research.eu#dctheradir_353">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >TRIM</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.uniprot.org/taxonomy/NEWT_55429">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >KLH</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/IMR#IMR_0001990">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >ICAM-3</dctheradir:hasShortForm>
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >ICAM-R</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/CL#CL_0000546">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >TH2 cell</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/IMR#IMR_0701456">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Mac1</dctheradir:hasShortForm>
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Mac-1</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/IMR#IMR_0000620">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >ICAM-3</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/IMR#IMR_0200878">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >PSA</dctheradir:hasShortForm>
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >PSAT</dctheradir:hasShortForm>
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >EPIP</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/IMR#IMR_0702273">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >TRAIL</dctheradir:hasShortForm>
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >TL2</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/IMR#IMR_0700314">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Fcgr1</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://dc-research.eu#dctheradir_164">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >MAGE3</dctheradir:hasShortForm>
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >MAGE-3</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://dc-research.eu#dctheradir_369">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Flt3L</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/IMR#IMR_0701384">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >IL-12p35</dctheradir:hasShortForm>
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >IL12p35</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/CHEBI#CHEBI_16991">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >DNA</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/IMR#IMR_0002094">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >IgG</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://dc-research.eu#dctheradir_240">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >CCL2</dctheradir:hasShortForm>
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >CCL-2</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://dc-research.eu#dctheradir_174">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Rev</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/IMR#IMR_0002091">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >IgA</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/IMR#IMR_0000597">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >IL15</dctheradir:hasShortForm>
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >IL-15</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/IMR#IMR_0200769">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >IDO</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/IMR#IMR_0000007">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >IL</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/IMR#IMR_0001464">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >TLR9</dctheradir:hasShortForm>
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >TLR-9</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://dc-research.eu#dctheradir_613">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >TDM</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#AXL_Protein">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >AXL</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/IMR#IMR_0701386">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >IL23</dctheradir:hasShortForm>
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >IL-23</dctheradir:hasShortForm>
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >IL-12p40</dctheradir:hasShortForm>
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >IL12p40</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://dc-research.eu#dctheradir_551">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >alpha-GalCer</dctheradir:hasShortForm>
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.obolibrary.org/obo/OBI_0100046">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >PBS</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/CL#CL_0000050">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >MEP</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://dc-research.eu#dctheradir_195">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >TICAM1</dctheradir:hasShortForm>
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >TRIF</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/IMR#IMR_0000178">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >ICAM</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/SO#SO_0000276">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >miRNA</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/IMR#IMR_0000168">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >L-CAM</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/FMA#FMA_86713">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >PBMC</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/IMR#IMR_0704202">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Nfkb1</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/IMR#IMR_0701377">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >IL8</dctheradir:hasShortForm>
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >IL-8</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.cellcycleontology.org/ontology/owl/CCO#CCO_G0008996">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >HER2</dctheradir:hasShortForm>
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >HER-2</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/IMR#IMR_0000382">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >NFkB</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/CHEBI#CHEBI_17334">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >C9H11N2O4SR</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#Tumor_Infiltrating_Lymphocyte">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >TIL</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/IMR#IMR_0702099">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >RAG2</dctheradir:hasShortForm>
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >RAG-2</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/IMR#IMR_0704821">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >IL1 beta</dctheradir:hasShortForm>
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >IL-1 beta</dctheradir:hasShortForm>
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >IL1-beta</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#Poly_IC">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >polyI:C</dctheradir:hasShortForm>
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Poly I:C</dctheradir:hasShortForm>
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Poly IC</dctheradir:hasShortForm>
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >poly (I)-poly (C)</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/IMR#IMR_0011134">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >PKR</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/IMR#IMR_0100468">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >CTX</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/CHEBI#CHEBI_17239">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >CDP</dctheradir:hasShortForm>
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >C9H15N3O11P2</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://dc-research.eu#dctheradir_416">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >PLGA</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/CHEBI#CHEBI_28619">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >C3H5NO</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/CL#CL_0000623">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >NK cell</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/IMR#IMR_0000585">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >IL4</dctheradir:hasShortForm>
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >IL-4</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/CHEBI#CHEBI_48080">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >C16H24O4</dctheradir:hasShortForm>
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >BrefA</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://dc-research.eu#dctheradir_398">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >CCL21</dctheradir:hasShortForm>
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >CCL-21</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/NCBITaxon#NCBITaxon_10298">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >HSV1</dctheradir:hasShortForm>
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >HSV-1</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://dc-research.eu#dctheradir_615">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >PP2</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://dc-research.eu#dctheradir_167">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Apo-DC</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/NCBITaxon#NCBITaxon_11676">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >HIV1</dctheradir:hasShortForm>
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >HIV-1</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/IMR#IMR_0700316">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Fcgr3</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/NCBITaxon#NCBITaxon_12305">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >CMV</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/IMR#IMR_0002090">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Ig</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/CHEBI#CHEBI_41879">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >C22H29FO5</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://dc-research.eu#dctheradir_415">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Poly-ICLC</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/IMR#IMR_0000143">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >MHCI</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/IMR#IMR_0000018">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >GM-CSF</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/IMR#IMR_0700006">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >IL5</dctheradir:hasShortForm>
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >IL-5</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/IMR#IMR_0200499">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >NTP</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://dc-research.eu#dctheradir_426">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >GITR</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/IMR#IMR_0000008">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >IL2</dctheradir:hasShortForm>
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >IL-2</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/DC_CL#DC_CL_0000103">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >MHCII</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://dc-research.eu#dctheradir_616">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >TH17 cell</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://dc-research.eu#dctheradir_397">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >CCL19</dctheradir:hasShortForm>
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >CCL-19</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/IMR#IMR_0000156">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >FcR</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/CHEBI#CHEBI_37537">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >C36H56O8</dctheradir:hasShortForm>
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >PMA</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://dc-research.eu#dctheradir_621">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >ManLAM</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://dc-research.eu#dctheradir_483">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >CBA</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/IMR#IMR_0010259">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >GPI</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/IMR#IMR_0702411">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >DEC</dctheradir:hasShortForm>
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >NADPH</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/IMR#IMR_0000587">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >IL8</dctheradir:hasShortForm>
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >IL-8</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/IMR#IMR_0700009">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >IL6</dctheradir:hasShortForm>
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >IL-6</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/IMR#IMR_0000142">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >MHC</dctheradir:hasShortForm>
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >HLA</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/IMR#IMR_0000027">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >IFN</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/CL#CL_0000784">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >pDC</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://dc-research.eu#dctheradir_10">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >CRF</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://dc-research.eu#dctheradir_408">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >PTX3</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://dc-research.eu#dctheradir_641">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >TSLP</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/IMR#IMR_0001450">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >TLR2</dctheradir:hasShortForm>
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >TLR-2</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://dc-research.eu#dctheradir_284">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >iNKT cell</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/IMR#IMR_0001440">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >TLR4</dctheradir:hasShortForm>
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >TLR-4</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#NA17-A_Antigen">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >NA17A</dctheradir:hasShortForm>
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >NA17-A</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/CHEBI#CHEBI_17968">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >C4H7O2</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#CD209_Antigen">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >DC-SIGN</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.obolibrary.org/obo/OBI_0600031">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >ELISPOT</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/IMR#IMR_0001461">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >TLR8</dctheradir:hasShortForm>
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >TLR-8</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#Melan-A_Protein">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >MART1</dctheradir:hasShortForm>
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >MART-1</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.cellcycleontology.org/ontology/owl/CCO#CCO_G0013619">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >CXCL4</dctheradir:hasShortForm>
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >CXCL-4</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/IMR#IMR_0000090">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >RAR</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/CL#CL_0000145">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >APC</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.cellcycleontology.org/ontology/owl/CCO#CCO_G0013559">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >CXCL1</dctheradir:hasShortForm>
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >CXCL-1</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://dc-research.eu#dctheradir_309">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >dsRNA</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/NCBITaxon#NCBITaxon_11623">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >LCMV</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/CHEBI#CHEBI_30746">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >C7H6O2</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/NCBITaxon#NCBITaxon_5661">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >L. donovani</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/IMR#IMR_0701393">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >IL15</dctheradir:hasShortForm>
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >IL-15</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/NCBITaxon#NCBITaxon_11234">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >MV</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/IMR#IMR_0704352">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >SRC</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://dc-research.eu#dctheradir_374">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >CXCR4</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/CHEBI#CHEBI_17939">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >C22H29N7O5</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://dc-research.eu#dctheradir_220">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >CXCR3</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/IMR#IMR_0700880">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >IRF4</dctheradir:hasShortForm>
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >IRF-4</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/IMR#IMR_0000589">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >IL10</dctheradir:hasShortForm>
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >IL-10</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/IMR#IMR_0000618">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >ICAM-1</dctheradir:hasShortForm>
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >ICAM1</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://dc-research.eu#dctheradir_234">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >ICOS</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/NCBITaxon#NCBITaxon_10566">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >HPV</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/CHEBI#CHEBI_49662">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >C19H16ClNO4</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/IMR#IMR_0001452">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >TLR3</dctheradir:hasShortForm>
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >TLR-3</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/CL#CL_0000782">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >DC1</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/IMR#IMR_0000151">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >TCR</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://dc-research.eu#dctheradir_643">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >SEA</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/IMR#IMR_0701799">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >AP1</dctheradir:hasShortForm>
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >AP-1</dctheradir:hasShortForm>
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >c-Jun</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/DC_CL#DC_CL_0000107">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >TLR10</dctheradir:hasShortForm>
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >TLR-10</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/CL#CL_0000232">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >RBC</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/CHEBI#CHEBI_4027">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >C7H15Cl2N2O2P</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/CHEBI#CHEBI_35366">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >CHO2R</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/IMR#IMR_0000375">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >STAT1</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://dc-research.eu#dctheradir_373">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >PRF1</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/IMR#IMR_0000601">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >IL18</dctheradir:hasShortForm>
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >IL-18</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://dc-research.eu#dctheradir_11">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >SOP</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#Milk_Fat_Globule-EGF_Factor-8_Protein">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >MFGE8</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/CL#CL_0000451">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >DC</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://dc-research.eu#dctheradir_596">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >MLR</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://dc-research.eu#dctheradir_235">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >IL12p70</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/NCBITaxon#NCBITaxon_11320">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >FLUAV</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#Cytotoxic_T-Lymphocyte-Associated_Protein-4">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >CTLA4</dctheradir:hasShortForm>
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >CTLA-4</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://dc-research.eu#dctheradir_307">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >M-CSF</dctheradir:hasShortForm>
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >MCSF</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://dc-research.eu#dctheradir_333">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >TAA</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/IMR#IMR_0701872">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >GATA3</dctheradir:hasShortForm>
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >GATA-3</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/IMR#IMR_0000421">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >NFAT</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/IMR#IMR_0700319">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Fcgr2</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/CHEBI#CHEBI_36706">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >C17H22N4O2</dctheradir:hasShortForm>
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >R848</dctheradir:hasShortForm>
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >R-848</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/DC_CL#DC_CL_0000108">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >TLR5</dctheradir:hasShortForm>
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >TLR-5</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/IMR#IMR_0704239">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >MYD88</dctheradir:hasShortForm>
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >MYD-88</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/CHEBI#CHEBI_39026">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >LDL</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/NCBITaxon#NCBITaxon_10310">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >HSV2</dctheradir:hasShortForm>
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >HSV-2</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://dc-research.eu#dctheradir_612">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >TDB</dctheradir:hasShortForm>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/obo/owl/CHEBI#CHEBI_33697">
+    <dctheradir:hasShortForm rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >RNA</dctheradir:hasShortForm>
+  </owl:Class>
+</rdf:RDF>
+
+<!-- Created with Protege (with OWL Plugin 3.4, Build 128)  http://protege.stanford.edu -->
