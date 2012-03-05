@@ -2,6 +2,7 @@ package com.intellileaf.dctheradir.enricher.model_processors;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -69,13 +70,19 @@ public class PubMedTermSearch extends ResourceEnricher
 	@Override
 	public void run ()
 	{
+		//Test Code
+		setUri("http://dc-research.eu/rdf/document/191");
+		ArrayList<String> terms = new ArrayList<String>(Arrays.asList("BRCA1", "Human", "Melanoma"));
+		setTermLabels(terms);
+		//End Test Code
+		
         String eUtilsBase = "http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=";//holds E-utils Base
         String link = "";
 		String relationshipUri = "http://purl.obolibrary.org/obo/IAO_0000311/"; //Holds the URI base for the property(predicate)
 		String pubMedUri = "http://www.ncbi.nlm.nih.gov/pubmed/"; //Holds the URI base for the PubMed URI
 		
 		Resource dirId = resultModel.createResource(getUri());//Creates a resource for the Biomaterial directory
-	 	Property relatedDoc = resultModel.createProperty(relationshipUri, "hasAutoRelatedDocument"); //Creates the relationship(property)
+	 	Property relatedDoc = resultModel.createProperty(relationshipUri, "dcr"); //Creates the relationship(property)
 		
     	Document dom = null;
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
@@ -127,7 +134,13 @@ public class PubMedTermSearch extends ResourceEnricher
             	resultModel.add(statement); //adds statement to model
             }
         }
-
+        
+        //Test Code
+        for(int pid: pmids)
+        	System.out.println(pid);
+    
+        resultModel.write(System.out);
+        //End Test Code
     }
 	
 
