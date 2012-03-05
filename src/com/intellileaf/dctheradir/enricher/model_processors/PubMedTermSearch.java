@@ -130,6 +130,9 @@ public class PubMedTermSearch extends ResourceEnricher
             	
             	pmids.add(id);
             	
+            	/*Rough draft showing how to create the model below. Will perfect later in the week after I get a few
+            	 * questions answered.  Once its clear to me how the RDF model will be structured, i'll improve this section.
+            	 */
             	Statement statement = resultModel.createStatement(dirId, relatedDoc, pubMedUri + id);//creates statement for model
             	resultModel.add(statement); //adds statement to model
             }
