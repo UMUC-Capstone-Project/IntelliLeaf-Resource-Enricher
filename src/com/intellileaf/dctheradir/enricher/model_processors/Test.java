@@ -13,6 +13,9 @@ public class Test {
 		object.run();
 		
 		Resources.getDirectoryModel();
+		
+		
+		
 	}
 
 }

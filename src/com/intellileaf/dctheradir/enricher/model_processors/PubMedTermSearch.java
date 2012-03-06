@@ -1,5 +1,6 @@
 package com.intellileaf.dctheradir.enricher.model_processors;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -71,7 +72,17 @@ public class PubMedTermSearch extends ResourceEnricher
 	public void run ()
 	{
 		//Test Code
+		
 		setUri("http://dc-research.eu/rdf/document/191");
+		String uri = getUri();
+		
+		try {
+			isResourceSupported (uri);
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		ArrayList<String> terms = new ArrayList<String>(Arrays.asList("BRCA1", "Human", "Melanoma"));
 		setTermLabels(terms);
 		//End Test Code

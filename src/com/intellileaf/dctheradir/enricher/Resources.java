@@ -37,7 +37,7 @@ public class Resources
 				
 		directoryModel.read(URI);
 
-		directoryModel.write(System.out);
+		//directoryModel.write(System.out);
 		
 		// Then return it
 		return directoryModel;

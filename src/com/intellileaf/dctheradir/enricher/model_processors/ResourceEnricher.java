@@ -39,6 +39,10 @@ public abstract class ResourceEnricher implements KnowledgeBaseProcessor
 	 * 	  	  
 	 */
 	public abstract String[] getSupportedUriTypes (); 
+	
+	
+	
+	
 
 	/**
 	 * 
