@@ -74,14 +74,7 @@ public class PubMedTermSearch extends ResourceEnricher
 		//Test Code
 		
 		setUri("http://dc-research.eu/rdf/document/191");
-		String uri = getUri();
 		
-		try {
-			isResourceSupported (uri);
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		
 		ArrayList<String> terms = new ArrayList<String>(Arrays.asList("BRCA1", "Human", "Melanoma"));
 		setTermLabels(terms);

@@ -16,7 +16,8 @@ public class BioMaterialEnricher extends ResourceEnricher
 
 	@Override
 	public void run ()
-	{
+	{	
+	
     BioMaterialTermSelector bmTermSel = new BioMaterialTermSelector ();
     bmTermSel.setUri ( this.getUri () );
     bmTermSel.run();

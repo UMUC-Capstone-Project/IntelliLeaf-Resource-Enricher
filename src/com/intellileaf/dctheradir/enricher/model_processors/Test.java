@@ -10,6 +10,8 @@ public class Test {
 	{
 		PubMedTermSearch object = new PubMedTermSearch();
 		
+		object.setUri("http://dc-research.eu/rdf/document/191");
+		object.isResourceSupported(object.getUri());
 		object.run();
 		
 		Resources.getDirectoryModel();

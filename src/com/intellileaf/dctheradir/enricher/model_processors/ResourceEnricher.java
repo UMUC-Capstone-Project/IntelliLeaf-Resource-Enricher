@@ -39,10 +39,6 @@ public abstract class ResourceEnricher implements KnowledgeBaseProcessor
 	 * 	  	  
 	 */
 	public abstract String[] getSupportedUriTypes (); 
-	
-	
-	
-	
 
 	/**
 	 * 
@@ -63,4 +59,12 @@ public abstract class ResourceEnricher implements KnowledgeBaseProcessor
 			if ( clas.hasSuperClass ( m.getOntClass ( typeUri ) )) return true; 
 		return false;
 	}
+	
+	@Override
+	public void run ()
+	{	
+
+	}
+	
+	
 }
