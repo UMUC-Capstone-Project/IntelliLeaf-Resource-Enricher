@@ -1,5 +1,7 @@
 package com.intellileaf.dctheradir.enricher;
 
+import java.io.FileNotFoundException;
+
 import com.hp.hpl.jena.rdf.model.Model;
 
 /**
@@ -24,8 +26,9 @@ public class Utils
 	/**
 	 * Invokes {@link #mergeGraphs(Model, Model)} using {@link Resources#getDirectoryModel()} as destination
 	 * @param srcModel
+	 * @throws FileNotFoundException 
 	 */
-	public static void mergeGraphs ( Model srcModel )
+	public static void mergeGraphs ( Model srcModel ) throws FileNotFoundException
 	{
 		mergeGraphs ( srcModel, Resources.getDirectoryModel () );
 	}

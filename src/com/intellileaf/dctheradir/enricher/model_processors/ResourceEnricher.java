@@ -1,5 +1,7 @@
 package com.intellileaf.dctheradir.enricher.model_processors;
 
+import java.io.FileNotFoundException;
+
 import com.hp.hpl.jena.ontology.Individual;
 import com.hp.hpl.jena.ontology.OntClass;
 import com.hp.hpl.jena.ontology.OntModel;
@@ -44,9 +46,10 @@ public abstract class ResourceEnricher implements KnowledgeBaseProcessor
 	 * returned by {@link #getSupportedUriTypes()}.
 	 * 
 	 * This relies on the basic reasoning capabilities that a Jena {@link OntModel} has by default.
+	 * @throws FileNotFoundException 
 	 * 
 	 */
-	public boolean isResourceSupported ( String uri )
+	public boolean isResourceSupported ( String uri ) throws FileNotFoundException
 	{
 		OntModel m = Resources.getDirectoryModel ();
 		

@@ -1,5 +1,7 @@
 package com.intellileaf.dctheradir.enricher.model_processors;
 
+import java.io.FileNotFoundException;
+
 import com.intellileaf.dctheradir.enricher.Utils;
 
 /**
@@ -24,22 +26,37 @@ public class BioMaterialEnricher extends ResourceEnricher
     pubMedSearch.setTermLabels ( bmTermSel.getTermLabels () );
     pubMedSearch.run ();
     // This contains a DCTHERA represenation of the publications found 
-    Utils.mergeGraphs ( pubMedSearch.getResultModel () );
+    try {
+		Utils.mergeGraphs ( pubMedSearch.getResultModel () );
+	} catch (FileNotFoundException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
     
     LLDPubMedTermEnricher lldEnricher = new LLDPubMedTermEnricher ();
     lldEnricher.setPMIDs ( pubMedSearch.getPMIDs () );
     lldEnricher.run(); 
 
-    Utils.mergeGraphs( lldEnricher.getResultModel () );
+    try {
+		Utils.mergeGraphs( lldEnricher.getResultModel () );
+	} catch (FileNotFoundException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
     
     UniprotEnricher uniProtEnricher = new UniprotEnricher ();
     uniProtEnricher.setUri ( getUri () );
     
-    Utils.mergeGraphs ( uniProtEnricher.getResultModel () );
+    try {
+		Utils.mergeGraphs ( uniProtEnricher.getResultModel () );
+	} catch (FileNotFoundException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
 	}
 
 	/**
-	 * returns {Ê"http://dc-research.eu/#dctheradir_492" }, ie, dcr:BioMaterial
+	 * returns {ï¿½"http://dc-research.eu/#dctheradir_492" }, ie, dcr:BioMaterial
 	 */
 	@Override
 	public String[] getSupportedUriTypes ()
