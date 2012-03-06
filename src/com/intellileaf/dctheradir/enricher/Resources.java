@@ -37,7 +37,7 @@ public class Resources
 		 * 
 		 */
 		directoryModel =  
-				ModelFactory.createOntologyModel(OntModelSpec.OWL_MEM);
+				ModelFactory.createOntologyModel(OntModelSpec.OWL_DL_MEM_TRANS_INF);
 				directoryModel.read(input, "RDF/XML-ABBREV"); 
 				
 		directoryModel.read(URI);
