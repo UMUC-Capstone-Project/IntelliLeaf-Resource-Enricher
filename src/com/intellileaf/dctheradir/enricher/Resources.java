@@ -2,7 +2,6 @@ package com.intellileaf.dctheradir.enricher;
 
 import com.hp.hpl.jena.ontology.OntModel;
 import com.hp.hpl.jena.ontology.OntModelSpec;
-import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
 
 import java.io.FileInputStream;
@@ -31,6 +30,12 @@ public class Resources
 		
 		InputStream input = new FileInputStream("./ontology/ontology.owl");
 		
+		/* 
+		 * ResourceEnricher.isResourceSupported() requires a minimum degree of inference, i.e., automatic reasoning. 
+		 * Probably the minimum that we need in this application is OWL_DL_MEM_TRANS_INF (OWL_LITE_MEM_TRANS_INF if
+		 * that's too slow during updates). Likely OWL_MEM is not enough.
+		 * 
+		 */
 		directoryModel =  
 				ModelFactory.createOntologyModel(OntModelSpec.OWL_MEM);
 				directoryModel.read(input, "RDF/XML-ABBREV"); 
