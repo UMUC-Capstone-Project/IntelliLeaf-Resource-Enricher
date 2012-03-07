@@ -8,11 +8,12 @@ public class Test {
 
 	public static void main(String[] args) throws FileNotFoundException 
 	{
-		PubMedTermSearch object = new PubMedTermSearch();
-		
-		object.setUri("http://dc-research.eu/rdf/document/191");
-		object.isResourceSupported(object.getUri());
-		object.run();
+		BioMaterialEnricher object = new BioMaterialEnricher();
+		boolean x;
+		object.setUri("http://dc-research.eu/rdf/biomaterial/522");
+		x = object.isResourceSupported(object.getUri());
+		System.out.println(x);
+		//object.run();
 		
 		Resources.getDirectoryModel();
 		
