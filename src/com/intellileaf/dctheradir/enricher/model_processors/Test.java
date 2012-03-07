@@ -8,7 +8,7 @@ public class Test {
 
 	public static void main(String[] args) throws FileNotFoundException 
 	{
-		BioMaterialEnricher object = new BioMaterialEnricher();
+		/*BioMaterialEnricher object = new BioMaterialEnricher();
 		boolean x;
 		object.setUri("http://dc-research.eu/rdf/biomaterial/522");
 		x = object.isResourceSupported(object.getUri());
@@ -16,7 +16,15 @@ public class Test {
 		//object.run();
 		
 		Resources.getDirectoryModel();
+		*/
 		
+		PubMedTermSearch obj = new PubMedTermSearch();
+		obj.run();
+		
+		LLDPubMedTermEnricher obj2 = new LLDPubMedTermEnricher();
+		
+		obj2.setPMIDs(obj.getPMIDs());
+		obj2.run();
 		
 		
 	}
