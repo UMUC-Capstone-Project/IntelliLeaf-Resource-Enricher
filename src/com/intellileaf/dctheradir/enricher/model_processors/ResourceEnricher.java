@@ -71,9 +71,10 @@ public abstract class ResourceEnricher implements KnowledgeBaseProcessor
 	
 	@Override
 	public void run ()
-	{	
-
+	{
+		
 	}
+	
 	
 	
 }

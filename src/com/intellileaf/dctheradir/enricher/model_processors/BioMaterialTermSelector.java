@@ -1,9 +1,17 @@
 package com.intellileaf.dctheradir.enricher.model_processors;
 
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.hp.hpl.jena.ontology.OntModel;
+import com.hp.hpl.jena.rdf.model.Model;
+import com.hp.hpl.jena.rdf.model.ModelFactory;
+import com.hp.hpl.jena.rdf.model.Property;
+import com.hp.hpl.jena.rdf.model.RDFNode;
+import com.hp.hpl.jena.rdf.model.Resource;
+import com.hp.hpl.jena.rdf.model.Statement;
+import com.hp.hpl.jena.rdf.model.StmtIterator;
 import com.intellileaf.dctheradir.enricher.Resources;
 
 /**
@@ -16,7 +24,7 @@ import com.intellileaf.dctheradir.enricher.Resources;
  */
 public class BioMaterialTermSelector implements KnowledgeBaseProcessor
 {
-	private List<String> termLabels;
+	private List<String> termLabels = new ArrayList<String>();
 	private String uri;
 	
 	/**
@@ -47,8 +55,25 @@ public class BioMaterialTermSelector implements KnowledgeBaseProcessor
 	@Override
 	public void run ()
 	{	
-		
+    	
+    	Model model = ModelFactory.createDefaultModel();
+    	model.read(uri);
+    	
+		StmtIterator iter = model.listStatements();
 
+		// Iterate through the predicate, subject and object of each statement
+		while (iter.hasNext()) 
+		{
+		    Statement stmt      = iter.nextStatement();  // get next statement
+		    Resource  subject   = stmt.getSubject();     // get the subject
+		    Property  predicate = stmt.getPredicate();   // get the predicate
+		    RDFNode   object    = stmt.getObject();      // get the object
+
+		    if (predicate.toString().equals("http://www.w3.org/2000/01/rdf-schema#label"))
+		    {
+		    	termLabels.add(object.toString());
+		    }
+		}
 	}
 	
 

@@ -18,15 +18,9 @@ public class Test {
 		Resources.getDirectoryModel();
 		*/
 		
-		PubMedTermSearch obj = new PubMedTermSearch();
-		obj.run();
+		BioMaterialEnricher object = new BioMaterialEnricher();
 		
-		LLDPubMedTermEnricher obj2 = new LLDPubMedTermEnricher();
-		
-		obj2.setPMIDs(obj.getPMIDs());
-		obj2.run();
-		
-		
+		object.run();
 	}
 
 }

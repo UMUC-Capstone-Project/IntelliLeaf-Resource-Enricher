@@ -71,16 +71,6 @@ public class PubMedTermSearch extends ResourceEnricher
 	@Override
 	public void run ()
 	{
-		//Test Code
-		
-		setUri("http://dc-research.eu/rdf/document/191");
-		
-		
-		ArrayList<String> terms = new ArrayList<String>(Arrays.asList("Melan A", "selectin", "Alexander Steinkasserer", "survivin", "Gerold Schuler", "Gosse Adema"
-				, "Homo sapiens", "Carl Figdor"));
-		setTermLabels(terms);
-		//End Test Code
-		
         String eUtilsBase = "http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=";//holds E-utils Base
         String link = "";
 		String relationshipUri = "http://purl.obolibrary.org/obo/IAO_0000311/"; //Holds the URI base for the property(predicate)

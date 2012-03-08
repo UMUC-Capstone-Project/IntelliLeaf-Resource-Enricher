@@ -17,45 +17,55 @@ public class BioMaterialEnricher extends ResourceEnricher
 	@Override
 	public void run ()
 	{	
+		//testCode
+		setUri("http://dc-research.eu/rdf/biomaterial/522");
+		//End
+	    BioMaterialTermSelector bmTermSel = new BioMaterialTermSelector ();
+	    bmTermSel.setUri ( this.getUri () );
+	    bmTermSel.run();
+	    
+	    PubMedTermSearch pubMedSearch = new PubMedTermSearch ();
+	    pubMedSearch.setUri ( this.getUri () );
+	    pubMedSearch.setTermLabels ( bmTermSel.getTermLabels () );
+	    pubMedSearch.run ();
+	    
+	    // This contains a DCTHERA represenation of the publications found 
+	    try 
+	    {
+			Utils.mergeGraphs ( pubMedSearch.getResultModel () );
+		} 
+	    catch (FileNotFoundException e) 
+	    {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	    
+	    LLDPubMedTermEnricher lldEnricher = new LLDPubMedTermEnricher ();
+	    lldEnricher.setPMIDs ( pubMedSearch.getPMIDs () );
+	    lldEnricher.run(); 
 	
-		
-		
-    BioMaterialTermSelector bmTermSel = new BioMaterialTermSelector ();
-    bmTermSel.setUri ( this.getUri () );
-    bmTermSel.run();
-    
-    PubMedTermSearch pubMedSearch = new PubMedTermSearch ();
-    pubMedSearch.setUri ( this.getUri () );
-    pubMedSearch.setTermLabels ( bmTermSel.getTermLabels () );
-    pubMedSearch.run ();
-    // This contains a DCTHERA represenation of the publications found 
-    try {
-		Utils.mergeGraphs ( pubMedSearch.getResultModel () );
-	} catch (FileNotFoundException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
-    
-    LLDPubMedTermEnricher lldEnricher = new LLDPubMedTermEnricher ();
-    lldEnricher.setPMIDs ( pubMedSearch.getPMIDs () );
-    lldEnricher.run(); 
-
-    try {
-		Utils.mergeGraphs( lldEnricher.getResultModel () );
-	} catch (FileNotFoundException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
-    
-    UniprotEnricher uniProtEnricher = new UniprotEnricher ();
-    uniProtEnricher.setUri ( getUri () );
-    
-    try {
-		Utils.mergeGraphs ( uniProtEnricher.getResultModel () );
-	} catch (FileNotFoundException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
+	    try 
+	    {
+			Utils.mergeGraphs( lldEnricher.getResultModel () );
+		} 
+	    catch (FileNotFoundException e) 
+	    {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	    
+	    UniprotEnricher uniProtEnricher = new UniprotEnricher ();
+	    uniProtEnricher.setUri ( getUri () );
+	    
+	    try 
+	    {
+			Utils.mergeGraphs ( uniProtEnricher.getResultModel () );
+		} 
+	    catch (FileNotFoundException e) 
+	    {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	/**
