@@ -76,7 +76,8 @@ public class PubMedTermSearch extends ResourceEnricher
 		setUri("http://dc-research.eu/rdf/document/191");
 		
 		
-		ArrayList<String> terms = new ArrayList<String>(Arrays.asList("BRCA1", "Human", "Melanoma"));
+		ArrayList<String> terms = new ArrayList<String>(Arrays.asList("Melan A", "selectin", "Alexander Steinkasserer", "survivin", "Gerold Schuler", "Gosse Adema"
+				, "Homo sapiens", "Carl Figdor"));
 		setTermLabels(terms);
 		//End Test Code
 		
