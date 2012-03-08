@@ -5,6 +5,9 @@ import java.io.FileNotFoundException;
 import com.hp.hpl.jena.ontology.Individual;
 import com.hp.hpl.jena.ontology.OntClass;
 import com.hp.hpl.jena.ontology.OntModel;
+import com.hp.hpl.jena.rdf.model.NodeIterator;
+import com.hp.hpl.jena.rdf.model.RDFNode;
+import com.intellileaf.dctheradir.enricher.NS;
 import com.intellileaf.dctheradir.enricher.Resources;
 
 /**
@@ -54,9 +57,15 @@ public abstract class ResourceEnricher implements KnowledgeBaseProcessor
 		OntModel m = Resources.getDirectoryModel ();
 		
 		Individual resource = m.getIndividual ( uri );
-		OntClass clas = resource.getOntClass ( true );
-		for ( String typeUri: getSupportedUriTypes () )
-			if ( clas.hasSuperClass ( m.getOntClass ( typeUri ) )) return true; 
+		for ( NodeIterator itr = resource.listPropertyValues ( m.getProperty ( NS.rdf + "type" ) ); itr.hasNext (); )
+		{
+			RDFNode onode = itr.next ();
+			if ( !onode.canAs ( OntClass.class ) ) continue; // Strange, skip it. TODO: log it too.
+			OntClass clas = onode.as ( OntClass.class );
+			
+			for ( String typeUri: getSupportedUriTypes () )
+				if ( clas.hasSuperClass ( m.getOntClass ( typeUri ) )) return true;
+		}
 		return false;
 	}
 	
