@@ -132,13 +132,8 @@ public class PubMedTermSearch extends ResourceEnricher
             	resultModel.add(statement); //adds statement to model
             }
         }
-        
-        //Test Code
-        for(int pid: pmids)
-        	System.out.println(pid);
     
-        resultModel.write(System.out);
-        //End Test Code
+
     }
 	
 
