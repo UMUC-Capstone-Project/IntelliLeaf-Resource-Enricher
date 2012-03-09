@@ -15,5 +15,5 @@ public class NS
 	public static final String DCR = "http://dc-research.eu#";
 	public static final String RDFS = "http://www.w3.org/2000/01/rdf-schema#";
 	public static final String TITLE = "http://purl.org/dc/elements/1.1/title";
-	public static final String ABSTRACT = "http://purl.org/dc/elements/1.1/title";
+	public static final String ABSTRACT = "http://purl.org/dc/elements/1.1/abstract";
 }
