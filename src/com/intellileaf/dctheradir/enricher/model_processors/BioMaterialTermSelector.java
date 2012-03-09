@@ -13,6 +13,7 @@ import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.rdf.model.Statement;
 import com.hp.hpl.jena.rdf.model.StmtIterator;
 import com.intellileaf.dctheradir.enricher.Resources;
+import com.intellileaf.dctheradir.enricher.NS;
 
 /**
  * 
@@ -60,8 +61,15 @@ public class BioMaterialTermSelector implements KnowledgeBaseProcessor
     	model.read(uri);
     	
 		StmtIterator iter = model.listStatements();
+		
+		List<String> targetObjects = new ArrayList<String>();
 
-		// Iterate through the predicate, subject and object of each statement
+		/** Iterate through the predicate, subject and object of each statement
+		  * First iteration returns the Biomaterial label and each object as well as the
+		  * object for the triple Biomaterial hasMoleculeType x and Biomaterial hasOrganismType x
+		  * 
+		  * 
+		  */
 		while (iter.hasNext()) 
 		{
 		    Statement stmt      = iter.nextStatement();  // get next statement
@@ -69,11 +77,61 @@ public class BioMaterialTermSelector implements KnowledgeBaseProcessor
 		    Property  predicate = stmt.getPredicate();   // get the predicate
 		    RDFNode   object    = stmt.getObject();      // get the object
 
-		    if (predicate.toString().equals("http://www.w3.org/2000/01/rdf-schema#label"))
+		    if (subject.toString().equals(this.getUri()) && (predicate.toString().equals(NS.RDFS+"label")))
 		    {
 		    	termLabels.add(object.toString());
 		    }
+		    
+		    if (subject.toString().equals(this.getUri()) && (predicate.toString().equals(NS.DCR+"hasMoleculeType")))
+		    {
+		    	
+		    	targetObjects.add(object.toString());
+		    	
+		    }
+		    
+		    if (subject.toString().equals(this.getUri()) && (predicate.toString().equals(NS.DCR+"hasOrganismType")))
+		    {
+		    	targetObjects.add(object.toString());
+		    }
+		    
 		}
+		
+		/** Iterate through the predicate, subject and object of each statement
+		  * Second iteration returns the Biomaterial MoleculeType and OrganismType labels 
+		  * 
+		  */
+		
+		
+		for (int i = 0; i < targetObjects.size(); i++){
+			
+			StmtIterator iter2 = model.listStatements();
+			
+			while (iter2.hasNext()) 
+			{
+			    Statement stmt      = iter2.nextStatement();  // get next statement
+			    Resource  subject   = stmt.getSubject();     // get the subject
+			    Property  predicate = stmt.getPredicate();   // get the predicate
+			    RDFNode   object    = stmt.getObject();      // get the object
+			    
+			    
+			    if (subject.toString().equals(targetObjects.get(i)) && (predicate.toString().equals(NS.RDFS+"label")))
+			    {
+			    	termLabels.add(object.toString());
+			    	
+			    }
+			    
+			}
+			
+		}
+		
+		for (int i = 0; i < termLabels.size(); i++){
+			
+			System.out.println("Terms: "+ (termLabels.get(i)));
+		}
+		
+		
+		
+		
 	}
 	
 
