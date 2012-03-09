@@ -65,7 +65,7 @@ public class LLDPubMedTermEnricher implements KnowledgeBaseProcessor
 			"http://linkedlifedata.com/sparql", query);
 			
 			ResultSet results = qexec.execSelect();
-			ResultSetFormatter.out(System.out, results, query);
+			//ResultSetFormatter.out(System.out, results, query);
 			
 			qexec.close() ;
 		}

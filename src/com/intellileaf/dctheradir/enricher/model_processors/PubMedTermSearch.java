@@ -1,4 +1,6 @@
 package com.intellileaf.dctheradir.enricher.model_processors;
+import com.intellileaf.dctheradir.enricher.Resources;
+import com.intellileaf.dctheradir.enricher.NS;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -77,7 +79,7 @@ public class PubMedTermSearch extends ResourceEnricher
 		String pubMedUri = "http://www.ncbi.nlm.nih.gov/pubmed/"; //Holds the URI base for the PubMed URI
 		
 		Resource dirId = resultModel.createResource(getUri());//Creates a resource for the Biomaterial directory
-	 	Property relatedDoc = resultModel.createProperty(relationshipUri, "dcr"); //Creates the relationship(property)
+	 	Property relatedDoc = resultModel.createProperty(NS.publication, "dcr"); //Creates the relationship(property)
 		
     	Document dom = null;
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
@@ -132,7 +134,8 @@ public class PubMedTermSearch extends ResourceEnricher
             	resultModel.add(statement); //adds statement to model
             }
         }
-    
+        
+        resultModel.write(System.out);
 
     }
 	

@@ -31,6 +31,7 @@ public class Utils
 	public static void mergeGraphs ( Model srcModel ) throws FileNotFoundException
 	{
 		mergeGraphs ( srcModel, Resources.getDirectoryModel () );
+		
 	}
 
 }

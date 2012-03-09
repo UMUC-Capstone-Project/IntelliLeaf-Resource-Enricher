@@ -30,7 +30,7 @@ public class BioMaterialEnricher extends ResourceEnricher
 	    pubMedSearch.run ();
 	    
 	    // This contains a DCTHERA represenation of the publications found 
-	   /* try 
+	   try 
 	    {
 			Utils.mergeGraphs ( pubMedSearch.getResultModel () );
 		} 
@@ -39,7 +39,9 @@ public class BioMaterialEnricher extends ResourceEnricher
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	    */
+	    //Test
+	   
+	   //End Test
 	    LLDPubMedTermEnricher lldEnricher = new LLDPubMedTermEnricher ();
 	    lldEnricher.setPMIDs ( pubMedSearch.getPMIDs () );
 	    lldEnricher.run(); 
