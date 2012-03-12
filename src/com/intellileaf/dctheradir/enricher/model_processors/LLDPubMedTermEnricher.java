@@ -65,9 +65,34 @@ public class LLDPubMedTermEnricher implements KnowledgeBaseProcessor
 			"http://linkedlifedata.com/sparql", query);
 			
 			ResultSet results = qexec.execSelect();
-			//ResultSetFormatter.out(System.out, results, query);
 			
-			qexec.close() ;
+			try
+			{
+				for(;results.hasNext();)
+				{
+					QuerySolution soln = results.nextSolution();
+					
+					//Retrieves the variable in the "termLabel" and "concept" columns
+					RDFNode termLabel = soln.get("termLabel"); 
+					RDFNode concept = soln.get("concept"); 
+					
+					//Converts to strings
+					String term = termLabel.toString();
+					String con = concept.toString();
+					
+					//Test print out
+					System.out.println(term);
+					System.out.println(con);
+					
+					//Section to add the resource to the model below:
+				}
+			}
+			finally
+			{
+				qexec.close();
+			}
+			//ResultSetFormatter.out(System.out, results, query);
+			//qexec.close();
 		}
 
 	}
