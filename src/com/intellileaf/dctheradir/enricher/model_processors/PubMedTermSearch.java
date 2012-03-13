@@ -75,12 +75,15 @@ public class PubMedTermSearch extends ResourceEnricher
 	{
         String eUtilsBase = "http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=";//holds E-utils Base
         String link = "";
-		String relationshipUri = "http://purl.obolibrary.org/obo/IAO_0000311/"; //Holds the URI base for the property(predicate)
 		String pubMedUri = "http://www.ncbi.nlm.nih.gov/pubmed/"; //Holds the URI base for the PubMed URI
 		
-		Resource dirId = resultModel.createResource(getUri());//Creates a resource for the Biomaterial directory
-	 	Property relatedDoc = resultModel.createProperty(NS.publication, "dcr"); //Creates the relationship(property)
+		resultModel.setNsPrefix("dcr", NS.DCR);
 		
+		//Creates a resource for the Biomaterial directory
+	 	 //Creates the relationship(property)
+		
+		
+	 	
     	Document dom = null;
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 		
@@ -130,8 +133,15 @@ public class PubMedTermSearch extends ResourceEnricher
             	/*Rough draft showing how to create the model below. Will perfect later in the week after I get a few
             	 * questions answered.  Once its clear to me how the RDF model will be structured, i'll improve this section.
             	 */
-            	Statement statement = resultModel.createStatement(dirId, relatedDoc, pubMedUri + id);//creates statement for model
-            	resultModel.add(statement); //adds statement to model
+        
+            	Property relatedDoc = resultModel.createProperty(NS.DCR + "hasAutoRelatedDocument_" + y);
+            	Property doc = resultModel.createProperty(NS.DCR + pmids.get(y));
+
+            	Resource dirId = resultModel.createResource(getUri())
+            			.addProperty(relatedDoc, "pmids.get(y)");
+            			
+            			
+
             }
         }
         
@@ -142,6 +152,12 @@ public class PubMedTermSearch extends ResourceEnricher
 
 
 	
+	private Property createProperty() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
 	/**
 	 * @return an empty array, cause this enricher is supposed to be called directly and not to be used by a generic invoker
 	 * that evaluates enrichers on the basis of its input. 

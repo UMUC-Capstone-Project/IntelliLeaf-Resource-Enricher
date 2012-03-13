@@ -70,11 +70,11 @@ public class LLDPubMedTermEnricher implements KnowledgeBaseProcessor
 			{
 				for(;results.hasNext();)
 				{
-					QuerySolution soln = results.nextSolution();
+					QuerySolution sol = results.nextSolution();
 					
 					//Retrieves the variable in the "termLabel" and "concept" columns
-					RDFNode termLabel = soln.get("termLabel"); 
-					RDFNode concept = soln.get("concept"); 
+					RDFNode termLabel = sol.get("termLabel");
+					RDFNode concept = sol.get("concept");
 					
 					//Converts to strings
 					String term = termLabel.toString();
