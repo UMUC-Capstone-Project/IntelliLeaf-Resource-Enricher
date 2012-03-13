@@ -21,6 +21,7 @@ public class Utils
 	public static void mergeGraphs ( Model srcModel, Model destModel )
 	{
 		destModel.add ( srcModel );
+
 	}
 
 	/**

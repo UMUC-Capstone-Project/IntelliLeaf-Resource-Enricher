@@ -76,14 +76,11 @@ public class PubMedTermSearch extends ResourceEnricher
         String eUtilsBase = "http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=";//holds E-utils Base
         String link = "";
 		String pubMedUri = "http://www.ncbi.nlm.nih.gov/pubmed/"; //Holds the URI base for the PubMed URI
-		
+		int count = 1;
 		resultModel.setNsPrefix("dcr", NS.DCR);
-		
-		//Creates a resource for the Biomaterial directory
-	 	 //Creates the relationship(property)
-		
-		
-	 	
+
+    	
+		Model model = ModelFactory.createDefaultModel();
     	Document dom = null;
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 		
@@ -130,19 +127,15 @@ public class PubMedTermSearch extends ResourceEnricher
             	
             	pmids.add(id);
             	
-            	/*Rough draft showing how to create the model below. Will perfect later in the week after I get a few
-            	 * questions answered.  Once its clear to me how the RDF model will be structured, i'll improve this section.
-            	 */
-        
-            	Property relatedDoc = resultModel.createProperty(NS.DCR + "hasAutoRelatedDocument_" + y);
-            	Property doc = resultModel.createProperty(NS.DCR + pmids.get(y));
+            	Resource biomaterial = resultModel.createResource(getUri());
+            	Resource PubMed = resultModel.createResource(pubMedUri + pmids.get(x));
+            	Property relatedResource = resultModel.createProperty(NS.DCR, "hasAutoRelatedDocument");
 
-            	Resource dirId = resultModel.createResource(getUri())
-            			.addProperty(relatedDoc, "pmids.get(y)");
-            			
-            			
+
+            	biomaterial.addProperty(relatedResource, PubMed);
 
             }
+            
         }
         
         resultModel.write(System.out);

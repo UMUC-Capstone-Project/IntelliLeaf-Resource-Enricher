@@ -39,9 +39,7 @@ public class BioMaterialEnricher extends ResourceEnricher
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	    //Test
-	   
-	   //End Test
+
 	    LLDPubMedTermEnricher lldEnricher = new LLDPubMedTermEnricher ();
 	    lldEnricher.setPMIDs ( pubMedSearch.getPMIDs () );
 	    lldEnricher.run(); 
