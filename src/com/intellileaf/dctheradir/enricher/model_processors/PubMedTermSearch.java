@@ -20,6 +20,7 @@ import org.xml.sax.SAXException;
 import com.hp.hpl.jena.rdf.model.*;
 
 
+
 /**
  * 
  * Uses PUBMED to search those publications that are related to a set of terms.
@@ -76,11 +77,9 @@ public class PubMedTermSearch extends ResourceEnricher
         String eUtilsBase = "http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=";//holds E-utils Base
         String link = "";
 		String pubMedUri = "http://www.ncbi.nlm.nih.gov/pubmed/"; //Holds the URI base for the PubMed URI
-		int count = 1;
-		resultModel.setNsPrefix("dcr", NS.DCR);
 
-    	
-		Model model = ModelFactory.createDefaultModel();
+		resultModel.setNsPrefix("dcr", NS.DCR);
+		
     	Document dom = null;
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 		
@@ -126,16 +125,30 @@ public class PubMedTermSearch extends ResourceEnricher
             	int id = Integer.parseInt(elId.getFirstChild().getNodeValue());
             	
             	pmids.add(id);
-            	
-            	Resource biomaterial = resultModel.createResource(getUri());
-            	Resource PubMed = resultModel.createResource(pubMedUri + pmids.get(x));
-            	Property relatedResource = resultModel.createProperty(NS.DCR, "hasAutoRelatedDocument");
-
-
-            	biomaterial.addProperty(relatedResource, PubMed);
-
             }
             
+        }
+        
+        Resource biomaterial = resultModel.createResource(getUri());
+        
+        for(int x = 0; x < 5; x++)
+        { 
+
+    		Property autoRelatedDoc = resultModel.createProperty(NS.DCR, "hasAutoRelatedDocument_" + x);
+    		Property document = resultModel.createProperty(NS.DCR, "document/" + pmids.get(x));
+    		Property identifier = resultModel.createProperty(NS.ABSTRACT, "identifier");
+    		
+    		Resource purl = resultModel.createResource(NS.publication);
+    		Resource pubMed = resultModel.createResource(pubMedUri + pmids.get(x));
+
+    		
+    		biomaterial.addProperty(autoRelatedDoc, resultModel.createResource());
+    		
+  
+    		
+
+    		
+    
         }
         
         resultModel.write(System.out);
@@ -146,7 +159,7 @@ public class PubMedTermSearch extends ResourceEnricher
 
 	
 	private Property createProperty() {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 
