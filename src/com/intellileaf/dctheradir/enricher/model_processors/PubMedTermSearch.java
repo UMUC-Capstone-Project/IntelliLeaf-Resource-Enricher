@@ -65,10 +65,6 @@ public class PubMedTermSearch extends ResourceEnricher
 		String pubMedUri = "http://www.ncbi.nlm.nih.gov/pubmed/"; //Holds the URI base for the PubMed URI
 		int count = 1;
 		
-		//Resources and Properties for building the model
-		//Resource biomaterial = ResourceFactory.createResource(getUri());
-	    //
-		
 		//prefixes for buidling the model
 		resultModel.setNsPrefix("dcr", NS.DCR);
 		resultModel.setNsPrefix("rdfs", NS.RDFS);

@@ -38,8 +38,7 @@ public class LLDPubMedTermEnricher implements KnowledgeBaseProcessor
 	{
 		this.pmids = pmids;
 	}
-	
-	
+
 	public Model getResultModel ()
 	{
 		return resultModel;
