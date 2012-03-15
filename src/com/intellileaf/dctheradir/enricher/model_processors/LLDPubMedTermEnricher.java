@@ -50,6 +50,13 @@ public class LLDPubMedTermEnricher implements KnowledgeBaseProcessor
 	@Override
 	public void run ()
 	{
+		Resource dcResource = resultModel.createResource(getUri());
+		
+		resultModel.setNsPrefix("dcr", NS.DCR);
+		resultModel.setNsPrefix("rdfs", NS.RDFS);
+		resultModel.setNsPrefix("owl", NS.owl);
+		
+		
 		int count = 1;
 
 		// collection of the PubMed IDs retrieved from getPIDs() method
@@ -78,22 +85,20 @@ public class LLDPubMedTermEnricher implements KnowledgeBaseProcessor
 			"http://linkedlifedata.com/sparql", query);
 			
 			ResultSet results = qexec.execSelect();
-			
-			Resource dcResource = resultModel.createResource(getUri());
 			Resource pubMedDoc = resultModel.createResource();
-			
-			Property autoRelatedDoc = resultModel.createProperty(NS.DCR, "hasAutoRelatedDocument_" + count);
-			Property label = resultModel.createProperty(NS.RDFS, "label");
-			Property lldUri = resultModel.createProperty(NS.owl, "samAs");
-			
-			resultModel.add(dcResource,autoRelatedDoc, pubMedDoc);
-			
 			try
 			{
 				for(;results.hasNext();)
 				{
 					QuerySolution sol = results.nextSolution();
-					System.out.println("Test");
+					
+					
+					Property autoRelatedDoc = resultModel.createProperty(NS.DCR, "hasAutoRelatedDocument_" + count);
+					Property label = resultModel.createProperty(NS.RDFS, "label");
+					Property lldUri = resultModel.createProperty(NS.owl, "samAs");
+					
+					resultModel.add(dcResource,autoRelatedDoc, pubMedDoc);
+
 					//Retrieves the variable in the "termLabel" and "concept" columns
 					RDFNode termLabel = sol.get("termLabel");
 					RDFNode concept = sol.get("concept");
@@ -101,7 +106,7 @@ public class LLDPubMedTermEnricher implements KnowledgeBaseProcessor
 					//Converts to strings
 					String term = termLabel.toString();
 					String con = concept.toString();
-					System.out.println(con);
+					
 					resultModel.add(pubMedDoc, label, termLabel);
 					resultModel.add(pubMedDoc, lldUri, con);
 
@@ -114,6 +119,8 @@ public class LLDPubMedTermEnricher implements KnowledgeBaseProcessor
 			
 			count++;
 		}
+		
+		resultModel.write(System.out, "TURTLE");
 
 	}
 

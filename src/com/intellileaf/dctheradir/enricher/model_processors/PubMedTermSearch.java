@@ -116,11 +116,10 @@ public class PubMedTermSearch extends ResourceEnricher
             	Element elId = (Element)nl2.item(y);
             	
             	int id = Integer.parseInt(elId.getFirstChild().getNodeValue());
-            	
-
+            
             	 pmids.add(id);
-                	
-               //Creates the Jena model statement with the selected PubMed ID
+         
+               //Statements to create the Jena model statement with the selected PubMed ID
                Resource pubMedDoc = resultModel.createResource();
                 	
                Property autoRelatedDoc = resultModel.createProperty(NS.DCR, "hasAutoRelatedDocument_" + count);
@@ -138,7 +137,8 @@ public class PubMedTermSearch extends ResourceEnricher
             }
             
         }
-        System.out.println(pmids.size());
+        
+        //prints model
         resultModel.write(System.out, "TURTLE");
 
     }
