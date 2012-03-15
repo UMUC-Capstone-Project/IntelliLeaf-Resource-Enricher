@@ -59,6 +59,8 @@ public class BioMaterialEnricher extends ResourceEnricher
 	    
 	    /*
 	    model = lldEnricher.getResultModel().union(pubMedSearch.getResultModel());
+	    model.add(pubMedSearch.getResultModel());
+	    model.add(lldEnricher.getResultModel());
 	    model.write(System.out, "TURTLE");
 	    */
 	    
