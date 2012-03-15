@@ -18,6 +18,8 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 import com.hp.hpl.jena.rdf.model.*;
+import com.hp.hpl.jena.sparql.vocabulary.FOAF;
+import com.hp.hpl.jena.vocabulary.RDF;
 
 
 
@@ -79,6 +81,7 @@ public class PubMedTermSearch extends ResourceEnricher
 		String pubMedUri = "http://www.ncbi.nlm.nih.gov/pubmed/"; //Holds the URI base for the PubMed URI
 
 		resultModel.setNsPrefix("dcr", NS.DCR);
+		resultModel.setNsPrefix("rdfs", NS.RDFS);
 		
     	Document dom = null;
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
@@ -129,29 +132,29 @@ public class PubMedTermSearch extends ResourceEnricher
             
         }
         
-        Resource biomaterial = resultModel.createResource(getUri());
+        
+        int count = 1;
         
         for(int x = 0; x < 5; x++)
         { 
-
-    		Property autoRelatedDoc = resultModel.createProperty(NS.DCR, "hasAutoRelatedDocument_" + x);
-    		Property document = resultModel.createProperty(NS.DCR, "document/" + pmids.get(x));
-    		Property identifier = resultModel.createProperty(NS.ABSTRACT, "identifier");
-    		
-    		Resource purl = resultModel.createResource(NS.publication);
-    		Resource pubMed = resultModel.createResource(pubMedUri + pmids.get(x));
-
-    		
-    		biomaterial.addProperty(autoRelatedDoc, resultModel.createResource());
-    		
-  
-    		
+        	Resource biomaterial = resultModel.createResource(getUri());
+        	Resource pubMedDoc = resultModel.createResource();
+    		Property autoRelatedDoc = resultModel.createProperty(NS.DCR, "hasAutoRelatedDocument_" + count);
+    		Property document = resultModel.createProperty(NS.DCR, "document_" + pmids.get(x));
+    		Property identifier = resultModel.createProperty(NS.DCR, "identifier");
+    		Property label = resultModel.createProperty(NS.RDFS, "label");
 
     		
-    
+    		resultModel.add(biomaterial,autoRelatedDoc, pubMedDoc);
+    		
+    		resultModel.add(pubMedDoc, document, NS.publication);
+    		resultModel.add(pubMedDoc, document, "http://purl.obolibrary.org/obo/IAO_0000013");
+    		resultModel.add(pubMedDoc, identifier, pubMedUri + pmids.get(x));
+
+    		count++;
         }
         
-        resultModel.write(System.out);
+        resultModel.write(System.out, "TURTLE");
 
     }
 	
