@@ -3,6 +3,7 @@ package com.intellileaf.dctheradir.enricher.model_processors;
 import java.util.ArrayList;
 import com.hp.hpl.jena.rdf.model.*;
 import com.hp.hpl.jena.query.*;
+import com.intellileaf.dctheradir.enricher.NS;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -16,6 +17,17 @@ public class LLDPubMedTermEnricher implements KnowledgeBaseProcessor
 	private Model resultModel = ModelFactory.createDefaultModel();
 	private List<Integer> pmids;
 	private List<String> searchTerms;
+	private String uri;
+	
+	public void setUri(String uri)
+	{
+		this.uri = uri;
+	}
+	
+	public String getUri()
+	{
+		return uri;
+	}
 
 	public List<Integer> getPMIDs ()
 	{
@@ -71,7 +83,7 @@ public class LLDPubMedTermEnricher implements KnowledgeBaseProcessor
 				for(;results.hasNext();)
 				{
 					QuerySolution sol = results.nextSolution();
-					
+					System.out.println("Test");
 					//Retrieves the variable in the "termLabel" and "concept" columns
 					RDFNode termLabel = sol.get("termLabel");
 					RDFNode concept = sol.get("concept");
@@ -80,11 +92,9 @@ public class LLDPubMedTermEnricher implements KnowledgeBaseProcessor
 					String term = termLabel.toString();
 					String con = concept.toString();
 					
-					//Test print out
-					System.out.println(term);
-					System.out.println(con);
-					
-					//Section to add the resource to the model below:
+					//Resource dcResource = resultModel.createResource(getUri());
+					//Property autoRelatedDoc = resultModel.createProperty(NS.DCR, "hasAutoRelatedDocument_");
+
 				}
 			}
 			finally

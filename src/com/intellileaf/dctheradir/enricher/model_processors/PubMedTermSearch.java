@@ -79,6 +79,7 @@ public class PubMedTermSearch extends ResourceEnricher
         String eUtilsBase = "http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=";//holds E-utils Base
         String link = "";
 		String pubMedUri = "http://www.ncbi.nlm.nih.gov/pubmed/"; //Holds the URI base for the PubMed URI
+		int count = 1;
 
 		resultModel.setNsPrefix("dcr", NS.DCR);
 		resultModel.setNsPrefix("rdfs", NS.RDFS);
@@ -133,12 +134,13 @@ public class PubMedTermSearch extends ResourceEnricher
         }
         
         
-        int count = 1;
+        
         
         for(int x = 0; x < 5; x++)
         { 
         	Resource biomaterial = resultModel.createResource(getUri());
         	Resource pubMedDoc = resultModel.createResource();
+        	
     		Property autoRelatedDoc = resultModel.createProperty(NS.DCR, "hasAutoRelatedDocument_" + count);
     		Property document = resultModel.createProperty(NS.DCR, "document_" + pmids.get(x));
     		Property identifier = resultModel.createProperty(NS.DCR, "identifier");
