@@ -25,9 +25,6 @@ import com.hp.hpl.jena.vocabulary.RDF;
 
 /**
  * 
- * Uses PUBMED to search those publications that are related to a set of terms.
- *
- * <dl><dt>date</dt><dd>Feb 28, 2012</dd></dl>
  *
  */
 public class PubMedTermSearch extends ResourceEnricher
@@ -36,38 +33,25 @@ public class PubMedTermSearch extends ResourceEnricher
 	private List<Integer> pmids = new ArrayList<Integer>();
 	private Model resultModel = ModelFactory.createDefaultModel();
 	
-	
-	/**
-	 * The terms to be searched.
-	 */
+	//Retrieves the termLabels list (keywords)
 	public List<String> getTermLabels ()
 	{
 		return termLabels;
 	}
-
 	
-	/**
-	 * The terms to be searched.
-	 */
+	//sets the termLabels variable
 	public void setTermLabels ( List<String> termLabels )
 	{
 		this.termLabels = termLabels;
 	}
-
-	/**
-	 * What is returned by {@link #run()}. 
-	 */
+	
+	//Retrieves the PubMed IDs List
 	public List<Integer> getPMIDs ()
 	{
 		return pmids;
 	}
 	
-	/**
-	 * a set of statements that characterise the returned publications (eg, the tile, authors, etc). Uses the
-	 * DCTHERA ontology for defining such statements. Moreover, it links the found publications to the URI passed
-	 * via {@link #setUri(String)}. This is populated by {@link #run()}. 
-	 *  
-	 */
+	//Retrieves the PubMed result model
 	public Model getResultModel ()
 	{
 		return resultModel;
@@ -80,13 +64,18 @@ public class PubMedTermSearch extends ResourceEnricher
         String link = "";
 		String pubMedUri = "http://www.ncbi.nlm.nih.gov/pubmed/"; //Holds the URI base for the PubMed URI
 		int count = 1;
-
+		
+		//Resources and Properties for building the model
+		Resource biomaterial = resultModel.createResource(getUri());
+		Property identifier = resultModel.createProperty(NS.DCR, "identifier");
+		
+		//prefixes for buidling the model
 		resultModel.setNsPrefix("dcr", NS.DCR);
 		resultModel.setNsPrefix("rdfs", NS.RDFS);
 		
     	Document dom = null;
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-		
+	
 		//Loop to loop through the term labels, search each one with Utils, and parse the resulting XML file
         //Adds the IDs to the list pmids and adds the statements to the model
         for(int x = 0; x < termLabels.size(); x++)
@@ -128,39 +117,31 @@ public class PubMedTermSearch extends ResourceEnricher
             	
             	int id = Integer.parseInt(elId.getFirstChild().getNodeValue());
             	
-            	pmids.add(id);
+
+            	 pmids.add(id);
+                	
+               //Creates the Jena model statement with the selected PubMed ID
+               Resource pubMedDoc = resultModel.createResource();
+                	
+               Property autoRelatedDoc = resultModel.createProperty(NS.DCR, "hasAutoRelatedDocument_" + count);
+               Property document = resultModel.createProperty(NS.DCR, "document_" + pmids.get(count-1));
+            		
+               resultModel.add(biomaterial,autoRelatedDoc, pubMedDoc);
+            		
+               resultModel.add(pubMedDoc, document, NS.pubDoc);
+               resultModel.add(pubMedDoc, document, NS.researchDoc);
+               resultModel.add(pubMedDoc, identifier, pubMedUri + pmids.get(count-1));
+            		
+               count++;
+
+          
             }
             
         }
-        
-        
-        
-        
-        for(int x = 0; x < 5; x++)
-        { 
-        	Resource biomaterial = resultModel.createResource(getUri());
-        	Resource pubMedDoc = resultModel.createResource();
-        	
-    		Property autoRelatedDoc = resultModel.createProperty(NS.DCR, "hasAutoRelatedDocument_" + count);
-    		Property document = resultModel.createProperty(NS.DCR, "document_" + pmids.get(x));
-    		Property identifier = resultModel.createProperty(NS.DCR, "identifier");
-    		Property label = resultModel.createProperty(NS.RDFS, "label");
-
-    		
-    		resultModel.add(biomaterial,autoRelatedDoc, pubMedDoc);
-    		
-    		resultModel.add(pubMedDoc, document, NS.publication);
-    		resultModel.add(pubMedDoc, document, "http://purl.obolibrary.org/obo/IAO_0000013");
-    		resultModel.add(pubMedDoc, identifier, pubMedUri + pmids.get(x));
-
-    		count++;
-        }
-        
+        System.out.println(pmids.size());
         resultModel.write(System.out, "TURTLE");
 
     }
-	
-
 
 	
 	private Property createProperty() {

@@ -50,6 +50,7 @@ public class LLDPubMedTermEnricher implements KnowledgeBaseProcessor
 	@Override
 	public void run ()
 	{
+		int count = 1;
 
 		// collection of the PubMed IDs retrieved from getPIDs() method
 		//go thru and capture each PubMed ID in the 'for' loop and then incorporate each PubMed ID (one-by-one)...
@@ -60,7 +61,7 @@ public class LLDPubMedTermEnricher implements KnowledgeBaseProcessor
 			//PID.get(x);
 			//still have to do this part using SPARQL...
 			//...read in the PubMed IDs from the ArrayList one-by-one and queries LLD with SPARQL for each PubMedID*/
-
+		
 			String sparql1=
 					"PREFIX pubmed: <http://linkedlifedata.com/resource/pubmed/> " +
 					"PREFIX lifeskim: <http://linkedlifedata.com/resource/lifeskim/> " +
@@ -78,6 +79,15 @@ public class LLDPubMedTermEnricher implements KnowledgeBaseProcessor
 			
 			ResultSet results = qexec.execSelect();
 			
+			Resource dcResource = resultModel.createResource(getUri());
+			Resource pubMedDoc = resultModel.createResource();
+			
+			Property autoRelatedDoc = resultModel.createProperty(NS.DCR, "hasAutoRelatedDocument_" + count);
+			Property label = resultModel.createProperty(NS.RDFS, "label");
+			Property lldUri = resultModel.createProperty(NS.owl, "samAs");
+			
+			resultModel.add(dcResource,autoRelatedDoc, pubMedDoc);
+			
 			try
 			{
 				for(;results.hasNext();)
@@ -91,9 +101,9 @@ public class LLDPubMedTermEnricher implements KnowledgeBaseProcessor
 					//Converts to strings
 					String term = termLabel.toString();
 					String con = concept.toString();
-					
-					//Resource dcResource = resultModel.createResource(getUri());
-					//Property autoRelatedDoc = resultModel.createProperty(NS.DCR, "hasAutoRelatedDocument_");
+					System.out.println(con);
+					resultModel.add(pubMedDoc, label, termLabel);
+					resultModel.add(pubMedDoc, lldUri, con);
 
 				}
 			}
@@ -101,8 +111,8 @@ public class LLDPubMedTermEnricher implements KnowledgeBaseProcessor
 			{
 				qexec.close();
 			}
-			//ResultSetFormatter.out(System.out, results, query);
-			//qexec.close();
+			
+			count++;
 		}
 
 	}
