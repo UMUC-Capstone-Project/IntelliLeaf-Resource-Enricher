@@ -66,8 +66,8 @@ public class PubMedTermSearch extends ResourceEnricher
 		int count = 1;
 		
 		//Resources and Properties for building the model
-		Resource biomaterial = resultModel.createResource(getUri());
-		Property identifier = resultModel.createProperty(NS.DCR, "identifier");
+		//Resource biomaterial = ResourceFactory.createResource(getUri());
+	    //
 		
 		//prefixes for buidling the model
 		resultModel.setNsPrefix("dcr", NS.DCR);
@@ -120,20 +120,20 @@ public class PubMedTermSearch extends ResourceEnricher
             	 pmids.add(id);
          
                //Statements to create the Jena model statement with the selected PubMed ID
-               Resource pubMedDoc = resultModel.createResource();
-                	
-               Property autoRelatedDoc = resultModel.createProperty(NS.DCR, "hasAutoRelatedDocument_" + count);
-               Property document = resultModel.createProperty(NS.DCR, "document_" + pmids.get(count-1));
-            		
-               resultModel.add(biomaterial,autoRelatedDoc, pubMedDoc);
-            		
-               resultModel.add(pubMedDoc, document, NS.pubDoc);
-               resultModel.add(pubMedDoc, document, NS.researchDoc);
-               resultModel.add(pubMedDoc, identifier, pubMedUri + pmids.get(count-1));
-            		
-               count++;
+            	 Resource dcResource = resultModel.createResource(getUri());
+            	 Resource pubMedDoc = ResourceFactory.createResource();
+            	 
+            	 Property hasAutoRelatedDoc = ResourceFactory.createProperty(NS.DCR, "hasAutoRelatedDocument_" + count);
+            	 Property document = ResourceFactory.createProperty(NS.DCR, "document_" + pmids.get(count-1));
+            	 Property identifiedBy = ResourceFactory.createProperty(NS.DCR, "identifier");
+            	 
+            	 resultModel.add(dcResource, hasAutoRelatedDoc, pubMedDoc);
+            	 resultModel.add(pubMedDoc, document, NS.pubDoc);
+            	 resultModel.add(pubMedDoc, document, NS.researchDoc);
+            	 resultModel.add(pubMedDoc, identifiedBy, pubMedUri + pmids.get(count-1));
+            	 
+                 count++;
 
-          
             }
             
         }

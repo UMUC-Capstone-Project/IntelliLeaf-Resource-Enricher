@@ -2,6 +2,9 @@ package com.intellileaf.dctheradir.enricher.model_processors;
 
 import java.io.FileNotFoundException;
 
+import com.hp.hpl.jena.rdf.model.Model;
+import com.hp.hpl.jena.rdf.model.ModelFactory;
+import com.intellileaf.dctheradir.enricher.NS;
 import com.intellileaf.dctheradir.enricher.Utils;
 
 /**
@@ -17,9 +20,8 @@ public class BioMaterialEnricher extends ResourceEnricher
 	@Override
 	public void run ()
 	{	
-		//testCode
-		setUri("http://dc-research.eu/rdf/biomaterial/522");
-		//End
+		Model model = ModelFactory.createDefaultModel();
+
 	    BioMaterialTermSelector bmTermSel = new BioMaterialTermSelector ();
 	    bmTermSel.setUri ( this.getUri () );
 	    bmTermSel.run();
@@ -54,6 +56,11 @@ public class BioMaterialEnricher extends ResourceEnricher
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	    
+	    /*
+	    model = lldEnricher.getResultModel().union(pubMedSearch.getResultModel());
+	    model.write(System.out, "TURTLE");
+	    */
 	    
 	    /*UniprotEnricher uniProtEnricher = new UniprotEnricher ();
 	    uniProtEnricher.setUri ( getUri () );

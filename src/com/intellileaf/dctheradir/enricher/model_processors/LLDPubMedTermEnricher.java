@@ -50,7 +50,6 @@ public class LLDPubMedTermEnricher implements KnowledgeBaseProcessor
 	@Override
 	public void run ()
 	{
-		Resource dcResource = resultModel.createResource(getUri());
 		
 		resultModel.setNsPrefix("dcr", NS.DCR);
 		resultModel.setNsPrefix("rdfs", NS.RDFS);
@@ -62,7 +61,7 @@ public class LLDPubMedTermEnricher implements KnowledgeBaseProcessor
 		// collection of the PubMed IDs retrieved from getPIDs() method
 		//go thru and capture each PubMed ID in the 'for' loop and then incorporate each PubMed ID (one-by-one)...
 		//...into the SPARQL query to retrieve LLD information
-
+		
 		for(int x = 0; x < pmids.size(); x++)
 		{
 			//PID.get(x);
@@ -85,30 +84,27 @@ public class LLDPubMedTermEnricher implements KnowledgeBaseProcessor
 			"http://linkedlifedata.com/sparql", query);
 			
 			ResultSet results = qexec.execSelect();
-			Resource pubMedDoc = resultModel.createResource();
+			
+			Resource pubMedDoc = ResourceFactory.createResource();
+			
 			try
 			{
 				for(;results.hasNext();)
 				{
 					QuerySolution sol = results.nextSolution();
 					
-					
-					Property autoRelatedDoc = resultModel.createProperty(NS.DCR, "hasAutoRelatedDocument_" + count);
-					Property label = resultModel.createProperty(NS.RDFS, "label");
-					Property lldUri = resultModel.createProperty(NS.owl, "samAs");
-					
-					resultModel.add(dcResource,autoRelatedDoc, pubMedDoc);
-
-					//Retrieves the variable in the "termLabel" and "concept" columns
 					RDFNode termLabel = sol.get("termLabel");
 					RDFNode concept = sol.get("concept");
 					
-					//Converts to strings
-					String term = termLabel.toString();
-					String con = concept.toString();
-					
-					resultModel.add(pubMedDoc, label, termLabel);
-					resultModel.add(pubMedDoc, lldUri, con);
+	            	Resource dcResource = resultModel.createResource(getUri());
+	            	 
+	            	Property hasAutoRelatedDoc = ResourceFactory.createProperty(NS.DCR, "hasAutoRelatedDocument_" + count);
+	         		Property label = ResourceFactory.createProperty(NS.RDFS, "label");
+	        		Property lldUri = ResourceFactory.createProperty(NS.owl, "samAs");
+	            	 
+	            	resultModel.add(dcResource, hasAutoRelatedDoc, pubMedDoc);
+	            	resultModel.add(pubMedDoc, label, termLabel);
+	            	resultModel.add(pubMedDoc, lldUri, concept);
 
 				}
 			}
@@ -116,12 +112,11 @@ public class LLDPubMedTermEnricher implements KnowledgeBaseProcessor
 			{
 				qexec.close();
 			}
-			
+
 			count++;
 		}
 		
 		resultModel.write(System.out, "TURTLE");
-
 	}
 
 }
