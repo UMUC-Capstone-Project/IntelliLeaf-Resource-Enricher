@@ -20,7 +20,8 @@ public class BioMaterialEnricher extends ResourceEnricher
 	@Override
 	public void run ()
 	{	
-		Model model = ModelFactory.createDefaultModel();
+		
+	
 
 	    BioMaterialTermSelector bmTermSel = new BioMaterialTermSelector ();
 	    bmTermSel.setUri ( this.getUri () );
@@ -57,12 +58,19 @@ public class BioMaterialEnricher extends ResourceEnricher
 			e.printStackTrace();
 		}
 	    
-	    /*
-	    model = lldEnricher.getResultModel().union(pubMedSearch.getResultModel());
+	    //Test Code
+	    Model model = ModelFactory.createDefaultModel();
+	    
+		model.setNsPrefix("dcr", NS.DCR);
+		model.setNsPrefix("rdfs", NS.RDFS);
+		model.setNsPrefix("owl", NS.owl);
+		
+	    //model = lldEnricher.getResultModel().union(pubMedSearch.getResultModel());
 	    model.add(pubMedSearch.getResultModel());
 	    model.add(lldEnricher.getResultModel());
+	    System.out.println("------------------------------------------Merged Model Results-----------------------------------------------------");
 	    model.write(System.out, "TURTLE");
-	    */
+	    //End Test Code
 	    
 	    /*UniprotEnricher uniProtEnricher = new UniprotEnricher ();
 	    uniProtEnricher.setUri ( getUri () );

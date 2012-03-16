@@ -85,7 +85,11 @@ public class LLDPubMedTermEnricher implements KnowledgeBaseProcessor
 			ResultSet results = qexec.execSelect();
 			
 			Resource dcResource = resultModel.createResource(getUri());
-			Resource pubMedDoc = ResourceFactory.createResource();
+			Resource pubMedDoc = ResourceFactory.createResource(NS.DCR + "hasAutoRelatedDocument_" + count);
+			
+			Property hasAutoRelatedDoc = ResourceFactory.createProperty(NS.DCR, "hasAutoRelatedDocument");
+     		Property label = ResourceFactory.createProperty(NS.RDFS, "label");
+    		Property lldUri = ResourceFactory.createProperty(NS.owl, "samAs");
 			
 			try
 			{
@@ -96,12 +100,8 @@ public class LLDPubMedTermEnricher implements KnowledgeBaseProcessor
 					RDFNode termLabel = sol.get("termLabel");
 					RDFNode concept = sol.get("concept");
 					
-	            	
-					Property hasAutoRelatedDoc = ResourceFactory.createProperty(NS.DCR, "hasAutoRelatedDocument_" + count);
-	         		Property label = ResourceFactory.createProperty(NS.RDFS, "label");
-	        		Property lldUri = ResourceFactory.createProperty(NS.owl, "samAs");
 	            	 
-	        		resultModel.add(dcResource, hasAutoRelatedDoc, pubMedDoc);
+					resultModel.add(dcResource, hasAutoRelatedDoc, pubMedDoc);
 	            	resultModel.add(pubMedDoc, label, termLabel);
 	            	resultModel.add(pubMedDoc, lldUri, concept);
 
@@ -115,6 +115,7 @@ public class LLDPubMedTermEnricher implements KnowledgeBaseProcessor
 			count++;
 		}
 		
+		System.out.println("\n------------------------------------------LLD Model Results-----------------------------------------------------\n");
 		resultModel.write(System.out, "TURTLE");
 	}
 
