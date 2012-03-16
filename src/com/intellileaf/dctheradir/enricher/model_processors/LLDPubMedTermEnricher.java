@@ -90,6 +90,7 @@ public class LLDPubMedTermEnricher implements KnowledgeBaseProcessor
 			Property hasAutoRelatedDoc = ResourceFactory.createProperty(NS.DCR, "hasAutoRelatedDocument");
      		Property label = ResourceFactory.createProperty(NS.RDFS, "label");
     		Property lldUri = ResourceFactory.createProperty(NS.owl, "samAs");
+
 			
 			try
 			{

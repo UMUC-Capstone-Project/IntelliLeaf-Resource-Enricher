@@ -122,10 +122,11 @@ public class PubMedTermSearch extends ResourceEnricher
             	 Property hasAutoRelatedDoc = ResourceFactory.createProperty(NS.DCR, "hasAutoRelatedDocument");
             	 Property document = ResourceFactory.createProperty(NS.DCR, "document_" + pmids.get(count-1));
             	 Property identifiedBy = ResourceFactory.createProperty(NS.DCR, "identifier");
+            	 Property type = ResourceFactory.createProperty(NS.rdf, "type");
             	 
             	 resultModel.add(dcResource, hasAutoRelatedDoc, pubMedDoc);
-            	 resultModel.add(pubMedDoc, document, NS.pubDoc);
-            	 resultModel.add(pubMedDoc, document, NS.researchDoc);
+            	 resultModel.add(pubMedDoc, type, NS.pubDoc);
+            	 resultModel.add(pubMedDoc, type, NS.researchDoc);
             	 resultModel.add(pubMedDoc, identifiedBy, pubMedUri + pmids.get(count-1));
             	 
                  count++;
