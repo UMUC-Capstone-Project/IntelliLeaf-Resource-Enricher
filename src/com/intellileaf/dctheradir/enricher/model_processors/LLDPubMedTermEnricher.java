@@ -85,11 +85,9 @@ public class LLDPubMedTermEnricher implements KnowledgeBaseProcessor
 			ResultSet results = qexec.execSelect();
 			
 			Resource dcResource = resultModel.createResource(getUri());
-       	    Resource document = ResourceFactory.createResource(NS.DCR +  "document_" + pmids.get(count-1));
-       	    
-       	    Property hasAutoRelatedDoc = ResourceFactory.createProperty(NS.DCR, "hasAutoRelatedDocument");
-       	    Property subPropertyOf = ResourceFactory.createProperty(NS.RDFS, "subPropertyOf");
-    	    Property pubMedDoc = ResourceFactory.createProperty(NS.DCR + "hasAutoRelatedDocument_" + count);
+			Resource pubMedDoc = ResourceFactory.createResource(NS.DCR + "hasAutoRelatedDocument_" + count);
+
+			Property hasAutoRelatedDoc = ResourceFactory.createProperty(NS.DCR, "hasAutoRelatedDocument");
      		Property label = ResourceFactory.createProperty(NS.RDFS, "label");
     		Property lldUri = ResourceFactory.createProperty(NS.owl, "samAs");
 			
@@ -103,11 +101,9 @@ public class LLDPubMedTermEnricher implements KnowledgeBaseProcessor
 					RDFNode concept = sol.get("concept");
 					
 	            	 
-					resultModel.add(pubMedDoc, subPropertyOf, hasAutoRelatedDoc);
-	            	resultModel.add(dcResource, pubMedDoc, document);
-	            	
-	            	resultModel.add(document, label, termLabel);
-	            	resultModel.add(document, lldUri, concept);
+					resultModel.add(dcResource, hasAutoRelatedDoc, pubMedDoc);
+	            	resultModel.add(pubMedDoc, label, termLabel);
+	            	resultModel.add(pubMedDoc, lldUri, concept);
 
 				}
 			}
