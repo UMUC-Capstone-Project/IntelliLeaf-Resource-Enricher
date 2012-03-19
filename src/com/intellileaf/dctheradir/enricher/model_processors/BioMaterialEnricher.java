@@ -72,8 +72,13 @@ public class BioMaterialEnricher extends ResourceEnricher
 	    model.write(System.out, "TURTLE");
 	    //End Test Code
 	    
-	    /*UniprotEnricher uniProtEnricher = new UniprotEnricher ();
+	    /*
+	    
+	     
+	    UniprotEnricher uniProtEnricher = new UniprotEnricher ();
 	    uniProtEnricher.setUri ( getUri () );
+	    uniProtEnricher.setTermLabels ( bmTermSel.getTermLabels () );
+	    uniProtEnricher.setOrganism ( bmTermSel.getOrganism () );
 	    
 	    try 
 	    {
@@ -83,7 +88,11 @@ public class BioMaterialEnricher extends ResourceEnricher
 	    {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}*/
+		}
+		
+		
+		*
+		*/
 	}
 
 	/**

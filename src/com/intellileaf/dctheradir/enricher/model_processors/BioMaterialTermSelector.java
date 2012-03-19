@@ -27,6 +27,7 @@ public class BioMaterialTermSelector implements KnowledgeBaseProcessor
 {
 	private List<String> termLabels = new ArrayList<String>();
 	private String uri;
+	String organism;
 	
 	/**
 	 * @return the URI of the biomateral from which to pick up terms.
@@ -51,7 +52,11 @@ public class BioMaterialTermSelector implements KnowledgeBaseProcessor
 	{
 		return termLabels;
 	}
-
+	
+	public String getOrganism ()
+	{
+		return organism;
+	}
 
 	@Override
 	public void run ()
@@ -63,6 +68,7 @@ public class BioMaterialTermSelector implements KnowledgeBaseProcessor
 		StmtIterator iter = model.listStatements();
 		
 		List<String> targetObjects = new ArrayList<String>();
+		String orgObject = "";
 
 		/** Iterate through the predicate, subject and object of each statement
 		  * First iteration returns the Biomaterial label and each object as well as the
@@ -91,7 +97,7 @@ public class BioMaterialTermSelector implements KnowledgeBaseProcessor
 		    
 		    if (subject.toString().equals(this.getUri()) && (predicate.toString().equals(NS.DCR+"hasOrganismType")))
 		    {
-		    	targetObjects.add(object.toString());
+		    	orgObject = object.toString();
 		    }
 		    
 		}
@@ -117,6 +123,11 @@ public class BioMaterialTermSelector implements KnowledgeBaseProcessor
 			    if (subject.toString().equals(targetObjects.get(i)) && (predicate.toString().equals(NS.RDFS+"label")))
 			    {
 			    	termLabels.add(object.toString());
+			    	
+			    }
+			    if (subject.toString().equals(orgObject) && (predicate.toString().equals(NS.RDFS+"label")))
+			    {
+			    	organism = (object.toString());
 			    	
 			    }
 			    

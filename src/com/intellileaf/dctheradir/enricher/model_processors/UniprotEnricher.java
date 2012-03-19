@@ -3,8 +3,9 @@ package com.intellileaf.dctheradir.enricher.model_processors;
 import com.hp.hpl.jena.rdf.model.Model;
 
 import java.io.FileNotFoundException;
+import java.util.List;
 
-import com.intellileaf.dctheradir.enricher
+import com.intellileaf.dctheradir.enricher.Resources;
 import com.intellileaf.dctheradir.enricher.NS;
 
 /**
@@ -16,7 +17,8 @@ import com.intellileaf.dctheradir.enricher.NS;
 public class UniprotEnricher extends ResourceEnricher
 {
 	private String uri;
-	private String termLabels;
+	private List<String> termLabels;
+	private String organism;
 	private Model resultModel;
 	
 	/**
@@ -36,14 +38,24 @@ public class UniprotEnricher extends ResourceEnricher
 	}
 
 	
-	public String getTermLabels ()
+	public List<String> getTermLabels ()
 	{
 		return termLabels;
 	}
 
-	public void setTermLabels ( String termLabels )
+	public void setTermLabels ( List<String> termLabels )
 	{
 		this.termLabels = termLabels;
+	}
+	
+	public String getOrganism ()
+	{
+		return organism;
+	}
+
+	public void setOrganism( String organism)
+	{
+		this.organism = organism;
 	}
 	
 	public Model getResultModel ()
