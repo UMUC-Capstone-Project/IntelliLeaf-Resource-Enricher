@@ -1,4 +1,4 @@
-
+import java.io.IOException;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -8,6 +8,8 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
+
+import java.io.IOException;
 
 
 public class test {
@@ -58,7 +60,7 @@ public class test {
             NodeList n2 = Ele.getElementsByTagName("AbstractText");
                 
             Element ab1 = (Element)n2.item(0);
-            String abstrct = (ab1.getFirstChild().getNodeValue());
+            String abstrct = (ab1.getNodeValue());
             
             System.out.println(title);
             System.out.println(abstrct);
