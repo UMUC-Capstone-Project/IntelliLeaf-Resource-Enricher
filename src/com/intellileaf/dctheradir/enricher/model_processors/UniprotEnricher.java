@@ -2,6 +2,10 @@ package com.intellileaf.dctheradir.enricher.model_processors;
 
 import com.hp.hpl.jena.rdf.model.Model;
 
+import java.io.FileNotFoundException;
+
+import com.intellileaf.dctheradir.enricher
+import com.intellileaf.dctheradir.enricher.NS;
 
 /**
  * Enriches  
