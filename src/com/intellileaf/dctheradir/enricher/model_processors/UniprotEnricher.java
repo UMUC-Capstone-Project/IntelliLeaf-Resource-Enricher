@@ -1,7 +1,7 @@
 package com.intellileaf.dctheradir.enricher.model_processors;
 
 import com.hp.hpl.jena.rdf.model.Model;
-Ryan
+
 
 /**
  * Enriches  
