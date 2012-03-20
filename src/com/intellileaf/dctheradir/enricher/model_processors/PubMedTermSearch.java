@@ -56,6 +56,7 @@ public class PubMedTermSearch extends ResourceEnricher
 	public void run ()
 	{
 		String pubMedUri = "http://www.ncbi.nlm.nih.gov/pubmed/"; //Holds the URI base for the PubMed URI
+		String link2 = "http://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&retmode=xml&id=";
 		int count = 1;
 		
 		//prefixes for buidling the model
@@ -74,10 +75,7 @@ public class PubMedTermSearch extends ResourceEnricher
 	   	Property date = ResourceFactory.createProperty(NS.dc, "date");
 	   	Property description = ResourceFactory.createProperty(NS.dc, "description");
 	   	Property source = ResourceFactory.createProperty(NS.dc, "source");
-		
-    	Document dom = null;
-        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-	
+  
 		//Loop to loop through the term labels, search each one with Utils, and parse the resulting XML file
         //Adds the IDs to the list pmids and adds the statements to the model
         for(int x = 0; x < termLabels.size(); x++)
@@ -93,7 +91,13 @@ public class PubMedTermSearch extends ResourceEnricher
             	int id = Integer.parseInt(elId.getFirstChild().getNodeValue());
             
             	 pmids.add(id); //adds the ID to the pmids list
-       
+        
+            	 NodeList idElements = parseXmlElements(id); //Obtains elements for the PubMed ID
+            	 
+            	 	/* In this section, create the elements/nodes to parse out Abstract, title, authors, etc.
+            	 	 * 
+            	 	 */
+            	 
                  //Creates the resource for the pubMed document, and the property to show its an autorelated document
             	 Resource document = ResourceFactory.createResource(NS.DCR + "document/" + pmids.get(count-1));
             	 Property hasAutoRelatedDoc = ResourceFactory.createProperty(NS.DCR, "hasAutoRelatedDocument_" + count);
@@ -144,12 +148,48 @@ public class PubMedTermSearch extends ResourceEnricher
         //Creates element of xml file, then creates a node lists of all "IdLists" in file
        Element Ele = dom.getDocumentElement();
        NodeList nl = Ele.getElementsByTagName("IdList");
-                
+          
         //Within the IdLists, creates a nodeList of all the Id tags
         Element elIdList = (Element)nl.item(0);
         NodeList nl2 = elIdList.getElementsByTagName("Id");
             
         return nl2;
+	}
+	
+	//Returns the NodeList containing the information on a specific PubMed articles
+	public NodeList parseXmlElements(int id)
+	{
+		String eSearchBase = "http://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&retmode=xml&id=";
+		String resultLink = "";
+		Document dom = null;
+        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+
+        resultLink = eSearchBase + id;
+  
+        try 
+        {
+        	DocumentBuilder db = dbf.newDocumentBuilder();
+                    
+            //parses xml file found at this URL
+            dom = db.parse(resultLink);
+        } 
+        catch (ParserConfigurationException pce) 
+        {
+            pce.printStackTrace();
+        }
+        catch (IOException ioe)
+        {
+            ioe.printStackTrace();
+        }
+        catch (SAXException se)
+        {
+            se.printStackTrace();
+        }
+        
+        Element Ele = dom.getDocumentElement();
+        NodeList nl = Ele.getElementsByTagName("PubmedArticle");
+
+		return nl;
 	}
 	
 	
