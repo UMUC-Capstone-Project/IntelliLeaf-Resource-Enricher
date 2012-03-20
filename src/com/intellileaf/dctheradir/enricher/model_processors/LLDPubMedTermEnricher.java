@@ -81,12 +81,15 @@ public class LLDPubMedTermEnricher implements KnowledgeBaseProcessor
 			"http://linkedlifedata.com/sparql", query);
 			
 			ResultSet results = qexec.execSelect();
-
+			
+			Resource document = ResourceFactory.createResource(NS.DCR + "document/" + pmids.get(x)); //resource for pubMed article that was searched
+			Property hasAutoRelatedDoc = ResourceFactory.createProperty(NS.DCR, "hasAutoRelatedDocument_" + count); //resource showing that the article is an autorelatedDocument
+	
 			try
 			{	
 				//Loops through the search results
 				for(;results.hasNext();)
-				{
+				{	
 					QuerySolution sol = results.nextSolution(); //obtains a line in the results
 					
 					RDFNode termLabel = sol.get("termLabel"); //obtains the result in the termLabel column in that line 
@@ -94,8 +97,6 @@ public class LLDPubMedTermEnricher implements KnowledgeBaseProcessor
 					
 					String con = concept.toString();
 					
-					Resource document = ResourceFactory.createResource(NS.DCR + "document/" + pmids.get(x)); //resource for pubMed article that was searched
-					Property hasAutoRelatedDoc = ResourceFactory.createProperty(NS.DCR, "hasAutoRelatedDocument_" + count); //resource showing that the article is an autorelatedDocument
 					Resource lldConcept = ResourceFactory.createResource(con); //Resource for the concept that was returned
 	            	
 					//Creating the model with the relationships
@@ -105,7 +106,6 @@ public class LLDPubMedTermEnricher implements KnowledgeBaseProcessor
 	            	
 	            	//statements for adding the separate LLD resource sections (commented out, still need to set result limit)
 	            	//resultModel.add(lldConcept, label, termLabel);
-
 				}
 			}
 			finally

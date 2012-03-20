@@ -22,9 +22,6 @@ public abstract class ResourceEnricher implements KnowledgeBaseProcessor
 {
 	private String uri;
 	
-	/**
-	 * @return the URI of the resource that is enriched by {@link #run()}.
-	 */
 	public String getUri ()
 	{
 		return uri;

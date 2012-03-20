@@ -3,14 +3,6 @@ package com.intellileaf.dctheradir.enricher;
 import java.io.FileNotFoundException;
 
 import com.hp.hpl.jena.rdf.model.Model;
-import com.hp.hpl.jena.rdf.model.ModelFactory;
-
-/**
- * Miscellanea of utility functions.
- *
- * <dl><dt>date</dt><dd>Feb 28, 2012</dd></dl>
- *
- */
 
 public class Utils
 {
