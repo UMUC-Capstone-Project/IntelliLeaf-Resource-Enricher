@@ -55,8 +55,6 @@ public class PubMedTermSearch extends ResourceEnricher
 	@Override
 	public void run ()
 	{
-        String eUtilsBase = "http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=";//holds E-utils Base
-        String resultLink = ""; // holds the result link
 		String pubMedUri = "http://www.ncbi.nlm.nih.gov/pubmed/"; //Holds the URI base for the PubMed URI
 		int count = 1;
 		
@@ -84,45 +82,18 @@ public class PubMedTermSearch extends ResourceEnricher
         //Adds the IDs to the list pmids and adds the statements to the model
         for(int x = 0; x < termLabels.size(); x++)
         {
-        	resultLink = eUtilsBase.concat(termLabels.get(x));
-        	
-        	try 
-            {
-            	DocumentBuilder db = dbf.newDocumentBuilder();
-                    
-                //parses xml file found at this URL
-                dom = db.parse(resultLink);
-            } 
-            catch (ParserConfigurationException pce) 
-            {
-                pce.printStackTrace();
-            }
-            catch (IOException ioe)
-            {
-                ioe.printStackTrace();
-            }
-            catch (SAXException se)
-            {
-                se.printStackTrace();
-            }
-                
-            //Creates element of xml file, then creates a node lists of all "IdLists" in file
-            Element Ele = dom.getDocumentElement();
-            NodeList nl = Ele.getElementsByTagName("IdList");
-                
-            //Within the IdLists, creates a nodeList of all the Id tags
-            Element elIdList = (Element)nl.item(0);
-            NodeList nl2 = elIdList.getElementsByTagName("Id");
+        	//obtains the nodeList contain the Ids
+            NodeList idList = parsePubMedIds(x);
                 
             //Loops through the "Id" nodelist and adds the PubIds to an ArrayList
-            for(int y = 0; y < nl2.getLength(); y++)
+            for(int y = 0; y < idList.getLength(); y++)
             {
-            	Element elId = (Element)nl2.item(y);
+            	Element elId = (Element)idList.item(y);
             	
             	int id = Integer.parseInt(elId.getFirstChild().getNodeValue());
             
             	 pmids.add(id); //adds the ID to the pmids list
-         
+            	 
                  //Creates the resource for the pubMed document, and the property to show its an autorelated document
             	 Resource document = ResourceFactory.createResource(NS.DCR + "document/" + pmids.get(count-1));
             	 Property hasAutoRelatedDoc = ResourceFactory.createProperty(NS.DCR, "hasAutoRelatedDocument_" + count);
@@ -139,6 +110,47 @@ public class PubMedTermSearch extends ResourceEnricher
         }
 
     }
+	
+	//called to parse out the NodList containing the IDs in the E-utils result file
+	public NodeList parsePubMedIds(int position)
+	{
+		String eUtilsBase = "http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=";//holds E-utils Base
+		String resultLink = ""; // holds the result link
+		Document dom = null;
+        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+
+        resultLink = eUtilsBase.concat(termLabels.get(position));
+        	
+        try 
+        {
+        	DocumentBuilder db = dbf.newDocumentBuilder();
+                    
+            //parses xml file found at this URL
+            dom = db.parse(resultLink);
+        } 
+        catch (ParserConfigurationException pce) 
+        {
+            pce.printStackTrace();
+        }
+        catch (IOException ioe)
+        {
+            ioe.printStackTrace();
+        }
+        catch (SAXException se)
+        {
+            se.printStackTrace();
+        }
+                
+        //Creates element of xml file, then creates a node lists of all "IdLists" in file
+        Element Ele = dom.getDocumentElement();
+        NodeList nl = Ele.getElementsByTagName("IdList");
+                
+        //Within the IdLists, creates a nodeList of all the Id tags
+        Element elIdList = (Element)nl.item(0);
+        NodeList nl2 = elIdList.getElementsByTagName("Id");
+            
+        return nl2;
+	}
 
 
 	/**
