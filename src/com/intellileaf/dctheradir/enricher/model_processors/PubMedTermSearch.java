@@ -83,7 +83,7 @@ public class PubMedTermSearch extends ResourceEnricher
         for(int x = 0; x < termLabels.size(); x++)
         {
         	//obtains the nodeList contain the Ids
-            NodeList idList = parsePubMedIds(x);
+            NodeList idList = parsePubMedIds(termLabels.get(x));
                 
             //Loops through the "Id" nodelist and adds the PubIds to an ArrayList
             for(int y = 0; y < idList.getLength(); y++)
@@ -93,7 +93,7 @@ public class PubMedTermSearch extends ResourceEnricher
             	int id = Integer.parseInt(elId.getFirstChild().getNodeValue());
             
             	 pmids.add(id); //adds the ID to the pmids list
-            	 
+       
                  //Creates the resource for the pubMed document, and the property to show its an autorelated document
             	 Resource document = ResourceFactory.createResource(NS.DCR + "document/" + pmids.get(count-1));
             	 Property hasAutoRelatedDoc = ResourceFactory.createProperty(NS.DCR, "hasAutoRelatedDocument_" + count);
@@ -112,14 +112,14 @@ public class PubMedTermSearch extends ResourceEnricher
     }
 	
 	//called to parse out the NodList containing the IDs in the E-utils result file
-	public NodeList parsePubMedIds(int position)
+	public NodeList parsePubMedIds(String term)
 	{
 		String eUtilsBase = "http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=";//holds E-utils Base
 		String resultLink = ""; // holds the result link
 		Document dom = null;
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 
-        resultLink = eUtilsBase.concat(termLabels.get(position));
+        resultLink = eUtilsBase.concat(term);
         	
         try 
         {
@@ -142,8 +142,8 @@ public class PubMedTermSearch extends ResourceEnricher
         }
                 
         //Creates element of xml file, then creates a node lists of all "IdLists" in file
-        Element Ele = dom.getDocumentElement();
-        NodeList nl = Ele.getElementsByTagName("IdList");
+       Element Ele = dom.getDocumentElement();
+       NodeList nl = Ele.getElementsByTagName("IdList");
                 
         //Within the IdLists, creates a nodeList of all the Id tags
         Element elIdList = (Element)nl.item(0);
@@ -151,12 +151,11 @@ public class PubMedTermSearch extends ResourceEnricher
             
         return nl2;
 	}
-
-
-	/**
-	 * @return an empty array, cause this enricher is supposed to be called directly and not to be used by a generic invoker
-	 * that evaluates enrichers on the basis of its input. 
-	 */
+	
+	
+	
+	 //@return an empty array, cause this enricher is supposed to be called directly and not to be used by a generic invoker
+	 //that evaluates enrichers on the basis of its input. 
 	@Override
 	public String[] getSupportedUriTypes ()
 	{
