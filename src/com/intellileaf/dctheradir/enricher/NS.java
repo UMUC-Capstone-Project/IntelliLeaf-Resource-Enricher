@@ -19,6 +19,5 @@ public class NS
 	public static final String title = "http://purl.org/dc/elements/1.1/title";
 	public static final String ABSTRACT = "http://purl.org/dc/elements/1.1/abstract";
 	public static final String owl = "http://www.w3.org/2002/07/owl#";
-	public static final String pubDoc = "http://purl.obolibrary.org/obo/IAO_0000311/"; //Used for PubMed articles
-	public static final String researchDoc = "http://purl.obolibrary.org/obo/IAO_0000013";
+	public static final String obo = "http://purl.obolibrary.org/obo/";
 }

@@ -117,17 +117,16 @@ public class PubMedTermSearch extends ResourceEnricher
          
                //Statements to create the Jena model statement with the selected PubMed ID
             	 Resource dcResource = resultModel.createResource(getUri());
-            	 Resource pubMedDoc = ResourceFactory.createResource(NS.DCR + "hasAutoRelatedDocument_" + count);
+            	 Resource document = ResourceFactory.createResource(NS.DCR + "document/" + pmids.get(count-1));
             	 
-            	 Property hasAutoRelatedDoc = ResourceFactory.createProperty(NS.DCR, "hasAutoRelatedDocument");
-            	 Property document = ResourceFactory.createProperty(NS.DCR, "document_" + pmids.get(count-1));
-            	 Property identifiedBy = ResourceFactory.createProperty(NS.DCR, "identifier");
+            	 Property hasAutoRelatedDoc = ResourceFactory.createProperty(NS.DCR, "hasAutoRelatedDocument_" + count);
+            	 Property identifier = ResourceFactory.createProperty(NS.DCR, "identifier");
             	 Property type = ResourceFactory.createProperty(NS.rdf, "type");
             	 
-            	 resultModel.add(dcResource, hasAutoRelatedDoc, pubMedDoc);
-            	 resultModel.add(pubMedDoc, type, NS.pubDoc);
-            	 resultModel.add(pubMedDoc, type, NS.researchDoc);
-            	 resultModel.add(pubMedDoc, identifiedBy, pubMedUri + pmids.get(count-1));
+            	 resultModel.add(dcResource, hasAutoRelatedDoc, document);
+            	 resultModel.add(document, type, NS.obo + "IAO_0000013");
+            	 resultModel.add(document, identifier, pubMedUri + pmids.get(count-1));
+
             	 
                  count++;
 
