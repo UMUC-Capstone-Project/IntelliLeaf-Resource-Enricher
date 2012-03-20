@@ -99,13 +99,13 @@ public class PubMedTermSearch extends ResourceEnricher
             	 	 */
             	 
                  //Creates the resource for the pubMed document, and the property to show its an autorelated document
-            	 Resource document = ResourceFactory.createResource(NS.DCR + "document/" + pmids.get(count-1));
+            	 Resource document = ResourceFactory.createResource(NS.DCR + "document/" + id);
             	 Property hasAutoRelatedDoc = ResourceFactory.createProperty(NS.DCR, "hasAutoRelatedDocument_" + count);
             	 
             	 //Statements to add the resources and their relationships
             	 resultModel.add(dcResource, hasAutoRelatedDoc, document);
             	 resultModel.add(document, type, NS.obo + "IAO_0000013"); 
-            	 resultModel.add(document, identifier, pubMedUri + pmids.get(count-1));
+            	 resultModel.add(document, identifier, pubMedUri + id);
 
                  count++;
 
