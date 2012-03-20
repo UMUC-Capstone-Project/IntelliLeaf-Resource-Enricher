@@ -100,11 +100,15 @@ public class LLDPubMedTermEnricher implements KnowledgeBaseProcessor
 					
 					RDFNode termLabel = sol.get("termLabel");
 					RDFNode concept = sol.get("concept");
+					String con = concept.toString();
 					
+					Resource lldConcept = ResourceFactory.createResource(con);
 	            	 
 					resultModel.add(dcResource, hasAutoRelatedDoc, document);
 	            	resultModel.add(document, label, termLabel);
-	            	resultModel.add(document, lldUri, concept);
+	            	resultModel.add(document, lldUri, lldConcept);
+	            	
+	            	//resultModel.add(lldConcept, label, termLabel);
 
 				}
 			}
@@ -116,8 +120,6 @@ public class LLDPubMedTermEnricher implements KnowledgeBaseProcessor
 			count++;
 		}
 		
-		System.out.println("\n------------------------------------------LLD Model Results-----------------------------------------------------\n");
-		resultModel.write(System.out, "TURTLE");
 	}
 
 }

@@ -135,10 +135,6 @@ public class PubMedTermSearch extends ResourceEnricher
             }
             
         }
-        
-        //prints model
-        System.out.println("------------------------------------------PubMed Model Results-----------------------------------------------------\n");
-        resultModel.write(System.out, "TURTLE");
 
     }
 
