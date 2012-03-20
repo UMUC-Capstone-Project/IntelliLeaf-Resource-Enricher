@@ -86,9 +86,9 @@ public class PubMedTermSearch extends ResourceEnricher
             //Loops through the "Id" nodelist and adds the PubIds to an ArrayList
             for(int y = 0; y < idList.getLength(); y++)
             {
-            	Element elId = (Element)idList.item(y);
+            	Element idElement = (Element)idList.item(y);
             	
-            	int id = Integer.parseInt(elId.getFirstChild().getNodeValue());
+            	int id = Integer.parseInt(idElement.getFirstChild().getNodeValue());
             
             	 pmids.add(id); //adds the ID to the pmids list
         
