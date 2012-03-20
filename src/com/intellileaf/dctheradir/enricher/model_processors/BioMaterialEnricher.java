@@ -64,8 +64,8 @@ public class BioMaterialEnricher extends ResourceEnricher
 		model.setNsPrefix("dcr", NS.DCR);
 		model.setNsPrefix("rdfs", NS.RDFS);
 		model.setNsPrefix("owl", NS.owl);
+		model.setNsPrefix("dc", NS.dc);
 		
-	    //model = lldEnricher.getResultModel().union(pubMedSearch.getResultModel());
 	    model.add(pubMedSearch.getResultModel());
 	    model.add(lldEnricher.getResultModel());
 	    System.out.println("------------------------------------------Merged Model Results-----------------------------------------------------");

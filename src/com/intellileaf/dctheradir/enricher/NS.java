@@ -1,7 +1,5 @@
 package com.intellileaf.dctheradir.enricher;
 
-import com.hp.hpl.jena.rdf.model.Property;
-
 /**
  * A facility that contains common namespaces, in the form of string constants. Please note that the string fields
  * are defined in lower case here, despite the Java convention of using all-upper-case names for constants. That's 
@@ -20,4 +18,5 @@ public class NS
 	public static final String ABSTRACT = "http://purl.org/dc/elements/1.1/abstract";
 	public static final String owl = "http://www.w3.org/2002/07/owl#";
 	public static final String obo = "http://purl.obolibrary.org/obo/";
+	public static final String dc= "http://purl.org/dc/elements/1.1/";
 }
