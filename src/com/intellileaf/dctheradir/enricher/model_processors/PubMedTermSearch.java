@@ -68,6 +68,7 @@ public class PubMedTermSearch extends ResourceEnricher
 		//prefixes for buidling the model
 		resultModel.setNsPrefix("dcr", NS.DCR);
 		resultModel.setNsPrefix("rdfs", NS.RDFS);
+		resultModel.setNsPrefix("obo", NS.obo);
 		
     	Document dom = null;
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
@@ -118,6 +119,7 @@ public class PubMedTermSearch extends ResourceEnricher
                //Statements to create the Jena model statement with the selected PubMed ID
             	 Resource dcResource = resultModel.createResource(getUri());
             	 Resource document = ResourceFactory.createResource(NS.DCR + "document/" + pmids.get(count-1));
+            	 Resource purlDoc = ResourceFactory.createResource(NS.obo);
             	 
             	 Property hasAutoRelatedDoc = ResourceFactory.createProperty(NS.DCR, "hasAutoRelatedDocument_" + count);
             	 Property identifier = ResourceFactory.createProperty(NS.DCR, "identifier");
