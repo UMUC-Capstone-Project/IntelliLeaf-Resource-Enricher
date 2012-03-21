@@ -96,7 +96,7 @@ public class UniprotEnricher extends ResourceEnricher
 		
 		  if (this.organism != null){
 		  
-		  String url = "http://www.uniprot.org/uniprot/?query=" + termLabels.get(i) + "&" + organism + "&sort=score&limit=5&format=rdf"; // termLabel is eg. 'MAGE-3'
+		  String url = "http://www.uniprot.org/uniprot/?query=" + termLabels.get(i) + " " + organism + "&sort=score&limit=5&format=rdf"; // termLabel is eg. 'MAGE-3'
 		  uniprotOnt =  ModelFactory.createOntologyModel(OntModelSpec.OWL_DL_MEM_TRANS_INF);
 		  try{
 		  uniprotOnt.read ( url );
@@ -122,8 +122,8 @@ public class UniprotEnricher extends ResourceEnricher
 			
 			
 				//test code
+				Resource onode = itr.next ();
 				
-				Individual onode = itr.next ();
 				System.out.println(onode.toString());
 			
 			
