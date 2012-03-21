@@ -1,5 +1,11 @@
 package com.intellileaf.dctheradir.enricher.model_processors;
 
+import com.hp.hpl.jena.query.Query;
+import com.hp.hpl.jena.query.QueryExecution;
+import com.hp.hpl.jena.query.QueryExecutionFactory;
+import com.hp.hpl.jena.query.QueryFactory;
+import com.hp.hpl.jena.query.ResultSet;
+import com.hp.hpl.jena.query.ResultSetFormatter;
 import com.hp.hpl.jena.rdf.model.Model;
 
 import java.io.FileNotFoundException;
@@ -74,7 +80,7 @@ public class UniprotEnricher extends ResourceEnricher
 			"PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> " +
 			"PREFIX uniprot: <http://purl.uniprot.org/core/> " +
 
-				"SELECT distinct ?fullname ?term ?termLabel ? Organism ? " +
+				"SELECT distinct ?fullname ?term ?termLabel ?Organism " +
 				"WHERE { " +
 					   "<http://purl.uniprot.org/uniprot/P43355> " +
 					   "  uniprot:classifiedWith ?term; " +
@@ -83,7 +89,13 @@ public class UniprotEnricher extends ResourceEnricher
 				 	   "  ?term rdfs:label ?termLabel. " +
 				      "} ";
 		
+		Query query = QueryFactory.create(Sparql);
+		QueryExecution qexec = QueryExecutionFactory.sparqlService(
+		"http://www.uniprot.org/uniprot/?query=MAGE-3&sort=score&limit=5&format=rdf", query);
 		
+		ResultSet results = qexec.execSelect();
+		
+		ResultSetFormatter.out(System.out, results, query);
 	}
 
 	
