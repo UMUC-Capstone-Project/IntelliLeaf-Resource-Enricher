@@ -92,7 +92,7 @@ public class UniprotEnricher extends ResourceEnricher
 		
 		for (int i = 0; i < termLabels.size(); i++){
 			
-		  testURI = true;
+		  
 		
 		  if (this.organism != null){
 		  
@@ -100,6 +100,7 @@ public class UniprotEnricher extends ResourceEnricher
 		  uniprotOnt =  ModelFactory.createOntologyModel(OntModelSpec.OWL_DL_MEM_TRANS_INF);
 		  try{
 		  uniprotOnt.read ( url );
+		  testURI = true;
 		  }catch(JenaException e){testURI = false;}
 		
 		  }
@@ -109,6 +110,7 @@ public class UniprotEnricher extends ResourceEnricher
 			  uniprotOnt =  ModelFactory.createOntologyModel(OntModelSpec.OWL_DL_MEM_TRANS_INF);
 			  try{
 			  uniprotOnt.read ( url );
+			  testURI = true;
 			  }catch(JenaException e){testURI = false;}
 			  
 		  }
@@ -120,9 +122,9 @@ public class UniprotEnricher extends ResourceEnricher
 			
 			
 				//test code
-				Resource  onode = itr.next ();
-				String test = onode.toString();
-				System.out.println(test+"\n");
+				
+				Individual onode = itr.next ();
+				System.out.println(onode.toString());
 			
 			
 			}
