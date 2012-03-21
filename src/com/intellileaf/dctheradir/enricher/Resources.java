@@ -21,9 +21,9 @@ public class Resources
 	 */
 	public static OntModel getDirectoryModel () throws FileNotFoundException
 	{
-		if ( directoryModel != null )
+		if ( directoryModel != null ){
 			return directoryModel;
-		
+		}
 		// Load it from the dump file
 		
 		String URI = "http://artemisia.leafbioscience.com/dcthera_dump.rdf";

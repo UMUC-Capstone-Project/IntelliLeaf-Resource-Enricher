@@ -135,21 +135,20 @@ public class UniprotEnricher extends ResourceEnricher
 				
 				System.out.println(onode.toString());
 	
-			}
-		}
+			
 		
-		}
+		
+		
 	
-	/*
 		String Sparql=
 			"PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> " +
 			"PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> " +
 			"PREFIX uniprot: <http://purl.uniprot.org/core/> " +
 
-				"SELECT distinct ?fullname ?term ?termLabel ?Organism " +
+				"SELECT distinct ?fullname ?term ?termLabel" +
 				"WHERE { " +
-					   "<http://purl.uniprot.org/uniprot/P43355> " +
-					   "  uniprot:classifiedWith ?term." +
+					   "<"+onode.toString()+">" +
+					   "  uniprot:classifiedWith ?term;" +
 					   "  uniprot:recommendedName ?name." +
 					   "  ?name uniprot:fullName ?fullname." +
 				 	   "  ?term rdfs:label ?termLabel." +
@@ -157,13 +156,16 @@ public class UniprotEnricher extends ResourceEnricher
 		
 		Query query = QueryFactory.create(Sparql);
 		QueryExecution qexec = QueryExecutionFactory.sparqlService(
-		"http://www.uniprot.org/uniprot/?query=MAGE-3&sort=score&limit=5&format=rdf", query);
+		"http://linkedlifedata.com/sparql", query);
 		
 		ResultSet results = qexec.execSelect();
 		
 		ResultSetFormatter.out(System.out, results, query);
-	
-	*/
+		
+		}
+		}
+		}
+
 
 	}
 	/**
