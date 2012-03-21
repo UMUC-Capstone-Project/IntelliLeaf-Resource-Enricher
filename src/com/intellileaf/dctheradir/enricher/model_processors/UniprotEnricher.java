@@ -96,10 +96,12 @@ public class UniprotEnricher extends ResourceEnricher
 		for (int i = 0; i < termLabels.size(); i++){
 			
 		  term = termLabels.get(i).replaceAll(" ","%20");
-		  org = organism.replaceAll(" ","%20");
+		  
 		  
 		  if (this.organism != null){
 		 
+		  org = organism.replaceAll(" ","%20"); 	  
+			  
 		  url = "http://www.uniprot.org/uniprot/?query=" + term + "%20" + org + "&sort=score&limit=5&format=rdf"; // termLabel is eg. 'MAGE-3'
 		  uniprotOnt =  ModelFactory.createOntologyModel(OntModelSpec.OWL_DL_MEM_TRANS_INF);
 		  try{
@@ -121,7 +123,7 @@ public class UniprotEnricher extends ResourceEnricher
 		
 		System.out.println(url);
 		
-		if ((testURI == true)&&(uniprotOnt != null)){
+		if (testURI == true){
 			
 		
 			ExtendedIterator<Individual> itr = uniprotOnt.listIndividuals ( uniprotOnt.getOntClass ("http://purl.uniprot.org/core/Protein"));
@@ -132,7 +134,7 @@ public class UniprotEnricher extends ResourceEnricher
 				Resource onode = itr.next ();
 				
 				System.out.println(onode.toString());
-			
+	
 			}
 		}
 		
