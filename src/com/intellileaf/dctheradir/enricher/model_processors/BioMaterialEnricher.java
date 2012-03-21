@@ -77,9 +77,9 @@ public class BioMaterialEnricher extends ResourceEnricher
 	     
 	    UniprotEnricher uniProtEnricher = new UniprotEnricher ();
 	    uniProtEnricher.setUri ( getUri () );
+	    uniProtEnricher.setTermLabels ( bmTermSel.getTermLabels () );
+	    uniProtEnricher.setOrganism ( bmTermSel.getOrganism () );
 	    uniProtEnricher.run();
-	    //uniProtEnricher.setTermLabels ( bmTermSel.getTermLabels () );
-	    //uniProtEnricher.setOrganism ( bmTermSel.getOrganism () );
 	    
 	    try 
 	    {

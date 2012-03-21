@@ -7,10 +7,16 @@ import com.hp.hpl.jena.query.QueryFactory;
 import com.hp.hpl.jena.query.ResultSet;
 import com.hp.hpl.jena.query.ResultSetFormatter;
 import com.hp.hpl.jena.rdf.model.Model;
+import com.hp.hpl.jena.rdf.model.NodeIterator;
+import com.hp.hpl.jena.rdf.model.RDFNode;
+import com.hp.hpl.jena.rdf.model.Resource;
 
+
+import com.hp.hpl.jena.ontology.Individual;
 import com.hp.hpl.jena.ontology.OntModel;
 import com.hp.hpl.jena.ontology.OntModelSpec;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
+import com.hp.hpl.jena.util.iterator.ExtendedIterator;
 
 import java.io.FileNotFoundException;
 import java.util.List;
@@ -28,7 +34,7 @@ public class UniprotEnricher extends ResourceEnricher
 {
 	private String uri;
 	private List<String> termLabels;
-	private String organism = "";
+	private String organism = " ";
 	private Model resultModel;
 	private static OntModel uniprotOnt = null;
 	
@@ -83,23 +89,32 @@ public class UniprotEnricher extends ResourceEnricher
 		
 		for (int i = 0; i < termLabels.size(); i++)
 		
-		  if (this.organism.equals("")){
-		
-		  String url = "http://www.uniprot.org/uniprot/?query=" + termLabels.get(i) + "&sort=score&limit=5&format=rdf"; // termLabel is eg. 'MAGE-3'
+		  if (this.organism != null){
+		  
+		  String url = "http://www.uniprot.org/uniprot/?query=" + termLabels.get(i) + "&" + organism + "&sort=score&limit=5&format=rdf"; // termLabel is eg. 'MAGE-3'
 		  uniprotOnt =  ModelFactory.createOntologyModel(OntModelSpec.OWL_DL_MEM_TRANS_INF);
 		  uniprotOnt.read ( url );
 		
 		  }
 		  else{
 			  
-			  String url = "http://www.uniprot.org/uniprot/?query=" + termLabels.get(i) + "&" + organism + "&sort=score&limit=5&format=rdf"; // termLabel is eg. 'MAGE-3'
+			  String url = "http://www.uniprot.org/uniprot/?query=" + termLabels.get(i) + "&sort=score&limit=5&format=rdf"; // termLabel is eg. 'MAGE-3'
 			  uniprotOnt =  ModelFactory.createOntologyModel(OntModelSpec.OWL_DL_MEM_TRANS_INF);
 			  uniprotOnt.read ( url );
 			  
 		  }
 		
-		uniprotOnt.listIndividuals ( uniprotOnt.getOntClass ( "http://purl.uniprot.org/core/Protein" ));
-     
+		ExtendedIterator<Individual> itr = uniprotOnt.listIndividuals ( uniprotOnt.getOntClass ( "http://purl.uniprot.org/core/Protein" ));
+		while (itr.hasNext ()){
+			
+			
+			//test code
+			Resource  onode = itr.next ();
+			String test = onode.getURI();
+			System.out.println(test+"\n");
+			 
+			
+		}
 	/*
 		String Sparql=
 			"PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> " +
