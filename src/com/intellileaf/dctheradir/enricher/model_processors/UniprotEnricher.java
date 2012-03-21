@@ -36,7 +36,7 @@ public class UniprotEnricher extends ResourceEnricher
 {
 	private String uri;
 	private List<String> termLabels;
-	private String organism = " ";
+	private String organism;
 	private Model resultModel;
 	private static OntModel uniprotOnt = null;
 	
@@ -89,14 +89,18 @@ public class UniprotEnricher extends ResourceEnricher
 		// TODO Auto-generated method stub
 		
 		boolean testURI;
+		String term;
+		String org;
+		String url;
 		
 		for (int i = 0; i < termLabels.size(); i++){
 			
+		  term = termLabels.get(i).replaceAll(" ","%20");
+		  org = organism.replaceAll(" ","%20");
 		  
-		
 		  if (this.organism != null){
-		  
-		  String url = "http://www.uniprot.org/uniprot/?query=" + termLabels.get(i) + " " + organism + "&sort=score&limit=5&format=rdf"; // termLabel is eg. 'MAGE-3'
+		 
+		  url = "http://www.uniprot.org/uniprot/?query=" + term + "%20" + org + "&sort=score&limit=5&format=rdf"; // termLabel is eg. 'MAGE-3'
 		  uniprotOnt =  ModelFactory.createOntologyModel(OntModelSpec.OWL_DL_MEM_TRANS_INF);
 		  try{
 		  uniprotOnt.read ( url );
@@ -106,19 +110,21 @@ public class UniprotEnricher extends ResourceEnricher
 		  }
 		  else{
 			  
-			  String url = "http://www.uniprot.org/uniprot/?query=" + termLabels.get(i) + "&sort=score&limit=5&format=rdf"; // termLabel is eg. 'MAGE-3'
+			  url = "http://www.uniprot.org/uniprot/?query=" + term + "&sort=score&limit=5&format=rdf"; // termLabel is eg. 'MAGE-3'
 			  uniprotOnt =  ModelFactory.createOntologyModel(OntModelSpec.OWL_DL_MEM_TRANS_INF);
 			  try{
-			  uniprotOnt.read ( url );
+			  uniprotOnt.read (url);
 			  testURI = true;
 			  }catch(JenaException e){testURI = false;}
 			  
 		  }
 		
+		System.out.println(url);
+		
 		if ((testURI == true)&&(uniprotOnt != null)){
 			
 		
-			ExtendedIterator<Individual> itr = uniprotOnt.listIndividuals ( uniprotOnt.getOntClass ( "http://purl.uniprot.org/core/Protein" ));
+			ExtendedIterator<Individual> itr = uniprotOnt.listIndividuals ( uniprotOnt.getOntClass ("http://purl.uniprot.org/core/Protein"));
 			while (itr.hasNext ()){
 			
 			
@@ -127,11 +133,11 @@ public class UniprotEnricher extends ResourceEnricher
 				
 				System.out.println(onode.toString());
 			
-			
 			}
 		}
 		
 		}
+	
 	/*
 		String Sparql=
 			"PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> " +
