@@ -28,7 +28,7 @@ public class Resources
 		
 		String URI = "http://artemisia.leafbioscience.com/dcthera_dump.rdf";
 		
-		InputStream input = new FileInputStream("./ontology/ontology.owl");
+		InputStream input = new FileInputStream("./ontology/dcthera_newontology.owl");
 		
 		/* 
 		 * ResourceEnricher.isResourceSupported() requires a minimum degree of inference, i.e., automatic reasoning. 
