@@ -42,6 +42,7 @@ public class UniprotEnricher extends ResourceEnricher
 	{
 		return termLabels;
 	}
+	
 
 	public void setTermLabels ( List<String> termLabels )
 	{
@@ -67,7 +68,20 @@ public class UniprotEnricher extends ResourceEnricher
 	public void run ()
 	{
 		// TODO Auto-generated method stub
+                  
+                  String Sparql=
+			"PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> " +
+			"PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> " +
+			"PREFIX uniprot: <http://purl.uniprot.org/core/> " +
 
+				"SELECT distinct ?fullname ?term ?termLabel ? Organism ? " +
+				"WHERE {
+					   <http://purl.uniprot.org/uniprot/P43355>" 
+					   "  uniprot:classifiedWith ?term;"
+					   "  uniprot:recommendedName ?name ."
+					   "  ?name uniprot:fullName ?fullname . "
+				 	   "  ?term rdfs:label ?termLabel."
+				};
 	}
 
 	
