@@ -16,9 +16,11 @@ import com.hp.hpl.jena.ontology.Individual;
 import com.hp.hpl.jena.ontology.OntModel;
 import com.hp.hpl.jena.ontology.OntModelSpec;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
+import com.hp.hpl.jena.shared.JenaException;
 import com.hp.hpl.jena.util.iterator.ExtendedIterator;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.List;
 
 import com.intellileaf.dctheradir.enricher.Resources;
@@ -86,8 +88,11 @@ public class UniprotEnricher extends ResourceEnricher
 	{
 		// TODO Auto-generated method stub
 		
+		boolean testURI;
 		
-		for (int i = 0; i < termLabels.size(); i++)
+		for (int i = 0; i < termLabels.size(); i++){
+			
+		  testURI = true;
 		
 		  if (this.organism != null){
 		  
@@ -95,7 +100,7 @@ public class UniprotEnricher extends ResourceEnricher
 		  uniprotOnt =  ModelFactory.createOntologyModel(OntModelSpec.OWL_DL_MEM_TRANS_INF);
 		  try{
 		  uniprotOnt.read ( url );
-		  }finally{}
+		  }catch(JenaException e){testURI = false;}
 		
 		  }
 		  else{
@@ -104,20 +109,25 @@ public class UniprotEnricher extends ResourceEnricher
 			  uniprotOnt =  ModelFactory.createOntologyModel(OntModelSpec.OWL_DL_MEM_TRANS_INF);
 			  try{
 			  uniprotOnt.read ( url );
-			  }finally{}
+			  }catch(JenaException e){testURI = false;}
 			  
 		  }
 		
-		ExtendedIterator<Individual> itr = uniprotOnt.listIndividuals ( uniprotOnt.getOntClass ( "http://purl.uniprot.org/core/Protein" ));
-		while (itr.hasNext ()){
+		if (testURI == true){
+		
+			ExtendedIterator<Individual> itr = uniprotOnt.listIndividuals ( uniprotOnt.getOntClass ( "http://purl.uniprot.org/core/Protein" ));
+			while (itr.hasNext ()){
 			
 			
-			//test code
-			Resource  onode = itr.next ();
-			String test = onode.getURI();
-			System.out.println(test+"\n");
-			 
+				//test code
+				Resource  onode = itr.next ();
+				String test = onode.toString();
+				System.out.println(test+"\n");
 			
+			
+			}
+		}
+		
 		}
 	/*
 		String Sparql=

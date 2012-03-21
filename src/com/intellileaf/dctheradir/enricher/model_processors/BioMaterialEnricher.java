@@ -81,6 +81,7 @@ public class BioMaterialEnricher extends ResourceEnricher
 	    uniProtEnricher.setOrganism ( bmTermSel.getOrganism () );
 	    uniProtEnricher.run();
 	    
+	    /*
 	    try 
 	    {
 			Utils.mergeGraphs ( uniProtEnricher.getResultModel () );
@@ -90,7 +91,7 @@ public class BioMaterialEnricher extends ResourceEnricher
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+		*/
 		
 		
 		
