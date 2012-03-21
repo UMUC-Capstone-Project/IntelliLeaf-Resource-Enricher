@@ -81,18 +81,18 @@ public class PubMedTermSearch extends ResourceEnricher
         for(int x = 0; x < termLabels.size(); x++)
         {
         	//obtains the nodeList contain the Ids
-            NodeList idList = parsePubMedIds(termLabels.get(x));
+            NodeList idNodes = parsePubMedIds(termLabels.get(x));
                 
             //Loops through the "Id" nodelist and adds the PubIds to an ArrayList
-            for(int y = 0; y < idList.getLength(); y++)
+            for(int y = 0; y < idNodes.getLength(); y++)
             {
-            	Element idElement = (Element)idList.item(y);
+            	Element idElement = (Element)idNodes.item(y);
             	
             	int id = Integer.parseInt(idElement.getFirstChild().getNodeValue());
             
             	 pmids.add(id); //adds the ID to the pmids list
         
-            	 NodeList idElements = parseXmlElements(id); //Obtains elements for the PubMed ID
+            	 NodeList elementNodes = parseXmlElements(id); //Obtains elements for the PubMed ID
             	 
             	 	/* In this section, create the elements/nodes to parse out Abstract, title, authors, etc.
             	 	 * 
