@@ -83,7 +83,7 @@ public class UniprotEnricher extends ResourceEnricher
 				"SELECT distinct ?fullname ?term ?termLabel ?Organism " +
 				"WHERE { " +
 					   "<http://purl.uniprot.org/uniprot/P43355> " +
-					   "  uniprot:classifiedWith ?term; " +
+					   "  uniprot:classifiedWith ?term . " +
 					   "  uniprot:recommendedName ?name . " +
 					   "  ?name uniprot:fullName ?fullname . " +
 				 	   "  ?term rdfs:label ?termLabel. " +
