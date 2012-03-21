@@ -115,7 +115,8 @@ public class UniprotEnricher extends ResourceEnricher
 			  
 		  }
 		
-		if (testURI == true){
+		if ((testURI == true)&&(uniprotOnt != null)){
+			
 		
 			ExtendedIterator<Individual> itr = uniprotOnt.listIndividuals ( uniprotOnt.getOntClass ( "http://purl.uniprot.org/core/Protein" ));
 			while (itr.hasNext ()){
