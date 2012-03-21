@@ -78,54 +78,51 @@ public class PubMedTermSearch extends ResourceEnricher
 	   	Property description = ResourceFactory.createProperty(NS.dc, "description");
 	   	Property source = ResourceFactory.createProperty(NS.dc, "source");
 	   
-		//Obtains a NodeList for each termLabel, obtains the IdList of PubMedIDs
-	        for(int x = 0; x < termLabels.size(); x++)
-	        {
+		//Obtains a NodeList for each termLabel, obtains the IdList of PubMedIDs 
+	   	for(int x = 0; x < termLabels.size(); x++)
+	    {
 	    
-	            NodeList idNodes = getIdNodeList(termLabels.get(x));
+	   		NodeList idNodes = getIdNodeList(termLabels.get(x));
+
+	   		ids.addAll(parseXmlElements(idNodes, "IdList"));
 	            
-	             ids.addAll(parseXmlElements(idNodes, "IdList"));
-	            
-	        }
+	    }
 	                
-            //Loops through the "Id" nodelist, creates a NodeList for each article, obtains the Abstracts, titles, etc and adds it to the model
-            for(int y = 0; y < ids.size(); y++)
-            {
-            	int id = Integer.parseInt(ids.get(y));
+        //Loops through the "Id" nodelist, creates a NodeList for each article, obtains the Abstracts, titles, etc and adds it to the model
+        for(int y = 0; y < ids.size(); y++)
+        {
+            int id = Integer.parseInt(ids.get(y));
             
-            	 pmids.add(id);
+            pmids.add(id);
         
-            	 NodeList elementNodes = getArticleNodeList(id); 
+            NodeList elementNodes = getArticleNodeList(id); 
             	 
-            	 //Obtains the Abstracts, titles, etc.
-            	 ArrayList<String> abst = parseXmlElements(elementNodes, "AbstractText");
-            	 ArrayList<String> articleTitle = parseXmlElements(elementNodes, "ArticleTitle");
-            	 ArrayList<String> pubYear = parseXmlElements(elementNodes, "Year");
-            	 ArrayList <String> authors = parseXmlElements(elementNodes, "AuthorList");
+            //Obtains the Abstracts, titles, etc.
+            ArrayList<String> abst = parseXmlElements(elementNodes, "AbstractText");
+            ArrayList<String> articleTitle = parseXmlElements(elementNodes, "ArticleTitle");
+            ArrayList<String> pubYear = parseXmlElements(elementNodes, "Year");
+            ArrayList <String> authors = parseXmlElements(elementNodes, "AuthorList");
             	 
-                 //Creates the resource for the pubMed document, and the property to show its an autorelated document
-            	 Resource document = ResourceFactory.createResource(NS.DCR + "document/" + id);
-            	 Property hasAutoRelatedDoc = ResourceFactory.createProperty(NS.DCR, "hasAutoRelatedDocument_" + count);
+            //Creates the resource for the pubMed document, and the property to show its an autorelated document
+            Resource document = ResourceFactory.createResource(NS.DCR + "document/" + id);
+            Property hasAutoRelatedDoc = ResourceFactory.createProperty(NS.DCR, "hasAutoRelatedDocument_" + count);
             	 
-            	 //Statements to add the resources and their relationships
-            	 resultModel.add(dcResource, hasAutoRelatedDoc, document);
-            	 resultModel.add(document, type, NS.obo + "IAO_0000013"); 
-            	 resultModel.add(document, identifier, pubMedUri + id);
+            //Statements to add the resources and their relationships
+            resultModel.add(dcResource, hasAutoRelatedDoc, document);
+            resultModel.add(document, type, NS.obo + "IAO_0000013"); 
+            resultModel.add(document, identifier, pubMedUri + id);
             	 
-            	 resultModel.add(document, title, articleTitle.get(0));
-            	 resultModel.add(document, date, pubYear.get(0));
-            	 resultModel.add(document, description, abst.get(0));
+            resultModel.add(document, title, articleTitle.get(0));
+            resultModel.add(document, date, pubYear.get(0));
+            resultModel.add(document, description, abst.get(0));
             	 
-            	 for(int z = 0; z < authors.size(); z++)
-            		 resultModel.add(document, creator, authors.get(z));
+            for(int z = 0; z < authors.size(); z++)
+            	resultModel.add(document, creator, authors.get(z));
 
-                 count++;
+            count++;
 
-            }
-            
-        
-
-    }
+        }
+	}
 
 	//Called to retrieve the nodeList containing the PubMed IDs
 	public NodeList getIdNodeList(String term)
@@ -157,8 +154,8 @@ public class PubMedTermSearch extends ResourceEnricher
         }
                 
         //Creates element of xml file, then creates a node lists of all "IdLists" in file
-       Element Ele = dom.getDocumentElement();
-       NodeList nl = Ele.getElementsByTagName("IdList");
+        Element Ele = dom.getDocumentElement();
+        NodeList nl = Ele.getElementsByTagName("IdList");
           
         //Within the IdLists, creates a nodeList of all the Id tags
         Element elIdList = (Element)nl.item(0);
@@ -173,32 +170,32 @@ public class PubMedTermSearch extends ResourceEnricher
 		
 		String resultLink = "";
 		Document dom = null;
-        	DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 
-        	resultLink = eSearchBase + id;
+        resultLink = eSearchBase + id;
   
-	        try 
-	        {
-	        	DocumentBuilder db = dbf.newDocumentBuilder();
+	    try 
+	    {
+	        DocumentBuilder db = dbf.newDocumentBuilder();
 	                    
-	            //parses xml file found at this URL
-	            dom = db.parse(resultLink);
-	        } 
-	        catch (ParserConfigurationException pce) 
-	        {
-	            pce.printStackTrace();
-	        }
-	        catch (IOException ioe)
-	        {
-	            ioe.printStackTrace();
-	        }
-	        catch (SAXException se)
-	        {
-	            se.printStackTrace();
-	        }
+	        //parses xml file found at this URL
+	        dom = db.parse(resultLink);
+	    } 
+	    catch (ParserConfigurationException pce) 
+	    {
+	        pce.printStackTrace();
+	    }
+	    catch (IOException ioe)
+	    {
+	        ioe.printStackTrace();
+	    }
+	    catch (SAXException se)
+	    {
+	        se.printStackTrace();
+	    }
 	        
-	        Element Ele = dom.getDocumentElement();
-	        NodeList nl = Ele.getElementsByTagName("PubmedArticle");
+	    Element Ele = dom.getDocumentElement();
+	    NodeList nl = Ele.getElementsByTagName("PubmedArticle");
 	
 		return nl;
 	}
