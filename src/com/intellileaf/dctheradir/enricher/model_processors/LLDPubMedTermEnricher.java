@@ -87,7 +87,7 @@ public class LLDPubMedTermEnricher implements KnowledgeBaseProcessor
 	
 			try
 			{	
-				//Loops through the search results
+				
 				for(;results.hasNext();)
 				{	
 					QuerySolution sol = results.nextSolution(); //obtains a line in the results
