@@ -145,7 +145,7 @@ public class UniprotEnricher extends ResourceEnricher
 			"PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> " +
 			"PREFIX uniprot: <http://purl.uniprot.org/core/> " +
 
-				"SELECT distinct ?fullname ?term ?termLabel" +
+				"SELECT distinct ?fullname ?term ?termLabel " +
 				"WHERE { " +
 					   "<"+onode.toString()+">" +
 					   "  uniprot:classifiedWith ?term;" +
