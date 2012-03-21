@@ -27,7 +27,7 @@ public class PubMedTermSearch extends ResourceEnricher
 	private List<String> termLabels; //holds the parsed keywords for the DC-Thera RDF file
 	private List<Integer> pmids = new ArrayList<Integer>(); //holds the PubMed IDs
 	private Model resultModel = ModelFactory.createDefaultModel(); //resultModel for the jena model
-	private static String eUtilsBase = "http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=";//holds E-utils Base
+	private static String eUtilsBase = "http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?retmax=20&db=pubmed&term=";//holds E-utils Base
 	private static String eSearchBase = "http://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&retmode=xml&id=";
 	
 
