@@ -30,6 +30,7 @@ public class UniprotEnricher extends ResourceEnricher
 	private List<String> termLabels;
 	private String organism = "";
 	private Model resultModel;
+	private static OntModel uniprotOnt = null;
 	
 	/**
 	 * @return the URI of the biomateral from which to pick up terms.
@@ -79,22 +80,25 @@ public class UniprotEnricher extends ResourceEnricher
 	{
 		// TODO Auto-generated method stub
 		
+		
 		for (int i = 0; i < termLabels.size(); i++)
 		
 		  if (this.organism.equals("")){
 		
 		  String url = "http://www.uniprot.org/uniprot/?query=" + termLabels.get(i) + "&sort=score&limit=5&format=rdf"; // termLabel is eg. 'MAGE-3'
-		  OntModel m =  ModelFactory.createOntologyModel(OntModelSpec.OWL_DL_MEM_TRANS_INF);
-		  m.read ( url );
+		  uniprotOnt =  ModelFactory.createOntologyModel(OntModelSpec.OWL_DL_MEM_TRANS_INF);
+		  uniprotOnt.read ( url );
 		
 		  }
 		  else{
 			  
 			  String url = "http://www.uniprot.org/uniprot/?query=" + termLabels.get(i) + "&" + organism + "&sort=score&limit=5&format=rdf"; // termLabel is eg. 'MAGE-3'
-			  OntModel m =  ModelFactory.createOntologyModel(OntModelSpec.OWL_DL_MEM_TRANS_INF);
-			  m.read ( url );
+			  uniprotOnt =  ModelFactory.createOntologyModel(OntModelSpec.OWL_DL_MEM_TRANS_INF);
+			  uniprotOnt.read ( url );
 			  
 		  }
+		
+		uniprotOnt.listIndividuals ( uniprotOnt.getOntClass ( "http://purl.uniprot.org/core/Protein" ));
      
 	/*
 		String Sparql=
