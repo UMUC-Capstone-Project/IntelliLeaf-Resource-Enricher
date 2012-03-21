@@ -93,14 +93,18 @@ public class UniprotEnricher extends ResourceEnricher
 		  
 		  String url = "http://www.uniprot.org/uniprot/?query=" + termLabels.get(i) + "&" + organism + "&sort=score&limit=5&format=rdf"; // termLabel is eg. 'MAGE-3'
 		  uniprotOnt =  ModelFactory.createOntologyModel(OntModelSpec.OWL_DL_MEM_TRANS_INF);
+		  try{
 		  uniprotOnt.read ( url );
+		  }finally{}
 		
 		  }
 		  else{
 			  
 			  String url = "http://www.uniprot.org/uniprot/?query=" + termLabels.get(i) + "&sort=score&limit=5&format=rdf"; // termLabel is eg. 'MAGE-3'
 			  uniprotOnt =  ModelFactory.createOntologyModel(OntModelSpec.OWL_DL_MEM_TRANS_INF);
+			  try{
 			  uniprotOnt.read ( url );
+			  }finally{}
 			  
 		  }
 		

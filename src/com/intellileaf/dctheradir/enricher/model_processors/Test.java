@@ -15,7 +15,7 @@ public class Test {
 		input = args[0];}
 		
 		else{
-			input = "biomaterial/52";
+			input = "biomaterial/522";
 			System.out.println("Please enter command line argument, using example URI");
 		}
 		
