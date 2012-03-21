@@ -8,6 +8,10 @@ import com.hp.hpl.jena.query.ResultSet;
 import com.hp.hpl.jena.query.ResultSetFormatter;
 import com.hp.hpl.jena.rdf.model.Model;
 
+import com.hp.hpl.jena.ontology.OntModel;
+import com.hp.hpl.jena.ontology.OntModelSpec;
+import com.hp.hpl.jena.rdf.model.ModelFactory;
+
 import java.io.FileNotFoundException;
 import java.util.List;
 
@@ -24,7 +28,7 @@ public class UniprotEnricher extends ResourceEnricher
 {
 	private String uri;
 	private List<String> termLabels;
-	private String organism;
+	private String organism = "";
 	private Model resultModel;
 	
 	/**
@@ -74,7 +78,25 @@ public class UniprotEnricher extends ResourceEnricher
 	public void run ()
 	{
 		// TODO Auto-generated method stub
-                  
+		
+		for (int i = 0; i < termLabels.size(); i++)
+		
+		  if (this.organism.equals("")){
+		
+		  String url = "http://www.uniprot.org/uniprot/?query=" + termLabels.get(i) + "&sort=score&limit=5&format=rdf"; // termLabel is eg. 'MAGE-3'
+		  OntModel m =  ModelFactory.createOntologyModel(OntModelSpec.OWL_DL_MEM_TRANS_INF);
+		  m.read ( url );
+		
+		  }
+		  else{
+			  
+			  String url = "http://www.uniprot.org/uniprot/?query=" + termLabels.get(i) + "&" + organism + "&sort=score&limit=5&format=rdf"; // termLabel is eg. 'MAGE-3'
+			  OntModel m =  ModelFactory.createOntologyModel(OntModelSpec.OWL_DL_MEM_TRANS_INF);
+			  m.read ( url );
+			  
+		  }
+     
+	/*
 		String Sparql=
 			"PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> " +
 			"PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> " +
@@ -83,10 +105,10 @@ public class UniprotEnricher extends ResourceEnricher
 				"SELECT distinct ?fullname ?term ?termLabel ?Organism " +
 				"WHERE { " +
 					   "<http://purl.uniprot.org/uniprot/P43355> " +
-					   "  uniprot:classifiedWith ?term . " +
-					   "  uniprot:recommendedName ?name . " +
-					   "  ?name uniprot:fullName ?fullname . " +
-				 	   "  ?term rdfs:label ?termLabel. " +
+					   "  uniprot:classifiedWith ?term." +
+					   "  uniprot:recommendedName ?name." +
+					   "  ?name uniprot:fullName ?fullname." +
+				 	   "  ?term rdfs:label ?termLabel." +
 				      "} ";
 		
 		Query query = QueryFactory.create(Sparql);
@@ -96,9 +118,10 @@ public class UniprotEnricher extends ResourceEnricher
 		ResultSet results = qexec.execSelect();
 		
 		ResultSetFormatter.out(System.out, results, query);
-	}
-
 	
+	*/
+
+	}
 	/**
 	 * @return an empty array, cause this enricher is supposed to be called directly and not to be used by a generic invoker
 	 * that evaluates enrichers on the basis of its input. 
