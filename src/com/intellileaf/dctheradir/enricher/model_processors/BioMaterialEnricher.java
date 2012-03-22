@@ -26,7 +26,7 @@ public class BioMaterialEnricher extends ResourceEnricher
 	    BioMaterialTermSelector bmTermSel = new BioMaterialTermSelector ();
 	    bmTermSel.setUri ( this.getUri () );
 	    bmTermSel.run();
-	    /*
+	    
 	    PubMedTermSearch pubMedSearch = new PubMedTermSearch ();
 	    pubMedSearch.setUri ( this.getUri () );
 	    pubMedSearch.setTermLabels ( bmTermSel.getTermLabels () );
@@ -58,6 +58,24 @@ public class BioMaterialEnricher extends ResourceEnricher
 			e.printStackTrace();
 		}
 	    
+   
+	    UniprotEnricher uniProtEnricher = new UniprotEnricher ();
+	    uniProtEnricher.setUri ( this.getUri () );
+	    uniProtEnricher.setTermLabels ( bmTermSel.getTermLabels () );
+	    uniProtEnricher.setOrganism ( bmTermSel.getOrganism () );
+	    uniProtEnricher.run();
+	   
+	  
+	    try 
+	    {
+			Utils.mergeGraphs ( uniProtEnricher.getResultModel () );
+		} 
+	    catch (FileNotFoundException e) 
+	    {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	    /* 
 	    //Test Code
 	    Model model = ModelFactory.createDefaultModel();
 	    
@@ -68,31 +86,11 @@ public class BioMaterialEnricher extends ResourceEnricher
 		
 	    model.add(pubMedSearch.getResultModel());
 	    model.add(lldEnricher.getResultModel());
+	    model.add(uniProtEnricher.getResultModel());
 	    System.out.println("------------------------------------------Merged Model Results-----------------------------------------------------");
 	    model.write(System.out, "TURTLE");
 	    //End Test Code
-	    
-	    
-	    */
-   
-	    UniprotEnricher uniProtEnricher = new UniprotEnricher ();
-	    uniProtEnricher.setUri ( this.getUri () );
-	    uniProtEnricher.setTermLabels ( bmTermSel.getTermLabels () );
-	    uniProtEnricher.setOrganism ( bmTermSel.getOrganism () );
-	    uniProtEnricher.run();
-	   
-	    /*
-	    try 
-	    {
-			Utils.mergeGraphs ( uniProtEnricher.getResultModel () );
-		} 
-	    catch (FileNotFoundException e) 
-	    {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		*/
-		
 		
 		
 	}

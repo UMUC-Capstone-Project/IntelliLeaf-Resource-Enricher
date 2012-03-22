@@ -1,6 +1,10 @@
 package com.intellileaf.dctheradir.enricher.model_processors;
 import java.io.FileNotFoundException;
 
+import com.hp.hpl.jena.rdf.model.Model;
+import com.hp.hpl.jena.rdf.model.ModelFactory;
+import com.intellileaf.dctheradir.enricher.Resources;
+
 //Test file to test our Code
 public class Test {
 
@@ -33,6 +37,15 @@ public class Test {
 		else{
 			 System.out.println("URI is not a supported resource type");
 		}
+		
+		Model finalModel = ModelFactory.createDefaultModel();
+		
+		finalModel = Resources.getDirectoryModel ();
+		
+		//Test code
+		 finalModel.write(System.out, "TURTLE");
+		
+		
 	}
 
 }

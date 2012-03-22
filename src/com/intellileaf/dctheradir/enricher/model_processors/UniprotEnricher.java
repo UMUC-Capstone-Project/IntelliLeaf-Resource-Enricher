@@ -141,7 +141,6 @@ public class UniprotEnricher extends ResourceEnricher
 			  
 		  }
 		
-		  System.out.println(url);
 		
 		  if (testURI == true){
 			
@@ -149,8 +148,7 @@ public class UniprotEnricher extends ResourceEnricher
 			ExtendedIterator<Individual> itr = uniprotOnt.listIndividuals ( uniprotOnt.getOntClass ("http://purl.uniprot.org/core/Protein"));
 			while (itr.hasNext ()){
 			
-			
-				//test code
+				
 				Resource onode = itr.next ();
 				String protein = onode.toString();
 				Resource protResource = resultModel.createResource(protein);
@@ -242,8 +240,6 @@ public class UniprotEnricher extends ResourceEnricher
 		}
 		}
 		
-		
-		resultModel.write(System.out, "TURTLE");
 
 	}
 	/**
