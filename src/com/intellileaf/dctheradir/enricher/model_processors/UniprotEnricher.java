@@ -42,7 +42,7 @@ public class UniprotEnricher extends ResourceEnricher
 	private String uri;
 	private List<String> termLabels;
 	private String organism;
-	private Model resultModel;
+	private Model resultModel = ModelFactory.createDefaultModel();
 	private static OntModel uniprotOnt = null;
 	
 	/**
@@ -53,9 +53,6 @@ public class UniprotEnricher extends ResourceEnricher
 		return uri;
 	}
 
-	/**
-	 * @return the URI of the biomateral from which to pick up terms.
-	 */
 	public void setUri ( String uri )
 	{
 		this.uri = uri;
@@ -93,17 +90,23 @@ public class UniprotEnricher extends ResourceEnricher
 	{
 		
 		boolean testURI;
+		boolean protTriple;
 		String term;
 		String org;
 		String url;
-		int count = 0;
+		int pcount = 0;
+		int tcount = 0;
+		
+		Resource dcResource = resultModel.createResource(getUri());
 		
 		//Create jena property
-		Property hasAutoRelatedTermClass = ResourceFactory.createProperty(NS.DCR, "hasAutoRelatedTermClass_"+ count);
-		Property hasAutoRelatedProtein = ResourceFactory.createProperty(NS.DCR, "hasAutoRelatedProtein_"+ count);
+		Property hasAutoRelatedTermClass = ResourceFactory.createProperty(NS.DCR, "hasAutoRelatedTermClass_"+ tcount);
+		Property hasAutoRelatedProtein = ResourceFactory.createProperty(NS.DCR, "hasAutoRelatedProtein_"+ pcount);
 		Property label = ResourceFactory.createProperty(NS.RDFS, "label");
 		
 		for (int i = 0; i < termLabels.size(); i++){
+			
+		  protTriple = false;
 			
 		  term = termLabels.get(i).replaceAll(" ","%20");
 		  
@@ -143,9 +146,10 @@ public class UniprotEnricher extends ResourceEnricher
 				//test code
 				Resource onode = itr.next ();
 				String protein = onode.toString();
+				Resource protResource = resultModel.createResource(protein);
 				
-				System.out.println(protein);
-		
+				pcount++;
+				resultModel.add(dcResource, hasAutoRelatedProtein, protResource);
 		
 	
 		String Sparql=
@@ -167,9 +171,6 @@ public class UniprotEnricher extends ResourceEnricher
 		"http://linkedlifedata.com/sparql", query);
 		
 		ResultSet results = qexec.execSelect();
-		//ResultSetFormatter.out(System.out, results, query);       
-
-	     //qexec.close() ;
 		
 				while (results.hasNext()){
 					
@@ -184,29 +185,37 @@ public class UniprotEnricher extends ResourceEnricher
 			    	Matcher mt1 = pt1.matcher(goTerm);
 			    	if(mt1.find()){
 			    		
+			    		tcount++;
+			    		
+			    		Resource goResource = resultModel.createResource(goTerm);
+			    		
 			    		RDFNode pLabel = sol.get("fullname");
 			    		RDFNode gLabel = sol.get("termLabel");
 			    		
 			    		String protLable = pLabel.toString();
 			    		String goLabel = gLabel.toString();
 			    		
-			    		//resultModel.add();
+			    		if (protTriple == false){
 			    		
+			    			resultModel.add(protResource, label, pLabel);
+			    			protTriple = true;
+			    		}
 			    		
-					
-					System.out.println("yes");
+			    		resultModel.add(protResource, hasAutoRelatedTermClass, goResource);
+			    		resultModel.add(goResource,label,gLabel);
+			    		
 			    	}
 					
 				}
-				
-				
 				
 			
 				qexec.close() ;
 		}
 		}
 		}
-
+		
+		
+		resultModel.write(System.out, "TURTLE");
 
 	}
 	/**
