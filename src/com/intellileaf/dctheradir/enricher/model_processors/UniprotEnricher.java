@@ -1,5 +1,6 @@
 package com.intellileaf.dctheradir.enricher.model_processors;
 
+
 import com.hp.hpl.jena.query.Query;
 import com.hp.hpl.jena.query.QueryExecution;
 import com.hp.hpl.jena.query.QueryExecutionFactory;
@@ -113,7 +114,6 @@ public class UniprotEnricher extends ResourceEnricher
 			
 		  //reset variables	
 		  uniqueTerms.clear();	 
-		  protTriple = false;
 			
 		  term = termLabels.get(i).replaceAll(" ","%20");
 		  
@@ -148,18 +148,24 @@ public class UniprotEnricher extends ResourceEnricher
 			ExtendedIterator<Individual> itr = uniprotOnt.listIndividuals ( uniprotOnt.getOntClass ("http://purl.uniprot.org/core/Protein"));
 			while (itr.hasNext ()){
 			
-				
+				protTriple = false;
 				Resource onode = itr.next ();
 				String protein = onode.toString();
 				Resource protResource = resultModel.createResource(protein);
 				
 				pcount++;
+				if (pcount < 5){
 				Property hasAutoRelatedProtein = ResourceFactory.createProperty(NS.DCR, "hasAutoRelatedProtein_"+ pcount);
+				resultModel.add(dcResource, hasAutoRelatedProtein, protResource);}
+				else{
+				Property hasAutoRelatedProtein = ResourceFactory.createProperty(NS.DCR, "hasAutoRelatedProtein_5");
 				resultModel.add(dcResource, hasAutoRelatedProtein, protResource);
+				}
+				
 		
 				
 		/* The Sparql query returns both Go terms and Keywords.  Also, Go terms have multiple term labels, so 
-		 * the below returns duplicate go terms for a single protein.  To resolve these issues, the program
+		 * the query returns duplicate go terms for a single protein.  To resolve these issues, the program
 		 * only pulls out terms that match http://purl.uniprot.org/go/.  A linked hash set is used to remove duplicates.
 		 */
 	
@@ -228,9 +234,15 @@ public class UniprotEnricher extends ResourceEnricher
 					Resource uniqueGoResource = resultModel.createResource(iterGo.next());
 					
 					tcount++;
+					if (tcount < 5){
 		    		Property hasAutoRelatedTermClass = ResourceFactory.createProperty(NS.DCR, "hasAutoRelatedTermClass_"+ tcount);
-					
 					resultModel.add(protResource, hasAutoRelatedTermClass, uniqueGoResource);
+					}
+					else{
+					Property hasAutoRelatedTermClass = ResourceFactory.createProperty(NS.DCR, "hasAutoRelatedTermClass_5");
+					resultModel.add(protResource, hasAutoRelatedTermClass, uniqueGoResource);	
+					}
+					
 					
 					
 				}		
