@@ -15,7 +15,7 @@ import java.util.*;
 public class LLDPubMedTermEnricher implements KnowledgeBaseProcessor
 {
 	private Model resultModel = ModelFactory.createDefaultModel(); //initializes the model
-	private List<Integer> pmids; //contains the PubMed IDs
+	private List<String> pmids; //contains the PubMed IDs
 	private String uri; //Contains the DC-Thera resource URI
 	
 	public void setUri(String uri)
@@ -28,12 +28,12 @@ public class LLDPubMedTermEnricher implements KnowledgeBaseProcessor
 		return uri;
 	}
 
-	public List<Integer> getPMIDs ()
+	public List<String> getPMIDs ()
 	{
 		return pmids;
 	}
 
-	public void setPMIDs ( List<Integer> pmids )
+	public void setPMIDs ( List<String> pmids )
 	{
 		this.pmids = pmids;
 	}
