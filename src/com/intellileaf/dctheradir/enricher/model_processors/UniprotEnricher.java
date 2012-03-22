@@ -24,9 +24,14 @@ import com.hp.hpl.jena.util.iterator.ExtendedIterator;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
 
 import com.intellileaf.dctheradir.enricher.Resources;
 import com.intellileaf.dctheradir.enricher.NS;
@@ -96,6 +101,7 @@ public class UniprotEnricher extends ResourceEnricher
 		String url;
 		int pcount = -1;
 		int tcount;
+		List<String> uniqueTerms = new ArrayList <String>();
 		
 		Resource dcResource = resultModel.createResource(getUri());
 		
@@ -105,6 +111,8 @@ public class UniprotEnricher extends ResourceEnricher
 		
 		for (int i = 0; i < termLabels.size(); i++){
 			
+		  //reset variables	
+		  uniqueTerms.clear();	 
 		  protTriple = false;
 			
 		  term = termLabels.get(i).replaceAll(" ","%20");
@@ -151,6 +159,11 @@ public class UniprotEnricher extends ResourceEnricher
 				Property hasAutoRelatedProtein = ResourceFactory.createProperty(NS.DCR, "hasAutoRelatedProtein_"+ pcount);
 				resultModel.add(dcResource, hasAutoRelatedProtein, protResource);
 		
+				
+		/* The Sparql query returns both Go terms and Keywords.  Also, Go terms have multiple term labels, so 
+		 * the below returns duplicate go terms for a single protein.  To resolve these issues, the program
+		 * only pulls out terms that match http://purl.uniprot.org/go/.  A linked hash set is used to remove duplicates.
+		 */
 	
 		String Sparql=
 			"PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> " +
@@ -186,17 +199,12 @@ public class UniprotEnricher extends ResourceEnricher
 			    	Matcher mt1 = pt1.matcher(goTerm);
 			    	if(mt1.find()){
 			    		
-			    		
-			    		tcount++;
-			    		Property hasAutoRelatedTermClass = ResourceFactory.createProperty(NS.DCR, "hasAutoRelatedTermClass_"+ tcount);
+			    		uniqueTerms.add(goTerm);
 			    		
 			    		Resource goResource = resultModel.createResource(goTerm);
 			    		
 			    		RDFNode pLabel = sol.get("fullname");
 			    		RDFNode gLabel = sol.get("termLabel");
-			    		
-			    		String protLable = pLabel.toString();
-			    		String goLabel = gLabel.toString();
 			    		
 			    		if (protTriple == false){
 			    		
@@ -204,15 +212,32 @@ public class UniprotEnricher extends ResourceEnricher
 			    			protTriple = true;
 			    		}
 			    		
-			    		resultModel.add(protResource, hasAutoRelatedTermClass, goResource);
+			    		//resultModel.add(protResource, hasAutoRelatedTermClass, goResource);
 			    		resultModel.add(goResource,label,gLabel);
 			    		
 			    	}
 					
 				}
 				
-			
 				qexec.close() ;
+				//Remove duplicates from Go Terms and preserve order
+				
+				Set<String> uniqueGo = new LinkedHashSet<String>(uniqueTerms);
+				
+				Iterator<String> iterGo = uniqueGo.iterator();
+				
+				while (iterGo.hasNext()){
+					
+					Resource uniqueGoResource = resultModel.createResource(iterGo.next());
+					
+					tcount++;
+		    		Property hasAutoRelatedTermClass = ResourceFactory.createProperty(NS.DCR, "hasAutoRelatedTermClass_"+ tcount);
+					
+					resultModel.add(protResource, hasAutoRelatedTermClass, uniqueGoResource);
+					
+					
+				}		
+				
 		}
 		}
 		}
