@@ -98,6 +98,7 @@ public class PubMedTermSearch extends ResourceEnricher
             ArrayList<String> articleTitle = parseXmlElements(elementNodes, "ArticleTitle");
             ArrayList<String> pubYear = parseXmlElements(elementNodes, "Year");
             ArrayList <String> authors = parseXmlElements(elementNodes, "AuthorList");
+            ArrayList<String> journal = parseXmlElements(elementNodes, "Journal");
             	 
             //Creates the resource for the pubMed document, and the property to show its an autorelated document
             Resource document = ResourceFactory.createResource(NS.DCR + "document/" + pmids.get(y));
@@ -111,6 +112,7 @@ public class PubMedTermSearch extends ResourceEnricher
             resultModel.add(document, title, articleTitle.get(0));
             resultModel.add(document, date, pubYear.get(0));
             resultModel.add(document, description, abst.get(0));
+            resultModel.add(document, source, journal.get(0));
             	 
             for(int z = 0; z < authors.size(); z++)
             	resultModel.add(document, creator, authors.get(z));
@@ -198,7 +200,7 @@ public class PubMedTermSearch extends ResourceEnricher
         	else if(tagName.matches("Year"))
             {
                 Element elId = (Element)nl.item(0);
-                NodeList nl2 = elId.getElementsByTagName("PubDate");
+                NodeList nl2 = elId.getElementsByTagName("DateCreated");
                 Element el2 = (Element)nl2.item(0);
                 
                 NodeList nl3 = el2.getElementsByTagName(tagName);
@@ -229,6 +231,17 @@ public class PubMedTermSearch extends ResourceEnricher
                 	
                 	results.add(el4.getFirstChild().getNodeValue() + ", " + el5.getFirstChild().getNodeValue());
                 }
+            }
+            else if(tagName.matches("Journal"))
+            {
+                Element elId = (Element)nl.item(0);
+                NodeList nl2 = elId.getElementsByTagName(tagName);
+                Element el2 = (Element)nl2.item(0);
+                
+                NodeList nl3 = el2.getElementsByTagName("Title");
+                Element el3 = (Element)nl3.item(0);
+                
+            	results.add(el3.getFirstChild().getNodeValue());
             }
             else
             {

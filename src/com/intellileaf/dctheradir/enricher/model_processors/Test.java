@@ -43,7 +43,7 @@ public class Test {
 		finalModel = Resources.getDirectoryModel ();
 		
 		//Test code
-		 finalModel.write(System.out, "TURTLE");
+		 //finalModel.write(System.out, "TURTLE");
 		
 		
 	}
