@@ -14,18 +14,17 @@ public class Test {
 		
 		String input;
 		
-		String DCThera = "http://dc-research.eu/rdf/";
 		if(args.length > 0){
 		input = args[0];}
 		
 		else{
-			input = "biomaterial/522";
+			input = "http://dc-research.eu/rdf/biomaterial/522";
 			System.out.println("Please enter command line argument, using example URI");
 		}
 		
 		BioMaterialEnricher object = new BioMaterialEnricher();
 		boolean x;
-		object.setUri(DCThera+input);
+		object.setUri(input);
 		x = object.isResourceSupported(object.getUri());
 		
 		if (x == true){
