@@ -27,8 +27,8 @@ public class PubMedTermSearch extends ResourceEnricher
 	private List<String> termLabels; //holds the parsed keywords for the DC-Thera RDF file
 	private List<String> pmids = new ArrayList<String>(); //holds the PubMed IDs
 	private Model resultModel = ModelFactory.createDefaultModel(); //resultModel for the jena model
-	private static String eUtilsBase = "http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?retmax=20&db=pubmed&term=";//holds E-utils Base
-	private static String eSearchBase = "http://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&retmode=xml&id=";
+	private String eUtilsBase = "http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?retmax=20&db=pubmed&term=";//holds E-utils Base
+	private String eSearchBase = "http://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&retmode=xml&id=";
 	
 
 	//Retrieves the termLabels list (keywords)
@@ -81,7 +81,7 @@ public class PubMedTermSearch extends ResourceEnricher
 	   	for(int x = 0; x < termLabels.size(); x++)
 	    {
 	    
-	   		NodeList idNodes = getIdNodeList(termLabels.get(x));
+	   		NodeList idNodes = getNodeList(termLabels.get(x), "IdElements");
 
 	   		pmids.addAll(parseXmlElements(idNodes, "IdList"));
 	            
@@ -91,7 +91,7 @@ public class PubMedTermSearch extends ResourceEnricher
         for(int y = 0; y < pmids.size(); y++)
         {
             
-            NodeList elementNodes = getArticleNodeList(pmids.get(y)); 
+            NodeList elementNodes = getNodeList(pmids.get(y), "ArticleElements"); 
             	 
             //Obtains the Abstracts, titles, etc.
             ArrayList<String> abst = parseXmlElements(elementNodes, "AbstractText");
@@ -121,20 +121,43 @@ public class PubMedTermSearch extends ResourceEnricher
 	}
 
 	//Called to retrieve the nodeList containing the PubMed IDs
-	public NodeList getIdNodeList(String term)
+	public NodeList getNodeList(String term, String tag)
 	{
 		String resultLink = ""; // holds the result link
 		Document dom = null;
+		NodeList nodeList = null;
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-
-        resultLink = eUtilsBase.concat(term);
-        	
+        
         try 
         {
         	DocumentBuilder db = dbf.newDocumentBuilder();
-                    
-            //parses xml file found at this URL
-            dom = db.parse(resultLink);
+        	
+            if(tag.matches("IdElements"))
+            {
+                resultLink = eUtilsBase + term;
+                
+                //parses xml file found at this URL
+                dom = db.parse(resultLink);
+                
+                //Creates element of xml file, then creates a node lists of all "IdLists" in file
+                Element Ele = dom.getDocumentElement();
+                NodeList nl = Ele.getElementsByTagName("IdList");
+                      
+                //Within the IdLists, creates a nodeList of all the Id tags
+                Element elIdList = (Element)nl.item(0);
+                nodeList  = elIdList.getElementsByTagName("Id");
+            }
+            else if(tag.matches("ArticleElements"))
+            {
+            	resultLink = eSearchBase + term;
+            	
+                //parses xml file found at this URL
+                dom = db.parse(resultLink);
+            	
+        	    Element Ele = dom.getDocumentElement();
+        	    nodeList = Ele.getElementsByTagName("PubmedArticle");
+            }
+
         } 
         catch (ParserConfigurationException pce) 
         {
@@ -148,54 +171,12 @@ public class PubMedTermSearch extends ResourceEnricher
         {
             se.printStackTrace();
         }
-                
-        //Creates element of xml file, then creates a node lists of all "IdLists" in file
-        Element Ele = dom.getDocumentElement();
-        NodeList nl = Ele.getElementsByTagName("IdList");
           
-        //Within the IdLists, creates a nodeList of all the Id tags
-        Element elIdList = (Element)nl.item(0);
-        NodeList nl2 = elIdList.getElementsByTagName("Id");
-            
-        return nl2;
-	}
-
-	//Returns the NodeList containing the information on a specific PubMed articles
-	public NodeList getArticleNodeList(String id)
-	{
-		
-		String resultLink = "";
-		Document dom = null;
-        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-
-        resultLink = eSearchBase + id;
-  
-	    try 
-	    {
-	        DocumentBuilder db = dbf.newDocumentBuilder();
-	                    
-	        //parses xml file found at this URL
-	        dom = db.parse(resultLink);
-	    } 
-	    catch (ParserConfigurationException pce) 
-	    {
-	        pce.printStackTrace();
-	    }
-	    catch (IOException ioe)
-	    {
-	        ioe.printStackTrace();
-	    }
-	    catch (SAXException se)
-	    {
-	        se.printStackTrace();
-	    }
-	        
-	    Element Ele = dom.getDocumentElement();
-	    NodeList nl = Ele.getElementsByTagName("PubmedArticle");
-	
-		return nl;
+        
+        return nodeList;
 	}
 	
+	//parses out elements of a nodeList
 	public ArrayList<String> parseXmlElements(NodeList nl, String tagName)
 	{
 		
