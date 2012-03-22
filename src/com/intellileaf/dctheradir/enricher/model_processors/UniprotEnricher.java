@@ -9,8 +9,10 @@ import com.hp.hpl.jena.query.ResultSet;
 import com.hp.hpl.jena.query.ResultSetFormatter;
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.NodeIterator;
+import com.hp.hpl.jena.rdf.model.Property;
 import com.hp.hpl.jena.rdf.model.RDFNode;
 import com.hp.hpl.jena.rdf.model.Resource;
+import com.hp.hpl.jena.rdf.model.ResourceFactory;
 
 
 import com.hp.hpl.jena.ontology.Individual;
@@ -89,12 +91,17 @@ public class UniprotEnricher extends ResourceEnricher
 	@Override
 	public void run ()
 	{
-		// TODO Auto-generated method stub
 		
 		boolean testURI;
 		String term;
 		String org;
 		String url;
+		int count = 0;
+		
+		//Create jena property
+		Property hasAutoRelatedTermClass = ResourceFactory.createProperty(NS.DCR, "hasAutoRelatedTermClass_"+ count);
+		Property hasAutoRelatedProtein = ResourceFactory.createProperty(NS.DCR, "hasAutoRelatedProtein_"+ count);
+		Property label = ResourceFactory.createProperty(NS.RDFS, "label");
 		
 		for (int i = 0; i < termLabels.size(); i++){
 			
@@ -135,11 +142,9 @@ public class UniprotEnricher extends ResourceEnricher
 			
 				//test code
 				Resource onode = itr.next ();
+				String protein = onode.toString();
 				
-				System.out.println(onode.toString());
-	
-			
-		
+				System.out.println(protein);
 		
 		
 	
@@ -168,6 +173,7 @@ public class UniprotEnricher extends ResourceEnricher
 		
 				while (results.hasNext()){
 					
+					
 					QuerySolution sol = results.nextSolution();
 					RDFNode go = sol.get("term");
 					
@@ -177,6 +183,16 @@ public class UniprotEnricher extends ResourceEnricher
 			    	Pattern pt1 = Pattern.compile(reg1);
 			    	Matcher mt1 = pt1.matcher(goTerm);
 			    	if(mt1.find()){
+			    		
+			    		RDFNode pLabel = sol.get("fullname");
+			    		RDFNode gLabel = sol.get("termLabel");
+			    		
+			    		String protLable = pLabel.toString();
+			    		String goLabel = gLabel.toString();
+			    		
+			    		//resultModel.add();
+			    		
+			    		
 					
 					System.out.println("yes");
 			    	}
@@ -186,7 +202,7 @@ public class UniprotEnricher extends ResourceEnricher
 				
 				
 			
-		
+				qexec.close() ;
 		}
 		}
 		}
