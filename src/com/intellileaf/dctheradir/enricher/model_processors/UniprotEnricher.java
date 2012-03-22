@@ -99,7 +99,7 @@ public class UniprotEnricher extends ResourceEnricher
 		String term;
 		String org;
 		String url;
-		int pcount = -1;
+		int pcount = 0;
 		int tcount;
 		List<String> uniqueTerms = new ArrayList <String>();
 		
@@ -182,7 +182,7 @@ public class UniprotEnricher extends ResourceEnricher
 		"http://linkedlifedata.com/sparql", query);
 		
 		ResultSet results = qexec.execSelect();
-		tcount = -1;
+		tcount = 0;
 		
 				while (results.hasNext()){
 					
@@ -210,7 +210,6 @@ public class UniprotEnricher extends ResourceEnricher
 			    			protTriple = true;
 			    		}
 			    		
-			    		//resultModel.add(protResource, hasAutoRelatedTermClass, goResource);
 			    		resultModel.add(goResource,label,gLabel);
 			    		
 			    	}
