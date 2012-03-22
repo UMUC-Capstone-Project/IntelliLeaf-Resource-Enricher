@@ -26,7 +26,7 @@ public class BioMaterialEnricher extends ResourceEnricher
 	    BioMaterialTermSelector bmTermSel = new BioMaterialTermSelector ();
 	    bmTermSel.setUri ( this.getUri () );
 	    bmTermSel.run();
-	    
+	    /*
 	    PubMedTermSearch pubMedSearch = new PubMedTermSearch ();
 	    pubMedSearch.setUri ( this.getUri () );
 	    pubMedSearch.setTermLabels ( bmTermSel.getTermLabels () );
@@ -73,14 +73,14 @@ public class BioMaterialEnricher extends ResourceEnricher
 	    //End Test Code
 	    
 	    
-	    
-   /*
+	    */
+   
 	    UniprotEnricher uniProtEnricher = new UniprotEnricher ();
 	    uniProtEnricher.setUri ( getUri () );
 	    uniProtEnricher.setTermLabels ( bmTermSel.getTermLabels () );
 	    uniProtEnricher.setOrganism ( bmTermSel.getOrganism () );
 	    uniProtEnricher.run();
-	 */   
+	   
 	    /*
 	    try 
 	    {

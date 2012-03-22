@@ -4,6 +4,7 @@ import com.hp.hpl.jena.query.Query;
 import com.hp.hpl.jena.query.QueryExecution;
 import com.hp.hpl.jena.query.QueryExecutionFactory;
 import com.hp.hpl.jena.query.QueryFactory;
+import com.hp.hpl.jena.query.QuerySolution;
 import com.hp.hpl.jena.query.ResultSet;
 import com.hp.hpl.jena.query.ResultSetFormatter;
 import com.hp.hpl.jena.rdf.model.Model;
@@ -22,6 +23,8 @@ import com.hp.hpl.jena.util.iterator.ExtendedIterator;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import com.intellileaf.dctheradir.enricher.Resources;
 import com.intellileaf.dctheradir.enricher.NS;
@@ -121,9 +124,9 @@ public class UniprotEnricher extends ResourceEnricher
 			  
 		  }
 		
-		System.out.println(url);
+		  System.out.println(url);
 		
-		if (testURI == true){
+		  if (testURI == true){
 			
 		
 			ExtendedIterator<Individual> itr = uniprotOnt.listIndividuals ( uniprotOnt.getOntClass ("http://purl.uniprot.org/core/Protein"));
@@ -159,8 +162,30 @@ public class UniprotEnricher extends ResourceEnricher
 		"http://linkedlifedata.com/sparql", query);
 		
 		ResultSet results = qexec.execSelect();
+		//ResultSetFormatter.out(System.out, results, query);       
+
+	     //qexec.close() ;
 		
-		ResultSetFormatter.out(System.out, results, query);
+				while (results.hasNext()){
+					
+					QuerySolution sol = results.nextSolution();
+					RDFNode go = sol.get("term");
+					
+					String goTerm = go.toString();
+					
+					String reg1 = "http://purl.uniprot.org/go/";
+			    	Pattern pt1 = Pattern.compile(reg1);
+			    	Matcher mt1 = pt1.matcher(goTerm);
+			    	if(mt1.find()){
+					
+					System.out.println("yes");
+			    	}
+					
+				}
+				
+				
+				
+			
 		
 		}
 		}
