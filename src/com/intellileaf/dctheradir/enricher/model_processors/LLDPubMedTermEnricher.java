@@ -87,9 +87,12 @@ public class LLDPubMedTermEnricher implements KnowledgeBaseProcessor
 	
 			try
 			{	
+				int resCount = 0;
 				
 				for(;results.hasNext();)
 				{	
+					if(resCount < 5){break;}
+					
 					QuerySolution sol = results.nextSolution(); //obtains a line in the results
 					
 					RDFNode termLabel = sol.get("termLabel"); //obtains the result in the termLabel column in that line 
@@ -105,7 +108,9 @@ public class LLDPubMedTermEnricher implements KnowledgeBaseProcessor
 	            	resultModel.add(document, lldUri, lldConcept);
 	            	
 	            	//statements for adding the separate LLD resource sections (commented out, still need to set result limit)
-	            	//resultModel.add(lldConcept, label, termLabel);
+	            	resultModel.add(lldConcept, label, termLabel);
+	            	
+	            	resCount++;
 				}
 			}
 			finally
