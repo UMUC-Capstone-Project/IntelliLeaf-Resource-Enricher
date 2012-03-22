@@ -94,14 +94,13 @@ public class UniprotEnricher extends ResourceEnricher
 		String term;
 		String org;
 		String url;
-		int pcount = 0;
-		int tcount = 0;
+		int pcount = -1;
+		int tcount;
 		
 		Resource dcResource = resultModel.createResource(getUri());
 		
 		//Create jena property
-		Property hasAutoRelatedTermClass = ResourceFactory.createProperty(NS.DCR, "hasAutoRelatedTermClass_"+ tcount);
-		Property hasAutoRelatedProtein = ResourceFactory.createProperty(NS.DCR, "hasAutoRelatedProtein_"+ pcount);
+
 		Property label = ResourceFactory.createProperty(NS.RDFS, "label");
 		
 		for (int i = 0; i < termLabels.size(); i++){
@@ -149,6 +148,7 @@ public class UniprotEnricher extends ResourceEnricher
 				Resource protResource = resultModel.createResource(protein);
 				
 				pcount++;
+				Property hasAutoRelatedProtein = ResourceFactory.createProperty(NS.DCR, "hasAutoRelatedProtein_"+ pcount);
 				resultModel.add(dcResource, hasAutoRelatedProtein, protResource);
 		
 	
@@ -171,6 +171,7 @@ public class UniprotEnricher extends ResourceEnricher
 		"http://linkedlifedata.com/sparql", query);
 		
 		ResultSet results = qexec.execSelect();
+		tcount = -1;
 		
 				while (results.hasNext()){
 					
@@ -185,7 +186,9 @@ public class UniprotEnricher extends ResourceEnricher
 			    	Matcher mt1 = pt1.matcher(goTerm);
 			    	if(mt1.find()){
 			    		
+			    		
 			    		tcount++;
+			    		Property hasAutoRelatedTermClass = ResourceFactory.createProperty(NS.DCR, "hasAutoRelatedTermClass_"+ tcount);
 			    		
 			    		Resource goResource = resultModel.createResource(goTerm);
 			    		
