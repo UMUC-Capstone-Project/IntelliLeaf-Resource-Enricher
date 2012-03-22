@@ -25,7 +25,7 @@ import com.hp.hpl.jena.rdf.model.*;
 public class PubMedTermSearch extends ResourceEnricher
 {
 	private List<String> termLabels; //holds the parsed keywords for the DC-Thera RDF file
-	private List<Integer> pmids = new ArrayList<Integer>(); //holds the PubMed IDs
+	private List<String> pmids = new ArrayList<String>(); //holds the PubMed IDs
 	private Model resultModel = ModelFactory.createDefaultModel(); //resultModel for the jena model
 	private static String eUtilsBase = "http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?retmax=20&db=pubmed&term=";//holds E-utils Base
 	private static String eSearchBase = "http://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&retmode=xml&id=";
@@ -44,7 +44,7 @@ public class PubMedTermSearch extends ResourceEnricher
 	}
 
 	//Retrieves the PubMed IDs List
-	public List<Integer> getPMIDs ()
+	public List<String> getPMIDs ()
 	{
 		return pmids;
 	}
@@ -60,7 +60,6 @@ public class PubMedTermSearch extends ResourceEnricher
 	{
 		String pubMedUri = "http://www.ncbi.nlm.nih.gov/pubmed/"; //Holds the URI base for the PubMed URI
 		int count = 1;
-		ArrayList<String> ids = new ArrayList<String>();
 
 		//prefixes for buidling the model
 		resultModel.setNsPrefix("dcr", NS.DCR);
@@ -84,18 +83,15 @@ public class PubMedTermSearch extends ResourceEnricher
 	    
 	   		NodeList idNodes = getIdNodeList(termLabels.get(x));
 
-	   		ids.addAll(parseXmlElements(idNodes, "IdList"));
+	   		pmids.addAll(parseXmlElements(idNodes, "IdList"));
 	            
 	    }
 	                
         //Loops through the "Id" nodelist, creates a NodeList for each article, obtains the Abstracts, titles, etc and adds it to the model
-        for(int y = 0; y < ids.size(); y++)
+        for(int y = 0; y < pmids.size(); y++)
         {
-            int id = Integer.parseInt(ids.get(y));
             
-            pmids.add(id);
-        
-            NodeList elementNodes = getArticleNodeList(id); 
+            NodeList elementNodes = getArticleNodeList(pmids.get(y)); 
             	 
             //Obtains the Abstracts, titles, etc.
             ArrayList<String> abst = parseXmlElements(elementNodes, "AbstractText");
@@ -104,13 +100,13 @@ public class PubMedTermSearch extends ResourceEnricher
             ArrayList <String> authors = parseXmlElements(elementNodes, "AuthorList");
             	 
             //Creates the resource for the pubMed document, and the property to show its an autorelated document
-            Resource document = ResourceFactory.createResource(NS.DCR + "document/" + id);
+            Resource document = ResourceFactory.createResource(NS.DCR + "document/" + pmids.get(y));
             Property hasAutoRelatedDoc = ResourceFactory.createProperty(NS.DCR, "hasAutoRelatedDocument_" + count);
             	 
             //Statements to add the resources and their relationships
             resultModel.add(dcResource, hasAutoRelatedDoc, document);
             resultModel.add(document, type, NS.obo + "IAO_0000013"); 
-            resultModel.add(document, identifier, pubMedUri + id);
+            resultModel.add(document, identifier, pubMedUri + pmids.get(y));
             	 
             resultModel.add(document, title, articleTitle.get(0));
             resultModel.add(document, date, pubYear.get(0));
@@ -165,7 +161,7 @@ public class PubMedTermSearch extends ResourceEnricher
 	}
 
 	//Returns the NodeList containing the information on a specific PubMed articles
-	public NodeList getArticleNodeList(int id)
+	public NodeList getArticleNodeList(String id)
 	{
 		
 		String resultLink = "";
