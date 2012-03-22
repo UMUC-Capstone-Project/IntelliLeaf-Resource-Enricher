@@ -91,7 +91,7 @@ public class LLDPubMedTermEnricher implements KnowledgeBaseProcessor
 				
 				for(;results.hasNext();)
 				{	
-					if(resCount < 5){break;}
+					if(resCount == 5){break;}
 					
 					QuerySolution sol = results.nextSolution(); //obtains a line in the results
 					
@@ -108,7 +108,7 @@ public class LLDPubMedTermEnricher implements KnowledgeBaseProcessor
 	            	resultModel.add(document, lldUri, lldConcept);
 	            	
 	            	//statements for adding the separate LLD resource sections (commented out, still need to set result limit)
-	            	resultModel.add(lldConcept, label, termLabel);
+	            	//resultModel.add(lldConcept, label, termLabel);
 	            	
 	            	resCount++;
 				}
@@ -120,7 +120,7 @@ public class LLDPubMedTermEnricher implements KnowledgeBaseProcessor
 			
 			count++;
 		}
-		
+		//resultModel.write(System.out, "TURTLE");
 	}
 
 }

@@ -75,9 +75,9 @@ public class BioMaterialEnricher extends ResourceEnricher
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	     
+	    /* 
 	    //Test Code
-	   /* Model model = ModelFactory.createDefaultModel();
+	    Model model = ModelFactory.createDefaultModel();
 	    
 		model.setNsPrefix("dcr", NS.DCR);
 		model.setNsPrefix("rdfs", NS.RDFS);
@@ -90,8 +90,8 @@ public class BioMaterialEnricher extends ResourceEnricher
 	    System.out.println("------------------------------------------Merged Model Results-----------------------------------------------------");
 	    model.write(System.out, "TURTLE");
 	    //End Test Code
-		
 		*/
+		
 		
 	}
 
