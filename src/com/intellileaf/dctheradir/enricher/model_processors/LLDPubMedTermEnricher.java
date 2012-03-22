@@ -107,8 +107,7 @@ public class LLDPubMedTermEnricher implements KnowledgeBaseProcessor
 	            	resultModel.add(document, label, termLabel);
 	            	resultModel.add(document, lldUri, lldConcept);
 	            	
-	            	//statements for adding the separate LLD resource sections (commented out, still need to set result limit)
-	            	//resultModel.add(lldConcept, label, termLabel);
+	            	resultModel.add(lldConcept, label, termLabel);
 	            	
 	            	resCount++;
 				}
