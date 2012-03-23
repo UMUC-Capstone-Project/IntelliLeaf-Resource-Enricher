@@ -1,0 +1,223 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:protege="http://protege.stanford.edu/plugins/owl/protege#"
+    xmlns:obo="http://purl.obolibrary.org/obo/"
+    xmlns:xsp="http://www.owl-ontologies.com/2005/08/07/xsp.owl#"
+    xmlns:envo="http://purl.org/obo/owl/ENVO#"
+    xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
+    xmlns:nifga="http://ontology.neuinfo.org/NIF/BiomaterialEntities/NIF-GrossAnatomy.owl#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:obi="http://purl.obolibrary.org/obo/obi/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+    xmlns:dcr="http://dc-research.eu#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xml:base="http://dc-research.eu/enrichment">
+  <owl:Ontology rdf:about="">
+    <protege:defaultLanguage rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >en</protege:defaultLanguage>
+    <owl:imports rdf:resource="http://protege.stanford.edu/plugins/owl/protege"/>
+    <owl:imports rdf:resource="http://dc-research.eu"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >An extension to the DCTHERA Ontology used to represent enrichments made in the Directory via automatic access to external resources.</rdfs:comment>
+  </owl:Ontology>
+  <owl:ObjectProperty rdf:about="http://dc-research.eu#hasAutoRelatedTerm_5">
+    <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Relates a resource to a term, that is represented as an OWL individual. The versions of this property with the _N postfix mean the relation is ranked with N.</obo:IAO_0000115>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has related protein (computed)</rdfs:label>
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="http://dc-research.eu#hasAutoRelatedTerm"/>
+    </rdfs:subPropertyOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://dc-research.eu#hasAutoRelatedDocument_4">
+    <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >An association between a DC-THERA resource and a document that is automatically computed. Versions of this property with the _N postfix means that the association is ranked N.</obo:IAO_0000115>
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="http://dc-research.eu#hasAutoRelatedDocument"/>
+    </rdfs:subPropertyOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has related document (computed)</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://dc-research.eu#hasAutoRelatedDocument_3">
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="http://dc-research.eu#hasAutoRelatedDocument"/>
+    </rdfs:subPropertyOf>
+    <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >An association between a DC-THERA resource and a document that is automatically computed. Versions of this property with the _N postfix means that the association is ranked N.</obo:IAO_0000115>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has related document (computed)</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://dc-research.eu#hasAutoRelatedTerm_4">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has related protein (computed)</rdfs:label>
+    <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Relates a resource to a term, that is represented as an OWL individual. The versions of this property with the _N postfix mean the relation is ranked with N.</obo:IAO_0000115>
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="http://dc-research.eu#hasAutoRelatedTerm"/>
+    </rdfs:subPropertyOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://dc-research.eu#hasAuthor">
+    <rdfs:subPropertyOf rdf:resource="http://dc-research.eu#hasKnowledgeable"/>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="http://dc-research.eu#isAuthorOf"/>
+    </owl:inverseOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has author</rdfs:label>
+    <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >One of the  authors of a document.</obo:IAO_0000115>
+    <rdfs:domain rdf:resource="http://purl.obolibrary.org/obo/IAO_0000310"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://dc-research.eu#hasAutoRelatedDocument_5">
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="http://dc-research.eu#hasAutoRelatedDocument"/>
+    </rdfs:subPropertyOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has related document (computed)</rdfs:label>
+    <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >An association between a DC-THERA resource and a document that is automatically computed. Versions of this property with the _N postfix means that the association is ranked N.</obo:IAO_0000115>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://dc-research.eu#hasAutoRelatedTerm_2">
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="http://dc-research.eu#hasAutoRelatedTerm"/>
+    </rdfs:subPropertyOf>
+    <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Relates a resource to a term, that is represented as an OWL individual. The versions of this property with the _N postfix mean the relation is ranked with N.</obo:IAO_0000115>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has related protein (computed)</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://dc-research.eu#hasAutoRelatedTerm_3">
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="http://dc-research.eu#hasAutoRelatedTerm"/>
+    </rdfs:subPropertyOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has related protein (computed)</rdfs:label>
+    <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Relates a resource to a term, that is represented as an OWL individual. The versions of this property with the _N postfix mean the relation is ranked with N.</obo:IAO_0000115>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://dc-research.eu#isAuthorOf">
+    <rdfs:range rdf:resource="http://purl.obolibrary.org/obo/IAO_0000310"/>
+    <rdfs:subPropertyOf rdf:resource="http://dc-research.eu#isKnowledgeableAbout"/>
+    <owl:inverseOf rdf:resource="http://dc-research.eu#hasAuthor"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://dc-research.eu#hasAutoRelatedDocument_1">
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="http://dc-research.eu#hasAutoRelatedDocument"/>
+    </rdfs:subPropertyOf>
+    <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >An association between a DC-THERA resource and a document that is automatically computed. Versions of this property with the _N postfix means that the association is ranked N.</obo:IAO_0000115>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has related document (computed)</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://dc-research.eu#hasAutoRelatedDocument_2">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has related document (computed)</rdfs:label>
+    <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >An association between a DC-THERA resource and a document that is automatically computed. Versions of this property with the _N postfix means that the association is ranked N.</obo:IAO_0000115>
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="http://dc-research.eu#hasAutoRelatedDocument"/>
+    </rdfs:subPropertyOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://dc-research.eu#hasAutoRelatedTerm_1">
+    <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Relates a resource to a term, that is represented as an OWL individual. The versions of this property with the _N postfix mean the relation is ranked with N.</obo:IAO_0000115>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has related protein (computed)</rdfs:label>
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="http://dc-research.eu#hasAutoRelatedTerm"/>
+    </rdfs:subPropertyOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://dc-research.eu#hasAutoRelatedTerm">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has related protein (computed)</rdfs:label>
+    <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Relates a resource to a term, that is represented as an OWL individual. The versions of this property with the _N postfix mean the relation is ranked with N.</obo:IAO_0000115>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+    <rdfs:subPropertyOf>
+      <owl:SymmetricProperty rdf:about="http://dc-research.eu#isAutoRelatedTo"/>
+    </rdfs:subPropertyOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://dc-research.eu#hasAutoRelatedProtein_1">
+    <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Assocation a DC-THERA resource to a protein (usually in UniProt) that is automatically computed. The versions of this property with _N postfix means the relation is ranked with _N.</obo:IAO_0000115>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has related protein (computed)</rdfs:label>
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="http://dc-research.eu#hasAutoRelatedProtein"/>
+    </rdfs:subPropertyOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://dc-research.eu#hasAutoRelatedProtein_2">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has related protein (computed)</rdfs:label>
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="http://dc-research.eu#hasAutoRelatedProtein"/>
+    </rdfs:subPropertyOf>
+    <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Assocation a DC-THERA resource to a protein (usually in UniProt) that is automatically computed. The versions of this property with _N postfix means the relation is ranked with _N.</obo:IAO_0000115>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://dc-research.eu#hasAutoRelatedDocument">
+    <rdfs:range rdf:resource="http://purl.obolibrary.org/obo/IAO_0000310"/>
+    <rdfs:subPropertyOf rdf:resource="http://dc-research.eu#has_document"/>
+    <rdfs:subPropertyOf>
+      <owl:SymmetricProperty rdf:about="http://dc-research.eu#isAutoRelatedTo"/>
+    </rdfs:subPropertyOf>
+    <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >An association between a DC-THERA resource and a document that is automatically computed. Versions of this property with the _N postfix means that the association is ranked N.</obo:IAO_0000115>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has related document (computed)</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://dc-research.eu#hasAutoRelatedProtein">
+    <rdfs:subPropertyOf rdf:resource="http://dc-research.eu#hasMolecule"/>
+    <rdfs:subPropertyOf>
+      <owl:SymmetricProperty rdf:about="http://dc-research.eu#isAutoRelatedTo"/>
+    </rdfs:subPropertyOf>
+    <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Assocation a DC-THERA resource to a protein (usually in UniProt) that is automatically computed. The versions of this property with _N postfix means the relation is ranked with _N.</obo:IAO_0000115>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has related protein (computed)</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://dc-research.eu#hasAutoRelatedProtein_5">
+    <rdfs:subPropertyOf rdf:resource="http://dc-research.eu#hasAutoRelatedProtein"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has related protein (computed)</rdfs:label>
+    <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Assocation a DC-THERA resource to a protein (usually in UniProt) that is automatically computed. The versions of this property with _N postfix means the relation is ranked with _N.</obo:IAO_0000115>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://dc-research.eu#hasAutoRelatedProtein_4">
+    <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Assocation a DC-THERA resource to a protein (usually in UniProt) that is automatically computed. The versions of this property with _N postfix means the relation is ranked with _N.</obo:IAO_0000115>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has related protein (computed)</rdfs:label>
+    <rdfs:subPropertyOf rdf:resource="http://dc-research.eu#hasAutoRelatedProtein"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://dc-research.eu#hasAutoRelatedProtein_3">
+    <rdfs:subPropertyOf rdf:resource="http://dc-research.eu#hasAutoRelatedProtein"/>
+    <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Assocation a DC-THERA resource to a protein (usually in UniProt) that is automatically computed. The versions of this property with _N postfix means the relation is ranked with _N.</obo:IAO_0000115>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has related protein (computed)</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:SymmetricProperty rdf:about="http://dc-research.eu#isAutoRelatedTo">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <owl:inverseOf rdf:resource="http://dc-research.eu#isAutoRelatedTo"/>
+    <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Any type of computed relation between individuals that is relevant to the DC-THERA Directory and related applications.</obo:IAO_0000115>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >is related to (computed)</rdfs:label>
+  </owl:SymmetricProperty>
+  <owl:AnnotationProperty rdf:about="http://dc-research.eu#hasAutoRelatedTermClass">
+    <rdfs:subPropertyOf>
+      <owl:AnnotationProperty rdf:about="http://dc-research.eu#isAutoRelatedToClass">
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >is related to (automatically)</rdfs:label>
+        <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Any type of computed relation between types (OWL classes) that is relevant to the DC-THERA Directory and related applications.</obo:IAO_0000115>
+      </owl:AnnotationProperty>
+    </rdfs:subPropertyOf>
+  </owl:AnnotationProperty>
+  <owl:AnnotationProperty rdf:about="http://dc-research.eu#isRelatedToType"/>
+</rdf:RDF>
+
+<!-- Created with Protege (with OWL Plugin 3.4.1, Build 536)  http://protege.stanford.edu -->
