@@ -4,7 +4,7 @@ import com.hp.hpl.jena.rdf.model.Model;
 
 
 /**
- * Enriches  
+ * Enriches a Directory resource with annotations extracted from UniProt by doing term search.
  *
  * <dl><dt>date</dt><dd>Feb 28, 2012</dd></dl>
  *
