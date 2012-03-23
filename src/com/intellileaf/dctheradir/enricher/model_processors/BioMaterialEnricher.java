@@ -2,6 +2,9 @@ package com.intellileaf.dctheradir.enricher.model_processors;
 
 import java.io.FileNotFoundException;
 
+import com.hp.hpl.jena.rdf.model.Model;
+import com.hp.hpl.jena.rdf.model.ModelFactory;
+import com.intellileaf.dctheradir.enricher.NS;
 import com.intellileaf.dctheradir.enricher.Utils;
 
 /**
@@ -17,9 +20,9 @@ public class BioMaterialEnricher extends ResourceEnricher
 	@Override
 	public void run ()
 	{	
-		//testCode
-		setUri("http://dc-research.eu/rdf/biomaterial/522");
-		//End
+		
+	
+
 	    BioMaterialTermSelector bmTermSel = new BioMaterialTermSelector ();
 	    bmTermSel.setUri ( this.getUri () );
 	    bmTermSel.run();
@@ -30,7 +33,7 @@ public class BioMaterialEnricher extends ResourceEnricher
 	    pubMedSearch.run ();
 	    
 	    // This contains a DCTHERA represenation of the publications found 
-	   try 
+	  try 
 	    {
 			Utils.mergeGraphs ( pubMedSearch.getResultModel () );
 		} 
@@ -39,13 +42,12 @@ public class BioMaterialEnricher extends ResourceEnricher
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	    //Test
-	   
-	   //End Test
+	 
 	    LLDPubMedTermEnricher lldEnricher = new LLDPubMedTermEnricher ();
 	    lldEnricher.setPMIDs ( pubMedSearch.getPMIDs () );
+	    lldEnricher.setUri(this.getUri());
 	    lldEnricher.run(); 
-	    /*
+	    
 	    try 
 	    {
 			Utils.mergeGraphs( lldEnricher.getResultModel () );
@@ -56,9 +58,14 @@ public class BioMaterialEnricher extends ResourceEnricher
 			e.printStackTrace();
 		}
 	    
+   
 	    UniprotEnricher uniProtEnricher = new UniprotEnricher ();
-	    uniProtEnricher.setUri ( getUri () );
-	    
+	    uniProtEnricher.setUri ( this.getUri () );
+	    uniProtEnricher.setTermLabels ( bmTermSel.getTermLabels () );
+	    uniProtEnricher.setOrganism ( bmTermSel.getOrganism () );
+	    uniProtEnricher.run();
+	   
+	  
 	    try 
 	    {
 			Utils.mergeGraphs ( uniProtEnricher.getResultModel () );
@@ -67,7 +74,25 @@ public class BioMaterialEnricher extends ResourceEnricher
 	    {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}*/
+		}
+	    
+	    //Test Code
+	    Model model = ModelFactory.createDefaultModel();
+	    
+		model.setNsPrefix("dcr", NS.DCR);
+		model.setNsPrefix("rdfs", NS.RDFS);
+		model.setNsPrefix("owl", NS.owl);
+		model.setNsPrefix("dc", NS.dc);
+		
+	    model.add(pubMedSearch.getResultModel());
+	    model.add(lldEnricher.getResultModel());
+	    model.add(uniProtEnricher.getResultModel());
+	    System.out.println("------------------------------------------Merged Model Results-----------------------------------------------------");
+	    model.write(System.out, "TURTLE");
+	    //End Test Code
+		
+		
+		
 	}
 
 	/**

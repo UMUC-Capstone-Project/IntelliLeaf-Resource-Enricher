@@ -1,11 +1,13 @@
+/*PubMedTermSearch.java
+ * 
+ * Description: Takes the termLabels from the DC-Thera RDF.  It then searches pubMed with each one for related resources.  Once those resources are found
+ * they, and their relationships, are added to a Jena result model.
+ */
 package com.intellileaf.dctheradir.enricher.model_processors;
-import com.intellileaf.dctheradir.enricher.Resources;
 import com.intellileaf.dctheradir.enricher.NS;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -20,51 +22,34 @@ import org.xml.sax.SAXException;
 import com.hp.hpl.jena.rdf.model.*;
 
 
-/**
- * 
- * Uses PUBMED to search those publications that are related to a set of terms.
- *
- * <dl><dt>date</dt><dd>Feb 28, 2012</dd></dl>
- *
- */
 public class PubMedTermSearch extends ResourceEnricher
 {
-	private List<String> termLabels;
-	private List<Integer> pmids = new ArrayList<Integer>();
-	private Model resultModel = ModelFactory.createDefaultModel();
+	private List<String> termLabels; //holds the parsed keywords for the DC-Thera RDF file
+	private List<String> pmids = new ArrayList<String>(); //holds the PubMed IDs
+	private Model resultModel = ModelFactory.createDefaultModel(); //resultModel for the jena model
+	private String eUtilsBase = "http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?retmax=20&db=pubmed&term=";//holds E-utils Base
+	private String eSearchBase = "http://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&retmode=xml&id=";
 	
-	
-	/**
-	 * The terms to be searched.
-	 */
+
+	//Retrieves the termLabels list (keywords)
 	public List<String> getTermLabels ()
 	{
 		return termLabels;
 	}
 
-	
-	/**
-	 * The terms to be searched.
-	 */
+	//sets the termLabels variable
 	public void setTermLabels ( List<String> termLabels )
 	{
 		this.termLabels = termLabels;
 	}
 
-	/**
-	 * What is returned by {@link #run()}. 
-	 */
-	public List<Integer> getPMIDs ()
+	//Retrieves the PubMed IDs List
+	public List<String> getPMIDs ()
 	{
 		return pmids;
 	}
-	
-	/**
-	 * a set of statements that characterise the returned publications (eg, the tile, authors, etc). Uses the
-	 * DCTHERA ontology for defining such statements. Moreover, it links the found publications to the URI passed
-	 * via {@link #setUri(String)}. This is populated by {@link #run()}. 
-	 *  
-	 */
+
+	//Retrieves the PubMed result model
 	public Model getResultModel ()
 	{
 		return resultModel;
@@ -73,79 +58,216 @@ public class PubMedTermSearch extends ResourceEnricher
 	@Override
 	public void run ()
 	{
-        String eUtilsBase = "http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=";//holds E-utils Base
-        String link = "";
-		String relationshipUri = "http://purl.obolibrary.org/obo/IAO_0000311/"; //Holds the URI base for the property(predicate)
 		String pubMedUri = "http://www.ncbi.nlm.nih.gov/pubmed/"; //Holds the URI base for the PubMed URI
+		int count = 1;
+
+		//prefixes for buidling the model
+		resultModel.setNsPrefix("dcr", NS.DCR);
+		resultModel.setNsPrefix("rdfs", NS.RDFS);
+		resultModel.setNsPrefix("obo", NS.obo);
 		
-		Resource dirId = resultModel.createResource(getUri());//Creates a resource for the Biomaterial directory
-	 	Property relatedDoc = resultModel.createProperty(NS.publication, "dcr"); //Creates the relationship(property)
+		//Creates resources,Properties used in model
+		Resource dcResource = resultModel.createResource(getUri()); 
 		
-    	Document dom = null;
-        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-		
-		//Loop to loop through the term labels, search each one with Utils, and parse the resulting XML file
-        //Adds the IDs to the list pmids and adds the statements to the model
-        for(int x = 0; x < termLabels.size(); x++)
+	   	Property identifier = ResourceFactory.createProperty(NS.dc, "identifier");
+	   	Property type = ResourceFactory.createProperty(NS.rdf, "type");
+	   	Property title = ResourceFactory.createProperty(NS.dc, "title");
+	   	Property creator = ResourceFactory.createProperty(NS.dc, "creator");
+	   	Property date = ResourceFactory.createProperty(NS.dc, "date");
+	   	Property description = ResourceFactory.createProperty(NS.dc, "description");
+	   	Property source = ResourceFactory.createProperty(NS.dc, "source");
+	   
+		//Obtains a NodeList for each termLabel, obtains the IdList of PubMedIDs 
+	   	for(int x = 0; x < termLabels.size(); x++)
+	    {
+	    
+	   		NodeList idNodes = getNodeList(termLabels.get(x), "IdElements");
+
+	   		pmids.addAll(parseXmlElements(idNodes, "IdList"));
+	            
+	    }
+	                
+        //Loops through the "Id" nodelist, creates a NodeList for each article, obtains the Abstracts, titles, etc and adds it to the model
+        for(int y = 0; y < pmids.size(); y++)
         {
-        	link = eUtilsBase.concat(termLabels.get(x));
-        	
-        	try 
-            {
-            	DocumentBuilder db = dbf.newDocumentBuilder();
-                    
-                //parses xml file found at this URL
-                dom = db.parse(link);
-            } 
-            catch (ParserConfigurationException pce) 
-            {
-                pce.printStackTrace();
-            }
-            catch (IOException ioe)
-            {
-                ioe.printStackTrace();
-            }
-            catch (SAXException se)
-            {
-                se.printStackTrace();
-            }
-                
-            //Creates element of xml file, then creates a node lists of all "IdLists" in file
-            Element Ele = dom.getDocumentElement();
-            NodeList nl = Ele.getElementsByTagName("IdList");
-                
-            //Within the IdLists, creates a nodeList of all the Id tags
-            Element elIdList = (Element)nl.item(0);
-            NodeList nl2 = elIdList.getElementsByTagName("Id");
-                
-            //Loops through the "Id" nodelist and adds the PubIds to an ArrayList
-            for(int y = 0; y < nl2.getLength(); y++)
-            {
-            	Element elId = (Element)nl2.item(y);
-            	
-            	int id = Integer.parseInt(elId.getFirstChild().getNodeValue());
-            	
-            	pmids.add(id);
-            	
-            	/*Rough draft showing how to create the model below. Will perfect later in the week after I get a few
-            	 * questions answered.  Once its clear to me how the RDF model will be structured, i'll improve this section.
-            	 */
-            	Statement statement = resultModel.createStatement(dirId, relatedDoc, pubMedUri + id);//creates statement for model
-            	resultModel.add(statement); //adds statement to model
-            }
+            
+            NodeList elementNodes = getNodeList(pmids.get(y), "ArticleElements"); 
+            	 
+            //Obtains the Abstracts, titles, etc.
+            ArrayList<String> abst = parseXmlElements(elementNodes, "AbstractText");
+            ArrayList<String> articleTitle = parseXmlElements(elementNodes, "ArticleTitle");
+            ArrayList<String> pubYear = parseXmlElements(elementNodes, "Year");
+            ArrayList <String> authors = parseXmlElements(elementNodes, "AuthorList");
+            ArrayList<String> journal = parseXmlElements(elementNodes, "Journal");
+            	 
+            //Creates the resource for the pubMed document, and the property to show its an autorelated document
+            Resource document = ResourceFactory.createResource(NS.DCR + "document/" + pmids.get(y));
+            Property hasAutoRelatedDoc = ResourceFactory.createProperty(NS.DCR, "hasAutoRelatedDocument_" + count);
+            	 
+            //Statements to add the resources and their relationships
+            resultModel.add(dcResource, hasAutoRelatedDoc, document);
+            resultModel.add(document, type, NS.obo + "IAO_0000013"); 
+            resultModel.add(document, identifier, pubMedUri + pmids.get(y));
+            	 
+            resultModel.add(document, title, articleTitle.get(0));
+            resultModel.add(document, date, pubYear.get(0));
+            resultModel.add(document, description, abst.get(0));
+            resultModel.add(document, source, journal.get(0));
+            	 
+            for(int z = 0; z < authors.size(); z++)
+            	resultModel.add(document, creator, authors.get(z));
+
+            count++;
+
         }
+	}
+
+	//Called to retrieve the nodeList containing the PubMed IDs
+	public NodeList getNodeList(String term, String tag)
+	{
+		String resultLink = ""; // holds the result link
+		Document dom = null;
+		NodeList nodeList = null;
+        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         
-        resultModel.write(System.out);
+        try 
+        {
+        	DocumentBuilder db = dbf.newDocumentBuilder();
+        	
+            if(tag.matches("IdElements"))
+            {
+                resultLink = eUtilsBase + term;
+                
+                //parses xml file found at this URL
+                dom = db.parse(resultLink);
+                
+                //Creates element of xml file, then creates a node lists of all "IdLists" in file
+                Element Ele = dom.getDocumentElement();
+                NodeList nl = Ele.getElementsByTagName("IdList");
+                      
+                //Within the IdLists, creates a nodeList of all the Id tags
+                Element elIdList = (Element)nl.item(0);
+                nodeList  = elIdList.getElementsByTagName("Id");
+            }
+            else if(tag.matches("ArticleElements"))
+            {
+            	resultLink = eSearchBase + term;
+            	
+                //parses xml file found at this URL
+                dom = db.parse(resultLink);
+            	
+        	    Element Ele = dom.getDocumentElement();
+        	    nodeList = Ele.getElementsByTagName("PubmedArticle");
+            }
 
-    }
+        } 
+        catch (ParserConfigurationException pce) 
+        {
+            pce.printStackTrace();
+        }
+        catch (IOException ioe)
+        {
+            ioe.printStackTrace();
+        }
+        catch (SAXException se)
+        {
+            se.printStackTrace();
+        }
+          
+        
+        return nodeList;
+	}
 	
+	//parses out elements of a nodeList
+	public ArrayList<String> parseXmlElements(NodeList nl, String tagName)
+	{
+		
+		ArrayList<String> results = new ArrayList<String>();
+		
+        try 
+        {
+        	if(tagName.matches("IdList"))
+        	{
+                
+                for(int x = 0; x < nl.getLength(); x++)
+                {
+                	Element el3 = (Element)nl.item(x);
+                	
+                	results.add(el3.getFirstChild().getNodeValue());
+                }
+                
+        	}
+        	else if(tagName.matches("Year"))
+            {
+                Element elId = (Element)nl.item(0);
+                NodeList nl2 = elId.getElementsByTagName("DateCreated");
+                Element el2 = (Element)nl2.item(0);
+                
+                NodeList nl3 = el2.getElementsByTagName(tagName);
+                Element el3 = (Element)nl3.item(0);
+                
+            	results.add(el3.getFirstChild().getNodeValue());
+            }
+            else if(tagName.matches("AuthorList"))
+            {
+                
+                 //Within the IdLists, creates a nodeList of all the Id tags
+            	Element elId = (Element)nl.item(0);
+                NodeList nl2 = elId.getElementsByTagName(tagName);
+                
+                Element el2 = (Element)nl2.item(0);
+                NodeList nl3 = el2.getElementsByTagName("Author");
+                
+                
+                for(int x = 0; x < nl3.getLength(); x++)
+                {
+                	Element el3 = (Element)nl3.item(x);
+                	
+                	NodeList nl4 = el3.getElementsByTagName("LastName");
+                	Element el4 = (Element)nl4.item(0);
+                	
+                	NodeList nl5 = el3.getElementsByTagName("ForeName");
+                	Element el5 = (Element)nl5.item(0);
+                	
+                	results.add(el4.getFirstChild().getNodeValue() + ", " + el5.getFirstChild().getNodeValue());
+                }
+            }
+            else if(tagName.matches("Journal"))
+            {
+                Element elId = (Element)nl.item(0);
+                NodeList nl2 = elId.getElementsByTagName(tagName);
+                Element el2 = (Element)nl2.item(0);
+                
+                NodeList nl3 = el2.getElementsByTagName("Title");
+                Element el3 = (Element)nl3.item(0);
+                
+            	results.add(el3.getFirstChild().getNodeValue());
+            }
+            else
+            {
+               
+                Element elId = (Element)nl.item(0);
+                NodeList nl2 = elId.getElementsByTagName(tagName);
+                Element el2 = (Element)nl2.item(0);
+                
+            	results.add(el2.getFirstChild().getNodeValue());
+            }
+            
+        }
+        catch(NullPointerException npe)
+        {
+        	results.add("");
+        }
+
+   	 	
+        return results;
+		
+	}
 
 
-	
-	/**
-	 * @return an empty array, cause this enricher is supposed to be called directly and not to be used by a generic invoker
-	 * that evaluates enrichers on the basis of its input. 
-	 */
+
+	 //@return an empty array, cause this enricher is supposed to be called directly and not to be used by a generic invoker
+	 //that evaluates enrichers on the basis of its input. 
 	@Override
 	public String[] getSupportedUriTypes ()
 	{

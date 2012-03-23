@@ -4,12 +4,6 @@ import java.io.FileNotFoundException;
 
 import com.hp.hpl.jena.rdf.model.Model;
 
-/**
- * Miscellanea of utility functions.
- *
- * <dl><dt>date</dt><dd>Feb 28, 2012</dd></dl>
- *
- */
 public class Utils
 {
 	/**

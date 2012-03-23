@@ -1,33 +1,43 @@
+/*LLDPubMedTermEnricher.java
+ * 
+ * Description: Obtains the pubMed IDs of related PubMed articles.  It then takes those IDs, searches each one using SPARQL for related resources.  Those resources,
+ *  and their relationships, are then added to the Jena model, resultsModel.
+ */
+
 package com.intellileaf.dctheradir.enricher.model_processors;
 
-import java.util.ArrayList;
 import com.hp.hpl.jena.rdf.model.*;
 import com.hp.hpl.jena.query.*;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStream;
+import com.intellileaf.dctheradir.enricher.NS;
 import java.util.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+
 
 public class LLDPubMedTermEnricher implements KnowledgeBaseProcessor
 {
-	private Model resultModel = ModelFactory.createDefaultModel();
-	private List<Integer> pmids;
-	private List<String> searchTerms;
+	private Model resultModel = ModelFactory.createDefaultModel(); //initializes the model
+	private List<String> pmids; //contains the PubMed IDs
+	private String uri; //Contains the DC-Thera resource URI
+	
+	public void setUri(String uri)
+	{
+		this.uri = uri;
+	}
+	
+	public String getUri()
+	{
+		return uri;
+	}
 
-	public List<Integer> getPMIDs ()
+	public List<String> getPMIDs ()
 	{
 		return pmids;
 	}
 
-	public void setPMIDs ( List<Integer> pmids )
+	public void setPMIDs ( List<String> pmids )
 	{
 		this.pmids = pmids;
 	}
-	
-	
+
 	public Model getResultModel ()
 	{
 		return resultModel;
@@ -38,17 +48,21 @@ public class LLDPubMedTermEnricher implements KnowledgeBaseProcessor
 	@Override
 	public void run ()
 	{
-
-		// collection of the PubMed IDs retrieved from getPIDs() method
-		//go thru and capture each PubMed ID in the 'for' loop and then incorporate each PubMed ID (one-by-one)...
-		//...into the SPARQL query to retrieve LLD information
-
+		//sets the prefixes for the model
+		resultModel.setNsPrefix("dcr", NS.DCR);
+		resultModel.setNsPrefix("rdfs", NS.RDFS);
+		resultModel.setNsPrefix("owl", NS.owl);
+		
+		Resource dcResource = resultModel.createResource(getUri()); //Creates the resource for the DC-Thera resource
+		
+ 		Property label = ResourceFactory.createProperty(NS.RDFS, "label"); //creates the resource for the labels found in the search
+		Property lldUri = ResourceFactory.createProperty(NS.owl, "samAs"); //creates the resource for the concept returned in the search
+		
+		int count = 1;
+		
 		for(int x = 0; x < pmids.size(); x++)
-		{
-			//PID.get(x);
-			//still have to do this part using SPARQL...
-			//...read in the PubMed IDs from the ArrayList one-by-one and queries LLD with SPARQL for each PubMedID*/
-
+		{	
+			//Sparql Statement to retrieve data from LLD
 			String sparql1=
 					"PREFIX pubmed: <http://linkedlifedata.com/resource/pubmed/> " +
 					"PREFIX lifeskim: <http://linkedlifedata.com/resource/lifeskim/> " +
@@ -58,43 +72,54 @@ public class LLDPubMedTermEnricher implements KnowledgeBaseProcessor
 						"WHERE {" +
 						"   <https://linkedlifedata.com/resource/pubmed/id/" + pmids.get(x) + "> lifeskim:mentions ?concept." +
 						"   ?concept skos:prefLabel ?termLabel." +
-						" }";
+						" } " + 
+						"";
 			
+			//Execution of the Sparql Query--Obtain results
 			Query query = QueryFactory.create(sparql1);
 			QueryExecution qexec = QueryExecutionFactory.sparqlService(
 			"http://linkedlifedata.com/sparql", query);
 			
 			ResultSet results = qexec.execSelect();
 			
+			Resource document = ResourceFactory.createResource(NS.DCR + "document/" + pmids.get(x)); //resource for pubMed article that was searched
+			Property hasAutoRelatedDoc = ResourceFactory.createProperty(NS.DCR, "hasAutoRelatedDocument_" + count); //resource showing that the article is an autorelatedDocument
+	
 			try
-			{
+			{	
+				int resCount = 0;
+				
 				for(;results.hasNext();)
-				{
-					QuerySolution soln = results.nextSolution();
+				{	
+					if(resCount == 5){break;}
 					
-					//Retrieves the variable in the "termLabel" and "concept" columns
-					RDFNode termLabel = soln.get("termLabel"); 
-					RDFNode concept = soln.get("concept"); 
+					QuerySolution sol = results.nextSolution(); //obtains a line in the results
 					
-					//Converts to strings
-					String term = termLabel.toString();
+					RDFNode termLabel = sol.get("termLabel"); //obtains the result in the termLabel column in that line 
+					RDFNode concept = sol.get("concept"); //obtains the result in the concept column in that line
+					
 					String con = concept.toString();
 					
-					//Test print out
-					System.out.println(term);
-					System.out.println(con);
-					
-					//Section to add the resource to the model below:
+					Resource lldConcept = ResourceFactory.createResource(con); //Resource for the concept that was returned
+	            	
+					//Creating the model with the relationships
+					resultModel.add(dcResource, hasAutoRelatedDoc, document);
+	            	resultModel.add(document, label, termLabel);
+	            	resultModel.add(document, lldUri, lldConcept);
+	            	
+	            	resultModel.add(lldConcept, label, termLabel);
+	            	
+	            	resCount++;
 				}
 			}
 			finally
 			{
 				qexec.close();
 			}
-			//ResultSetFormatter.out(System.out, results, query);
-			//qexec.close();
+			
+			count++;
 		}
-
+		//resultModel.write(System.out, "TURTLE");
 	}
 
 }
