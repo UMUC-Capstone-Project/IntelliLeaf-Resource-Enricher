@@ -186,7 +186,12 @@ public class PubMedTermSearch extends ResourceEnricher
                 {
                 	Element el3 = (Element)nl.item(x);
                 	
-                	results.add(el3.getFirstChild().getNodeValue());
+                	String id = el3.getFirstChild().getNodeValue();
+                	
+                	if(checkDuplicates(id))
+                		continue;
+                	else
+                		results.add(id);
                 }
                 
         	}
@@ -257,7 +262,24 @@ public class PubMedTermSearch extends ResourceEnricher
 		
 	}
 
-
+//Checks the ID to see if it already exists in the PubMed ID list
+public boolean checkDuplicates(String pId)
+{
+	boolean found = false;
+	
+	for(int x = 0; x < pmids.size(); x++)
+	{
+		if(pId.matches(pmids.get(x)))
+		{
+			found = true;
+			
+			break;
+		}
+	}
+	
+	return found;
+	
+}
 
 	 //@return an empty array, cause this enricher is supposed to be called directly and not to be used by a generic invoker
 	 //that evaluates enrichers on the basis of its input. 

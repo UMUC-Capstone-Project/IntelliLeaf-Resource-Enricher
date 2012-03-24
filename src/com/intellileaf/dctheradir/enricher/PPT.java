@@ -1,3 +1,7 @@
+/* PPT.java
+ * 
+ * Contains the common properties used among the different enrichers.
+ */
 package com.intellileaf.dctheradir.enricher;
 
 import com.hp.hpl.jena.rdf.model.Property;
