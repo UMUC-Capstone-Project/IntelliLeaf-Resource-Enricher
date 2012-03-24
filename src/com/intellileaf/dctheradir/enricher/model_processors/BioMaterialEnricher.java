@@ -42,7 +42,7 @@ public class BioMaterialEnricher extends ResourceEnricher
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	 
+	 /*
 	    LLDPubMedTermEnricher lldEnricher = new LLDPubMedTermEnricher ();
 	    lldEnricher.setPMIDs ( pubMedSearch.getPMIDs () );
 	    lldEnricher.setUri(this.getUri());
@@ -75,7 +75,7 @@ public class BioMaterialEnricher extends ResourceEnricher
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	    
+	    */
 	    //Test Code
 	    Model model = ModelFactory.createDefaultModel();
 	    
@@ -85,8 +85,8 @@ public class BioMaterialEnricher extends ResourceEnricher
 		model.setNsPrefix("dc", NS.dc);
 		
 	    model.add(pubMedSearch.getResultModel());
-	    model.add(lldEnricher.getResultModel());
-	    model.add(uniProtEnricher.getResultModel());
+	    //model.add(lldEnricher.getResultModel());
+	   // model.add(uniProtEnricher.getResultModel());
 	    System.out.println("------------------------------------------Merged Model Results-----------------------------------------------------");
 	    model.write(System.out, "TURTLE");
 	    //End Test Code

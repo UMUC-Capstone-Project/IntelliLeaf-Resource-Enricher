@@ -31,7 +31,7 @@ public class PubMedTermSearch extends ResourceEnricher
 	private Model resultModel = ModelFactory.createDefaultModel(); //resultModel for the jena model
 	private String eSearchBase = "http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?retmax=20&db=pubmed&term=";//holds E-utils Base
 	private String eFetchBase = "http://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&retmode=xml&id=";
-	
+
 
 	//Retrieves the termLabels list (keywords)
 	public List<String> getTermLabels ()
@@ -67,20 +67,20 @@ public class PubMedTermSearch extends ResourceEnricher
 		resultModel.setNsPrefix("dcr", NS.DCR);
 		resultModel.setNsPrefix("rdfs", NS.RDFS);
 		resultModel.setNsPrefix("obo", NS.obo);
-		
+
 		//Creates resources used in model
 		Resource dcResource = resultModel.createResource(getUri()); 
-	   
+
 		//Obtains a NodeList for each termLabel, obtains the IdList of PubMedIDs 
 	   	for(int x = 0; x < termLabels.size(); x++)
 	    {
-	    
+
 	   		NodeList idNodes = getNodeList(termLabels.get(x), "IdElements");
 
 	   		pmids.addAll(parseXmlElements(idNodes, "IdList"));
-	            
+
 	    }
-	                
+
         //Loops through the "Id" nodelist, creates a NodeList for each article, obtains the Abstracts, titles, etc and adds it to the model
         for(int y = 0; y < pmids.size(); y++)
         {
@@ -171,13 +171,13 @@ public class PubMedTermSearch extends ResourceEnricher
         
         return nodeList;
 	}
-	
+
 	//parses out elements of a nodeList
 	public ArrayList<String> parseXmlElements(NodeList nl, String tagName)
 	{
-		
+
 		ArrayList<String> results = new ArrayList<String>();
-		
+
         try 
         {
         	if(tagName.matches("IdList"))
@@ -260,26 +260,26 @@ public class PubMedTermSearch extends ResourceEnricher
 
    	 	
         return results;
-		
+
 	}
 
 //Checks the ID to see if it already exists in the PubMed ID list
 public boolean checkDuplicates(String pId)
 {
 	boolean found = false;
-	
+
 	for(int x = 0; x < pmids.size(); x++)
 	{
 		if(pId.matches(pmids.get(x)))
 		{
 			found = true;
-			
+
 			break;
 		}
 	}
-	
+
 	return found;
-	
+
 }
 
 	 //@return an empty array, cause this enricher is supposed to be called directly and not to be used by a generic invoker
