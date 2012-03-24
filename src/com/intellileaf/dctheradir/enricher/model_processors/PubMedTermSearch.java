@@ -87,11 +87,11 @@ public class PubMedTermSearch extends ResourceEnricher
             NodeList elementNodes = getNodeList(pmids.get(y), "ArticleElements"); 
             	 
             //Obtains the Abstracts, titles, etc.
-            ArrayList<String> abst = parseXmlElements(elementNodes, "AbstractText");
+            ArrayList<String> articleAbstract = parseXmlElements(elementNodes, "AbstractText");
             ArrayList<String> articleTitle = parseXmlElements(elementNodes, "ArticleTitle");
-            ArrayList<String> pubYear = parseXmlElements(elementNodes, "Year");
-            ArrayList <String> authors = parseXmlElements(elementNodes, "AuthorList");
-            ArrayList<String> journal = parseXmlElements(elementNodes, "Journal");
+            ArrayList<String> yearCreated = parseXmlElements(elementNodes, "Year");
+            ArrayList <String> articleAuthors = parseXmlElements(elementNodes, "AuthorList");
+            ArrayList<String> articleJournal = parseXmlElements(elementNodes, "Journal");
             	 
             //Creates the resource for the pubMed document, and the property to show its an autorelated document
             Resource document = ResourceFactory.createResource(NS.DCR + "document/" + pmids.get(y));
@@ -103,12 +103,12 @@ public class PubMedTermSearch extends ResourceEnricher
             resultModel.add(document, PPT.identifier, pubMedUri + pmids.get(y));
             	 
             resultModel.add(document, PPT.title, articleTitle.get(0));
-            resultModel.add(document, PPT.date, pubYear.get(0));
-            resultModel.add(document, PPT.description, abst.get(0));
-            resultModel.add(document, PPT.source, journal.get(0));
+            resultModel.add(document, PPT.date, yearCreated.get(0));
+            resultModel.add(document, PPT.description, articleAbstract.get(0));
+            resultModel.add(document, PPT.source, articleJournal.get(0));
             	 
-            for(int z = 0; z < authors.size(); z++)
-            	resultModel.add(document, PPT.creator, authors.get(z));
+            for(int z = 0; z < articleAuthors.size(); z++)
+            	resultModel.add(document, PPT.creator, articleAuthors.get(z));
 
             count++;
 
