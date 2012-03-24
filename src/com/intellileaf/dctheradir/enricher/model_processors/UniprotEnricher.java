@@ -25,6 +25,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import com.intellileaf.dctheradir.enricher.NS;
+import com.intellileaf.dctheradir.enricher.PPT;
 
 /**
  * Enriches a Directory resource with annotations extracted from UniProt by doing term search.
@@ -93,10 +94,6 @@ public class UniprotEnricher extends ResourceEnricher
 		List<String> uniqueTerms = new ArrayList <String>();
 		
 		Resource dcResource = resultModel.createResource(getUri());
-		
-		//Create jena property
-
-		Property label = ResourceFactory.createProperty(NS.RDFS, "label");
 		
 		for (int i = 0; i < termLabels.size(); i++){
 			
@@ -200,11 +197,11 @@ public class UniprotEnricher extends ResourceEnricher
 			    		
 			    		if (protTriple == false){
 			    		
-			    			resultModel.add(protResource, label, pLabel);
+			    			resultModel.add(protResource, PPT.label, pLabel);
 			    			protTriple = true;
 			    		}
 			    		
-			    		resultModel.add(goResource,label,gLabel);
+			    		resultModel.add(goResource,PPT.label,gLabel);
 			    		
 			    	}
 					

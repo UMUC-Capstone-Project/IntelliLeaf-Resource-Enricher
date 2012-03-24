@@ -5,6 +5,7 @@
  */
 package com.intellileaf.dctheradir.enricher.model_processors;
 import com.intellileaf.dctheradir.enricher.NS;
+import com.intellileaf.dctheradir.enricher.PPT;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -27,8 +28,8 @@ public class PubMedTermSearch extends ResourceEnricher
 	private List<String> termLabels; //holds the parsed keywords for the DC-Thera RDF file
 	private List<String> pmids = new ArrayList<String>(); //holds the PubMed IDs
 	private Model resultModel = ModelFactory.createDefaultModel(); //resultModel for the jena model
-	private String eUtilsBase = "http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?retmax=20&db=pubmed&term=";//holds E-utils Base
-	private String eSearchBase = "http://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&retmode=xml&id=";
+	private String eSearchBase = "http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?retmax=20&db=pubmed&term=";//holds E-utils Base
+	private String eFetchBase = "http://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&retmode=xml&id=";
 	
 
 	//Retrieves the termLabels list (keywords)
@@ -66,16 +67,8 @@ public class PubMedTermSearch extends ResourceEnricher
 		resultModel.setNsPrefix("rdfs", NS.RDFS);
 		resultModel.setNsPrefix("obo", NS.obo);
 		
-		//Creates resources,Properties used in model
+		//Creates resources used in model
 		Resource dcResource = resultModel.createResource(getUri()); 
-		
-	   	Property identifier = ResourceFactory.createProperty(NS.dc, "identifier");
-	   	Property type = ResourceFactory.createProperty(NS.rdf, "type");
-	   	Property title = ResourceFactory.createProperty(NS.dc, "title");
-	   	Property creator = ResourceFactory.createProperty(NS.dc, "creator");
-	   	Property date = ResourceFactory.createProperty(NS.dc, "date");
-	   	Property description = ResourceFactory.createProperty(NS.dc, "description");
-	   	Property source = ResourceFactory.createProperty(NS.dc, "source");
 	   
 		//Obtains a NodeList for each termLabel, obtains the IdList of PubMedIDs 
 	   	for(int x = 0; x < termLabels.size(); x++)
@@ -106,16 +99,16 @@ public class PubMedTermSearch extends ResourceEnricher
             	 
             //Statements to add the resources and their relationships
             resultModel.add(dcResource, hasAutoRelatedDoc, document);
-            resultModel.add(document, type, NS.obo + "IAO_0000013"); 
-            resultModel.add(document, identifier, pubMedUri + pmids.get(y));
+            resultModel.add(document, PPT.type, NS.obo + "IAO_0000013"); 
+            resultModel.add(document, PPT.identifier, pubMedUri + pmids.get(y));
             	 
-            resultModel.add(document, title, articleTitle.get(0));
-            resultModel.add(document, date, pubYear.get(0));
-            resultModel.add(document, description, abst.get(0));
-            resultModel.add(document, source, journal.get(0));
+            resultModel.add(document, PPT.title, articleTitle.get(0));
+            resultModel.add(document, PPT.date, pubYear.get(0));
+            resultModel.add(document, PPT.description, abst.get(0));
+            resultModel.add(document, PPT.source, journal.get(0));
             	 
             for(int z = 0; z < authors.size(); z++)
-            	resultModel.add(document, creator, authors.get(z));
+            	resultModel.add(document, PPT.creator, authors.get(z));
 
             count++;
 
@@ -136,7 +129,7 @@ public class PubMedTermSearch extends ResourceEnricher
         	
             if(tag.matches("IdElements"))
             {
-                resultLink = eUtilsBase + term;
+                resultLink = eSearchBase + term;
                 
                 //parses xml file found at this URL
                 dom = db.parse(resultLink);
@@ -151,7 +144,7 @@ public class PubMedTermSearch extends ResourceEnricher
             }
             else if(tag.matches("ArticleElements"))
             {
-            	resultLink = eSearchBase + term;
+            	resultLink = eFetchBase + term;
             	
                 //parses xml file found at this URL
                 dom = db.parse(resultLink);

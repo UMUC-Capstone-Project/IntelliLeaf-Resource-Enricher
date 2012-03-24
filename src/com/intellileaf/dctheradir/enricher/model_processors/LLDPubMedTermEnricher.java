@@ -9,6 +9,8 @@ package com.intellileaf.dctheradir.enricher.model_processors;
 import com.hp.hpl.jena.rdf.model.*;
 import com.hp.hpl.jena.query.*;
 import com.intellileaf.dctheradir.enricher.NS;
+import com.intellileaf.dctheradir.enricher.PPT;
+
 import java.util.*;
 
 public class LLDPubMedTermEnricher implements KnowledgeBaseProcessor
@@ -55,8 +57,6 @@ public class LLDPubMedTermEnricher implements KnowledgeBaseProcessor
 		
 		//Creates the properties defining the related resources found in LLD and the resource for the DC-Thera resource
 		Resource dcResource = resultModel.createResource(getUri()); 
- 		Property label = ResourceFactory.createProperty(NS.RDFS, "label"); 
-		Property lldUri = ResourceFactory.createProperty(NS.owl, "samAs"); 
 		
 		for(int x = 0; x < pmids.size(); x++)
 		{	
@@ -103,11 +103,11 @@ public class LLDPubMedTermEnricher implements KnowledgeBaseProcessor
 	            	
 					//Populating the model with the relationships between LLD and the Dc-Thera resource
 					resultModel.add(dcResource, hasAutoRelatedDoc, document);
-	            	resultModel.add(document, label, termLabel);
-	            	resultModel.add(document, lldUri, lldConcept);
+	            	resultModel.add(document, PPT.label, termLabel);
+	            	resultModel.add(document, PPT.lldUri, lldConcept);
 	            	
 	            	//Populating the model with the relationships describing the LLD resource
-	            	resultModel.add(lldConcept, label, termLabel);
+	            	resultModel.add(lldConcept, PPT.label, termLabel);
 	            	
 	            	resultCount++;
 				}
