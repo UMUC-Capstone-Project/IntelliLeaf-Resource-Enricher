@@ -11,12 +11,11 @@ import com.hp.hpl.jena.query.*;
 import com.intellileaf.dctheradir.enricher.NS;
 import java.util.*;
 
-
 public class LLDPubMedTermEnricher implements KnowledgeBaseProcessor
 {
 	private Model resultModel = ModelFactory.createDefaultModel(); //initializes the model
-	private List<String> pmids; //contains the PubMed IDs
-	private String uri; //Contains the DC-Thera resource URI
+	private List<String> pmids =  new ArrayList<String>(); //contains the PubMed IDs
+	private String uri = ""; //Contains the DC-Thera resource URI
 	
 	public void setUri(String uri)
 	{
@@ -43,27 +42,26 @@ public class LLDPubMedTermEnricher implements KnowledgeBaseProcessor
 		return resultModel;
 	}
 
-
-
 	@Override
 	public void run ()
 	{
+		int autoDocCount = 1; //count for the AutoRelatedDocument_#
+		int resultCount = 0; //used in counting the results returned in each table
+		
 		//sets the prefixes for the model
 		resultModel.setNsPrefix("dcr", NS.DCR);
 		resultModel.setNsPrefix("rdfs", NS.RDFS);
 		resultModel.setNsPrefix("owl", NS.owl);
 		
-		Resource dcResource = resultModel.createResource(getUri()); //Creates the resource for the DC-Thera resource
-		
- 		Property label = ResourceFactory.createProperty(NS.RDFS, "label"); //creates the resource for the labels found in the search
-		Property lldUri = ResourceFactory.createProperty(NS.owl, "samAs"); //creates the resource for the concept returned in the search
-		
-		int count = 1;
+		//Creates the properties defining the related resources found in LLD and the resource for the DC-Thera resource
+		Resource dcResource = resultModel.createResource(getUri()); 
+ 		Property label = ResourceFactory.createProperty(NS.RDFS, "label"); 
+		Property lldUri = ResourceFactory.createProperty(NS.owl, "samAs"); 
 		
 		for(int x = 0; x < pmids.size(); x++)
 		{	
-			//Sparql Statement to retrieve data from LLD
-			String sparql1=
+			//Sparql Statement to retrieve resources from LLD
+			String sparqlQuery=
 					"PREFIX pubmed: <http://linkedlifedata.com/resource/pubmed/> " +
 					"PREFIX lifeskim: <http://linkedlifedata.com/resource/lifeskim/> " +
 					"PREFIX skos: <http://www.w3.org/2004/02/skos/core#> " +
@@ -76,40 +74,42 @@ public class LLDPubMedTermEnricher implements KnowledgeBaseProcessor
 						"";
 			
 			//Execution of the Sparql Query--Obtain results
-			Query query = QueryFactory.create(sparql1);
-			QueryExecution qexec = QueryExecutionFactory.sparqlService(
-			"http://linkedlifedata.com/sparql", query);
+			Query query = QueryFactory.create(sparqlQuery);
+			QueryExecution qexec = QueryExecutionFactory.sparqlService("http://linkedlifedata.com/sparql", query);
 			
 			ResultSet results = qexec.execSelect();
 			
+			//Creation of resources/properties to populate the model
 			Resource document = ResourceFactory.createResource(NS.DCR + "document/" + pmids.get(x)); //resource for pubMed article that was searched
-			Property hasAutoRelatedDoc = ResourceFactory.createProperty(NS.DCR, "hasAutoRelatedDocument_" + count); //resource showing that the article is an autorelatedDocument
+			Property hasAutoRelatedDoc = ResourceFactory.createProperty(NS.DCR, "hasAutoRelatedDocument_" + autoDocCount); //resource showing that the article is an autorelatedDocument
 	
 			try
 			{	
-				int resCount = 0;
+				resultCount = 0; 
 				
 				for(;results.hasNext();)
 				{	
-					if(resCount == 5){break;}
+					if(resultCount == 5){break;}//used for cutting off the number of resources returned to 5
 					
 					QuerySolution sol = results.nextSolution(); //obtains a line in the results
 					
-					RDFNode termLabel = sol.get("termLabel"); //obtains the result in the termLabel column in that line 
-					RDFNode concept = sol.get("concept"); //obtains the result in the concept column in that line
+					// Obtains the termLabel and concept from each line of the results
+					RDFNode termLabel = sol.get("termLabel");  
+					RDFNode concept = sol.get("concept"); 
 					
 					String con = concept.toString();
 					
 					Resource lldConcept = ResourceFactory.createResource(con); //Resource for the concept that was returned
 	            	
-					//Creating the model with the relationships
+					//Populating the model with the relationships between LLD and the Dc-Thera resource
 					resultModel.add(dcResource, hasAutoRelatedDoc, document);
 	            	resultModel.add(document, label, termLabel);
 	            	resultModel.add(document, lldUri, lldConcept);
 	            	
+	            	//Populating the model with the relationships describing the LLD resource
 	            	resultModel.add(lldConcept, label, termLabel);
 	            	
-	            	resCount++;
+	            	resultCount++;
 				}
 			}
 			finally
@@ -117,9 +117,10 @@ public class LLDPubMedTermEnricher implements KnowledgeBaseProcessor
 				qexec.close();
 			}
 			
-			count++;
+			autoDocCount++;
 		}
-		//resultModel.write(System.out, "TURTLE");
+
+		
 	}
 
 }

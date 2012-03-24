@@ -1,15 +1,8 @@
 package com.intellileaf.dctheradir.enricher.model_processors;
 
 
-import com.hp.hpl.jena.query.Query;
-import com.hp.hpl.jena.query.QueryExecution;
-import com.hp.hpl.jena.query.QueryExecutionFactory;
-import com.hp.hpl.jena.query.QueryFactory;
-import com.hp.hpl.jena.query.QuerySolution;
-import com.hp.hpl.jena.query.ResultSet;
-import com.hp.hpl.jena.query.ResultSetFormatter;
+import com.hp.hpl.jena.query.*;
 import com.hp.hpl.jena.rdf.model.Model;
-import com.hp.hpl.jena.rdf.model.NodeIterator;
 import com.hp.hpl.jena.rdf.model.Property;
 import com.hp.hpl.jena.rdf.model.RDFNode;
 import com.hp.hpl.jena.rdf.model.Resource;
@@ -23,8 +16,6 @@ import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.shared.JenaException;
 import com.hp.hpl.jena.util.iterator.ExtendedIterator;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
@@ -33,8 +24,6 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-
-import com.intellileaf.dctheradir.enricher.Resources;
 import com.intellileaf.dctheradir.enricher.NS;
 
 /**
@@ -51,26 +40,25 @@ public class UniprotEnricher extends ResourceEnricher
 	private Model resultModel = ModelFactory.createDefaultModel();
 	private static OntModel uniprotOnt = null;
 	
-	/**
-	 * @return the URI of the biomateral from which to pick up terms.
-	 */
+	//Returns the DC-Thera Resource URI
 	public String getUri ()
 	{
 		return uri;
 	}
-
+	
+	//Sets the DC-Thera Resource URI
 	public void setUri ( String uri )
 	{
 		this.uri = uri;
 	}
 
-	
+	//Returns the term labels parsed from the DC-Thera Resource RDF
 	public List<String> getTermLabels ()
 	{
 		return termLabels;
 	}
 	
-
+	//sets termLabels with the terms parsed from the resource RDF
 	public void setTermLabels ( List<String> termLabels )
 	{
 		this.termLabels = termLabels;
