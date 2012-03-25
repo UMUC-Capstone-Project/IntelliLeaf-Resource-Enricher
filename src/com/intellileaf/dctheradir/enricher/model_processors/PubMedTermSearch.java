@@ -76,7 +76,7 @@ public class PubMedTermSearch extends ResourceEnricher
 	   	for(int x = 0; x < termLabels.size(); x++)
 	   		getPubmedIds(termLabels.get(x));
 
-        //Loops through the "Id" nodelist, creates a NodeList for each article, obtains the Abstracts, titles, etc and adds it to the model
+        //Loops through each pubMed ID, retrieving the elements and adding them to the model
         for(int y = 0; y < pmids.size(); y++)
         {
             
@@ -89,7 +89,7 @@ public class PubMedTermSearch extends ResourceEnricher
                 ArrayList<String> articleAbstract = parseJournalArticleElements(elementNodes, "AbstractText");
                 ArrayList<String> articleTitle = parseJournalArticleElements(elementNodes, "ArticleTitle");
                 ArrayList<String> yearCreated = parseJournalArticleElements(elementNodes, "Year");
-                ArrayList <String> articleAuthors = parseJournalArticleElements(elementNodes, "AuthorList");
+                ArrayList <String> articleAuthors = parseJournalArticleElements(elementNodes, "Author");
                 ArrayList<String> articleJournal = parseJournalArticleElements(elementNodes, "Journal");
                 	 
                 //Creates the resource for the pubMed document, and the property to show its an autorelated document
@@ -112,15 +112,21 @@ public class PubMedTermSearch extends ResourceEnricher
             }
             else if(articleElement.getNodeName().matches("PubmedBookArticle"))
             {
-            	ArrayList<String> bookTitle = parseBookChapterElements(elementNodes, "Title");
+            	ArrayList<String> bookTitle = parseBookChapterElements(elementNodes, "ArticleTitle");
+            	ArrayList<String> bookAbstract = parseBookChapterElements(elementNodes, "AbstractText");
+            	ArrayList<String> bookAuthors = parseBookChapterElements(elementNodes, "Author");
             	
                 //Creates the resource for the pubMed document, and the property to show its an autorelated document
                 Resource document = ResourceFactory.createResource(NS.DCR + "document/" + pmids.get(y));
                 Property hasAutoRelatedDoc = ResourceFactory.createProperty(NS.DCR, "hasAutoRelatedDocument_" + count);
                 
                 resultModel.add(dcResource, hasAutoRelatedDoc, document);
-                resultModel.add(document, PPT.type, NS.obo + "IAO_0000013");
+                resultModel.add(document, PPT.type, NS.obo + "IAO_0000311");
                 resultModel.add(document, PPT.title, bookTitle.get(0));
+                resultModel.add(document, PPT.description, bookAbstract.get(0));
+                
+                for(int z = 0; z < bookAuthors.size(); z++)
+                	resultModel.add(document, PPT.creator, bookAuthors.get(z));
             }
             	 
 
@@ -223,20 +229,43 @@ public class PubMedTermSearch extends ResourceEnricher
         return nodeList;
 	}
 	
-	
+	//Parses out the elements of a Book Chapter
 	public ArrayList<String> parseBookChapterElements(NodeList nl, String tagName)
 	{
 		ArrayList<String> results = new ArrayList<String>();
 		
 		try
 		{
-			if(tagName.matches("Title"))
+			if(tagName.matches("Author"))
+			{
+                //Within the IdLists, creates a nodeList of all the Id tags
+				Element elId = (Element)nl.item(0);
+               NodeList nl2 = elId.getElementsByTagName("AuthorList");
+               
+               Element el2 = (Element)nl2.item(0);
+               NodeList nl3 = el2.getElementsByTagName(tagName);
+               
+               
+               for(int x = 0; x < nl3.getLength(); x++)
+               {
+               	Element el3 = (Element)nl3.item(x);
+               	
+               	NodeList nl4 = el3.getElementsByTagName("LastName");
+               	Element el4 = (Element)nl4.item(0);
+               	
+               	NodeList nl5 = el3.getElementsByTagName("ForeName");
+               	Element el5 = (Element)nl5.item(0);
+               	
+               	results.add(el4.getFirstChild().getNodeValue() + ", " + el5.getFirstChild().getNodeValue());
+               }
+			}
+			else
 			{
 				Element bTitleElement = (Element)nl.item(0);
-				
-				NodeList bTitleList = bTitleElement.getElementsByTagName("ArticleTitle");
+					
+				NodeList bTitleList = bTitleElement.getElementsByTagName(tagName);
 				Element bTitleElement2 = (Element)bTitleList.item(0);
-				
+					
 				results.add(bTitleElement2.getFirstChild().getNodeValue());
 			}
 		}
@@ -245,10 +274,12 @@ public class PubMedTermSearch extends ResourceEnricher
         	results.add("");
         }
 		
+		
 		return results;
 	}
 
-	//parses out elements of a nodeList
+	
+	//parses out elements of a JournalArticle 
 	public ArrayList<String> parseJournalArticleElements(NodeList nl, String tagName)
 	{
 
@@ -256,24 +287,8 @@ public class PubMedTermSearch extends ResourceEnricher
 
         try 
         {
-        	if(tagName.matches("IdList"))
-        	{
-                
-                for(int x = 0; x < nl.getLength(); x++)
-                {
-                	Element el3 = (Element)nl.item(x);
-                	
-                	String id = el3.getFirstChild().getNodeValue();
-                	
-                	if(checkDuplicates(id))
-                		continue;
-                	else
-                		results.add(id);
-                }
-                
-                
-        	}
-        	else if(tagName.matches("Year"))
+
+        	if(tagName.matches("Year"))
             {
                 Element elId = (Element)nl.item(0);
                 NodeList nl2 = elId.getElementsByTagName("DateCreated");
@@ -284,15 +299,15 @@ public class PubMedTermSearch extends ResourceEnricher
                 
             	results.add(el3.getFirstChild().getNodeValue());
             }
-            else if(tagName.matches("AuthorList"))
+            else if(tagName.matches("Author"))
             {
                 
                  //Within the IdLists, creates a nodeList of all the Id tags
             	Element elId = (Element)nl.item(0);
-                NodeList nl2 = elId.getElementsByTagName(tagName);
+                NodeList nl2 = elId.getElementsByTagName("AuthorList");
                 
                 Element el2 = (Element)nl2.item(0);
-                NodeList nl3 = el2.getElementsByTagName("Author");
+                NodeList nl3 = el2.getElementsByTagName(tagName);
                 
                 
                 for(int x = 0; x < nl3.getLength(); x++)
@@ -340,6 +355,7 @@ public class PubMedTermSearch extends ResourceEnricher
 
 	}
 
+	
 //Checks the ID to see if it already exists in the PubMed ID list
 public boolean checkDuplicates(String pId)
 {
