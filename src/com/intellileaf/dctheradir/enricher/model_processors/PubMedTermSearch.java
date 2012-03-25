@@ -76,9 +76,6 @@ public class PubMedTermSearch extends ResourceEnricher
 	   	for(int x = 0; x < termLabels.size(); x++)
 	   		getPubmedIds(termLabels.get(x));
 
-	   	System.out.println(pmids.size());
-	   	for(String id: pmids)
-	   		System.out.println(id);
         //Loops through the "Id" nodelist, creates a NodeList for each article, obtains the Abstracts, titles, etc and adds it to the model
         for(int y = 0; y < pmids.size(); y++)
         {
