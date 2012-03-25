@@ -21,6 +21,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
+import com.hp.hpl.jena.graph.Node;
 import com.hp.hpl.jena.rdf.model.*;
 
 
@@ -73,88 +74,103 @@ public class PubMedTermSearch extends ResourceEnricher
 
 		//Obtains a NodeList for each termLabel, obtains the IdList of PubMedIDs 
 	   	for(int x = 0; x < termLabels.size(); x++)
-	    {
+	   		getPubmedIds(termLabels.get(x));
 
-	   		NodeList idNodes = getNodeList(termLabels.get(x), "IdElements");
-
-	   		pmids.addAll(parseXmlElements(idNodes, "IdList"));
-
-	    }
-
+	   	System.out.println(pmids.size());
+	   	for(String id: pmids)
+	   		System.out.println(id);
         //Loops through the "Id" nodelist, creates a NodeList for each article, obtains the Abstracts, titles, etc and adds it to the model
         for(int y = 0; y < pmids.size(); y++)
         {
             
-            NodeList elementNodes = getNodeList(pmids.get(y), "ArticleElements"); 
+            NodeList elementNodes = getArticleNodeList(pmids.get(y));
+            Element articleElement = (Element)elementNodes.item(0);
+            
+            if(articleElement.getNodeName().matches("PubmedArticle"))
+            {
+                //Obtains the Abstracts, titles, etc.
+                ArrayList<String> articleAbstract = parseJournalArticleElements(elementNodes, "AbstractText");
+                ArrayList<String> articleTitle = parseJournalArticleElements(elementNodes, "ArticleTitle");
+                ArrayList<String> yearCreated = parseJournalArticleElements(elementNodes, "Year");
+                ArrayList <String> articleAuthors = parseJournalArticleElements(elementNodes, "AuthorList");
+                ArrayList<String> articleJournal = parseJournalArticleElements(elementNodes, "Journal");
+                	 
+                //Creates the resource for the pubMed document, and the property to show its an autorelated document
+                Resource document = ResourceFactory.createResource(NS.DCR + "document/" + pmids.get(y));
+                Property hasAutoRelatedDoc = ResourceFactory.createProperty(NS.DCR, "hasAutoRelatedDocument_" + count);
+                	 
+                //Statements to add the resources and their relationships
+                resultModel.add(dcResource, hasAutoRelatedDoc, document);
+                resultModel.add(document, PPT.type, NS.obo + "IAO_0000013"); 
+                resultModel.add(document, PPT.identifier, pubMedUri + pmids.get(y));
+                	 
+                resultModel.add(document, PPT.title, articleTitle.get(0));
+                resultModel.add(document, PPT.date, yearCreated.get(0));
+                resultModel.add(document, PPT.description, articleAbstract.get(0));
+                resultModel.add(document, PPT.source, articleJournal.get(0));
+                	 
+                for(int z = 0; z < articleAuthors.size(); z++)
+                	resultModel.add(document, PPT.creator, articleAuthors.get(z));
+                
+            }
+            else if(articleElement.getNodeName().matches("PubmedBookArticle"))
+            {
+            	ArrayList<String> bookTitle = parseBookChapterElements(elementNodes, "Title");
+            	
+                //Creates the resource for the pubMed document, and the property to show its an autorelated document
+                Resource document = ResourceFactory.createResource(NS.DCR + "document/" + pmids.get(y));
+                Property hasAutoRelatedDoc = ResourceFactory.createProperty(NS.DCR, "hasAutoRelatedDocument_" + count);
+                
+                resultModel.add(dcResource, hasAutoRelatedDoc, document);
+                resultModel.add(document, PPT.type, NS.obo + "IAO_0000013");
+                resultModel.add(document, PPT.title, bookTitle.get(0));
+            }
             	 
-            //Obtains the Abstracts, titles, etc.
-            ArrayList<String> articleAbstract = parseXmlElements(elementNodes, "AbstractText");
-            ArrayList<String> articleTitle = parseXmlElements(elementNodes, "ArticleTitle");
-            ArrayList<String> yearCreated = parseXmlElements(elementNodes, "Year");
-            ArrayList <String> articleAuthors = parseXmlElements(elementNodes, "AuthorList");
-            ArrayList<String> articleJournal = parseXmlElements(elementNodes, "Journal");
-            	 
-            //Creates the resource for the pubMed document, and the property to show its an autorelated document
-            Resource document = ResourceFactory.createResource(NS.DCR + "document/" + pmids.get(y));
-            Property hasAutoRelatedDoc = ResourceFactory.createProperty(NS.DCR, "hasAutoRelatedDocument_" + count);
-            	 
-            //Statements to add the resources and their relationships
-            resultModel.add(dcResource, hasAutoRelatedDoc, document);
-            resultModel.add(document, PPT.type, NS.obo + "IAO_0000013"); 
-            resultModel.add(document, PPT.identifier, pubMedUri + pmids.get(y));
-            	 
-            resultModel.add(document, PPT.title, articleTitle.get(0));
-            resultModel.add(document, PPT.date, yearCreated.get(0));
-            resultModel.add(document, PPT.description, articleAbstract.get(0));
-            resultModel.add(document, PPT.source, articleJournal.get(0));
-            	 
-            for(int z = 0; z < articleAuthors.size(); z++)
-            	resultModel.add(document, PPT.creator, articleAuthors.get(z));
+
 
             count++;
 
         }
 	}
-
-	//Called to retrieve the nodeList containing the PubMed IDs
-	public NodeList getNodeList(String term, String tag)
+	
+	public void getPubmedIds(String term)
 	{
 		String resultLink = ""; // holds the result link
 		Document dom = null;
 		NodeList nodeList = null;
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         
-        try 
+        try
         {
         	DocumentBuilder db = dbf.newDocumentBuilder();
         	
-            if(tag.matches("IdElements"))
-            {
-                resultLink = eSearchBase + term;
-                
-                //parses xml file found at this URL
-                dom = db.parse(resultLink);
-                
-                //Creates element of xml file, then creates a node lists of all "IdLists" in file
-                Element Ele = dom.getDocumentElement();
-                NodeList nl = Ele.getElementsByTagName("IdList");
-                      
-                //Within the IdLists, creates a nodeList of all the Id tags
-                Element elIdList = (Element)nl.item(0);
-                nodeList  = elIdList.getElementsByTagName("Id");
-            }
-            else if(tag.matches("ArticleElements"))
-            {
-            	resultLink = eFetchBase + term;
-            	
-                //parses xml file found at this URL
-                dom = db.parse(resultLink);
-            	
-        	    Element Ele = dom.getDocumentElement();
-        	    nodeList = Ele.getElementsByTagName("PubmedArticle");
-            }
+            resultLink = eSearchBase + term;
+            
+            //parses xml file found at this URL
+            dom = db.parse(resultLink);
+            
+            //Creates element of xml file, then creates a node lists of all "IdLists" in file
+            Element Ele = dom.getDocumentElement();
 
-        } 
+            NodeList nl = Ele.getElementsByTagName("IdList");
+                  
+            //Within the IdLists, creates a nodeList of all the Id tags
+            Element IdElement = (Element)nl.item(0);
+            NodeList idList = IdElement.getElementsByTagName("Id");
+            
+            for(int x = 0; x < idList.getLength(); x++)
+            {
+            	Element idEl2 = (Element)idList.item(x);
+            	
+            	String id = idEl2.getFirstChild().getNodeValue();
+            	
+            	if(checkDuplicates(id))
+            		continue;
+            	else
+            		pmids.add(id);
+            	
+            }
+        }
         catch (ParserConfigurationException pce) 
         {
             pce.printStackTrace();
@@ -169,11 +185,74 @@ public class PubMedTermSearch extends ResourceEnricher
         }
           
         
+	}
+	
+	public NodeList getArticleNodeList(String id)
+	{
+		String resultLink = ""; // holds the result link
+		Document dom = null;
+		NodeList nodeList = null;
+        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+        
+        try
+        {
+        	DocumentBuilder db = dbf.newDocumentBuilder();
+        	
+        	resultLink = eFetchBase + id;
+            
+            //parses xml file found at this URL
+            dom = db.parse(resultLink);
+        	
+    	    Element Ele = dom.getDocumentElement();
+    	    NodeList childNodes = Ele.getChildNodes();
+
+    	    nodeList = Ele.getElementsByTagName(childNodes.item(1).getNodeName());
+        }
+     
+	    catch (ParserConfigurationException pce) 
+	    {
+	        pce.printStackTrace();
+	    }
+	    catch (IOException ioe)
+	    {
+	        ioe.printStackTrace();
+	    }
+	    catch (SAXException se)
+	    {
+	        se.printStackTrace();
+	    }
+        
+        
         return nodeList;
+	}
+	
+	
+	public ArrayList<String> parseBookChapterElements(NodeList nl, String tagName)
+	{
+		ArrayList<String> results = new ArrayList<String>();
+		
+		try
+		{
+			if(tagName.matches("Title"))
+			{
+				Element bTitleElement = (Element)nl.item(0);
+				
+				NodeList bTitleList = bTitleElement.getElementsByTagName("ArticleTitle");
+				Element bTitleElement2 = (Element)bTitleList.item(0);
+				
+				results.add(bTitleElement2.getFirstChild().getNodeValue());
+			}
+		}
+        catch(NullPointerException npe)
+        {
+        	results.add("");
+        }
+		
+		return results;
 	}
 
 	//parses out elements of a nodeList
-	public ArrayList<String> parseXmlElements(NodeList nl, String tagName)
+	public ArrayList<String> parseJournalArticleElements(NodeList nl, String tagName)
 	{
 
 		ArrayList<String> results = new ArrayList<String>();
@@ -194,6 +273,7 @@ public class PubMedTermSearch extends ResourceEnricher
                 	else
                 		results.add(id);
                 }
+                
                 
         	}
         	else if(tagName.matches("Year"))
