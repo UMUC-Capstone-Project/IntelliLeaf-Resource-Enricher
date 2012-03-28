@@ -82,7 +82,8 @@ public class BioMaterialEnricher extends ResourceEnricher
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	    
+	   
+	    /*
 	    //Test Code
 	    Model model = ModelFactory.createDefaultModel();
 	    
@@ -97,7 +98,7 @@ public class BioMaterialEnricher extends ResourceEnricher
 	    System.out.println("------------------------------------------Merged Model Results-----------------------------------------------------");
 	    model.write(System.out, "TURTLE");
 	    //End Test Code
-		
+		*/
 		
 		
 	}

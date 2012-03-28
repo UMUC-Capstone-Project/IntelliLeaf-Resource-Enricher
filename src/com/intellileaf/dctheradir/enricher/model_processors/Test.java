@@ -1,5 +1,7 @@
 package com.intellileaf.dctheradir.enricher.model_processors;
+import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
@@ -18,7 +20,7 @@ public class Test {
 		input = args[0];}
 		
 		else{
-			input = "http://dc-research.eu/rdf/biomaterial/522";
+			input = "http://dc-research.eu/rdf/biomaterial/52";
 			System.out.println("Please enter command line argument, using example URI");
 		}
 		
@@ -42,16 +44,16 @@ public class Test {
 		
 		finalModel = Resources.getDirectoryModel ();
 		
-		/*  try{
+		  try{
 			  
-			  FileWriter fstream = new FileWriter("./rdf_output/biomaterial522.txt", false);
+			  FileWriter fstream = new FileWriter("./rdf_output/biomaterial52.rdf", false);
 			  BufferedWriter output = new BufferedWriter(fstream);
 			  finalModel.write(output);
 			  output.close();
 			  }catch (Exception e){
 			  System.err.println("Error: " + e.getMessage());
 			  }
-	*/
+	
 		
 	}
 
