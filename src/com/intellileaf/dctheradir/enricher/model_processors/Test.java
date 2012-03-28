@@ -20,7 +20,7 @@ public class Test {
 		input = args[0];}
 		
 		else{
-			input = "http://dc-research.eu/rdf/biomaterial/10";
+			input = "http://dc-research.eu/rdf/biomaterial/522";
 			System.out.println("Please enter command line argument, using example URI");
 		}
 		
