@@ -1,4 +1,6 @@
 package com.intellileaf.dctheradir.enricher.model_processors;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.FileNotFoundException;
 
 import com.hp.hpl.jena.rdf.model.Model;
@@ -41,9 +43,16 @@ public class Test {
 		
 		finalModel = Resources.getDirectoryModel ();
 		
-		//Test code
-		 //finalModel.write(System.out, "TURTLE");
-		
+		/*  try{
+			  
+			  FileWriter fstream = new FileWriter("./rdf_output/biomaterial522.txt", false);
+			  BufferedWriter output = new BufferedWriter(fstream);
+			  finalModel.write(output);
+			  output.close();
+			  }catch (Exception e){
+			  System.err.println("Error: " + e.getMessage());
+			  }
+	*/
 		
 	}
 
