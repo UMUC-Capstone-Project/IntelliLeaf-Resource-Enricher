@@ -71,7 +71,7 @@ public class PubMedTermSearch extends ResourceEnricher
 
 		//Creates resources used in model
 		Resource dcResource = resultModel.createResource(getUri()); 
-
+		
 		//Obtains a NodeList for each termLabel, obtains the IdList of PubMedIDs 
 	   	for(int x = 0; x < termLabels.size(); x++)
 	   		getPubmedIds(termLabels.get(x));
@@ -134,6 +134,7 @@ public class PubMedTermSearch extends ResourceEnricher
             count++;
 
         }
+        
 	}
 	
 	public void getPubmedIds(String term)

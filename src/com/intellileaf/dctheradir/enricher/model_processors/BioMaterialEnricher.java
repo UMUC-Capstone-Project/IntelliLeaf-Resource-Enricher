@@ -21,21 +21,25 @@ public class BioMaterialEnricher extends ResourceEnricher
 	public void run ()
 	{	
 		
-	
-
+		System.out.print("Retrieving keywords from " + getUri() + " .....");
 	    BioMaterialTermSelector bmTermSel = new BioMaterialTermSelector ();
 	    bmTermSel.setUri ( this.getUri () );
 	    bmTermSel.run();
+	    System.out.println("Complete");
 	    
+	    System.out.print("Retrieving PubMed IDs and result file elements.....");
 	    PubMedTermSearch pubMedSearch = new PubMedTermSearch ();
 	    pubMedSearch.setUri ( this.getUri () );
 	    pubMedSearch.setTermLabels ( bmTermSel.getTermLabels () );
 	    pubMedSearch.run ();
+	    System.out.println("Complete");
 	    
 	    // This contains a DCTHERA represenation of the publications found 
 	  try 
 	    {
+		  	System.out.print("Merging PubMed model.....");
 			Utils.mergeGraphs ( pubMedSearch.getResultModel () );
+			System.out.println("Complete");
 		} 
 	    catch (FileNotFoundException e) 
 	    {
@@ -43,14 +47,17 @@ public class BioMaterialEnricher extends ResourceEnricher
 			e.printStackTrace();
 		}
 	 
+		System.out.print("Retrieving LLD resources using the PubMed IDs.....");
 	    LLDPubMedTermEnricher lldEnricher = new LLDPubMedTermEnricher ();
 	    lldEnricher.setPMIDs ( pubMedSearch.getPMIDs () );
 	    lldEnricher.setUri(this.getUri());
 	    lldEnricher.run(); 
+		System.out.println("Complete");
 	    
 	    try 
-	    {
+	    {	System.out.print("Merging LLD result model.....");
 			Utils.mergeGraphs( lldEnricher.getResultModel () );
+			System.out.println("Complete");
 		} 
 	    catch (FileNotFoundException e) 
 	    {
@@ -58,7 +65,7 @@ public class BioMaterialEnricher extends ResourceEnricher
 			e.printStackTrace();
 		}
 	    
-   
+	    System.out.print("Retrieving related UniProt resources.....");
 	    UniprotEnricher uniProtEnricher = new UniprotEnricher ();
 	    uniProtEnricher.setUri ( this.getUri () );
 	    uniProtEnricher.setTermLabels ( bmTermSel.getTermLabels () );
@@ -75,7 +82,7 @@ public class BioMaterialEnricher extends ResourceEnricher
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	    /*
+	    
 	    //Test Code
 	    Model model = ModelFactory.createDefaultModel();
 	    
@@ -90,7 +97,7 @@ public class BioMaterialEnricher extends ResourceEnricher
 	    System.out.println("------------------------------------------Merged Model Results-----------------------------------------------------");
 	    model.write(System.out, "TURTLE");
 	    //End Test Code
-		*/
+		
 		
 		
 	}

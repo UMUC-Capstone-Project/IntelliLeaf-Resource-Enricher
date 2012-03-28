@@ -120,7 +120,6 @@ public class LLDPubMedTermEnricher implements KnowledgeBaseProcessor
 			autoDocCount++;
 		}
 
-		
 	}
 
 }

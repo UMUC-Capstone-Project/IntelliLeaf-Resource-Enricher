@@ -1,6 +1,4 @@
 package com.intellileaf.dctheradir.enricher.model_processors;
-import java.io.BufferedWriter;
-import java.io.FileWriter;
 import java.io.FileNotFoundException;
 
 import com.hp.hpl.jena.rdf.model.Model;
@@ -27,6 +25,7 @@ public class Test {
 		BioMaterialEnricher object = new BioMaterialEnricher();
 		boolean x;
 		object.setUri(input);
+		
 		x = object.isResourceSupported(object.getUri());
 		
 		if (x == true){

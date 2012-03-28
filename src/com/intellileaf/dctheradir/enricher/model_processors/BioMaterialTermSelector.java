@@ -53,7 +53,6 @@ public class BioMaterialTermSelector implements KnowledgeBaseProcessor
 	@Override
 	public void run ()
 	{	
-    	
     	Model model = ModelFactory.createDefaultModel();
     	model.read(uri);
     	
@@ -100,7 +99,9 @@ public class BioMaterialTermSelector implements KnowledgeBaseProcessor
 		  */
 		
 		
-		for (int i = 0; i < targetObjects.size(); i++){
+		for (int i = 0; i < targetObjects.size(); i++)
+		{
+			
 			
 			StmtIterator iter2 = model.listStatements();
 			
@@ -126,18 +127,8 @@ public class BioMaterialTermSelector implements KnowledgeBaseProcessor
 			}
 			
 		}
-		
-		for (int i = 0; i < termLabels.size(); i++){
-			
-			System.out.println("Terms: "+ (termLabels.get(i)));
-		}
-		
-		
-		
-		
 	}
-	
-
-
-	
+		
 }
+
+

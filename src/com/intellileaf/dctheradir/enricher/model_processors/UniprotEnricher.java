@@ -95,28 +95,32 @@ public class UniprotEnricher extends ResourceEnricher
 		
 		Resource dcResource = resultModel.createResource(getUri());
 		
-		for (int i = 0; i < termLabels.size(); i++){
+		for (int i = 0; i < termLabels.size(); i++)
+		{
 			
-		  //reset variables	
-		  uniqueTerms.clear();	 
+			//reset variables	
+			uniqueTerms.clear();	 
 			
-		  term = termLabels.get(i).replaceAll(" ","%20");
+			term = termLabels.get(i).replaceAll(" ","%20");
 		  
 		  
-		  if (this.organism != null){
-		 
-		  org = organism.replaceAll(" ","%20"); 	  
-			  
-		  url = "http://www.uniprot.org/uniprot/?query=" + term + "%20" + org + "&sort=score&limit=5&format=rdf"; // termLabel is eg. 'MAGE-3'
-		  uniprotOnt =  ModelFactory.createOntologyModel(OntModelSpec.OWL_DL_MEM_TRANS_INF);
-		  try{
-		  uniprotOnt.read ( url );
-		  testURI = true;
-		  }catch(JenaException e){testURI = false;}
-		
-		  }
-		  else{
-			  
+			if (this.organism != null)
+			{
+			 
+				org = organism.replaceAll(" ","%20"); 	  
+				  
+				url = "http://www.uniprot.org/uniprot/?query=" + term + "%20" + org + "&sort=score&limit=5&format=rdf"; // termLabel is eg. 'MAGE-3'
+				uniprotOnt =  ModelFactory.createOntologyModel(OntModelSpec.OWL_DL_MEM_TRANS_INF);
+				try
+				{
+					uniprotOnt.read ( url );
+					testURI = true;
+				}
+				catch(JenaException e){testURI = false;}
+			
+			}
+			else
+			{
 			  url = "http://www.uniprot.org/uniprot/?query=" + term + "&sort=score&limit=5&format=rdf"; // termLabel is eg. 'MAGE-3'
 			  uniprotOnt =  ModelFactory.createOntologyModel(OntModelSpec.OWL_DL_MEM_TRANS_INF);
 			  try{
@@ -124,28 +128,33 @@ public class UniprotEnricher extends ResourceEnricher
 			  testURI = true;
 			  }catch(JenaException e){testURI = false;}
 			  
-		  }
+			}
 		
 		
-		  if (testURI == true){
+			if (testURI == true)
+			{
 			
-		
-			ExtendedIterator<Individual> itr = uniprotOnt.listIndividuals ( uniprotOnt.getOntClass ("http://purl.uniprot.org/core/Protein"));
-			while (itr.hasNext ()){
-			
-				protTriple = false;
-				Resource onode = itr.next ();
-				String protein = onode.toString();
-				Resource protResource = resultModel.createResource(protein);
+				ExtendedIterator<Individual> itr = uniprotOnt.listIndividuals ( uniprotOnt.getOntClass ("http://purl.uniprot.org/core/Protein"));
 				
-				pcount++;
-				if (pcount < 5){
-				Property hasAutoRelatedProtein = ResourceFactory.createProperty(NS.DCR, "hasAutoRelatedProtein_"+ pcount);
-				resultModel.add(dcResource, hasAutoRelatedProtein, protResource);}
-				else{
-				Property hasAutoRelatedProtein = ResourceFactory.createProperty(NS.DCR, "hasAutoRelatedProtein_5");
-				resultModel.add(dcResource, hasAutoRelatedProtein, protResource);
-				}
+				while (itr.hasNext ())
+				{
+			
+					protTriple = false;
+					Resource onode = itr.next ();
+					String protein = onode.toString();
+					Resource protResource = resultModel.createResource(protein);
+				
+					pcount++;
+					
+					if (pcount < 5)
+					{
+						Property hasAutoRelatedProtein = ResourceFactory.createProperty(NS.DCR, "hasAutoRelatedProtein_"+ pcount);
+						resultModel.add(dcResource, hasAutoRelatedProtein, protResource);}
+					else
+					{
+						Property hasAutoRelatedProtein = ResourceFactory.createProperty(NS.DCR, "hasAutoRelatedProtein_5");
+						resultModel.add(dcResource, hasAutoRelatedProtein, protResource);
+					}
 				
 		
 				
@@ -175,37 +184,39 @@ public class UniprotEnricher extends ResourceEnricher
 		ResultSet results = qexec.execSelect();
 		tcount = 0;
 		
-				while (results.hasNext()){
+					while (results.hasNext())
+					{
 					
-					
-					QuerySolution sol = results.nextSolution();
-					RDFNode go = sol.get("term");
-					
-					String goTerm = go.toString();
-					
-					String reg1 = "http://purl.uniprot.org/go/";
-			    	Pattern pt1 = Pattern.compile(reg1);
-			    	Matcher mt1 = pt1.matcher(goTerm);
-			    	if(mt1.find()){
+						QuerySolution sol = results.nextSolution();
+						RDFNode go = sol.get("term");
+						
+						String goTerm = go.toString();
+						
+						String reg1 = "http://purl.uniprot.org/go/";
+				    	Pattern pt1 = Pattern.compile(reg1);
+				    	Matcher mt1 = pt1.matcher(goTerm);
+				    	
+				    	if(mt1.find())
+				    	{
 			    		
-			    		uniqueTerms.add(goTerm);
+				    		uniqueTerms.add(goTerm);
 			    		
-			    		Resource goResource = resultModel.createResource(goTerm);
+				    		Resource goResource = resultModel.createResource(goTerm);
 			    		
-			    		RDFNode pLabel = sol.get("fullname");
-			    		RDFNode gLabel = sol.get("termLabel");
+				    		RDFNode pLabel = sol.get("fullname");
+				    		RDFNode gLabel = sol.get("termLabel");
 			    		
-			    		if (protTriple == false){
-			    		
-			    			resultModel.add(protResource, PPT.label, pLabel);
-			    			protTriple = true;
-			    		}
+				    		if (protTriple == false)
+				    		{
+				    			resultModel.add(protResource, PPT.label, pLabel);
+				    			protTriple = true;
+				    		}
 			    		
 			    		resultModel.add(goResource,PPT.label,gLabel);
 			    		
-			    	}
+				    	}
 					
-				}
+					}
 				
 				qexec.close() ;
 				//Remove duplicates from Go Terms and preserve order
@@ -214,16 +225,19 @@ public class UniprotEnricher extends ResourceEnricher
 				
 				Iterator<String> iterGo = uniqueGo.iterator();
 				
-				while (iterGo.hasNext()){
+				while (iterGo.hasNext())
+				{
 					
 					Resource uniqueGoResource = resultModel.createResource(iterGo.next());
 					
 					tcount++;
-					if (tcount < 5){
+					if (tcount < 5)
+					{
 		    		Property hasAutoRelatedTermClass = ResourceFactory.createProperty(NS.DCR, "hasAutoRelatedTermClass_"+ tcount);
 					resultModel.add(protResource, hasAutoRelatedTermClass, uniqueGoResource);
 					}
-					else{
+					else
+					{
 					Property hasAutoRelatedTermClass = ResourceFactory.createProperty(NS.DCR, "hasAutoRelatedTermClass_5");
 					resultModel.add(protResource, hasAutoRelatedTermClass, uniqueGoResource);	
 					}
@@ -232,11 +246,10 @@ public class UniprotEnricher extends ResourceEnricher
 					
 				}		
 				
-		}
-		}
+				}
+			}
 		}
 		
-
 	}
 	/**
 	 * @return an empty array, cause this enricher is supposed to be called directly and not to be used by a generic invoker
