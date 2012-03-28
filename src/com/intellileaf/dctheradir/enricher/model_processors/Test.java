@@ -20,7 +20,7 @@ public class Test {
 		input = args[0];}
 		
 		else{
-			input = "http://dc-research.eu/rdf/biomaterial/522";
+			input = "http://dc-research.eu/rdf/biomaterial/235";
 			System.out.println("Please enter command line argument, using example URI");
 		}
 		
@@ -44,9 +44,11 @@ public class Test {
 		
 		finalModel = Resources.getDirectoryModel ();
 		
+		//Make sure that file name matches Biomaterial entered above
+		
 		  try{
 			  
-			  FileWriter fstream = new FileWriter("./rdf_output/biomaterial10.rdf", false);
+			  FileWriter fstream = new FileWriter("./rdf_output/biomaterial235.rdf", false);
 			  BufferedWriter output = new BufferedWriter(fstream);
 			  finalModel.write(output);
 			  output.close();
