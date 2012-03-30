@@ -53,12 +53,27 @@ public class Resources
 		});
 			
 		String backslash= System.getProperty("file.separator");
+		
+		/*
+		 *  for ( File owlFile: owlFiles ) {
+            log.info ( "Loading ontology: '" + owlFile.getName () );
+            String path = owlFile.getAbsolutePath ();
+            path.replaceAll(backslash,"/");
+            directoryModel.read ( "file://"+ path);
+		 */
+		
+		if (backslash.equals("/")){
 
-		for ( File owlFile: owlFiles ) {
+			for ( File owlFile: owlFiles ) {
 			log.info ( "Loading ontology: '" + owlFile.getName () );
-			String path = owlFile.getAbsolutePath ();
-			path.replaceAll(backslash,"/");
 			directoryModel.read ( "file://"+ owlFile.getAbsolutePath ());
+			}
+		}
+		else {
+			for ( File owlFile: owlFiles ) {
+				log.info ( "Loading ontology: '" + owlFile.getName () );	
+				directoryModel.read ( "file:\\"+ owlFile.getAbsolutePath ());
+			}	
 		}
 			
 		log.info ( "Ontologies loaded, now the Directory" );
