@@ -51,12 +51,14 @@ public class Resources
 				return file.getName ().toLowerCase ().endsWith ( ".owl" );
 			}
 		});
-		
-		String slash = File.separator;
+			
+		String backslash= System.getProperty("file.separator");
 
 		for ( File owlFile: owlFiles ) {
 			log.info ( "Loading ontology: '" + owlFile.getName () );
-			directoryModel.read ( "file:"+slash+slash + owlFile.getAbsolutePath ());
+			String path = owlFile.getAbsolutePath ();
+			path.replaceAll(backslash,"/");
+			directoryModel.read ( "file://"+ owlFile.getAbsolutePath ());
 		}
 			
 		log.info ( "Ontologies loaded, now the Directory" );
