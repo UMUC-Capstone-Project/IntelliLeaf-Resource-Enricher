@@ -10,6 +10,7 @@ import java.io.FileNotFoundException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import java.util.Properties;
 
 public class Resources
 {
@@ -52,7 +53,7 @@ public class Resources
 			}
 		});
 		
-		String slash = File.separator;
+		String slash = System.getProperty("file.separator");
 
 		for ( File owlFile: owlFiles ) {
 			log.info ( "Loading ontology: '" + owlFile.getName () );
