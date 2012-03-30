@@ -46,17 +46,16 @@ public class Resources
 		// Moreover, auto-import would need to remap a few invalid URIs
 		//
 		directoryModel.getDocumentManager ().setProcessImports ( false );
-		File ontoDir = new File ( "ontology" );
+		File ontoDir = new File ( "./ontology" );
 		File owlFiles[] = ontoDir.listFiles ( new FileFilter() { public boolean accept ( File file ) {
 				return file.getName ().toLowerCase ().endsWith ( ".owl" );
 			}
 		});
-		
-		String slash = File.separator;
-		
+
 		for ( File owlFile: owlFiles ) {
 			log.info ( "Loading ontology: '" + owlFile.getName () );
-			directoryModel.read ( "file:"+slash+slash + owlFile.getAbsolutePath ());
+
+			directoryModel.read ( "File:\\" + owlFile.getAbsolutePath () );
 		}
 			
 		log.info ( "Ontologies loaded, now the Directory" );
