@@ -142,7 +142,7 @@ public class UniprotEnricher extends ResourceEnricher
 				}
 				catch(NullPointerException e)
 				{
-					break;
+					continue;
 				}
 				
 				while (itr.hasNext ())
