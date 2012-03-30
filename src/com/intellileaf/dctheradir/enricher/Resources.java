@@ -54,7 +54,9 @@ public class Resources
 		
 		for ( File owlFile: owlFiles ) {
 			log.info ( "Loading ontology: '" + owlFile.getName () );
-			directoryModel.read ( "file://" + owlFile.getAbsolutePath () );
+			String path = owlFile.getAbsolutePath ();
+			path = path.replaceAll(" ","%20");
+			directoryModel.read ( "file://" + path );
 		}
 			
 		log.info ( "Ontologies loaded, now the Directory" );
