@@ -87,9 +87,9 @@ public class LLDPubMedTermEnricher implements KnowledgeBaseProcessor
 			{	
 				resultCount = 0; 
 				
-				for(;results.hasNext();)
+				while((results.hasNext())&&(resultCount < 5))
 				{	
-					if(resultCount == 5){break;}//used for cutting off the number of resources returned to 5
+					//if(resultCount == 5){break;}//used for cutting off the number of resources returned to 5
 					
 					QuerySolution sol = results.nextSolution(); //obtains a line in the results
 					
