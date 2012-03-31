@@ -94,10 +94,19 @@ public class PubMedTermSearch extends ResourceEnricher
                 	 
                 //Creates the resource for the pubMed document, and the property to show its an autorelated document
                 Resource document = ResourceFactory.createResource(NS.DCR + "document/" + pmids.get(y));
+                
+                
+                if(count < 5){
                 Property hasAutoRelatedDoc = ResourceFactory.createProperty(NS.DCR, "hasAutoRelatedDocument_" + count);
+                resultModel.add(dcResource, hasAutoRelatedDoc, document);
+                }
+                else
+                {
+                Property hasAutoRelatedDoc = ResourceFactory.createProperty(NS.DCR, "hasAutoRelatedDocument_5");
+                resultModel.add(dcResource, hasAutoRelatedDoc, document);
+                }
                 	 
                 //Statements to add the resources and their relationships
-                resultModel.add(dcResource, hasAutoRelatedDoc, document);
                 resultModel.add(document, PPT.type, NS.obo + "IAO_0000013"); 
                 resultModel.add(document, PPT.identifier, pubMedUri + pmids.get(y));
                 	 
@@ -118,9 +127,17 @@ public class PubMedTermSearch extends ResourceEnricher
             	
                 //Creates the resource for the pubMed document, and the property to show its an autorelated document
                 Resource document = ResourceFactory.createResource(NS.DCR + "document/" + pmids.get(y));
-                Property hasAutoRelatedDoc = ResourceFactory.createProperty(NS.DCR, "hasAutoRelatedDocument_" + count);
                 
-                resultModel.add(dcResource, hasAutoRelatedDoc, document);
+                if(count < 5){
+                    Property hasAutoRelatedDoc = ResourceFactory.createProperty(NS.DCR, "hasAutoRelatedDocument_" + count);
+                    resultModel.add(dcResource, hasAutoRelatedDoc, document);
+                    }
+                    else
+                    {
+                    Property hasAutoRelatedDoc = ResourceFactory.createProperty(NS.DCR, "hasAutoRelatedDocument_5");
+                    resultModel.add(dcResource, hasAutoRelatedDoc, document);
+                    }
+                
                 resultModel.add(document, PPT.type, NS.obo + "IAO_0000311");
                 resultModel.add(document, PPT.title, bookTitle.get(0));
                 resultModel.add(document, PPT.description, bookAbstract.get(0));
