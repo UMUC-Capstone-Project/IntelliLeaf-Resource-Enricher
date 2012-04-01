@@ -224,8 +224,8 @@ public class UniprotEnricher extends ResourceEnricher
 		
 					Query query = QueryFactory.create(Sparql);
 					QueryExecution qexec = QueryExecutionFactory.sparqlService("http://linkedlifedata.com/sparql", query);
-		
-					ResultSet results = qexec.execSelect();
+					ResultSet results = null; //clear out all results
+					results = qexec.execSelect();
 					tcount = 0;
 		
 					while (results.hasNext())
