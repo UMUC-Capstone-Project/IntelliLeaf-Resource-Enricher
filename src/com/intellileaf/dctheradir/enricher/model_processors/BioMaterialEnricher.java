@@ -71,18 +71,21 @@ public class BioMaterialEnricher extends ResourceEnricher
 	    uniProtEnricher.setTermLabels ( bmTermSel.getTermLabels () );
 	    uniProtEnricher.setOrganism ( bmTermSel.getOrganism () );
 	    uniProtEnricher.run();
-	   
+	    System.out.println("Complete");
 	  
 	    try 
 	    {
+	    	System.out.print("Merging UniProt result model.....");
 			Utils.mergeGraphs ( uniProtEnricher.getResultModel () );
+			System.out.println("Complete");
 		} 
 	    catch (FileNotFoundException e) 
 	    {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	   
+	    
+	    System.out.printf("Result model for %s successfully created and merged into DC-Thera model\n", getUri());
 	    
 	    //Test Code
 	    Model model = ModelFactory.createDefaultModel();

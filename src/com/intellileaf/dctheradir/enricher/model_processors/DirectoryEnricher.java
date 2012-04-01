@@ -1,4 +1,5 @@
 package com.intellileaf.dctheradir.enricher.model_processors;
+
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -7,8 +8,7 @@ import java.io.FileWriter;
 import com.hp.hpl.jena.rdf.model.Model;
 import com.intellileaf.dctheradir.enricher.Resources;
 
-//Test file to test our Code
-public class Test {
+public class DirectoryEnricher {
 
 	public static void main(String[] args) throws FileNotFoundException 
 	{
