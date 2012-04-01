@@ -87,6 +87,7 @@ public class BioMaterialEnricher extends ResourceEnricher
 	    
 	    System.out.printf("Result model for %s successfully created and merged into DC-Thera model\n", getUri());
 	    
+	    /*
 	    //Test Code
 	    Model model = ModelFactory.createDefaultModel();
 	    
@@ -101,7 +102,7 @@ public class BioMaterialEnricher extends ResourceEnricher
 	    System.out.println("------------------------------------------Merged Model Results-----------------------------------------------------");
 	    model.write(System.out, "TURTLE");
 	    //End Test Code
-		
+		*/
 		
 		
 	}
