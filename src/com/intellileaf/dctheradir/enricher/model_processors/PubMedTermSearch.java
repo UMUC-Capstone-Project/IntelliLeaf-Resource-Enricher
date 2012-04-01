@@ -8,7 +8,6 @@ import com.intellileaf.dctheradir.enricher.NS;
 import com.intellileaf.dctheradir.enricher.PPT;
 
 import java.io.IOException;
-import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,7 +20,6 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-import com.hp.hpl.jena.graph.Node;
 import com.hp.hpl.jena.rdf.model.*;
 
 
@@ -158,7 +156,6 @@ public class PubMedTermSearch extends ResourceEnricher
 	{
 		String resultLink = ""; // holds the result link
 		Document dom = null;
-		NodeList nodeList = null;
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         
         try
