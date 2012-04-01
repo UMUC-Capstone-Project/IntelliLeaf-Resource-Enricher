@@ -50,5 +50,12 @@ public class Test {
 		  catch (Exception e){
 			  e.printStackTrace ();
 			}
+		  
+		  try{
+			  	finalModel.write ( new BufferedWriter ( new FileWriter ( new File ( "./rdf_output/test_output.rdf" ) ) ) );
+				}
+			  catch (Exception e){
+				  e.printStackTrace ();
+				}
 	}
 }
