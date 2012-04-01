@@ -100,9 +100,7 @@ public class UniprotEnricher extends ResourceEnricher
 		
 		for (int i = 0; i < termLabels.size(); i++)
 		{
-			
-			//reset variables	
-			uniqueTerms.clear();	 
+			 
 			
 			term = termLabels.get(i).replaceAll(" ","%20");
 		  
@@ -172,6 +170,7 @@ public class UniprotEnricher extends ResourceEnricher
 					);
 					
 					while(riter.hasNext()){
+						
 						RDFNode link = riter.next ();
 						
 						
@@ -224,13 +223,15 @@ public class UniprotEnricher extends ResourceEnricher
 		
 					Query query = QueryFactory.create(Sparql);
 					QueryExecution qexec = QueryExecutionFactory.sparqlService("http://linkedlifedata.com/sparql", query);
-					ResultSet results = null; //clear out all results
-					results = qexec.execSelect();
+					ResultSet results = qexec.execSelect();
 					tcount = 0;
 		
 					while (results.hasNext())
 					{
 					
+						//reset variables	
+						uniqueTerms.clear();	
+						
 						QuerySolution sol = results.nextSolution();
 						RDFNode go = sol.get("term");
 						
