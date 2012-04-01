@@ -1,21 +1,6 @@
 package com.intellileaf.dctheradir.enricher.model_processors;
 
 
-import com.hp.hpl.jena.query.*;
-import com.hp.hpl.jena.rdf.model.Model;
-import com.hp.hpl.jena.rdf.model.Property;
-import com.hp.hpl.jena.rdf.model.RDFNode;
-import com.hp.hpl.jena.rdf.model.Resource;
-import com.hp.hpl.jena.rdf.model.ResourceFactory;
-
-
-import com.hp.hpl.jena.ontology.Individual;
-import com.hp.hpl.jena.ontology.OntModel;
-import com.hp.hpl.jena.ontology.OntModelSpec;
-import com.hp.hpl.jena.rdf.model.ModelFactory;
-import com.hp.hpl.jena.shared.JenaException;
-import com.hp.hpl.jena.util.iterator.ExtendedIterator;
-
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
@@ -24,6 +9,22 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import com.hp.hpl.jena.ontology.OntModel;
+import com.hp.hpl.jena.ontology.OntModelSpec;
+import com.hp.hpl.jena.query.Query;
+import com.hp.hpl.jena.query.QueryExecution;
+import com.hp.hpl.jena.query.QueryExecutionFactory;
+import com.hp.hpl.jena.query.QueryFactory;
+import com.hp.hpl.jena.query.QuerySolution;
+import com.hp.hpl.jena.query.ResultSet;
+import com.hp.hpl.jena.rdf.model.Model;
+import com.hp.hpl.jena.rdf.model.ModelFactory;
+import com.hp.hpl.jena.rdf.model.Property;
+import com.hp.hpl.jena.rdf.model.RDFNode;
+import com.hp.hpl.jena.rdf.model.ResIterator;
+import com.hp.hpl.jena.rdf.model.Resource;
+import com.hp.hpl.jena.rdf.model.ResourceFactory;
+import com.hp.hpl.jena.shared.JenaException;
 import com.intellileaf.dctheradir.enricher.NS;
 import com.intellileaf.dctheradir.enricher.PPT;
 
@@ -133,25 +134,18 @@ public class UniprotEnricher extends ResourceEnricher
 		
 			if (testURI == true)
 			{
+				// The UniProt web service doesn't define Protein as a class and the inference type we use here is not able
+				// to entail that Protein is a class from <s, rdf:type, Protein>. Therefore, listindividuals won't work.
+				ResIterator itr = uniprotOnt.listResourcesWithProperty ( 
+					uniprotOnt.getProperty	( NS.rdf + "type" ), 
+					uniprotOnt.getResource ( "http://purl.uniprot.org/core/Protein" ) 
+				);
 				
-				ExtendedIterator<Individual> itr; 
-				
-				try
-				{
-				itr = uniprotOnt.listIndividuals ( uniprotOnt.getOntClass ("http://purl.uniprot.org/core/Protein"));
-				}
-				catch(NullPointerException e)
-				{
-					continue;
-				}
-				
-				while (itr.hasNext ())
+				if ( itr != null ) while (itr.hasNext ())
 				{
 			
 					protTriple = false;
-					Resource onode = itr.next ();
-					String protein = onode.toString();
-					Resource protResource = resultModel.createResource(protein);
+					Resource protResource = itr.next ();
 				
 					pcount++;
 					
@@ -179,7 +173,7 @@ public class UniprotEnricher extends ResourceEnricher
 
 				"SELECT distinct ?fullname ?term ?termLabel " +
 				"WHERE { " +
-					   "<"+onode.toString()+">" +
+					   "<"+protResource.toString()+">" +
 					   "  uniprot:classifiedWith ?term;" +
 					   "  uniprot:recommendedName ?name." +
 					   "  ?name uniprot:fullName ?fullname." +
