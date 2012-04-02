@@ -109,6 +109,7 @@ public class PubMedTermSearch extends ResourceEnricher
                 resultModel.add(document, PPT.identifier, pubMedUri + pmids.get(y));
                 	 
                 resultModel.add(document, PPT.title, articleTitle.get(0));
+                resultModel.add(document, PPT.label, articleTitle.get(0));
                 resultModel.add(document, PPT.date, yearCreated.get(0));
                 resultModel.add(document, PPT.description, articleAbstract.get(0));
                 resultModel.add(document, PPT.source, articleJournal.get(0));
