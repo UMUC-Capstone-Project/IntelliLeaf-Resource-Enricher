@@ -1,8 +1,8 @@
 package com.intellileaf.dctheradir.enricher.model_processors;
 import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileWriter;
+import java.io.FileOutputStream;
+import java.io.OutputStreamWriter;
 
 import com.hp.hpl.jena.rdf.model.Model;
 import com.intellileaf.dctheradir.enricher.Resources;
@@ -17,12 +17,17 @@ public class Test {
 		if(args.length > 0)
 			inputs = args;
 		else{
+			/*
+			 * WARNING: You've to hand the JVM enough memory to run this. 
+			 * In Eclipse: Run Configurations -> Test -> VM arguments: -Xms512m -Xmx2G -XX:PermSize=128m -XX:MaxPermSize=1G
+			 * Via command line: java -Xms512M ... Test
+			 */
 			inputs = new String[] { 
 				"http://dc-research.eu/rdf/biomaterial/522", 
-				"http://dc-research.eu/rdf/biomaterial/120" /*
+				"http://dc-research.eu/rdf/biomaterial/120", 
 				"http://dc-research.eu/rdf/biomaterial/508",
 				"http://dc-research.eu/rdf/biomaterial/526",
-				"http://dc-research.eu/rdf/biomaterial/61" */				 
+				"http://dc-research.eu/rdf/biomaterial/61"				 
 			};
 		}
 		
@@ -44,11 +49,20 @@ public class Test {
 		
 		//Make sure that file name matches Biomaterial entered above
 		
-		  try{
-		  	finalModel.write ( new BufferedWriter ( new FileWriter ( new File ( "./rdf_output/test_output.n3" ) ) ), "N3" );
-			}
-		  catch (Exception e){
-			  e.printStackTrace ();
-			}
-	}
+		String outPath = "/Users/brandizi/Documents/Work/IntelliLeaf/capstone_project/dcthera_enrich_relfinder/Joseki-3.4.4/dcthera/dcthera_enriched.rdf";
+		//String outPath = "./rdf_output/test_output.rdf";
+		  
+	  try{
+	  	finalModel.write ( 
+	  		new BufferedWriter ( 
+	  			new OutputStreamWriter ( new FileOutputStream ( outPath ), "UTF-8" )
+	  		), 
+	  		"RDF/XML-ABBREV"
+	  	);
+		}
+	  catch (Exception e){
+		  e.printStackTrace ();
+		}
+	  
+	} // main
 }
