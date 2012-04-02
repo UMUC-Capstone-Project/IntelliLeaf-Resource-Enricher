@@ -169,6 +169,13 @@ dcr:dctheradir_503
       dc:source "Veterinary immunology and immunopathology" ;
       dc:title "In vitro assessment of the feline cell-mediated immune response against feline panleukopeniavirus, calicivirus and felid herpesvirus 1 using 5-bromo-2'-deoxyuridine labeling." .
 
+CL:CL_0000229
+      a       owl:Class ;
+      rdfs:comment "inserted by MG - was in the OBI pre-release version but missing in the first official OBI release"^^xsd:string ;
+      rdfs:label "obsolete_lymphoblast"@en ;
+      rdfs:subClassOf oboInOwl:ObsoleteClass ;
+      dcr:replaced_by "http://purl.org/obo/owl/UBERON#UBERON_0000338"^^xsd:string .
+
 <http://dc-research.eu/rdf/biomaterial/21>
       a       dcr:dctheradir_453 , GO:GO_0070062 ;
       rdfs:comment "Exosomes bearing functional MHC-peptide complexes have been shown to be presented at the surface of recipient DCs as intact \"antigen-presenting microdomains\", without the need for internalisation and reprocessing by the DC." ;
@@ -176,13 +183,6 @@ dcr:dctheradir_503
       dcr:hasKnowledgeable
               <http://dc-research.eu/rdf/person/39> ;
       dcr:isBioMatUsedIn <http://dc-research.eu/rdf/dataset/12> .
-
-CL:CL_0000229
-      a       owl:Class ;
-      rdfs:comment "inserted by MG - was in the OBI pre-release version but missing in the first official OBI release"^^xsd:string ;
-      rdfs:label "obsolete_lymphoblast"@en ;
-      rdfs:subClassOf oboInOwl:ObsoleteClass ;
-      dcr:replaced_by "http://purl.org/obo/owl/UBERON#UBERON_0000338"^^xsd:string .
 
 dcr:dctheradir_174
       a       owl:Class ;
@@ -999,12 +999,6 @@ dcr:dctheradir_238
       rdfs:subClassOf oboInOwl:ObsoleteClass ;
       dcr:replaced_by "http://purl.org/obo/owl/DC_CL#DC_CL_0000095"^^xsd:string .
 
-<http://purl.uniprot.org/uniprot/O82337>
-      rdfs:label "Arabinogalactan peptide 16" ;
-      rdfs:seeAlso <http://purl.uniprot.org/arrayexpress/O82337> , <http://purl.uniprot.org/kegg/ath:AT2G46330> ;
-      dcr:hasAutoRelatedTermClass_1
-              <http://purl.uniprot.org/go/0031225> .
-
 ncbitax:NCBITaxon_70803
       a       owl:Class ;
       rdfs:label "Salmonella minnesota"^^xsd:string ;
@@ -1023,9 +1017,6 @@ IMR:IMR_0701457
       dcr:hasKnowledgeable
               <http://dc-research.eu/rdf/person/21> , <http://dc-research.eu/rdf/person/23> ;
       dcr:tool_used_in <http://dc-research.eu/rdf/dataset/97> .
-
-<http://purl.uniprot.org/go/0060338>
-      rdfs:label "regulation of type I interferon-mediated signalling pathway" , "regulation of type I interferon-mediated signaling pathway" .
 
 DC_CL:DC_CL_0000088
       a       owl:Class ;
@@ -1405,9 +1396,6 @@ dcr:dctheradir_236
       dcr:hasKnowledgeable
               <http://dc-research.eu/rdf/person/61> ;
       dcr:uses_tool <http://dc-research.eu/rdf/dataset/31> .
-
-<http://purl.uniprot.org/go/0060337>
-      rdfs:label "type I interferon-mediated signalling pathway" , "type I interferon-mediated signaling pathway" .
 
 <http://dc-research.eu#document/8600639>
       a       "http://purl.obolibrary.org/obo/IAO_0000013" ;
@@ -1895,9 +1883,6 @@ IMR:IMR_0000151
               ] ;
       dcr:hasExactSynonym "T-cell receptor"^^xsd:string , "TCR family"^^xsd:string , "T-cell receptors"^^xsd:string , "T cell receptors"^^xsd:string , "T cell receptor family"^^xsd:string , "TCR"^^xsd:string .
 
-<http://purl.uniprot.org/go/0006919>
-      rdfs:label "activation of caspase activity" , "caspase activation" .
-
 <http://purl.uniprot.org/go/0051303>
       rdfs:label "establishment of chromosome localization" , "establishment of chromosome localisation" , "chromosome positioning" .
 
@@ -2243,6 +2228,13 @@ dcr:dctheradir_654
       dcr:isBiomaterialOutputOf
               <http://dc-research.eu/rdf/protocolstep/36> .
 
+<http://dc-research.eu/rdf/biomaterial/166>
+      a       dcr:dctheradir_453 , dcr:dctheradir_356 ;
+      rdfs:comment "This vaccine is composed of DC pulsed with 2 to 3 MAA-derived peptides (combinations of MAGE-3.A2, MAGE-C2.A2 or Na17.A2). It was tested in a trial in small cohorts of patients (3-9) who were vaccinated with differently composed DC-vaccines." ;
+      rdfs:label "MAA-derived peptide pulsed DC vaccine" ;
+      dcr:hasKnowledgeable
+              <http://dc-research.eu/rdf/person/83> .
+
 <http://dc-research.eu#document/22455798>
       a       "http://purl.obolibrary.org/obo/IAO_0000013" ;
       rdfs:label "Protective effects of ulinastatin on pulmonary damage in rats following scald injury." ;
@@ -2252,13 +2244,6 @@ dcr:dctheradir_654
       dc:identifier "http://www.ncbi.nlm.nih.gov/pubmed/22455798" ;
       dc:source "Burns : journal of the International Society for Burn Injuries" ;
       dc:title "Protective effects of ulinastatin on pulmonary damage in rats following scald injury." .
-
-<http://dc-research.eu/rdf/biomaterial/166>
-      a       dcr:dctheradir_453 , dcr:dctheradir_356 ;
-      rdfs:comment "This vaccine is composed of DC pulsed with 2 to 3 MAA-derived peptides (combinations of MAGE-3.A2, MAGE-C2.A2 or Na17.A2). It was tested in a trial in small cohorts of patients (3-9) who were vaccinated with differently composed DC-vaccines." ;
-      rdfs:label "MAA-derived peptide pulsed DC vaccine" ;
-      dcr:hasKnowledgeable
-              <http://dc-research.eu/rdf/person/83> .
 
 <http://purl.obofoundry.org/obo/OBI_0400008>
       rdfs:label "flow cytometer analyzer" .
@@ -2820,13 +2805,13 @@ dcr:dctheradir_392
       rdfs:subClassOf FMA:FMA_63887 ;
       rdfs:subClassOf
               [ a       owl:Restriction ;
-                owl:onProperty OBI:OBI_0000306 ;
-                owl:someValuesFrom GO:GO_0004872
+                owl:onProperty OBI:OBI_0000316 ;
+                owl:someValuesFrom dcr:dctheradir_606
               ] ;
       rdfs:subClassOf
               [ a       owl:Restriction ;
-                owl:onProperty OBI:OBI_0000316 ;
-                owl:someValuesFrom dcr:dctheradir_606
+                owl:onProperty OBI:OBI_0000306 ;
+                owl:someValuesFrom GO:GO_0004872
               ] ;
       dcr:hasExactSynonym "CLEC2C"^^xsd:string , "CD-69"^^xsd:string .
 
@@ -3656,16 +3641,6 @@ dcr:dctheradir_723
               <http://dc-research.eu/rdf/person/39> ;
       dcr:isBioMatUsedIn <http://dc-research.eu/rdf/dataset/49> .
 
-<http://dc-research.eu#document/22457280>
-      a       "http://purl.obolibrary.org/obo/IAO_0000013" ;
-      rdfs:label "Early and long lasting alteration of Effector CD45RA-Foxp3high Regulatory T cells homeostasis during HIV infection." ;
-      dc:creator "Lambotte, Olivier" , "Bourgeois, Christine" , "Venet, Alain" , "Girault, Isabelle" , "Sinet, Martine" , "Lecuroux, Camille" , "Goujard, Cécile" , "Simonetta, Federico" ;
-      dc:date "2012" ;
-      dc:description "Regulatory T cells (Treg) quantification in HIV infection remains ill defined due to the lack of reliable specific markers to identify human Treg and the diversity of clinical stages of HIV infection. Employing a recently described Treg identification strategy based on CD45RA and FOXP3 expression, we performed here an extensive quantification of total, naïve (CD45RA+ Foxp3low) and effector (CD45RA- Foxp3hi) Treg in different contexts of HIV infection: primary HIV infection, long term viremic patients, HAART treated aviremic patients and HIV controllers. We showed that, whereas total Treg percentages were mildly affected by HIV infection, Treg absolute numbers were significantly reduced in all groups studied. We demonstrated that whereas naïve Treg numbers were essentially preserved, effector Treg were consistently affected during HIV infection. Finally we demonstrated that effector but not total or naïve Treg numbers negatively correlated with the magnitude of HIV specific CD8 T cell responses." ;
-      dc:identifier "http://www.ncbi.nlm.nih.gov/pubmed/22457280" ;
-      dc:source "The Journal of infectious diseases" ;
-      dc:title "Early and long lasting alteration of Effector CD45RA-Foxp3high Regulatory T cells homeostasis during HIV infection." .
-
 <http://dc-research.eu#document/19692638>
       a       "http://purl.obolibrary.org/obo/IAO_0000013" ;
       rdfs:label "Participation Type - origin" , "Specimen Source Codes - tumor" , "Effect, Appearance" , "Malignant Neoplasms" , "Tumor-derived microvesicles promote regulatory T cell expansion and induce apoptosis in tumor-reactive activated CD8+ T lymphocytes." , "Induce (action)" ;
@@ -3676,6 +3651,16 @@ dcr:dctheradir_723
       dc:source "Journal of immunology (Baltimore, Md. : 1950)" ;
       dc:title "Tumor-derived microvesicles promote regulatory T cell expansion and induce apoptosis in tumor-reactive activated CD8+ T lymphocytes." ;
       owl:samAs <http://linkedlifedata.com/resource/umls/id/C2348382> , <http://linkedlifedata.com/resource/umls/id/C0205263> , <http://linkedlifedata.com/resource/umls/id/C0006826> , <http://linkedlifedata.com/resource/umls/id/C1550512> , <http://linkedlifedata.com/resource/umls/id/C1578706> .
+
+<http://dc-research.eu#document/22457280>
+      a       "http://purl.obolibrary.org/obo/IAO_0000013" ;
+      rdfs:label "Early and long lasting alteration of Effector CD45RA-Foxp3high Regulatory T cells homeostasis during HIV infection." ;
+      dc:creator "Lambotte, Olivier" , "Bourgeois, Christine" , "Venet, Alain" , "Girault, Isabelle" , "Sinet, Martine" , "Lecuroux, Camille" , "Goujard, Cécile" , "Simonetta, Federico" ;
+      dc:date "2012" ;
+      dc:description "Regulatory T cells (Treg) quantification in HIV infection remains ill defined due to the lack of reliable specific markers to identify human Treg and the diversity of clinical stages of HIV infection. Employing a recently described Treg identification strategy based on CD45RA and FOXP3 expression, we performed here an extensive quantification of total, naïve (CD45RA+ Foxp3low) and effector (CD45RA- Foxp3hi) Treg in different contexts of HIV infection: primary HIV infection, long term viremic patients, HAART treated aviremic patients and HIV controllers. We showed that, whereas total Treg percentages were mildly affected by HIV infection, Treg absolute numbers were significantly reduced in all groups studied. We demonstrated that whereas naïve Treg numbers were essentially preserved, effector Treg were consistently affected during HIV infection. Finally we demonstrated that effector but not total or naïve Treg numbers negatively correlated with the magnitude of HIV specific CD8 T cell responses." ;
+      dc:identifier "http://www.ncbi.nlm.nih.gov/pubmed/22457280" ;
+      dc:source "The Journal of infectious diseases" ;
+      dc:title "Early and long lasting alteration of Effector CD45RA-Foxp3high Regulatory T cells homeostasis during HIV infection." .
 
 IMR:IMR_0700262
       a       owl:Class ;
@@ -4077,12 +4062,6 @@ OBI:IAO_0000442
       dcr:hasBiomaterialOutput
               <http://dc-research.eu/rdf/biomaterial/191> .
 
-<http://purl.uniprot.org/uniprot/P48551>
-      rdfs:label "Interferon alpha/beta receptor 2" ;
-      rdfs:seeAlso <http://purl.uniprot.org/arrayexpress/P48551> , <http://purl.uniprot.org/reactome/REACT_6900> , <http://purl.uniprot.org/pathway-interaction-db/telomerasepathway> , <http://purl.uniprot.org/kegg/hsa:3455> , <http://purl.uniprot.org/pathway-interaction-db/cd8tcrdownstreampathway> ;
-      dcr:hasAutoRelatedTermClass_1
-              <http://purl.uniprot.org/go/0060338> .
-
 <http://dc-research.eu/rdf/biomaterial/390>
       a       dcr:dctheradir_453 , dcr:dctheradir_195 ;
       rdfs:comment """It was shown in mice that both IL-10 as well as IL-12 production is dependent on the signalling adaptor molecules either MyD88 or TRIF, respectively in response to CpG, LPS or PolyIC.
@@ -4200,7 +4179,7 @@ IMR:IMR_0700345
                 owl:onProperty OBI:OBI_0000306 ;
                 owl:someValuesFrom GO:GO_0004872
               ] ;
-      dcr:hasExactSynonym "PADGEM"^^xsd:string , "GRMP"^^xsd:string , "CD62P antigen"^^xsd:string , "LECAM3"^^xsd:string , "PSEL"^^xsd:string , "GMP-140"^^xsd:string , "selectin P (granule membrane protein 140kDa"^^xsd:string , "GMRP"^^xsd:string , "SELP"^^xsd:string , "Leukocyte-endothelial cell adhesion molecule 3"^^xsd:string , "FLJ45155"^^xsd:string , "Granule membrane protein 140"^^xsd:string , "CD62"^^xsd:string , "P-selectin precursor"^^xsd:string , "GMP140"^^xsd:string , "antigen CD62)"^^xsd:string ;
+      dcr:hasExactSynonym "PADGEM"^^xsd:string , "GRMP"^^xsd:string , "CD62P antigen"^^xsd:string , "LECAM3"^^xsd:string , "PSEL"^^xsd:string , "selectin P (granule membrane protein 140kDa"^^xsd:string , "GMP-140"^^xsd:string , "GMRP"^^xsd:string , "SELP"^^xsd:string , "Leukocyte-endothelial cell adhesion molecule 3"^^xsd:string , "FLJ45155"^^xsd:string , "Granule membrane protein 140"^^xsd:string , "CD62"^^xsd:string , "P-selectin precursor"^^xsd:string , "GMP140"^^xsd:string , "antigen CD62)"^^xsd:string ;
       OBI:IAO_0000118 "P-selectin"^^xsd:string .
 
 DC_CL:DC_CL_0000097
@@ -4214,13 +4193,13 @@ IMR:IMR_0000057
       rdfs:subClassOf p1:PRO_000000001 ;
       rdfs:subClassOf
               [ a       owl:Restriction ;
-                owl:onProperty OBI:OBI_0000306 ;
-                owl:someValuesFrom GO:GO_0004872
+                owl:onProperty OBI:OBI_0000316 ;
+                owl:someValuesFrom dcr:dctheradir_606
               ] ;
       rdfs:subClassOf
               [ a       owl:Restriction ;
-                owl:onProperty OBI:OBI_0000316 ;
-                owl:someValuesFrom dcr:dctheradir_606
+                owl:onProperty OBI:OBI_0000306 ;
+                owl:someValuesFrom GO:GO_0004872
               ] ;
       dcr:hasExactSynonym "CD 40 receptors"^^xsd:string , "CD40"^^xsd:string , "CD 40"^^xsd:string , "CD-40 receptors"^^xsd:string , "CD40 receptors"^^xsd:string , "CD-40"^^xsd:string .
 
@@ -5490,13 +5469,13 @@ CHEBI:CHEBI_36706
       rdfs:subClassOf CHEBI:CHEBI_33595 ;
       rdfs:subClassOf
               [ a       owl:Restriction ;
-                owl:onProperty OBI:OBI_0000316 ;
-                owl:someValuesFrom CHEBI:CHEBI_48705
+                owl:onProperty OBI:OBI_0000306 ;
+                owl:someValuesFrom dcr:dctheradir_557
               ] ;
       rdfs:subClassOf
               [ a       owl:Restriction ;
-                owl:onProperty OBI:OBI_0000306 ;
-                owl:someValuesFrom dcr:dctheradir_557
+                owl:onProperty OBI:OBI_0000316 ;
+                owl:someValuesFrom CHEBI:CHEBI_48705
               ] ;
       dcr:hasExactSynonym "R848"^^xsd:string , "resiquimod"^^xsd:string , "R 848"^^xsd:string , "R-848"^^xsd:string .
 
@@ -5779,12 +5758,6 @@ These could be of use to the project if partners would like to use HSV-based tec
               <http://dc-research.eu/rdf/person/28> ;
       dcr:isBioMatUsedIn <http://dc-research.eu/rdf/dataset/117> .
 
-<http://purl.uniprot.org/uniprot/P01574>
-      rdfs:label "Interferon beta" ;
-      rdfs:seeAlso <http://purl.uniprot.org/arrayexpress/P01574> , <http://purl.uniprot.org/reactome/REACT_6900> , <http://purl.uniprot.org/reactome/REACT_604> , <http://purl.uniprot.org/kegg/hsa:3456> , <http://purl.uniprot.org/pathway-interaction-db/smad2_3nuclearpathway> ;
-      dcr:hasAutoRelatedTermClass_1
-              <http://purl.uniprot.org/go/0071360> .
-
 <http://dc-research.eu/rdf/biomaterial/413>
       a       dcr:dctheradir_453 , dcr:dctheradir_585 ;
       rdfs:comment "Migration of DCs was studied in vivo in melanoma patients exploring MRI. From isolated lymphnodes obtained after surgery we could identify single DC after staining with Prussian blue for iron. We are in the process of analysing the T cell rosettes (activation stage) that surround these DC to get insight in the functional activity." ;
@@ -5970,9 +5943,6 @@ FMA:FMA_7143
               <http://dc-research.eu/rdf/person/201> ;
       dcr:isBiomaterialInputOf
               <http://dc-research.eu/rdf/protocolstep/14> .
-
-<http://purl.uniprot.org/go/0019538>
-      rdfs:label "protein metabolism" , "protein metabolic process and modification" , "protein metabolic process" , "protein metabolism and modification" .
 
 <http://dc-research.eu/rdf/protocol/13>
       a       <http://purl.obofoundry.org/obo/OBI_0000272> , dcr:dctheradir_7 ;
@@ -6342,9 +6312,6 @@ IMR:IMR_0000007
 <http://purl.uniprot.org/go/0043032>
       rdfs:label "upregulation of macrophage activation" , "stimulation of macrophage activation" , "positive regulation of macrophage activation" , "activation of macrophage activation" , "up regulation of macrophage activation" , "up-regulation of macrophage activation" .
 
-<http://purl.uniprot.org/go/0046597>
-      rdfs:label "inhibition of virion penetration into host" , "negative regulation of virion penetration into host cell" , "down regulation of virion penetration into host" , "down-regulation of virion penetration into host" , "downregulation of virion penetration into host" .
-
 <http://dc-research.eu/rdf/dataset/254>
       a       dcr:dctheradir_1 , <http://purl.obofoundry.org/obo/IAO_0000100> ;
       rdfs:comment "Collaborative work with P34 (Sica) has been started to study the effects of Japanin on DC exposed to hypoxia (below) and to perform transcriptional profiling of the treated cells. This work, which could not have been undertaken at this stage without support from DC-THERA, has now led to a joint publication in 2008 (Mancino et al.). Transcriptional data are available." ;
@@ -6424,12 +6391,6 @@ FMA:FMA_84092
       rdfs:label "Draft templates for CTP" ;
       dcr:hasKnowledgeable
               <http://dc-research.eu/rdf/person/21> , <http://dc-research.eu/rdf/person/23> .
-
-<http://purl.uniprot.org/uniprot/Q9Y5Q6>
-      rdfs:label "Insulin-like peptide INSL5" ;
-      rdfs:seeAlso <http://purl.uniprot.org/kegg/hsa:10022> , <http://purl.uniprot.org/arrayexpress/Q9Y5Q6> , <http://purl.uniprot.org/reactome/REACT_111102> ;
-      dcr:hasAutoRelatedTermClass_1
-              <http://purl.uniprot.org/go/0005179> .
 
 CCO:CCO_B0049521
       a       owl:Class ;
@@ -6620,12 +6581,6 @@ dcr:hasAutoRelatedDocument_5
       dcr:hasAutoRelatedTermClass_1
               <http://purl.uniprot.org/go/0090263> .
 
-IMR:IMR_0200499
-      a       owl:Class ;
-      rdfs:label "Nucleoside triphosphate"^^xsd:string ;
-      rdfs:subClassOf CHEBI:CHEBI_33838 ;
-      dcr:hasExactSynonym "Nucleoside triphosphate"^^xsd:string , "NTP"^^xsd:string .
-
 <http://dc-research.eu/rdf/protocolstep/107>
       a       dcr:dctheradir_751 , dcr:dctheradir_489 ;
       rdfs:comment "CD8 T cells are purified using MACS cell separation." ;
@@ -6634,6 +6589,12 @@ IMR:IMR_0200499
               <http://dc-research.eu/rdf/biomaterial/198> ;
       dcr:hasBiomaterialOutput
               <http://dc-research.eu/rdf/biomaterial/199> .
+
+IMR:IMR_0200499
+      a       owl:Class ;
+      rdfs:label "Nucleoside triphosphate"^^xsd:string ;
+      rdfs:subClassOf CHEBI:CHEBI_33838 ;
+      dcr:hasExactSynonym "Nucleoside triphosphate"^^xsd:string , "NTP"^^xsd:string .
 
 IMR:IMR_0000008
       a       owl:Class ;
@@ -6745,9 +6706,6 @@ dcr:dctheradir_381
       rdfs:label "Long pentraxin PTX3" ;
       dcr:hasKnowledgeable
               <http://dc-research.eu/rdf/person/100> .
-
-<http://purl.uniprot.org/go/0004905>
-      rdfs:label "interferon-alpha/beta receptor activity" , "interferon-tau receptor activity" , "type I interferon receptor activity" , "interferon-beta receptor activity" , "interferon-epsilon receptor activity" , "interferon-omega receptor activity" , "interferon-kappa receptor activity" , "interferon-alpha receptor activity" , "interferon-delta receptor activity" , "type I IFN receptor activity" , "interferon-zeta receptor activity" .
 
 <http://dc-research.eu/rdf/tool/89>
       a       <http://purl.obofoundry.org/obo/OBI_0400169> , dcr:dctheradir_485 ;
@@ -7024,12 +6982,6 @@ dcr:hasBodilyPartType
       a       owl:AnnotationProperty ;
       rdfs:label "bodily part type"^^xsd:string ;
       OBI:IAO_0000115 "Relation to annotate the object with an ontology term of type \"bodily part\", such as organ, tissue, ..."^^xsd:string .
-
-<http://purl.uniprot.org/uniprot/P01575>
-      rdfs:label "Interferon beta" ;
-      rdfs:seeAlso <http://purl.uniprot.org/kegg/mmu:15977> , <http://purl.uniprot.org/arrayexpress/P01575> ;
-      dcr:hasAutoRelatedTermClass_1
-              <http://purl.uniprot.org/go/0005126> .
 
 <http://dc-research.eu#document/22457295>
       a       "http://purl.obolibrary.org/obo/IAO_0000013" ;
@@ -7415,9 +7367,6 @@ dcr:dctheradir_740
       dcr:isBioMatUsedIn <http://dc-research.eu/rdf/dataset/75> ;
       dcr:manufactures <http://dc-research.eu/rdf/participant/17> .
 
-<http://purl.uniprot.org/go/0071360>
-      rdfs:label "cellular response to exogenous double-stranded RNA" , "cellular response to exogenous dsRNA" , "cellular response to viral dsRNA" .
-
 <http://dc-research.eu/rdf/participant/66>
       a       dcr:dctheradir_490 , dcr:dctheradir_731 ;
       rdfs:comment """ABOUT THE JOZEF STEFAN INSTITUTE
@@ -7525,9 +7474,6 @@ dcr:dctheradir_741
       rdfs:label "material processing step"^^xsd:string , "material processing step" ;
       rdfs:subClassOf dcr:dctheradir_489 ;
       OBI:IAO_0000115 "A material processing step is a step in a protocol that specifies how to perform a material processing which results in physical changes in a specified input material."^^xsd:string .
-
-<http://purl.uniprot.org/go/0019962>
-      rdfs:label "type I interferon binding" , "interferon-omega binding" , "interferon-alpha binding" , "interferon-alpha/beta binding" , "interferon-kappa binding" , "type I IFN binding" , "interferon-zeta binding" , "interferon-tau binding" , "interferon-delta binding" , "interferon-beta binding" , "interferon-epsilon binding" .
 
 <http://dc-research.eu/rdf/tool/35>
       a       dcr:dctheradir_485 , dcr:dctheradir_481 ;
@@ -7739,13 +7685,13 @@ IMR:IMR_0000023
       rdfs:subClassOf IMR:IMR_0000021 ;
       rdfs:subClassOf
               [ a       owl:Restriction ;
-                owl:onProperty OBI:OBI_0000316 ;
-                owl:someValuesFrom dcr:dctheradir_606
+                owl:onProperty OBI:OBI_0000306 ;
+                owl:someValuesFrom GO:GO_0005102
               ] ;
       rdfs:subClassOf
               [ a       owl:Restriction ;
-                owl:onProperty OBI:OBI_0000306 ;
-                owl:someValuesFrom GO:GO_0005102
+                owl:onProperty OBI:OBI_0000316 ;
+                owl:someValuesFrom dcr:dctheradir_606
               ] ;
       dcr:hasExactSynonym "CD40L"^^xsd:string .
 
@@ -9927,12 +9873,12 @@ dcr:dctheradir_630
       rdfs:subClassOf
               [ a       owl:Restriction ;
                 owl:onProperty OBI:OBI_0000316 ;
-                owl:someValuesFrom dcr:dctheradir_629
+                owl:someValuesFrom CHEBI:CHEBI_48706
               ] ;
       rdfs:subClassOf
               [ a       owl:Restriction ;
                 owl:onProperty OBI:OBI_0000316 ;
-                owl:someValuesFrom CHEBI:CHEBI_48706
+                owl:someValuesFrom dcr:dctheradir_629
               ] .
 
 <http://dc-research.eu/rdf/biomaterial/142>
@@ -10099,9 +10045,6 @@ OBI:OBI_0400108
       dc:source "Human reproduction (Oxford, England)" ;
       dc:title "Impact of intraperitoneal pressure of a CO2 pneumoperitoneum on the surgical peritoneal environment." .
 
-<http://purl.uniprot.org/go/0051607>
-      rdfs:label "antiviral response" , "defense response to viruses" , "defense response to virus" , "defence response to virus" .
-
 <http://dc-research.eu/rdf/biomaterial/51>
       a       dcr:dctheradir_453 , GO:GO_0070062 ;
       rdfs:comment "Dendritic cell (DC) derived-exosomes (Dex) were described as nanovesicles harbouring functional MHC molecules stimulating T cell responses. Mouse studies unraveled the bioactivity of Dex onto NK cells, Dex promoting a IL-15Ra-dependent NK cell proliferation and a NKG2D-dependent activation resulting in an anti-metastatic effect. In humans, Dex bear functional IL-15R? which allow proliferation and IFNg secretion by NK cells. In contrast to immature DC, human Dex harbor NKG2D ligands on their surface leading to a direct engagement of NKG2D and NK cell activation ex vivo. In our phase I clinical trial, we highlight the capacity of Dex based-vaccines to restore the number and NKG2D-dependent function of NK cells." ;
@@ -10130,9 +10073,6 @@ OBI:OBI_0400108
 OBI:OBI_0400107
       a       owl:Class ;
       rdfs:subClassOf dcr:dctheradir_735 .
-
-<http://purl.uniprot.org/go/0005179>
-      rdfs:label "hormone activity" , "peptide hormone" , "glycopeptide hormone" , "lipopeptide hormone" , "cAMP generating peptide activity" .
 
 dcr:dctheradir_373
       a       owl:Class ;
@@ -10541,12 +10481,6 @@ MGED:MO_892
       dc:source "BMB reports" ;
       dc:title "Anti-inflammatory functions of purpurogallin in LPS-activated human endothelial cells." .
 
-<http://purl.uniprot.org/uniprot/P05012>
-      rdfs:label "Interferon beta" ;
-      rdfs:seeAlso <http://purl.uniprot.org/kegg/ecb:100052545> ;
-      dcr:hasAutoRelatedTermClass_1
-              <http://purl.uniprot.org/go/0005126> .
-
 DO:DOID_1579
       a       owl:Class ;
       rdfs:label "respiratory system disease"^^xsd:string ;
@@ -10714,13 +10648,13 @@ IMR:IMR_0700241
       rdfs:subClassOf p1:PRO_000000001 ;
       rdfs:subClassOf
               [ a       owl:Restriction ;
-                owl:onProperty OBI:OBI_0000306 ;
-                owl:someValuesFrom GO:GO_0004872
+                owl:onProperty OBI:OBI_0000316 ;
+                owl:someValuesFrom dcr:dctheradir_606
               ] ;
       rdfs:subClassOf
               [ a       owl:Restriction ;
-                owl:onProperty OBI:OBI_0000316 ;
-                owl:someValuesFrom dcr:dctheradir_606
+                owl:onProperty OBI:OBI_0000306 ;
+                owl:someValuesFrom GO:GO_0004872
               ] ;
       dcr:hasExactSynonym "IL-2 receptor alpha subunit"^^xsd:string , "IL2RA"^^xsd:string , "IL-2-RA"^^xsd:string , "CD-25"^^xsd:string , "IDDM10"^^xsd:string , "IL2R"^^xsd:string , "CD 25"^^xsd:string , "Interleukin-2 receptor alpha chain precursor"^^xsd:string , "T-CELL GROWTH FACTOR RECEPTOR"^^xsd:string , "CD25"^^xsd:string , "IL2 RECEPTOR"^^xsd:string , "TAC antigen"^^xsd:string , "CD25 antigen"^^xsd:string , "IL2 RECEPTORS"^^xsd:string , "inter"^^xsd:string , "IL2R ALPHA CHAIN"^^xsd:string , "TCGFR"^^xsd:string , "IL2-RA"^^xsd:string , "p55"^^xsd:string .
 
@@ -10951,13 +10885,6 @@ different cell form (spheroplast, spore and whole cell) """ ;
       dcr:hasBiomaterialOutput
               <http://dc-research.eu/rdf/biomaterial/144> .
 
-<http://dc-research.eu/rdf/person/307>
-      a       dcr:dctheradir_491 ;
-      rdfs:comment "" ;
-      rdfs:label "Damariz Rivero" ;
-      dcr:isKnowledgeableAbout
-              <http://dc-research.eu/rdf/tool/101> , <http://dc-research.eu/rdf/tool/132> , <http://dc-research.eu/rdf/document/319> , <http://dc-research.eu/rdf/tool/127> .
-
 dcr:hasAutoRelatedTermClass_3
       a       owl:AnnotationProperty ;
       rdfs:subPropertyOf dcr:hasAutoRelatedTermClass .
@@ -10968,6 +10895,13 @@ dcr:hasAutoRelatedTermClass_3
       rdfs:label "Evelyne Mougneau" ;
       dcr:isKnowledgeableAbout
               <http://dc-research.eu/rdf/document/43> , <http://dc-research.eu/rdf/document/44> .
+
+<http://dc-research.eu/rdf/person/307>
+      a       dcr:dctheradir_491 ;
+      rdfs:comment "" ;
+      rdfs:label "Damariz Rivero" ;
+      dcr:isKnowledgeableAbout
+              <http://dc-research.eu/rdf/tool/101> , <http://dc-research.eu/rdf/tool/132> , <http://dc-research.eu/rdf/document/319> , <http://dc-research.eu/rdf/tool/127> .
 
 <http://dc-research.eu/rdf/participant/76>
       a       dcr:dctheradir_490 , dcr:dctheradir_731 ;
@@ -12023,13 +11957,13 @@ dcr:dctheradir_242
       rdfs:subClassOf p1:PRO_000000001 ;
       rdfs:subClassOf
               [ a       owl:Restriction ;
-                owl:onProperty OBI:OBI_0000316 ;
-                owl:someValuesFrom dcr:dctheradir_606
+                owl:onProperty OBI:OBI_0000306 ;
+                owl:someValuesFrom GO:GO_0004872
               ] ;
       rdfs:subClassOf
               [ a       owl:Restriction ;
-                owl:onProperty OBI:OBI_0000306 ;
-                owl:someValuesFrom GO:GO_0004872
+                owl:onProperty OBI:OBI_0000316 ;
+                owl:someValuesFrom dcr:dctheradir_606
               ] ;
       dcr:hasExactSynonym "CD-27"^^xsd:string , "CD 27"^^xsd:string , "CD27"^^xsd:string .
 
@@ -12836,12 +12770,6 @@ MI:MI_0319
       dc:source "Cerebrovascular diseases (Basel, Switzerland)" ;
       dc:title "Imaging Neuroinflammation after Stroke: Current Status of Cellular and Molecular MRI Strategies." .
 
-<http://purl.uniprot.org/uniprot/Q04671>
-      rdfs:label "P protein" ;
-      rdfs:seeAlso <http://purl.uniprot.org/arrayexpress/Q04671> , <http://purl.uniprot.org/kegg/hsa:4948> ;
-      dcr:hasAutoRelatedTermClass_1
-              <http://purl.uniprot.org/go/0015137> .
-
 <http://dc-research.eu#document/22456178>
       a       "http://purl.obolibrary.org/obo/IAO_0000013" ;
       rdfs:label "TRAIL-activated EGFR by Cbl-b-regulated EGFR redistribution in lipid rafts antagonises TRAIL-induced apoptosis in gastric cancer cells." ;
@@ -12851,6 +12779,12 @@ MI:MI_0319
       dc:identifier "http://www.ncbi.nlm.nih.gov/pubmed/22456178" ;
       dc:source "European journal of cancer (Oxford, England : 1990)" ;
       dc:title "TRAIL-activated EGFR by Cbl-b-regulated EGFR redistribution in lipid rafts antagonises TRAIL-induced apoptosis in gastric cancer cells." .
+
+<http://purl.uniprot.org/uniprot/Q04671>
+      rdfs:label "P protein" ;
+      rdfs:seeAlso <http://purl.uniprot.org/arrayexpress/Q04671> , <http://purl.uniprot.org/kegg/hsa:4948> ;
+      dcr:hasAutoRelatedTermClass_1
+              <http://purl.uniprot.org/go/0015137> .
 
 dcr:dctheradir_629
       a       owl:Class ;
@@ -13159,12 +13093,6 @@ ncbitax:NCBITaxon_10376
       rdfs:label "Epstein Barr virus"^^xsd:string ;
       rdfs:subClassOf ncbitax:NCBITaxon_10239 ;
       dcr:hasExactSynonym "EBV"^^xsd:string , "HHV-4"^^xsd:string .
-
-<http://purl.uniprot.org/uniprot/Q9LJD9>
-      rdfs:label "Arabinogalactan peptide 12" ;
-      rdfs:seeAlso <http://purl.uniprot.org/kegg/ath:AT3G13520> ;
-      dcr:hasAutoRelatedTermClass_1
-              <http://purl.uniprot.org/go/0031225> .
 
 dcr:dctheradir_18
       a       owl:Class ;
@@ -14146,15 +14074,15 @@ Up to now, in Cycle 3, immunizations have been continued with peptide-only injec
       dcr:hasAutoRelatedDocument_5
               <http://dc-research.eu#document/22434548> , <http://dc-research.eu#document/22451318> , <http://dc-research.eu#document/22445467> , <http://dc-research.eu#document/22201962> , <http://dc-research.eu#document/22461427> , <http://dc-research.eu#document/22442431> , <http://dc-research.eu#document/22348085> , <http://dc-research.eu#document/22461510> , <http://dc-research.eu#document/22461881> , <http://dc-research.eu#document/22435735> , <http://dc-research.eu#document/22154875> , <http://dc-research.eu#document/22461885> , <http://dc-research.eu#document/22454131> , <http://dc-research.eu#document/22459680> , <http://dc-research.eu#document/22438882> , <http://dc-research.eu#document/22444787> , <http://dc-research.eu#document/22437006> , <http://dc-research.eu#document/22461301> , <http://dc-research.eu#document/22245566> , <http://dc-research.eu#document/22084121> , <http://dc-research.eu#document/22450324> , <http://dc-research.eu#document/22026586> , <http://dc-research.eu#document/22096986> , <http://dc-research.eu#document/22461430> , <http://dc-research.eu#document/22461567> , <http://dc-research.eu#document/22144566> , <http://dc-research.eu#document/22015065> , <http://dc-research.eu#document/22010785> , <http://dc-research.eu#document/22438812> , <http://dc-research.eu#document/22436237> , <http://dc-research.eu#document/22461629> , <http://dc-research.eu#document/22459580> , <http://dc-research.eu#document/22447930> , <http://dc-research.eu#document/22434140> , <http://dc-research.eu#document/22083669> , <http://dc-research.eu#document/22433252> , <http://dc-research.eu#document/22461701> , <http://dc-research.eu#document/22461538> , <http://dc-research.eu#document/22398979> , <http://dc-research.eu#document/22180481> , <http://dc-research.eu#document/22460170> , <http://dc-research.eu#document/22214238> , <http://dc-research.eu#document/22454496> , <http://dc-research.eu#document/22083993> , <http://dc-research.eu#document/22461632> , <http://dc-research.eu#document/22422053> , <http://dc-research.eu#document/22461953> , <http://dc-research.eu#document/22445564> , <http://dc-research.eu#document/22089930> , <http://dc-research.eu#document/22152058> , <http://dc-research.eu#document/22437532> , <http://dc-research.eu#document/22257375> , <http://dc-research.eu#document/22461020> , <http://dc-research.eu#document/22461954> , <http://dc-research.eu#document/22461741> , <http://dc-research.eu#document/22461622> ;
       dcr:hasAutoRelatedProtein_1
-              <http://purl.uniprot.org/uniprot/Q9LJD9> ;
+              <http://purl.uniprot.org/uniprot/Q16649> ;
       dcr:hasAutoRelatedProtein_2
-              <http://purl.uniprot.org/uniprot/Q9LVC0> ;
+              <http://purl.uniprot.org/uniprot/P26952> ;
       dcr:hasAutoRelatedProtein_3
-              <http://purl.uniprot.org/uniprot/Q9Y5Q6> ;
+              <http://purl.uniprot.org/uniprot/P01586> ;
       dcr:hasAutoRelatedProtein_4
-              <http://purl.uniprot.org/uniprot/O82337> ;
+              <http://purl.uniprot.org/uniprot/P26951> ;
       dcr:hasAutoRelatedProtein_5
-              <http://purl.uniprot.org/uniprot/P48551> , <http://purl.uniprot.org/uniprot/P05012> , <http://purl.uniprot.org/uniprot/Q16649> , <http://purl.uniprot.org/uniprot/P26952> , <http://purl.uniprot.org/uniprot/P70499> , <http://purl.uniprot.org/uniprot/P01586> , <http://purl.uniprot.org/uniprot/P26951> , <http://purl.uniprot.org/uniprot/P08700> , <http://purl.uniprot.org/uniprot/P01575> , <http://purl.uniprot.org/uniprot/P40029> , <http://purl.uniprot.org/uniprot/P01574> ;
+              <http://purl.uniprot.org/uniprot/P08700> ;
       dcr:hasCellType dcr:dctheradir_336 ;
       dcr:hasKnowledgeable
               <http://dc-research.eu/rdf/person/29> ;
@@ -14281,9 +14209,6 @@ We will continue to use DC activation in vitro and, in particular, DC cytokine p
       dc:identifier "http://www.ncbi.nlm.nih.gov/pubmed/22456501" ;
       dc:source "Journal of human hypertension" ;
       dc:title "Cardiovascular risk in nonobese hypertensive adolescents: a study based on plasma biomarkers and ultrasonographic assessment of early atherosclerosis." .
-
-<http://purl.uniprot.org/go/0031225>
-      rdfs:label "anchored to membrane" .
 
 <http://dc-research.eu/rdf/biomaterial/364>
       a       dcr:dctheradir_453 , BTO:BTO_0002217 ;
@@ -14725,9 +14650,6 @@ dcr:dctheradir_540
       rdfs:subClassOf dcr:dctheradir_734 , OBI:OBI_0000102 ;
       OBI:IAO_0000115 "A financial responsible role is a DCTHERA role of DCTHERA persons who assume the financial responsibility for the institution/company they work for with regard to the DCTHERA project."^^xsd:string .
 
-<http://purl.uniprot.org/go/0007259>
-      rdfs:label "JAK-STAT cascade" .
-
 <http://dc-research.eu#document/22434877>
       a       "http://purl.obolibrary.org/obo/IAO_0000013" ;
       rdfs:label "Sequencing of RDR6-dependent double-stranded RNAs reveals novel features of plant siRNA biogenesis." ;
@@ -14875,12 +14797,6 @@ DC transcriptomic data produced in the past 4 years has made been  an accessible
       rdfs:seeAlso <http://purl.uniprot.org/reactome/REACT_6900> , <http://purl.uniprot.org/arrayexpress/P26951> , <http://purl.uniprot.org/kegg/hsa:3563> ;
       dcr:hasAutoRelatedTermClass_1
               <http://purl.uniprot.org/go/0004912> .
-
-<http://purl.uniprot.org/uniprot/P40029>
-      rdfs:label "Peptide methionine sulfoxide reductase" ;
-      rdfs:seeAlso <http://purl.uniprot.org/arrayexpress/P40029> , <http://purl.uniprot.org/kegg/sce:YER042W> ;
-      dcr:hasAutoRelatedTermClass_1
-              <http://purl.uniprot.org/go/0008113> .
 
 OBI:OBI_0000136
       a       owl:Class ;
@@ -16250,9 +16166,6 @@ The C-type lectin L-SIGN is expressed on liver and lymph node endothelial cells,
       dcr:hasBiomaterialOutput
               <http://dc-research.eu/rdf/biomaterial/468> .
 
-<http://purl.uniprot.org/go/0006952>
-      rdfs:label "defense/immunity protein activity" , "defence response" , "physiological defense response" , "antimicrobial peptide activity" , "defense response" .
-
 OBI:OBI_0000245
       a       owl:Class ;
       rdfs:subClassOf dcr:dctheradir_534 .
@@ -16626,12 +16539,6 @@ FMA:FMA_30317
       dc:source "Protein expression and purification" ;
       dc:title "Expression and purification of non-N-glycosylated porcine interleukin 3 in yeast Pichia pastoris." .
 
-IMR:IMR_0000465
-      a       owl:Class ;
-      rdfs:label "obsolete_antigen"^^xsd:string ;
-      rdfs:subClassOf oboInOwl:ObsoleteClass ;
-      dcr:replaced_by "http://purl.org/obo/owl/CHEBI#CHEBI_23367"^^xsd:string .
-
 <http://dc-research.eu/rdf/biomaterial/564>
       a       CHEBI:CHEBI_24431 , dcr:dctheradir_453 ;
       rdfs:comment "aHLA-DR fluorescein isothiocyanate was used to label yeast and spores." ;
@@ -16640,6 +16547,12 @@ IMR:IMR_0000465
               <http://dc-research.eu/rdf/person/208> ;
       dcr:isBiomaterialInputOf
               <http://dc-research.eu/rdf/protocolstep/136> .
+
+IMR:IMR_0000465
+      a       owl:Class ;
+      rdfs:label "obsolete_antigen"^^xsd:string ;
+      rdfs:subClassOf oboInOwl:ObsoleteClass ;
+      dcr:replaced_by "http://purl.org/obo/owl/CHEBI#CHEBI_23367"^^xsd:string .
 
 <http://dc-research.eu/rdf/protocolstep/13>
       a       dcr:dctheradir_758 , dcr:dctheradir_489 ;
@@ -17101,9 +17014,6 @@ An analysis performed on PBL collected after the 3 vaccinations of cycle 2 clear
       rdfs:label "Håkan Mellstedt" ;
       dcr:isKnowledgeableAbout
               <http://dc-research.eu/rdf/biomaterial/535> , <http://dc-research.eu/rdf/biomaterial/380> , <http://dc-research.eu/rdf/biomaterial/537> , <http://dc-research.eu/rdf/biomaterial/377> , <http://dc-research.eu/rdf/tool/110> , <http://dc-research.eu/rdf/biomaterial/381> , <http://dc-research.eu/rdf/biomaterial/375> , <http://dc-research.eu/rdf/biomaterial/383> , <http://dc-research.eu/rdf/biomaterial/379> , <http://dc-research.eu/rdf/biomaterial/123> , <http://dc-research.eu/rdf/dataset/92> , <http://dc-research.eu/rdf/tool/64> , <http://dc-research.eu/rdf/document/293> , <http://dc-research.eu/rdf/tool/114> , <http://dc-research.eu/rdf/tool/66> , <http://dc-research.eu/rdf/biomaterial/66> , <http://dc-research.eu/rdf/document/294> , <http://dc-research.eu/rdf/biomaterial/81> , <http://dc-research.eu/rdf/document/2> , <http://dc-research.eu/rdf/biomaterial/536> , <http://dc-research.eu/rdf/biomaterial/281> , <http://dc-research.eu/rdf/dataset/101> , <http://dc-research.eu/rdf/biomaterial/296> , <http://dc-research.eu/rdf/biomaterial/382> , <http://dc-research.eu/rdf/biomaterial/378> , <http://dc-research.eu/rdf/biomaterial/376> , <http://dc-research.eu/rdf/tool/49> , <http://dc-research.eu/rdf/dataset/91> , <http://dc-research.eu/rdf/protocol/29> , <http://dc-research.eu/rdf/document/1> , <http://dc-research.eu/rdf/document/292> , <http://dc-research.eu/rdf/protocol/30> .
-
-<http://purl.uniprot.org/go/0035455>
-      rdfs:label "response to lymphoblast interferon" , "response to interferon-alpha" , "response to interferon alfa-n3" , "response to interferon alfa-n1" , "response to lymphoblastoid interferon" , "response to leukocyte interferon" .
 
 <http://dc-research.eu/rdf/person/136>
       a       dcr:dctheradir_491 ;
@@ -18242,9 +18152,6 @@ Group: Antigen presentation in dendritic cells""" ;
       rdfs:label "Ariel Savina" ;
       dcr:isKnowledgeableAbout
               <http://dc-research.eu/rdf/document/215> , <http://dc-research.eu/rdf/document/216> , <http://dc-research.eu/rdf/dataset/74> , <http://dc-research.eu/rdf/biomaterial/118> , <http://dc-research.eu/rdf/biomaterial/47> , <http://dc-research.eu/rdf/document/32> , <http://dc-research.eu/rdf/document/31> .
-
-<http://purl.uniprot.org/go/0032897>
-      rdfs:label "negative regulation of viral transcription" , "down regulation of viral transcription" , "inhibition of viral transcription" , "down-regulation of viral transcription" , "downregulation of viral transcription" .
 
 <http://dc-research.eu/rdf/tool/8>
       a       dcr:dctheradir_782 , dcr:dctheradir_485 ;
@@ -19458,6 +19365,7 @@ ncbitax:NCBITaxon_2
 
 <http://dc-research.eu#document/22359779>
       a       "http://purl.obolibrary.org/obo/IAO_0000311" ;
+      rdfs:label "64 Cu-1,4,7-Triazacyclononane,1-glutaric acid-4,7-acetic acid-cyclo(Arg-Gly-Asp-d-Phe-Lys)" ;
       dc:creator "Leung, Kam" ;
       dc:description "Integrins are a family of heterodimeric glycoproteins on cell surfaces that mediate diverse biological events involving cell–cell and cell–matrix interactions (1). Integrins consist of an α and a β subunit and are important for cell adhesion and signal transduction. The αvβ3 integrin is the most prominent receptor affecting tumor growth, tumor invasiveness, metastasis, tumor-induced angiogenesis, inflammation, osteoporosis, and rheumatoid arthritis (2-7). Expression of the αvβ3 integrin is strong on tumor cells and activated endothelial cells, whereas expression is weak on resting endothelial cells and most normal tissues. The αvβ3 antagonists are being studied as antitumor and antiangiogenic agents and the agonists are being studied as angiogenic agents for coronary angiogenesis (6, 8, 9). The peptide sequence Arg-Gly-Asp (RGD) has been identified as a recognition motif used by extracellular matrix proteins (vitronectin, fibrinogen, laminin, and collagen) to bind to a variety of integrins, including αvβ3. Various radiolabeled antagonists have been introduced for imaging of tumors and tumor angiogenesis (10). Most of the cyclic RGD peptides are composed of five amino acids. Various cyclic RGD peptides exhibit selective inhibition of binding to αvβ3 (50% inhibition concentration (IC50), 7–40 nM) but not to αvβ5 (IC50, 600–4,000 nM) or αIIbβ3 (IC50, 700–5,000 nM) integrins (11). Various radiolabeled cyclic RGD peptides and peptidomimetics have been found to have high accumulation in tumors in mice (12, 13). From these developments, [18F]galacto-c(RGDfK) has been evaluated in a number of clinical studies for imaging of αvβ3 in cancer patients (14-18). Knetsch et al. (19) reported the development of 68Ga-1,4,7-triazacyclononane,1-glutaric acid-4,7-acetic acid-cyclo(Arg-Gly-Asp-d-Phe-Lys) (68Ga-NODAGA-c(RGDfK)) for positron emission tomography (PET) imaging of αvβ3 receptors in nude mice bearing melanoma tumors. 1-(1-Carboxy-3-carbo-tert-butoxypropyl)-4,7-(carbo-tert-butoxymethyl)-1,4,7-triazacyclononane (NODAGA(tBu)3) was used to prepare 68Ga-NODAGA-c(RGDfK). Dumont et al. (20) chelated NODAGA-c(RGDfK) with 64Cu to form 64Cu-NODAGA-c(RGDfK) for PET imaging of αvβ3 receptors in nude mice bearing human glioblastoma tumors." ;
       dc:title "64 Cu-1,4,7-Triazacyclononane,1-glutaric acid-4,7-acetic acid-cyclo(Arg-Gly-Asp-d-Phe-Lys)" .
@@ -19536,15 +19444,15 @@ No immunological response to the vaccinations had been observed after cycle 1 an
       dcr:hasAutoRelatedDocument_5
               <http://dc-research.eu#document/22445721> , <http://dc-research.eu#document/22451348> , <http://dc-research.eu#document/22395139> , <http://dc-research.eu#document/22393722> , <http://dc-research.eu#document/22461427> , <http://dc-research.eu#document/22447076> , <http://dc-research.eu#document/22452977> , <http://dc-research.eu#document/22461510> , <http://dc-research.eu#document/22461881> , <http://dc-research.eu#document/22426124> , <http://dc-research.eu#document/22435735> , <http://dc-research.eu#document/22425498> , <http://dc-research.eu#document/22461885> , <http://dc-research.eu#document/22405901> , <http://dc-research.eu#document/22461301> , <http://dc-research.eu#document/22428979> , <http://dc-research.eu#document/22385242> , <http://dc-research.eu#document/22435553> , <http://dc-research.eu#document/22402915> , <http://dc-research.eu#document/22434859> , <http://dc-research.eu#document/22461430> , <http://dc-research.eu#document/22401706> , <http://dc-research.eu#document/22461567> , <http://dc-research.eu#document/22441356> , <http://dc-research.eu#document/22370793> , <http://dc-research.eu#document/22429354> , <http://dc-research.eu#document/22404751> , <http://dc-research.eu#document/22461629> , <http://dc-research.eu#document/22448350> , <http://dc-research.eu#document/22367425> , <http://dc-research.eu#document/22414568> , <http://dc-research.eu#document/22412174> , <http://dc-research.eu#document/22382081> , <http://dc-research.eu#document/22461701> , <http://dc-research.eu#document/22461538> , <http://dc-research.eu#document/22425816> , <http://dc-research.eu#document/22398979> , <http://dc-research.eu#document/22426807> , <http://dc-research.eu#document/22385243> , <http://dc-research.eu#document/22461632> , <http://dc-research.eu#document/22461953> , <http://dc-research.eu#document/22440175> , <http://dc-research.eu#document/22387629> , <http://dc-research.eu#document/22366824> , <http://dc-research.eu#document/22403589> , <http://dc-research.eu#document/22446515> , <http://dc-research.eu#document/22394818> , <http://dc-research.eu#document/22461020> , <http://dc-research.eu#document/22417750> , <http://dc-research.eu#document/22461954> , <http://dc-research.eu#document/22461741> , <http://dc-research.eu#document/22402319> , <http://dc-research.eu#document/22406592> , <http://dc-research.eu#document/22461622> , <http://dc-research.eu#document/22459288> ;
       dcr:hasAutoRelatedProtein_1
-              <http://purl.uniprot.org/uniprot/Q9LJD9> ;
+              <http://purl.uniprot.org/uniprot/P09920> ;
       dcr:hasAutoRelatedProtein_2
-              <http://purl.uniprot.org/uniprot/Q9LVC0> ;
+              <http://purl.uniprot.org/uniprot/P01587> ;
       dcr:hasAutoRelatedProtein_3
-              <http://purl.uniprot.org/uniprot/Q9Y5Q6> ;
+              <http://purl.uniprot.org/uniprot/P35833> ;
       dcr:hasAutoRelatedProtein_4
-              <http://purl.uniprot.org/uniprot/O82337> ;
+              <http://purl.uniprot.org/uniprot/P04141> ;
       dcr:hasAutoRelatedProtein_5
-              <http://purl.uniprot.org/uniprot/P09920> , <http://purl.uniprot.org/uniprot/P01587> , <http://purl.uniprot.org/uniprot/Q6WG24> , <http://purl.uniprot.org/uniprot/P24394> , <http://purl.uniprot.org/uniprot/P35833> , <http://purl.uniprot.org/uniprot/P04141> , <http://purl.uniprot.org/uniprot/P16382> , <http://purl.uniprot.org/uniprot/P09919> , <http://purl.uniprot.org/uniprot/Q63257> , <http://purl.uniprot.org/uniprot/P40029> , <http://purl.uniprot.org/uniprot/P05112> ;
+              <http://purl.uniprot.org/uniprot/Q6WG24> , <http://purl.uniprot.org/uniprot/P24394> , <http://purl.uniprot.org/uniprot/P16382> , <http://purl.uniprot.org/uniprot/P09919> , <http://purl.uniprot.org/uniprot/Q63257> , <http://purl.uniprot.org/uniprot/P05112> ;
       dcr:hasCellType dcr:dctheradir_336 ;
       dcr:hasKnowledgeable
               <http://dc-research.eu/rdf/person/29> ;
@@ -20503,18 +20411,18 @@ FMA:FMA_83598
       dcr:isKnowledgeableAbout
               <http://dc-research.eu/rdf/document/131> .
 
+dcr:dctheradir_759
+      a       owl:Class ;
+      rdfs:label "washing step"^^xsd:string , "washing step" ;
+      rdfs:subClassOf dcr:dctheradir_741 ;
+      OBI:IAO_0000115 "A washing step is a step in a protocol that specifies how to remove a material entity acting as contaminant (e.g. excess staining reagent) by application of one or more cycles of solution in flow."^^xsd:string .
+
 <http://dc-research.eu/rdf/person/63>
       a       dcr:dctheradir_491 ;
       rdfs:comment "" ;
       rdfs:label "Maria Pia Protti" ;
       dcr:isKnowledgeableAbout
               <http://dc-research.eu/rdf/biomaterial/129> , <http://dc-research.eu/rdf/tool/44> , <http://dc-research.eu/rdf/document/297> , <http://dc-research.eu/rdf/protocol/10> , <http://dc-research.eu/rdf/document/55> , <http://dc-research.eu/rdf/biomaterial/134> , <http://dc-research.eu/rdf/document/61> , <http://dc-research.eu/rdf/biomaterial/477> , <http://dc-research.eu/rdf/biomaterial/524> , <http://dc-research.eu/rdf/protocol/51> , <http://dc-research.eu/rdf/protocol/76> , <http://dc-research.eu/rdf/biomaterial/130> , <http://dc-research.eu/rdf/document/284> , <http://dc-research.eu/rdf/document/59> , <http://dc-research.eu/rdf/tool/116> , <http://dc-research.eu/rdf/tool/43> , <http://dc-research.eu/rdf/document/296> , <http://dc-research.eu/rdf/biomaterial/428> , <http://dc-research.eu/rdf/biomaterial/476> , <http://dc-research.eu/rdf/document/62> , <http://dc-research.eu/rdf/document/56> , <http://dc-research.eu/rdf/biomaterial/133> , <http://dc-research.eu/rdf/biomaterial/523> , <http://dc-research.eu/rdf/dataset/126> , <http://dc-research.eu/rdf/protocol/75> , <http://dc-research.eu/rdf/tool/130> , <http://dc-research.eu/rdf/tool/39> , <http://dc-research.eu/rdf/document/295> , <http://dc-research.eu/rdf/biomaterial/282> , <http://dc-research.eu/rdf/tool/25> , <http://dc-research.eu/rdf/tool/42> , <http://dc-research.eu/rdf/biomaterial/475> , <http://dc-research.eu/rdf/biomaterial/132> , <http://dc-research.eu/rdf/document/57> , <http://dc-research.eu/rdf/biomaterial/99> , <http://dc-research.eu/rdf/tool/117> , <http://dc-research.eu/rdf/biomaterial/461> , <http://dc-research.eu/rdf/biomaterial/284> , <http://dc-research.eu/rdf/tool/95> , <http://dc-research.eu/rdf/biomaterial/474> , <http://dc-research.eu/rdf/document/298> , <http://dc-research.eu/rdf/tool/41> , <http://dc-research.eu/rdf/document/60> , <http://dc-research.eu/rdf/document/299> , <http://dc-research.eu/rdf/document/58> , <http://dc-research.eu/rdf/biomaterial/131> , <http://dc-research.eu/rdf/biomaterial/525> , <http://dc-research.eu/rdf/protocol/50> , <http://dc-research.eu/rdf/tool/65> , <http://dc-research.eu/rdf/tool/118> .
-
-dcr:dctheradir_759
-      a       owl:Class ;
-      rdfs:label "washing step"^^xsd:string , "washing step" ;
-      rdfs:subClassOf dcr:dctheradir_741 ;
-      OBI:IAO_0000115 "A washing step is a step in a protocol that specifies how to remove a material entity acting as contaminant (e.g. excess staining reagent) by application of one or more cycles of solution in flow."^^xsd:string .
 
 <http://dc-research.eu/rdf/biomaterial/457>
       a       IMR:IMR_0704352 , dcr:dctheradir_453 ;
@@ -20943,9 +20851,6 @@ Future studies will focus on:
               dcr:dctheradir_453 , ncbitax:NCBITaxon_9606 ;
       dcr:hasKnowledgeable
               <http://dc-research.eu/rdf/person/83> .
-
-<http://purl.uniprot.org/go/0034599>
-      rdfs:label "adaptive response to oxidative stress" , "cellular response to oxidative stress" .
 
 <http://dc-research.eu/rdf/person/67>
       a       dcr:dctheradir_491 ;
@@ -21403,13 +21308,13 @@ IMR:IMR_0700235
       rdfs:subClassOf IMR:IMR_0000090 ;
       rdfs:subClassOf
               [ a       owl:Restriction ;
-                owl:allValuesFrom ncbitax:NCBITaxon_10090 ;
-                owl:onProperty dcr:hasOrganism
+                owl:onProperty dcr:hasOrganism ;
+                owl:someValuesFrom ncbitax:NCBITaxon_10090
               ] ;
       rdfs:subClassOf
               [ a       owl:Restriction ;
-                owl:onProperty dcr:hasOrganism ;
-                owl:someValuesFrom ncbitax:NCBITaxon_10090
+                owl:allValuesFrom ncbitax:NCBITaxon_10090 ;
+                owl:onProperty dcr:hasOrganism
               ] ;
       dcr:hasExactSynonym "Rara"^^xsd:string , "RARalpha1"^^xsd:string , "Retinoic acid receptor alpha"^^xsd:string , "Nuclear receptor subfamily 1 group B member 1"^^xsd:string , "Nr1b1"^^xsd:string , "RAR-alpha"^^xsd:string , "retinoic acid receptor, alpha"^^xsd:string , "RAR alpha 1"^^xsd:string .
 
@@ -21600,6 +21505,7 @@ IMR:IMR_0700233
 
 <http://dc-research.eu#document/22359781>
       a       "http://purl.obolibrary.org/obo/IAO_0000311" ;
+      rdfs:label "64 Cu-Bis(carboxymethyl)-1,4,8,11-tetraazabicyclo[6.6.2]hexadecane-cyclo(Arg-Gly-Asp-d-Phe-Lys)" ;
       dc:creator "Leung, Kam" ;
       dc:description "Integrins are a family of heterodimeric glycoproteins on cell surfaces that mediate diverse biological events involving cell–cell and cell–matrix interactions (1). Integrins consist of an α and a β subunit and are important for cell adhesion and signal transduction. The αvβ3 integrin is the most prominent receptor affecting tumor growth, tumor invasiveness, metastasis, tumor-induced angiogenesis, inflammation, osteoporosis, and rheumatoid arthritis (2-7). Expression of the αvβ3 integrin is strong on tumor cells and activated endothelial cells, whereas expression is weak on resting endothelial cells and most normal tissues. The αvβ3 antagonists are being studied as antitumor and antiangiogenic agents and the agonists are being studied as angiogenic agents for coronary angiogenesis (6, 8, 9). The peptide sequence Arg-Gly-Asp (RGD) has been identified as a recognition motif used by extracellular matrix proteins (vitronectin, fibrinogen, laminin, and collagen) to bind to a variety of integrins, including αvβ3. Various radiolabeled antagonists have been introduced for imaging of tumors and tumor angiogenesis (10). Most of the cyclic RGD peptides are composed of five amino acids. Various cyclic RGD peptides exhibit selective inhibition of binding to αvβ3 (50% inhibition concentration (IC50), 7–40 nM) but not to αvβ5 (IC50, 600–4,000 nM) or αIIbβ3 (IC50, 700–5,000 nM) integrins (11). Various radiolabeled cyclic RGD peptides and peptidomimetics have been found to have high accumulation in tumors in mice (12, 13). From these developments, [18F]galacto-c(RGDfK) has been evaluated in a number of clinical studies for imaging of αvβ3 in cancer patients (14-18). Knetsch et al. (19) reported the development of 68Ga-1,4,7-triazacyclononane,1-glutaric acid-4,7-acetic acid-cyclo(Arg-Gly-Asp-d-Phe-Lys) (68Ga-NODAGA-c(RGDfK)) for positron emission tomography (PET) imaging of αvβ3 receptors in nude mice bearing melanoma tumors. 1-(1-Carboxy-3-carbo-tert-butoxypropyl)-4,7-(carbo-tert-butoxymethyl)-1,4,7-triazacyclononane (NODAGA(tBu)3) was used to prepare 68Ga-NODAGA-c(RGDfK). Dumont et al. (20) chelated NODAGA-c(RGDfK) with 64Cu to form 64Cu-NODAGA-c(RGDfK) for PET imaging of αvβ3 receptors in nude mice bearing human glioblastoma tumors. For evaluation as a PET imaging agent for αvβ3, 64Cu has been attached to c(RGDfK) via bis(carboxymethyl)-1,4,8,11-tetraazabicyclo[6.6.2]hexadecane (CB-TE2A) to form 64Cu-CB-TE2A-c(RGDfK). The CB-TE2A chelating agent is thought to be a more stable chelate for Cu." ;
       dc:title "64 Cu-Bis(carboxymethyl)-1,4,8,11-tetraazabicyclo[6.6.2]hexadecane-cyclo(Arg-Gly-Asp-d-Phe-Lys)" .
@@ -22706,9 +22612,6 @@ OBI:OBI_0000051
               <http://dc-research.eu/rdf/person/1> , <http://dc-research.eu/rdf/person/102> ;
       dcr:hasOrganismType ncbitax:NCBITaxon_10114 .
 
-<http://purl.uniprot.org/go/0045089>
-      rdfs:label "upregulation of innate immune response" , "up-regulation of innate immune response" , "positive regulation of innate immune response" , "up regulation of innate immune response" , "stimulation of innate immune response" .
-
 CHEBI:CHEBI_18050
       a       owl:Class ;
       rdfs:label "L-Glutamine"^^xsd:string , "L-Glutamine" ;
@@ -22842,9 +22745,6 @@ A mass spectrometry after 2D electrophoresis will be performed on exosomal lysat
       dcr:relatedToInstance
               <http://dc-research.eu/rdf/dataset/208> ;
       dcr:usesBioMat <http://dc-research.eu/rdf/biomaterial/397> , <http://dc-research.eu/rdf/biomaterial/23> .
-
-<http://purl.uniprot.org/go/0045343>
-      rdfs:label "regulation of MHC class I synthesis" , "regulation of MHC class I biosynthesis" , "regulation of major histocompatibility complex class I biosynthetic process" , "regulation of MHC class I formation" , "regulation of MHC class I anabolism" , "regulation of major histocompatibility complex class I biosynthesis" , "regulation of MHC class I biosynthetic process" .
 
 <http://dc-research.eu/rdf/person/108>
       a       dcr:dctheradir_491 ;
@@ -23978,9 +23878,6 @@ UO:UO_0000062
       rdfs:subClassOf UO:UO_0000051 ;
       OBI:IAO_0000115 "A unit of concentration which expresses a concentration of 1 mole of solute per liter of solution (mol/L)."^^xsd:string .
 
-<http://purl.uniprot.org/go/0005132>
-      rdfs:label "interferon-alpha/beta receptor binding" , "interferon-alpha/beta receptor ligand" , "interferon-alpha/beta" .
-
 <http://dc-research.eu#document/22370316>
       a       "http://purl.obolibrary.org/obo/IAO_0000013" ;
       rdfs:label "Use of Tanning Beds and Incidence of Skin Cancer." ;
@@ -24613,9 +24510,6 @@ ncbitax:NCBITaxon_10298
       rdfs:subClassOf ncbitax:NCBITaxon_126283 ;
       dcr:hasExactSynonym "Herpes simplex virus type 1"^^xsd:string , "Human herpesvirus 1"^^xsd:string , "HSV-1"^^xsd:string , "Herpes simplex virus 1"^^xsd:string .
 
-<http://purl.uniprot.org/go/0030101>
-      rdfs:label "natural killer cell activation" , "NK cell activation" .
-
 <http://dc-research.eu#document/22366581>
       a       "http://purl.obolibrary.org/obo/IAO_0000013" ;
       rdfs:label "Interleukin-12 inhibits the survival of human colon cancer stem cells in vitro and their tumor initiating capacity in mice." ;
@@ -25003,13 +24897,13 @@ CCO:CCO_B0050147
       rdfs:subClassOf p1:PRO_000000001 ;
       rdfs:subClassOf
               [ a       owl:Restriction ;
-                owl:onProperty OBI:OBI_0000316 ;
-                owl:someValuesFrom dcr:dctheradir_606
+                owl:onProperty OBI:OBI_0000306 ;
+                owl:someValuesFrom GO:GO_0004872
               ] ;
       rdfs:subClassOf
               [ a       owl:Restriction ;
-                owl:onProperty OBI:OBI_0000306 ;
-                owl:someValuesFrom GO:GO_0004872
+                owl:onProperty OBI:OBI_0000316 ;
+                owl:someValuesFrom dcr:dctheradir_606
               ] ;
       dcr:hasExactSynonym "CD107a"^^xsd:string , "LAMP-1"^^xsd:string , "CD-107a"^^xsd:string , "CD107a antigen"^^xsd:string , "CD107 antigen-like family member A"^^xsd:string .
 
@@ -25128,9 +25022,6 @@ IMR:IMR_0100295
 
 <http://purl.uniprot.org/go/0006366>
       rdfs:label "transcription from Pol II promoter" , "transcription from RNA polymerase II promoter" .
-
-<http://purl.uniprot.org/go/0045071>
-      rdfs:label "down regulation of viral genome replication" , "downregulation of viral genome replication" , "negative regulation of viral genome replication" , "down-regulation of viral genome replication" , "inhibition of viral genome replication" .
 
 dcr:dctheradir_289
       a       owl:Class ;
@@ -26356,9 +26247,6 @@ Having characterized the antigen-presenting DC in immunized mice, we have now st
 <http://purl.uniprot.org/go/0033162>
       rdfs:label "melanosome membrane" .
 
-<http://purl.uniprot.org/go/0005126>
-      rdfs:label "hematopoietin/interferon-class (D200-domain) cytokine receptor ligand" , "hematopoietin/interferon-class (D200-domain) cytokine receptor binding" , "cytokine receptor binding" .
-
 <http://purl.uniprot.org/go/0045077>
       rdfs:label "negative regulation of interferon-gamma formation" , "negative regulation of interferon-gamma anabolism" , "negative regulation of interferon-gamma biosynthesis" , "inhibition of interferon-gamma biosynthetic process" , "down regulation of interferon-gamma biosynthetic process" , "negative regulation of interferon-gamma synthesis" , "down-regulation of interferon-gamma biosynthetic process" , "downregulation of interferon-gamma biosynthetic process" , "negative regulation of interferon-gamma biosynthetic process" .
 
@@ -26417,16 +26305,16 @@ dcr:dctheradir_776
       rdfs:subClassOf dcr:dctheradir_775 ;
       OBI:IAO_0000115 "A normalization data transformation step is a step in a protocol that specifies how to  produce normalized output data from input data according to some criteria."^^xsd:string .
 
+<http://dc-research.eu/rdf/person/81>
+      a       dcr:dctheradir_491 ;
+      rdfs:comment "Myriam Essiaf was replaced by Inge Cornillie." ;
+      rdfs:label "Myriam Essiaf" .
+
 dcr:dctheradir_662
       a       owl:Class ;
       rdfs:comment "involves:129/Sv"^^xsd:string ;
       rdfs:label "Bard1tm1Thl/Bard1tm2Thl Waptm1(cre)Arge/0 transgenic mouse"^^xsd:string ;
       rdfs:subClassOf dcr:dctheradir_661 .
-
-<http://dc-research.eu/rdf/person/81>
-      a       dcr:dctheradir_491 ;
-      rdfs:comment "Myriam Essiaf was replaced by Inge Cornillie." ;
-      rdfs:label "Myriam Essiaf" .
 
 <http://dc-research.eu#document/22457597>
       a       "http://purl.obolibrary.org/obo/IAO_0000013" ;
@@ -27892,12 +27780,6 @@ Day 3: change medium and start selection for stably transduced cells""" ;
       dcr:relatedToInstance
               <http://dc-research.eu/rdf/protocol/4> .
 
-<http://purl.uniprot.org/uniprot/P70499>
-      rdfs:label "Interferon beta" ;
-      rdfs:seeAlso <http://purl.uniprot.org/kegg/rno:24481> , <http://purl.uniprot.org/arrayexpress/P70499> ;
-      dcr:hasAutoRelatedTermClass_1
-              <http://purl.uniprot.org/go/0005126> .
-
 <http://dc-research.eu/rdf/tool/119>
       a       dcr:dctheradir_779 , dcr:dctheradir_485 ;
       rdfs:comment "An Elispot assay was applied in the establishment of immunomonitoring vaccination trials with RNA transfected DC by using overlapping peptides." ;
@@ -27995,9 +27877,6 @@ EFO:EFO_0000410
 
 <http://purl.uniprot.org/go/0046920>
       rdfs:label "alpha(1,3)-fucosyltransferase activity" .
-
-<http://purl.uniprot.org/go/0008113>
-      rdfs:label "peptide Met(O) reductase activity" , "peptide-methionine-(S)-S-oxide reductase activity" , "methionine sulphoxide reductase A activity" , "methionine sulfoxide reductase activity" , "methionine sulfoxide reductase A activity" , "MsrA" , "methionine S-oxide reductase activity" , "peptide methionine sulfoxide reductase activity" , "peptide-L-methionine:thioredoxin-disulfide S-oxidoreductase [L-methionine (S)-S-oxide-forming] activity" , "methionine sulfoxide (protein) reductase activity" , "methionine S-oxide reductase (S-form oxidizing) activity" .
 
 <http://purl.obofoundry.org/obo/OBI_0000427>
       rdfs:label "enzyme" .
@@ -28245,12 +28124,6 @@ GO:GO_0070062
       rdfs:label "Subsequent adoptive transfer" ;
       dcr:hasBiomaterialInput
               <http://dc-research.eu/rdf/biomaterial/268> .
-
-<http://purl.uniprot.org/uniprot/Q9LVC0>
-      rdfs:label "Arabinogalactan peptide 14" ;
-      rdfs:seeAlso <http://purl.uniprot.org/kegg/ath:AT5G56540> ;
-      dcr:hasAutoRelatedTermClass_1
-              <http://purl.uniprot.org/go/0031225> .
 
 <http://dc-research.eu/rdf/tool/71>
       a       <http://purl.obofoundry.org/obo/OBI_0400008> , dcr:dctheradir_485 ;
