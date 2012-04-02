@@ -172,7 +172,7 @@ public class UniprotEnricher extends ResourceEnricher
 					while(riter.hasNext()){
 						
 						RDFNode link = riter.next ();
-						
+						Resource linkResource = link.asResource();
 						
 						String regex = "http://purl.uniprot.org/kegg/";
 				    	Pattern pt1 = Pattern.compile(regex);
@@ -193,6 +193,7 @@ public class UniprotEnricher extends ResourceEnricher
 				    	if( (match.find()) || (match2.find()) || (match3.find()) || (match4.find()))
 				    	{
 				    		resultModel.add(protResource, seeAlso, link);
+				    		resultModel.add(linkResource, PPT.label, link);
 				    	}
 				    		
 						
