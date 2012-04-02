@@ -23,11 +23,11 @@ public class DirectoryEnricher {
 			 * Via command line: java -Xms512M ... Test
 			 */
 			inputs = new String[] { 
-				"http://dc-research.eu/rdf/biomaterial/522", 
+				"http://dc-research.eu/rdf/biomaterial/522"/*, 
 				"http://dc-research.eu/rdf/biomaterial/120", 
 				"http://dc-research.eu/rdf/biomaterial/508",
 				"http://dc-research.eu/rdf/biomaterial/526",
-				"http://dc-research.eu/rdf/biomaterial/61"				 
+				"http://dc-research.eu/rdf/biomaterial/61"	*/			 
 			};
 		}
 		

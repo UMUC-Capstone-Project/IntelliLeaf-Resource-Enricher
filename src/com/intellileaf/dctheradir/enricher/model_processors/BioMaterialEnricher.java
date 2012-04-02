@@ -1,10 +1,6 @@
 package com.intellileaf.dctheradir.enricher.model_processors;
 
 import java.io.FileNotFoundException;
-
-import com.hp.hpl.jena.rdf.model.Model;
-import com.hp.hpl.jena.rdf.model.ModelFactory;
-import com.intellileaf.dctheradir.enricher.NS;
 import com.intellileaf.dctheradir.enricher.Utils;
 
 /**
@@ -21,7 +17,7 @@ public class BioMaterialEnricher extends ResourceEnricher
 	public void run ()
 	{	
 		
-		System.out.print("Retrieving keywords from " + getUri() + " .....");
+		System.out.print("\nRetrieving keywords from " + getUri() + " .....");
 	    BioMaterialTermSelector bmTermSel = new BioMaterialTermSelector ();
 	    bmTermSel.setUri ( this.getUri () );
 	    bmTermSel.run();
@@ -86,23 +82,6 @@ public class BioMaterialEnricher extends ResourceEnricher
 		}
 	    
 	    System.out.printf("Result model for %s successfully created and merged into DC-Thera model\n", getUri());
-	    
-	    /*
-	    //Test Code
-	    Model model = ModelFactory.createDefaultModel();
-	    
-		model.setNsPrefix("dcr", NS.DCR);
-		model.setNsPrefix("rdfs", NS.RDFS);
-		model.setNsPrefix("owl", NS.owl);
-		model.setNsPrefix("dc", NS.dc);
-		
-	    model.add(pubMedSearch.getResultModel());
-	    //model.add(lldEnricher.getResultModel());
-	   // model.add(uniProtEnricher.getResultModel());
-	    System.out.println("------------------------------------------Merged Model Results-----------------------------------------------------");
-	    model.write(System.out, "TURTLE");
-	    //End Test Code
-		*/
 		
 		
 	}
