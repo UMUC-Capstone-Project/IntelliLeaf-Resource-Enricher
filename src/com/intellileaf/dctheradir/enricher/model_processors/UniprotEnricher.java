@@ -19,6 +19,7 @@ import com.hp.hpl.jena.query.QuerySolution;
 import com.hp.hpl.jena.query.ResultSet;
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
+import com.hp.hpl.jena.rdf.model.NodeIterator;
 import com.hp.hpl.jena.rdf.model.Property;
 import com.hp.hpl.jena.rdf.model.RDFNode;
 import com.hp.hpl.jena.rdf.model.ResIterator;
@@ -93,14 +94,13 @@ public class UniprotEnricher extends ResourceEnricher
 		int pcount = 0;
 		int tcount;
 		List<String> uniqueTerms = new ArrayList <String>();
+		Property seeAlso = ResourceFactory.createProperty(NS.RDFS + "seeAlso");
 		
 		Resource dcResource = resultModel.createResource(getUri());
 		
 		for (int i = 0; i < termLabels.size(); i++)
 		{
-			
-			//reset variables	
-			uniqueTerms.clear();	 
+			 
 			
 			term = termLabels.get(i).replaceAll(" ","%20");
 		  
@@ -158,48 +158,91 @@ public class UniprotEnricher extends ResourceEnricher
 						Property hasAutoRelatedProtein = ResourceFactory.createProperty(NS.DCR, "hasAutoRelatedProtein_5");
 						resultModel.add(dcResource, hasAutoRelatedProtein, protResource);
 					}
+					
+					
+					/* Add other interesting links provided by the UniProt webservice, such as KEGG Pathways, Reactome, and Array Express
+					 * Links
+					 */
 				
-		
+					NodeIterator riter = uniprotOnt.listObjectsOfProperty ( 
+							protResource,
+							uniprotOnt.getProperty	( NS.RDFS + "seeAlso" )
+					);
+					
+					while(riter.hasNext()){
+						
+						RDFNode link = riter.next ();
+						Resource linkResource = link.asResource();
+						
+						String regex = "http://purl.uniprot.org/kegg/";
+				    	Pattern pt1 = Pattern.compile(regex);
+				    	Matcher match = pt1.matcher(link.toString());
+				    
+				    	String regex2 = "http://purl.uniprot.org/reactome/";
+				    	Pattern pt2 = Pattern.compile(regex2);
+				    	Matcher match2 = pt2.matcher(link.toString());
+				    	
+				    	String regex3 = "http://purl.uniprot.org/arrayexpress/";
+				    	Pattern pt3 = Pattern.compile(regex3);
+				    	Matcher match3 = pt3.matcher(link.toString());
+				    	
+				    	String regex4 = "http://purl.uniprot.org/pathway-interaction-db/";
+				    	Pattern pt4 = Pattern.compile(regex4);
+				    	Matcher match4 = pt4.matcher(link.toString());
+				    	
+				    	if( (match.find()) || (match2.find()) || (match3.find()) || (match4.find()))
+				    	{
+				    		resultModel.add(protResource, seeAlso, link);
+				    		resultModel.add(linkResource, PPT.label, link);
+				    	}
+				    		
+						
+						
+					}
+					
+					
+					
 				
-		/* The Sparql query returns both Go terms and Keywords.  Also, Go terms have multiple term labels, so 
-		 * the query returns duplicate go terms for a single protein.  To resolve these issues, the program
-		 * only pulls out terms that match http://purl.uniprot.org/go/.  A linked hash set is used to remove duplicates.
-		 */
+					/* The Sparql query returns both Go terms and Keywords.  Also, Go terms have multiple term labels, so 
+					 * the query returns duplicate go terms for a single protein.  To resolve these issues, the program
+					 * only pulls out terms that match http://purl.uniprot.org/go/.  A linked hash set is used to remove duplicates.
+					 */
 	
-		String Sparql=
-			"PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> " +
-			"PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> " +
-			"PREFIX uniprot: <http://purl.uniprot.org/core/> " +
+					String Sparql=
+							"PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> " +
+							"PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> " +
+							"PREFIX uniprot: <http://purl.uniprot.org/core/> " +
 
-				"SELECT distinct ?fullname ?term ?termLabel " +
-				"WHERE { " +
-					   "<"+protResource.toString()+">" +
-					   "  uniprot:classifiedWith ?term;" +
-					   "  uniprot:recommendedName ?name." +
-					   "  ?name uniprot:fullName ?fullname." +
-				 	   "  ?term rdfs:label ?termLabel." +
-				      "} ";
+							"SELECT distinct ?fullname ?term ?termLabel " +
+							"WHERE { " +
+							"<"+protResource.toString()+">" +
+							"  uniprot:classifiedWith ?term;" +
+							"  uniprot:recommendedName ?name." +
+							"  ?name uniprot:fullName ?fullname." +
+							"  ?term rdfs:label ?termLabel." +
+							"} ";
 		
-		Query query = QueryFactory.create(Sparql);
-		QueryExecution qexec = QueryExecutionFactory.sparqlService(
-		"http://linkedlifedata.com/sparql", query);
-		
-		ResultSet results = qexec.execSelect();
-		tcount = 0;
+					Query query = QueryFactory.create(Sparql);
+					QueryExecution qexec = QueryExecutionFactory.sparqlService("http://linkedlifedata.com/sparql", query);
+					ResultSet results = qexec.execSelect();
+					tcount = 0;
 		
 					while (results.hasNext())
 					{
 					
+						//reset variables	
+						uniqueTerms.clear();	
+						
 						QuerySolution sol = results.nextSolution();
 						RDFNode go = sol.get("term");
 						
 						String goTerm = go.toString();
 						
-						String reg1 = "http://purl.uniprot.org/go/";
-				    	Pattern pt1 = Pattern.compile(reg1);
-				    	Matcher mt1 = pt1.matcher(goTerm);
+						String reg5 = "http://purl.uniprot.org/go/";
+				    	Pattern pt5 = Pattern.compile(reg5);
+				    	Matcher mt5 = pt5.matcher(goTerm);
 				    	
-				    	if(mt1.find())
+				    	if(mt5.find())
 				    	{
 			    		
 				    		uniqueTerms.add(goTerm);
@@ -221,15 +264,15 @@ public class UniprotEnricher extends ResourceEnricher
 					
 					}
 				
-				qexec.close() ;
-				//Remove duplicates from Go Terms and preserve order
+					qexec.close() ;
+					//Remove duplicates from Go Terms and preserve order
 				
-				Set<String> uniqueGo = new LinkedHashSet<String>(uniqueTerms);
+					Set<String> uniqueGo = new LinkedHashSet<String>(uniqueTerms);
 				
-				Iterator<String> iterGo = uniqueGo.iterator();
+					Iterator<String> iterGo = uniqueGo.iterator();
 				
-				while (iterGo.hasNext())
-				{
+					while (iterGo.hasNext())
+					{
 					
 					Resource uniqueGoResource = resultModel.createResource(iterGo.next());
 					

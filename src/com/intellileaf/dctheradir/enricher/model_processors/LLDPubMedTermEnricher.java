@@ -56,7 +56,8 @@ public class LLDPubMedTermEnricher implements KnowledgeBaseProcessor
 		resultModel.setNsPrefix("owl", NS.owl);
 		
 		//Creates the properties defining the related resources found in LLD and the resource for the DC-Thera resource
-		Resource dcResource = resultModel.createResource(getUri()); 
+		Resource dcResource = resultModel.createResource(getUri());
+		Property hasAutoRelatedDoc = null;
 		
 		for(int x = 0; x < pmids.size(); x++)
 		{	
@@ -81,15 +82,18 @@ public class LLDPubMedTermEnricher implements KnowledgeBaseProcessor
 			
 			//Creation of resources/properties to populate the model
 			Resource document = ResourceFactory.createResource(NS.DCR + "document/" + pmids.get(x)); //resource for pubMed article that was searched
-			Property hasAutoRelatedDoc = ResourceFactory.createProperty(NS.DCR, "hasAutoRelatedDocument_" + autoDocCount); //resource showing that the article is an autorelatedDocument
-	
+			
+			if(autoDocCount < 5)
+				hasAutoRelatedDoc = ResourceFactory.createProperty(NS.DCR, "hasAutoRelatedDocument_" + autoDocCount); //resource showing that the article is an autorelatedDocument
+			else
+				hasAutoRelatedDoc = ResourceFactory.createProperty(NS.DCR, "hasAutoRelatedDocument_5");
+			
 			try
 			{	
 				resultCount = 0; 
 				
 				while((results.hasNext())&&(resultCount < 5))
 				{	
-					//if(resultCount == 5){break;}//used for cutting off the number of resources returned to 5
 					
 					QuerySolution sol = results.nextSolution(); //obtains a line in the results
 					
