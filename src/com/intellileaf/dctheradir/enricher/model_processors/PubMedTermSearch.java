@@ -138,6 +138,7 @@ public class PubMedTermSearch extends ResourceEnricher
                     }
                 
                 resultModel.add(document, PPT.type, NS.obo + "IAO_0000311");
+                resultModel.add(document, PPT.label, bookTitle.get(0));
                 resultModel.add(document, PPT.title, bookTitle.get(0));
                 resultModel.add(document, PPT.description, bookAbstract.get(0));
                 
