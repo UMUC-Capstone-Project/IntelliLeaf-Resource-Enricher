@@ -19,7 +19,7 @@ public class DirectoryEnricher {
 		else{
 			/*
 			 * WARNING: You've to hand the JVM enough memory to run this. 
-			 * In Eclipse: Run Configurations -> Test -> VM arguments: -Xms512m -Xmx2G -XX:PermSize=128m -XX:MaxPermSize=1G
+			 * In Eclipse: Run Configurations -> DirectoryEnricher -> VM arguments: -Xms512m -Xmx2G -XX:PermSize=128m -XX:MaxPermSize=1G
 			 * Via command line: java -Xms512M ... Test
 			 */
 			inputs = new String[] { 
@@ -49,8 +49,8 @@ public class DirectoryEnricher {
 		
 		//Make sure that file name matches Biomaterial entered above
 		
-		String outPath = "/Users/brandizi/Documents/Work/IntelliLeaf/capstone_project/dcthera_enrich_relfinder/Joseki-3.4.4/dcthera/dcthera_enriched.rdf";
-		//String outPath = "./rdf_output/test_output.rdf";
+		//String outPath = "/Users/brandizi/Documents/Work/IntelliLeaf/capstone_project/dcthera_enrich_relfinder/Joseki-3.4.4/dcthera/dcthera_enriched.rdf";
+		String outPath = "./rdf_output/test_output.rdf";
 		  
 	  try{
 	  	finalModel.write ( 
