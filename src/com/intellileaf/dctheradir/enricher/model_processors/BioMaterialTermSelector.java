@@ -86,6 +86,29 @@ public class BioMaterialTermSelector implements KnowledgeBaseProcessor
 		    	
 		    }
 		    
+		    if (subject.toString().equals(this.getUri()) && (predicate.toString().equals(NS.DCR+"hasBioSourceType")))
+		    {
+		    	
+		    	targetObjects.add(object.toString());
+		    	
+		    }
+		    
+		    if (subject.toString().equals(this.getUri()) && (predicate.toString().equals(NS.DCR+"hasCellType")))
+		    {
+		    	
+		    	targetObjects.add(object.toString());
+		    	
+		    }
+		    
+		    /* Stimulus type seems to be too vague
+		    if (subject.toString().equals(this.getUri()) && (predicate.toString().equals(NS.DCR+"hasStimulusType")))
+		    {
+		    	
+		    	targetObjects.add(object.toString());
+		    	
+		    }
+		    */
+		    
 		    if (subject.toString().equals(this.getUri()) && (predicate.toString().equals(NS.DCR+"hasOrganismType")))
 		    {
 		    	orgObject = object.toString();

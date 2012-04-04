@@ -92,7 +92,7 @@ public class LLDPubMedTermEnricher implements KnowledgeBaseProcessor
 			{	
 				resultCount = 0; 
 				
-				while((results.hasNext())&&(resultCount < 5))
+				while (results.hasNext())
 				{	
 					
 					QuerySolution sol = results.nextSolution(); //obtains a line in the results

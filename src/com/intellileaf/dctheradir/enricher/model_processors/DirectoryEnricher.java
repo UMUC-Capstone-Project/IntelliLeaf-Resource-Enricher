@@ -23,11 +23,11 @@ public class DirectoryEnricher {
 			 * Via command line: java -Xms512M ... Test
 			 */
 			inputs = new String[] { 
-				"http://dc-research.eu/rdf/biomaterial/522"/*, 
+				"http://dc-research.eu/rdf/biomaterial/522", 
 				"http://dc-research.eu/rdf/biomaterial/120", 
 				"http://dc-research.eu/rdf/biomaterial/508",
 				"http://dc-research.eu/rdf/biomaterial/526",
-				"http://dc-research.eu/rdf/biomaterial/61"	*/			 
+				"http://dc-research.eu/rdf/biomaterial/61"				 
 			};
 		}
 		
@@ -50,7 +50,7 @@ public class DirectoryEnricher {
 		//Make sure that file name matches Biomaterial entered above
 		
 		//String outPath = "/Users/brandizi/Documents/Work/IntelliLeaf/capstone_project/dcthera_enrich_relfinder/Joseki-3.4.4/dcthera/dcthera_enriched.rdf";
-		String outPath = "./rdf_output/test_output.rdf";
+		String outPath = "/home/kshefchek/dcthera_enrich_relfinder/Joseki-3.4.4/dcthera/";
 		  
 	  try{
 	  	finalModel.write ( 
