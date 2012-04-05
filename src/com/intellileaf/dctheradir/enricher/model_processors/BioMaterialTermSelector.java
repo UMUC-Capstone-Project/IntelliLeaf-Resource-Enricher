@@ -136,7 +136,7 @@ public class BioMaterialTermSelector implements KnowledgeBaseProcessor
 			    RDFNode   object    = stmt.getObject();      // get the object
 			    
 			    
-			    if (subject.toString().equals(targetObjects.get(i)) && (predicate.toString().equals(NS.RDFS+"label")))
+			    if (subject.toString().equals(targetObjects.get(i)) && (predicate.toString().equals(NS.RDFS+"label")) && (!object.toString().equals("Biomaterial")))
 			    {
 			    	termLabels.add(object.toString());
 			    	
