@@ -3,11 +3,9 @@
 A Java application used to generate relationships between resources from the DC-RESEARCH website and scientific journal articles (Pubmed), proteins (Uniprot), and their associated relationships. 
 For example, Pubmed articles are linked to associated LifeSkim concept terms, and proteins are linked to their Gene Ontology annotations, biological pathways (Reactome, Pathway Interaction DB),and other annotations (KEGG, array express).
 
-The resulting RDF graph provides novel relationships between resources and can graphically viewed
-using a number of tools such as RelFinder, Cytoscape, RDF viewer, etc.
+The resulting RDF graph provides novel relationships between resources and can graphically viewed using a number of tools such as RelFinder, Cytoscape, RDF viewer, etc.
 
-While the application utilizes the DC-RESEARCH ontology and parse terms from a DC-RESEARCH URI, the
-program can be edited to input general biological terms and output a similar RDF graph.
+While the application utilizes the DC-RESEARCH ontology for some relationships and accepts a DC-RESEARCH URI as input, the program can be edited to input general biological terms and output a similar RDF graph.
 
 #Authors
 Marco Brandizi, Jason Earley, Nathaniel Gatewood, Ryan Gruber, Tim Wilson, and Kent Shefchek
