@@ -19,6 +19,7 @@ Biotechnolgoy/Bioinformatics Master's program
 #Images
 
 ![Representation of the RDF graph created by the DC-THERA enricher](https://github.com/UMUC-Capstone-Project/IntelliLeaf-Resource-Enricher/blob/master/images/RDFGraph.JPG)
+
 ![Here is an example of results graphically viewed in RelFinder](https://github.com/UMUC-Capstone-Project/IntelliLeaf-Resource-Enricher/blob/master/images/example.JPG)
 
 #External Links
