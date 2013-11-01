@@ -1,6 +1,6 @@
 ##DC-THERA Resource Enricher
 
-A Java application used to generate relationships between resources from the DC-RESEARCH website and scientific journal articles (Pubmed), proteins (Uniprot), and their associated relationships. 
+A Java application designed to generate relationships between resources from the DC-RESEARCH website and scientific journal articles (Pubmed), proteins (Uniprot), and their associated relationships. 
 For example, Pubmed articles are linked to associated LifeSkim concept terms, and proteins are linked to their Gene Ontology annotations, biological pathways (Reactome, Pathway Interaction DB),and other databases (KEGG, array express).
 
 The resulting RDF graph provides novel relationships between resources and can graphically viewed using a number of tools such as RelFinder, Cytoscape, RDF viewer, etc.
